@@ -1,0 +1,291 @@
+body {
+  padding: 0 !important;
+  margin: 0;
+}
+.themes {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  margin-top: -28px;
+  font-size: 40px;
+}
+.wellc {
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 35px;
+}
+.donate-index {
+  text-align: center;
+}
+.joiner {
+  text-align: center;
+}
+.contact-index {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.contact-index h1 {
+  margin-bottom: 29px;
+}
+.contact-index h2 a:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #2ecc71;
+}
+.contact-index h2 a {
+  background-color: #0984e3;
+}
+.social-index {
+  text-align: center;
+}
+.social-index ul li {
+  list-style: none;
+  display: inline;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.sub-btn {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.traicentre {
+  text-align: center;
+}
+@media (max-width: 450px) {
+  .carousel-item img {
+    height: 100%;
+    width: 100%;
+    /* width: 50%; */
+    /* left: 3px ; */
+  }
+  .back-img {
+    height: 300px;
+    width: 100%;
+  }
+  .carousel-item {
+    width: 100%;
+    height: 300px;
+  }
+  .carousel-inner {
+    height: 300px;
+    width: 100%;
+  }
+  .carousel-caption {
+    position: relative !important ;
+    padding-top: 10px !important;
+    padding-bottom: -10px !important;
+    margin-bottom: -20px !important;
+    top: 28px !important;
+    padding-left: 10px !important;
+  }
+  .text-right {
+    margin-right: 49px;
+  }
+  .text-left {
+    font-size: 20px;
+    margin-right: 50px !important;
+  }
+  .stm-ea {
+    font-size: 30px;
+  }
+  .wellc {
+    text-align: center;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .carousel-captiono {
+    position: relative !important ;
+    /* padding-top: 10px !important;
+        padding-bottom: -10px !important;
+        margin-bottom: -20px !important; */
+    top: 58px !important;
+    padding-left: 30px !important;
+    padding-right: 50px !important;
+    margin-right: 50px !important;
+    color: white;
+    text-shadow: 2px 2px #333;
+    font-weight: 100px;
+  }
+}
+.text-right {
+  /* background-color: rgba(87, 101, 116,.6); */
+  /* text-shadow: 2px 2px #333;
+  font-weight: 100px; */
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+}
+.text-left {
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+}
+.con-btn {
+  background-color: #6c757d;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 30px;
+  color: white;
+}
+.h3-pics {
+  text-align: center;
+  position: relative;
+  bottom: -50px;
+}
+hr.style-eight {
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+hr.style-eight:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: white;
+}
+.do-sep {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #30336b;
+  margin-top: 50px;
+}
+.foot-do {
+  position: relative;
+  bottom: -400px;
+}
+.collapse ul li a:hover {
+  color: #0984e3 !important;
+  /* text-shadow: 1px 1px 1px #2ecc71; */
+}
+.collapse ul li a {
+  color: #2c3e50 !important;
+}
+.navbar-brand {
+  color: black !important;
+}
+.navbar-toggler {
+  background: rgba(44, 62, 80, 1) !important;
+}
+.album-id ul li {
+  display: inline-flex;
+  background-color: #0984e3;
+  padding: 7px 15px;
+  border-radius: 7px;
+  margin-left: 9px;
+}
+@media (max-width: 828px) {
+  .album-id ul li {
+    display: block;
+    margin-bottom: 9px;
+    margin-left: -38px;
+  }
+}
+.album-id ul li:hover {
+  background-color: #2ecc71;
+}
+.album-id {
+  text-align: center;
+  margin-bottom: -28px;
+}
+.album-id ul li a {
+  color: #fff !important;
+}
+.album-id ul li a:hover {
+  text-decoration: none;
+}
+.col-12 h1 {
+  color: black !important;
+  margin-bottom: 25px;
+}
+.col-12 {
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold !important;
+}
+.text-right p,
+.text-left p {
+  font-weight: 1000;
+}
+@media (max-width: 370px) {
+  .navbar-brand {
+    font-size: 0.89em !important;
+  }
+}
+.navbar-toggler {
+  padding: 0px;
+}
+
+.typed_wrap {
+  text-align: center;
+  position: relative;
+  right: 20px;
+}
+.typed_wrap h2 {
+  display: inline;
+}
+
+/*Add custom cursor so it auto inherits font styles*/
+.typed::after {
+  content: "|";
+  display: inline;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+
+/*Removes cursor that comes with typed.js*/
+.typed-cursor {
+  opacity: 0;
+  display: none;
+}
+/*Custom cursor animation*/
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
