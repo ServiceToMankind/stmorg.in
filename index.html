@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/main/btn.css" >
     <link rel="stylesheet" href="css/default/css/catto.css" >
     <link rel="stylesheet" href="css/defualt/css/catto.min.css" >
+    <script src="main-js\typed.js"></script>
+    <script src="js/jquery1.js"></script>
 
 
    <!-- BS CSS -->
@@ -88,6 +90,43 @@
      }
 </style>
     <link href="css/main/carousel.css" rel="stylesheet">
+    <script>
+      $(function () {
+  $(".typed").typed({
+    strings: ["STM.", "NGO.", "SETT."],
+    // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
+    stringsElement: null,
+    // typing speed
+    typeSpeed: 30,
+    // time before typing starts
+    startDelay: 1200,
+    // backspacing speed
+    backSpeed: 20,
+    // time before backspacing
+    backDelay: 500,
+    // loop
+    loop: true,
+    // false = infinite
+    loopCount: 5,
+    // show cursor
+    showCursor: false,
+    // character for cursor
+    cursorChar: "|",
+    // attribute to type (null == text)
+    attr: null,
+    // either html or text
+    contentType: "html",
+    // call when done callback function
+    callback: function () {},
+    // starting callback function before each string
+    preStringTyped: function () {},
+    //callback for every typed string
+    onStringTyped: function () {},
+    // callback for reset
+    resetCallback: function () {},
+  });
+});
+      </script>
 
   </head>
   <body>
@@ -139,7 +178,10 @@
 				<div class="col-md-12">
 					<div class="fund-heading text-center">
 						<h1>STM</h1>
-						<h2>Charity/Nonprofit</h2>
+            <!-- <h2>Charity/Nonprofit</h2> -->
+            <!-- <div class="typed_wrap"> -->
+			<h1>We Are <span class="typed"></span></h1>
+		<!-- </div> -->
 					</div>
 				</div>
 			</div>
@@ -148,7 +190,6 @@
 
   <div id="aboutus"></div>
   <h1 class="wellc">WELCOME TO SERVICE TO MANKIND</h1>
-
   <div class="container marketing">
 
     <div class="row featurette">
@@ -308,4 +349,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- mailchimp -->
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    
 </html>
