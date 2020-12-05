@@ -228,7 +228,12 @@ h6 {
   padding: 0px;
 }
 
-.typed_wrap h1 {
+.typed_wrap {
+  text-align: center;
+  position: relative;
+  right: 20px;
+}
+.typed_wrap h2 {
   display: inline;
 }
 
