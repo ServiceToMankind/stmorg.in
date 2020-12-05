@@ -1,0 +1,318 @@
+/*! CSS Used from: http://wpthemebooster.com/demo/themeforest/html/oellfare/css/style.css */
+/*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/bootstrap.min.css */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+h1,
+h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+h1,
+h5 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+.text-left {
+  text-align: left !important;
+}
+@media print {
+  *,
+  ::after,
+  ::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a:not(.btn) {
+    text-decoration: underline;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  .container {
+    min-width: 992px !important;
+  }
+}
+/*! end @import */
+/*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/animate.css */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+/*! end @import */
+h1,
+h5 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin: 0px;
+}
+h1 {
+  font-size: 36px;
+}
+h5 {
+  font-size: 18px;
+}
+p {
+  margin-bottom: 0px;
+  font-family: "Hind", sans-serif;
+}
+a {
+  color: #fd1b5b;
+  text-decoration: none;
+  -webkit-transition: color 0.5s, background-color 0.8s;
+  transition: color 0.5s, background-color 0.8s;
+}
+a:hover {
+  color: #fd1b5b;
+  text-decoration: none;
+  -webkit-transition: color 0.5s, background-color 0.8s;
+  transition: color 0.5s, background-color 0.8s;
+}
+.power_button_group {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+.power_button {
+  position: relative;
+  width: auto;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  padding: 13px 45px;
+  background: transparent;
+  border: 0px solid #ffffff;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 0px 13px rgba(253, 27, 91, 0.2);
+  box-shadow: 0px 0px 13px rgba(253, 27, 91, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.power_button:hover {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.power_button span.button_value {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  vertical-align: middle;
+}
+.power_button:before,
+.power_button:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 0;
+  border-radius: 30px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.power_button {
+  color: #ffffff;
+}
+.power_button:hover {
+  color: #fd1b5b;
+}
+.power_button:before {
+  background: #ffffff;
+}
+.power_button:after {
+  background: #fd1b5b;
+}
+.power_button.alt {
+  background: #ffffff;
+  color: #fd1b5b;
+}
+.power_button.alt:hover {
+  background: #fd1b5b;
+  color: #ffffff;
+}
+.power_button.alt:before {
+  background: #fd1b5b;
+}
+.power_button.alt:after {
+  background: #ffffff;
+}
+.power_button.effect_1:before {
+  right: 100%;
+  top: 0;
+}
+.power_button.effect_1:hover::before {
+  right: 0;
+}
+.power_button.effect_1:after {
+  left: 0;
+  top: 0;
+}
+.power_button.effect_1:hover::after {
+  left: 100%;
+}
+.slider {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.slider .typed {
+  color: #fd1b5b;
+}
+.slider .typed-cursor {
+  font-size: 60px;
+  font-weight: 700;
+  color: #fd1b5b;
+}
+.slider .slide-content {
+  padding: 200px 0px 200px 0px;
+}
+.slider .slide-content .sub_heading {
+  font-family: "Hind", sans-serif;
+  line-height: 35px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.slider .slide-content .heading {
+  font-size: 60px;
+  line-height: 72px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 25px;
+}
+.slider .slide-content .power_button_group {
+  margin-top: 50px;
+}
+.slider .slide-content .power_button_group .power_button {
+  margin: 0px 15px;
+}
+.slider_type2 .slider .slide-content {
+  padding: 200px 0px 250px 0px;
+}
+@media screen and (max-width: 767px) {
+  .slider .slide-content .heading {
+    font-size: 44px;
+    line-height: 52px;
+  }
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@media (print), (prefers-reduced-motion) {
+  .animated {
+    -webkit-animation: unset !important;
+    animation: unset !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+/*! CSS Used from: Embedded */
+.typed-cursor {
+  opacity: 1;
+}
+/*! CSS Used keyframes */
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
