@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
 /* body{
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@
   justify-content: center;
   background: black;
 } */
-span{
+.but2 span {
   position: relative;
   display: inline-flex;
   width: 180px;
@@ -16,19 +16,17 @@ span{
   margin: 0 15px;
   perspective: 1000px;
   text-align: center;
-
-  
 }
-span a{
+.but2 span a {
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
   transform: translateZ(-25px);
-  transition: transform .25s;
-  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
 }
-span a:before,
-span a:after{
+.but2 span a:before,
+.but2 span a:after {
   position: absolute;
   /* content: "CHECK"; */
   height: 55px;
@@ -39,13 +37,13 @@ span a:after{
   /* border: 5px solid black; */
   box-sizing: border-box;
 }
-span:nth-child(1) a:before{
+.but2 span:nth-child(1) a:before {
   color: #ecf0f1;
   background: #0984e3;
   content: "Donate";
   transform: rotateY(0deg) translateZ(25px);
 }
-span:nth-child(1) a:after{
+.but2 span:nth-child(1) a:after {
   color: #ecf0f1;
   background-color: #2ecc71;
   content: "Thank you";
@@ -63,13 +61,12 @@ span:nth-child(1) a:after{
   content: "Thank You";
   transform: rotateX(-90deg) translateZ(25px);
 } */
-span:nth-child(1) a:hover{
+.but2 span:nth-child(1) a:hover {
   transform: translateZ(-25px) rotateX(-90deg);
 }
 /* span:nth-child(2) a:hover{
   transform: translateZ(-25px) rotateX(90deg);
 } */
-.but2{
-    text-align: center;
-    
+.but2 {
+  text-align: center;
 }
