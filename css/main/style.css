@@ -92,11 +92,6 @@
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     margin-bottom: 0px;
     margin-top: 0px;
-    position: relative;
-    bottom: 45px;
-    margin-bottom: -50px;
-    top: -80px;
-    color: black;
   }
   .carousel-captiono {
     position: relative !important ;
