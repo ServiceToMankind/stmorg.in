@@ -1,111 +1,4 @@
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/bootstrap.min.css */
-header {
-  display: block;
-}
-h1 {
-  margin: 0.67em 0;
-  font-size: 2em;
-}
-@media print {
-  *,
-  :after,
-  :before {
-    color: #000 !important;
-    text-shadow: none !important;
-    background: 0 0 !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-  }
-  h2 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2 {
-    page-break-after: avoid;
-  }
-}
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-:after,
-:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-h1,
-h2 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-}
-h1,
-h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-h1 {
-  font-size: 36px;
-}
-h2 {
-  font-size: 30px;
-}
-.text-center {
-  text-align: center;
-}
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-md-12 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-@media (min-width: 992px) {
-  .col-md-12 {
-    float: left;
-  }
-  .col-md-12 {
-    width: 100%;
-  }
-}
-.container:after,
-.container:before,
-.row:after,
-.row:before {
-  display: table;
-  content: " ";
-}
-.container:after,
-.row:after {
-  clear: both;
-}
 
 /* target_box */
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/style.css */
@@ -481,6 +374,11 @@ a:hover {
   position: relative;
   z-index: 3;
 }
+@media (max-width: 768px) {
+  .overlapping_urgent_cause {
+    margin-top: -22px;
+  }
+}
 .urgent_cause_block {
   position: relative;
   background: #ffffff;
@@ -526,7 +424,7 @@ a:hover {
 }
 .urgent_cause_block.alt .power_highlight_tag {
   background: #ffffff;
-  color: #fd1b5b;
+  color: var(--primary);
   padding: 0px;
   font-size: 14px;
   font-weight: 600;
@@ -609,7 +507,7 @@ a:hover {
   border-radius: 0px;
 }
 .power_highlight_tag {
-  background: #fd1b5b;
+  background: var(--primary);
   color: #ffffff;
   display: inline-block;
   border-radius: 4px;
@@ -848,6 +746,7 @@ img {
   padding: 35px 35px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  height: 100%;
 }
 .power_iconbox h5 {
   font-size: 18px;
