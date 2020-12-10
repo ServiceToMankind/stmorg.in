@@ -1053,3 +1053,587 @@ img {
   }
 }
 /* boxes_end */
+/* footer */
+/*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+footer {
+  display: block;
+}
+h2,
+h5 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+h2,
+h5 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+}
+h2 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col-6,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-8 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.col-6 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+@media (min-width: 768px) {
+  .col-md-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-md-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-md-5 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+  .col-md-8 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+@media print {
+  *,
+  ::after,
+  ::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  img {
+    page-break-inside: avoid;
+  }
+  h2,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  h2 {
+    page-break-after: avoid;
+  }
+  .container {
+    min-width: 992px !important;
+  }
+}
+/*! CSS Used from: http://localhost/trackt/assets/css/all.min.css */
+.far,
+.fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.fa-caret-right:before {
+  content: "\f0da";
+}
+.fa-envelope:before {
+  content: "\f0e0";
+}
+.fa-map-marker-alt:before {
+  content: "\f3c5";
+}
+.fa-mobile-alt:before {
+  content: "\f3cd";
+}
+.far {
+  font-weight: 400;
+}
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free";
+}
+.fas {
+  font-weight: 900;
+}
+/*! CSS Used from: http://localhost/trackt/assets/css/style.css */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+p {
+  margin-bottom: 0px;
+  width: 100%;
+}
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+.container-fluid {
+  padding: 0px;
+}
+h2,
+h5 {
+  font-family: "Roboto", sans-serif;
+  color: #545454;
+}
+.container {
+  max-width: 1170px;
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding: 10px 15px;
+  }
+}
+.footer-cont {
+  background-color: #212121;
+  color: #fff;
+  padding: 50px;
+}
+@media screen and (max-width: 940px) {
+  .footer-cont {
+    padding: 30px 10px;
+  }
+}
+.footer-cont .footer-top {
+  padding-bottom: 40px;
+}
+.footer-cont .footer-top .foot-logo h2 {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 25px;
+}
+.footer-cont .footer-top .foot-addr ul {
+  float: right;
+}
+.footer-cont .footer-top .foot-addr ul li {
+  float: left;
+  padding: 10px;
+}
+.footer-cont .footer-top .foot-addr ul li i {
+  margin-right: 2px;
+}
+.footer-cont .foot-botom .fotter-coo h5 {
+  color: #f78d15;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.footer-cont .foot-botom .fotter-coo ul li {
+  font-size: 0.9rem;
+  padding: 10px 3px;
+}
+.footer-cont .foot-botom .fotter-coo ul li i {
+  margin-right: 5px;
+}
+.footer-cont .foot-botom .fotter-coo .gallery-row {
+  margin-top: 5px;
+}
+.footer-cont .foot-botom .fotter-coo .gallery-row .gall-col {
+  padding: 5px;
+}
+/* footer-top */
+/*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+button {
+  border-radius: 0;
+}
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+button {
+  overflow: visible;
+}
+button {
+  text-transform: none;
+}
+button {
+  -webkit-appearance: button;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn:focus,
+.btn:hover {
+  text-decoration: none;
+}
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.btn:disabled {
+  opacity: 0.65;
+}
+@media print {
+  *,
+  ::after,
+  ::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  .container {
+    min-width: 992px !important;
+  }
+}
+/*! CSS Used from: http://localhost/trackt/assets/css/style.css */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+p {
+  margin-bottom: 0px;
+  width: 100%;
+}
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+.btn {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
+.container {
+  max-width: 1170px;
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding: 10px 15px;
+  }
+}
+.footer-ablove {
+  padding: 30px;
+  background-color: #ff5722;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.footer-ablove .btn {
+  float: right;
+  background-color: #fff;
+}
+
+/* footer-downdown */
+/*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+a:not([href]):not([tabindex]):focus,
+a:not([href]):not([tabindex]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media print {
+  *,
+  ::after,
+  ::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a:not(.btn) {
+    text-decoration: underline;
+  }
+  .container {
+    min-width: 992px !important;
+  }
+}
+/*! CSS Used from: http://localhost/trackt/assets/css/all.min.css */
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.fa-facebook-f:before {
+  content: "\f39e";
+}
+.fa-github:before {
+  content: "\f09b";
+}
+.fa-google-plus-g:before {
+  content: "\f0d5";
+}
+.fa-pinterest-p:before {
+  content: "\f231";
+}
+.fa-twitter:before {
+  content: "\f099";
+}
+.fab {
+  font-family: "Font Awesome 5 Brands";
+}
+/*! CSS Used from: http://localhost/trackt/assets/css/style.css */
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  color: #444;
+}
+a:hover {
+  color: #444;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+}
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+.container {
+  max-width: 1170px;
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding: 10px 15px;
+  }
+}
+.copy {
+  padding: 20px;
+  background-color: #191616;
+  color: #fff;
+}
+.copy a {
+  color: #fff;
+}
+.copy span {
+  float: right;
+}
+.copy span i {
+  margin-right: 20px;
+}
+/*! CSS Used fontfaces */
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url(http://localhost/trackt/assets/webfonts/fa-brands-400.eot);
+  src: url(http://localhost/trackt/assets/webfonts/fa-brands-400.eot#iefix)
+      format("embedded-opentype"),
+    url(http://localhost/trackt/assets/webfonts/fa-brands-400.woff2)
+      format("woff2"),
+    url(http://localhost/trackt/assets/webfonts/fa-brands-400.woff)
+      format("woff"),
+    url(http://localhost/trackt/assets/webfonts/fa-brands-400.ttf)
+      format("truetype"),
+    url(http://localhost/trackt/assets/webfonts/fa-brands-400.svg#fontawesome)
+      format("svg");
+}
