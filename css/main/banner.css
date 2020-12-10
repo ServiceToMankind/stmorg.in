@@ -1,4 +1,5 @@
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/bootstrap.min.css */
+<<<<<<< HEAD
 header {
   display: block;
 }
@@ -107,6 +108,8 @@ h2 {
 .row:after {
   clear: both;
 }
+=======
+>>>>>>> 4ae13589a7bab491f68d614f9042286469d51a41
 
 /* target_box */
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/style.css */
@@ -487,6 +490,11 @@ a:hover {
   position: relative;
   z-index: 3;
 }
+@media (max-width: 768px) {
+  .overlapping_urgent_cause {
+    margin-top: -22px;
+  }
+}
 .urgent_cause_block {
   position: relative;
   background: #ffffff;
@@ -532,7 +540,7 @@ a:hover {
 }
 .urgent_cause_block.alt .power_highlight_tag {
   background: #ffffff;
-  color: #fd1b5b;
+  color: var(--primary);
   padding: 0px;
   font-size: 14px;
   font-weight: 600;
@@ -615,7 +623,7 @@ a:hover {
   border-radius: 0px;
 }
 .power_highlight_tag {
-  background: #fd1b5b;
+  background: var(--primary);
   color: #ffffff;
   display: inline-block;
   border-radius: 4px;
@@ -854,6 +862,7 @@ img {
   padding: 35px 35px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  height: 100%;
 }
 .power_iconbox h5 {
   font-size: 18px;
