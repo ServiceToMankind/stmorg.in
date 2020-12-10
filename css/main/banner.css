@@ -1,112 +1,4 @@
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/bootstrap.min.css */
-header {
-  display: block;
-}
-h1 {
-  margin: 0.67em 0;
-  font-size: 2em;
-}
-@media print {
-  *,
-  :after,
-  :before {
-    color: #000 !important;
-    text-shadow: none !important;
-    background: 0 0 !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-  }
-  h2 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2 {
-    page-break-after: avoid;
-  }
-}
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-:after,
-:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-h1,
-h2 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-  color: inherit;
-}
-h1,
-h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-h1 {
-  font-size: 36px;
-}
-h2 {
-  font-size: 30px;
-}
-.text-center {
-  text-align: center;
-  margin-top: 45px;
-}
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-.row {
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-md-12 {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-@media (min-width: 992px) {
-  .col-md-12 {
-    float: left;
-  }
-  .col-md-12 {
-    width: 100%;
-  }
-}
-.container:after,
-.container:before,
-.row:after,
-.row:before {
-  display: table;
-  content: " ";
-}
-.container:after,
-.row:after {
-  clear: both;
-}
 
 /* target_box */
 /*! CSS Used from: http://iglyphic.com/themes/html/thefund/assets/css/style.css */
@@ -181,117 +73,7 @@ h2 {
 
 /*! CSS Used from: http://wpthemebooster.com/demo/themeforest/html/oellfare/css/style.css */
 /*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/bootstrap.min.css */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-b {
-  font-weight: bolder;
-}
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-h3 {
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
-  color: inherit;
-}
-h3 {
-  font-size: 1.75rem;
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-lg-4,
-.col-lg-8 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-@media (min-width: 992px) {
-  .col-lg-4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
-  .col-lg-8 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 66.666667%;
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-  }
-}
-@media print {
-  *,
-  ::after,
-  ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  a:not(.btn) {
-    text-decoration: underline;
-  }
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h3 {
-    page-break-after: avoid;
-  }
-  .container {
-    min-width: 992px !important;
-  }
-}
+
 /*! end @import */
 /*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/animate.css */
 .animated {
@@ -314,13 +96,13 @@ h3 {
   font-size: 24px;
 }
 a {
-  color: #fd1b5b;
+  color: var(--primary);
   text-decoration: none;
   -webkit-transition: color 0.5s, background-color 0.8s;
   transition: color 0.5s, background-color 0.8s;
 }
 a:hover {
-  color: #fd1b5b;
+  color: var(--primary);
   text-decoration: none;
   -webkit-transition: color 0.5s, background-color 0.8s;
   transition: color 0.5s, background-color 0.8s;
@@ -380,13 +162,13 @@ a:hover {
   color: #ffffff;
 }
 .power_button:hover {
-  color: #fd1b5b;
+  color: var(--primary);
 }
 .power_button:before {
   background: #ffffff;
 }
 .power_button:after {
-  background: #fd1b5b;
+  background: var(--primary);
 }
 .power_button.effect_1:before {
   right: 100%;
@@ -416,17 +198,17 @@ a:hover {
   position: relative;
   width: 0;
   height: 3px;
-  background: #fd1b5b;
+  background: var(--primary);
   -webkit-animation: progress 1.5s ease-in-out forwards;
   animation: progress 1.5s ease-in-out forwards;
-  -webkit-box-shadow: 0px 5px 7px rgba(253, 27, 91, 0.2);
-  box-shadow: 0px 5px 7px rgba(253, 27, 91, 0.2);
+  -webkit-box-shadow: 0px 5px 7px rgba(22, 50, 79, 0.3);
+  box-shadow: 0px 5px 7px rgba(22, 50, 79, 0.3);
 }
 .power_progress_content .power_progress_value {
   position: absolute;
   right: 0;
   bottom: 100%;
-  background: #fd1b5b;
+  background: var(--primary);
   border-radius: 10px;
   font-size: 12px;
   line-height: 20px;
@@ -439,7 +221,7 @@ a:hover {
   position: absolute;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #fd1b5b;
+  border-top: 5px solid var(--primary);
   left: 50%;
   top: 100%;
   -webkit-transform: translateX(-50%);
@@ -461,7 +243,7 @@ a:hover {
 .power_progress_content .power_progress_amount span b {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  color: #fd1b5b;
+  color: var(--primary);
 }
 .animated {
   -webkit-animation-duration: 1s;
@@ -576,7 +358,7 @@ a:hover {
   font-weight: 600;
   line-height: 35px;
   padding: 0px 0px;
-  color: #fd1b5b;
+  color: var(--primary);
   margin-bottom: 0;
   width: 35px;
   height: 35px;
@@ -703,111 +485,7 @@ a:hover {
 /* boxes */
 /*! CSS Used from: http://wpthemebooster.com/demo/themeforest/html/oellfare/css/style.css */
 /*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/bootstrap.min.css */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-h5 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-h5 {
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
-  color: inherit;
-}
-h5 {
-  font-size: 1.25rem;
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-lg-3,
-.col-md-6 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-@media (min-width: 768px) {
-  .col-md-6 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-@media (min-width: 992px) {
-  .col-lg-3 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-@media print {
-  *,
-  ::after,
-  ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  img {
-    page-break-inside: avoid;
-  }
-  p {
-    orphans: 3;
-    widows: 3;
-  }
-  .container {
-    min-width: 992px !important;
-  }
-}
+
 /*! end @import */
 /*! @import http://wpthemebooster.com/demo/themeforest/html/oellfare/css/animate.css */
 .fadeInDown {
@@ -874,7 +552,7 @@ img {
   transition: all 0.5s ease;
 }
 .power_iconbox:hover {
-  background: #fd1b5b;
+  background: var(--primary);
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -925,13 +603,13 @@ img {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #fd1b5b;
+  background-color: var(--primary);
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 .power_iconbox.type_2 h5 {
   font-size: 20px;
-  color: #fd1b5b;
+  color: var(--primary);
   line-height: 34px;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -1065,156 +743,15 @@ img {
     transform: translateY(0);
   }
 }
+.primary-img {
+  font-size: 30px;
+}
+.primary-img:hover {
+  color: #ffffff;
+}
 /* boxes_end */
 /* footer */
 /*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-footer {
-  display: block;
-}
-h2,
-h5 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-ul {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-h2,
-h5 {
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
-  color: inherit;
-}
-h2 {
-  font-size: 2rem;
-}
-h5 {
-  font-size: 1.25rem;
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-.container-fluid {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.col-6,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-8 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.col-6 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-@media (min-width: 768px) {
-  .col-md-3 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-  .col-md-4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
-  }
-  .col-md-5 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 41.666667%;
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-  .col-md-8 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 66.666667%;
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
-  }
-}
-@media print {
-  *,
-  ::after,
-  ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  img {
-    page-break-inside: avoid;
-  }
-  h2,
-  p {
-    orphans: 3;
-    widows: 3;
-  }
-  h2 {
-    page-break-after: avoid;
-  }
-  .container {
-    min-width: 992px !important;
-  }
-}
 /*! CSS Used from: http://localhost/trackt/assets/css/all.min.css */
 .far,
 .fas {
@@ -1315,7 +852,7 @@ h5 {
   margin-right: 2px;
 }
 .footer-cont .foot-botom .fotter-coo h5 {
-  color: #f78d15;
+  color: var(--primary);
   font-size: 1rem;
   margin-bottom: 20px;
 }
@@ -1334,121 +871,7 @@ h5 {
 }
 /* footer-top */
 /*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-button {
-  border-radius: 0;
-}
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-button {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-button {
-  overflow: visible;
-}
-button {
-  text-transform: none;
-}
-button {
-  -webkit-appearance: button;
-}
-button::-moz-focus-inner {
-  padding: 0;
-  border-style: none;
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
-.btn {
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.btn:focus,
-.btn:hover {
-  text-decoration: none;
-}
-.btn:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-.btn:disabled {
-  opacity: 0.65;
-}
-@media print {
-  *,
-  ::after,
-  ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  p {
-    orphans: 3;
-    widows: 3;
-  }
-  .container {
-    min-width: 992px !important;
-  }
-}
+
 /*! CSS Used from: http://localhost/trackt/assets/css/style.css */
 * {
   margin: 0px;
@@ -1479,7 +902,7 @@ p {
 }
 .footer-ablove {
   padding: 30px;
-  background-color: #ff5722;
+  background-color: var(--primary);
   color: #fff;
   font-size: 1.5rem;
 }
@@ -1490,74 +913,7 @@ p {
 
 /* footer-downdown */
 /*! CSS Used from: http://localhost/trackt/assets/css/bootstrap.min.css */
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-a:not([href]):not([tabindex]) {
-  color: inherit;
-  text-decoration: none;
-}
-a:not([href]):not([tabindex]):focus,
-a:not([href]):not([tabindex]):hover {
-  color: inherit;
-  text-decoration: none;
-}
-a:not([href]):not([tabindex]):focus {
-  outline: 0;
-}
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-@media print {
-  *,
-  ::after,
-  ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  a:not(.btn) {
-    text-decoration: underline;
-  }
-  .container {
-    min-width: 992px !important;
-  }
-}
+
 /*! CSS Used from: http://localhost/trackt/assets/css/all.min.css */
 .fab {
   -moz-osx-font-smoothing: grayscale;
