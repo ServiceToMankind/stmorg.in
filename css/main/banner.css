@@ -906,6 +906,7 @@ img {
   display: block;
   background: #fcfbfc;
   padding: 30px 30px;
+  height: 100%;
 }
 .power_iconbox.type_2 > div {
   position: relative;
