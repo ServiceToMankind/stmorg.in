@@ -66,6 +66,9 @@ body {
 .login h5 {
   margin-bottom: 0px !important;
 }
+.login {
+  padding: 10px;
+}
 @media (max-width: 450px) {
   .carousel-item img {
     height: 100%;
