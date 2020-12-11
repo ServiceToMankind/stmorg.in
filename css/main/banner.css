@@ -988,21 +988,3 @@ a:focus {
 .copy span i {
   margin-right: 20px;
 }
-/*! CSS Used fontfaces */
-@font-face {
-  font-family: "Font Awesome 5 Brands";
-  font-style: normal;
-  font-weight: normal;
-  font-display: auto;
-  src: url(http://localhost/trackt/assets/webfonts/fa-brands-400.eot);
-  src: url(http://localhost/trackt/assets/webfonts/fa-brands-400.eot#iefix)
-      format("embedded-opentype"),
-    url(http://localhost/trackt/assets/webfonts/fa-brands-400.woff2)
-      format("woff2"),
-    url(http://localhost/trackt/assets/webfonts/fa-brands-400.woff)
-      format("woff"),
-    url(http://localhost/trackt/assets/webfonts/fa-brands-400.ttf)
-      format("truetype"),
-    url(http://localhost/trackt/assets/webfonts/fa-brands-400.svg#fontawesome)
-      format("svg");
-}

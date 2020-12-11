@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lateef&family=Merienda:wght@700&display=swap");
 :root {
   --primary: #0984e3;
   --secondary: #8e44ad;
@@ -299,4 +300,14 @@ h6 {
   100% {
     opacity: 1;
   }
+}
+.themescls {
+  background: aliceblue;
+  padding: 60px;
+  font-family: "Merienda", cursive;
+}
+.lead {
+  font-family: "Lateef", cursive;
+  font-size: 1.75rem !important;
+  font-weight: 550px !important;
 }
