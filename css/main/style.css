@@ -1,3 +1,11 @@
+:root {
+  --primary: #0984e3;
+  --secondary: #8e44ad;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   padding: 0 !important;
   margin: 0;
@@ -53,6 +61,9 @@ body {
 }
 .traicentre {
   text-align: center;
+}
+.login h5 {
+  margin-bottom: 0px !important;
 }
 @media (max-width: 450px) {
   .carousel-item img {
