@@ -125,7 +125,7 @@ require('connection.php');
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
             <img style="border-radius: 50%; margin-right: 10px" src="accesories/service_to_man_kind-20200709-0001.jpg"
                 height="50px" width="50px" />
-            <a class="navbar-brand" href="#">Service To Mankind</a>
+            <a class="navbar-brand" href="index.php">Service To Mankind</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -133,14 +133,9 @@ require('connection.php');
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#aboutus">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#themes">Our Themes</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="gallary.html">Gallery</a>
                     </li>
@@ -200,16 +195,16 @@ require('connection.php');
                             <div class="card-body">
                                 <div class="d-md-flex align-items-center">
                                     <div>
-                                        <h4 class="card-title">Sales Summary</h4>
+                                        <h4 class="card-title">Donation Summary</h4>
                                         <h5 class="card-subtitle">Overview of Latest Month</h5>
                                     </div>
                                     <div class="ml-auto d-flex no-block align-items-center">
                                         <ul class="list-inline font-12 dl mr-3 mb-0">
                                             <li class="list-inline-item text-info">
-                                                <i class="fa fa-circle"></i> Iphone
+                                                <i class="fa fa-circle"></i> Stm
                                             </li>
                                             <li class="list-inline-item text-primary">
-                                                <i class="fa fa-circle"></i> Ipad
+                                                <i class="fa fa-circle"></i> You
                                             </li>
                                         </ul>
                                         <div class="dl">
@@ -225,14 +220,14 @@ require('connection.php');
                                 <div class="row">
                                     <!-- column -->
                                     <div class="col-lg-4">
-                                        <h1 class="mb-0 mt-4">$6,890.68</h1>
+                                        <h1 class="mb-0 mt-4">Rs.6,890.68</h1>
                                         <h6 class="font-light text-muted">
-                                            Current Month Earnings
+                                            Current Month Donations
                                         </h6>
-                                        <h3 class="mt-4 mb-0">1,540</h3>
-                                        <h6 class="font-light text-muted">Current Month Sales</h6>
-                                        <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="javascript:void(0)">Last
-                                            Month Summary</a>
+                                        <h3 class="mt-4 mb-0">Rs.1,540</h3>
+                                        <h6 class="font-light text-muted">Total</h6>
+                                        <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate.php">
+                                            Donate</a>
                                     </div>
                                     <!-- column -->
                                     <div class="col-lg-8">
@@ -412,8 +407,8 @@ require('connection.php');
                                                         class="mdi mdi-wallet"></i></span>
                                             </div>
                                             <div>
-                                                <span>Wallet Balance</span>
-                                                <h3 class="font-medium mb-0">$3,567.53</h3>
+                                                <span>This Month</span>
+                                                <h3 class="font-medium mb-0">Rs.3,567.53</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -426,8 +421,8 @@ require('connection.php');
                                                         class="mdi mdi-star-circle"></i></span>
                                             </div>
                                             <div>
-                                                <span>Referral Earnings</span>
-                                                <h3 class="font-medium mb-0">$769.08</h3>
+                                                <span>This Year</span>
+                                                <h3 class="font-medium mb-0">Rs.769.08</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -440,8 +435,8 @@ require('connection.php');
                                                         class="mdi mdi-shopping"></i></span>
                                             </div>
                                             <div>
-                                                <span>Estimate Sales</span>
-                                                <h3 class="font-medium mb-0">5489</h3>
+                                                <span>Permanent Donors</span>
+                                                <h3 class="font-medium mb-0">104</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -454,8 +449,8 @@ require('connection.php');
                                                         class="mdi mdi-currency-usd"></i></span>
                                             </div>
                                             <div>
-                                                <span>Earnings</span>
-                                                <h3 class="font-medium mb-0">$23,568.90</h3>
+                                                <span>Total</span>
+                                                <h3 class="font-medium mb-0">Rs.23,568.90</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -1337,6 +1332,9 @@ require('connection.php');
                                     </div>
                                 </div>
                                 <!-- column -->
+                                <!-- col -->
+
+                                <!-- col -->
                             </div>
                         </div>
                     </div>

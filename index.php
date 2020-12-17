@@ -20,7 +20,9 @@ require('connection.php');
     <link rel="stylesheet" href="css/main/btn.css">
     <link rel="stylesheet" href="css/default/css/catto.css">
     <link rel="stylesheet" href="css/defualt/css/catto.min.css">
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script src="js/jquery1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="main-js\typed.js"></script>
@@ -174,7 +176,7 @@ require('connection.php');
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                         </ul>
 
@@ -236,7 +238,7 @@ require('connection.php');
                                     </div>
                                 </div>
                                 <div class="power_button_group">
-                                    <a href="donate1.html" class="power_button effect_1">
+                                    <a href="donate.php" class="power_button effect_1">
                                         <span class="button_value">Donate Now</span>
                                     </a>
                                 </div>
@@ -532,9 +534,7 @@ require('connection.php');
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

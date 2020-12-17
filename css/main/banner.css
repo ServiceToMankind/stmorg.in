@@ -2299,3 +2299,306 @@ ul.list-style-none li {
     opacity: 1;
   }
 }
+/* donationcss */
+/*! CSS Used from: http://www.nicdarkthemes.com/themes/charity/wp/demo/charity-foundation/wp-content/plugins/nd-donations/assets/css/style.css?ver=5.2.2 ; media=all */
+@media all {
+  .nd_donations_section {
+    float: left;
+    width: 100%;
+  }
+  .nd_donations_width_50_percentage {
+    width: 50%;
+  }
+  .nd_donations_width_25_percentage {
+    width: 25%;
+  }
+  .nd_donations_width_30 {
+    width: 30px;
+  }
+  .nd_donations_height_50 {
+    height: 50px;
+  }
+  .nd_donations_height_40 {
+    height: 40px;
+  }
+  .nd_donations_height_30 {
+    height: 30px;
+  }
+  .nd_donations_height_20 {
+    height: 20px;
+  }
+  .nd_donations_height_100_percentage {
+    height: 100%;
+  }
+  .nd_donations_float_left {
+    float: left;
+  }
+  .nd_donations_padding_0 {
+    padding: 0px;
+  }
+  .nd_donations_padding_15 {
+    padding: 15px;
+  }
+  .nd_donations_padding_10_0 {
+    padding: 10px 0px;
+  }
+  .nd_donations_padding_10_20 {
+    padding: 10px 20px;
+  }
+  .nd_donations_padding_10_20_important {
+    padding: 10px 20px !important;
+  }
+  .nd_donations_padding_5_10 {
+    padding: 5px 10px;
+  }
+  .nd_donations_padding_left_20 {
+    padding-left: 20px;
+  }
+  .nd_donations_padding_left_15 {
+    padding-left: 15px;
+  }
+  .nd_donations_padding_right_15 {
+    padding-right: 15px;
+  }
+  .nd_donations_padding_top_5 {
+    padding-top: 5px;
+  }
+  .nd_donations_padding_top_0 {
+    padding-top: 0px;
+  }
+  .nd_donations_margin_0 {
+    margin: 0px;
+  }
+  .nd_donations_margin_0_10 {
+    margin: 0px 10px;
+  }
+  .nd_donations_margin_right_40 {
+    margin-right: 40px;
+  }
+  .nd_donations_margin_right_10 {
+    margin-right: 10px;
+  }
+  .nd_donations_color_white_important {
+    color: #fff !important;
+  }
+  .nd_donations_font_size_15 {
+    font-size: 15px;
+    line-height: 15px;
+  }
+  .nd_donations_font_size_13 {
+    font-size: 13px;
+    line-height: 13px;
+  }
+  .nd_donations_line_height_30 {
+    line-height: 30px;
+  }
+  .nd_donations_background_repeat_no_repeat {
+    background-repeat: no-repeat;
+  }
+  .nd_donations_bg_white_alpha_85 {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+  .nd_donations_text_align_center {
+    text-align: center;
+  }
+  .nd_donations_border_radius_30 {
+    border-radius: 30px;
+  }
+  .nd_donations_border_radius_100_percentage {
+    border-radius: 100%;
+  }
+  .nd_donations_border_width_0 {
+    border-width: 0px;
+  }
+  .nd_donations_display_none {
+    display: none;
+  }
+  .nd_donations_display_inline_block {
+    display: inline-block;
+  }
+  .nd_donations_display_table {
+    display: table;
+  }
+  .nd_donations_display_table_cell {
+    display: table-cell;
+  }
+  .nd_donations_vertical_align_middle {
+    vertical-align: middle;
+  }
+  .nd_donations_position_relative {
+    position: relative;
+  }
+  .nd_donations_position_absolute {
+    position: absolute;
+  }
+  .nd_donations_box_sizing_border_box {
+    box-sizing: border-box;
+  }
+  .nd_donations_list_style_none {
+    list-style: none;
+  }
+  .nd_donations_outline_0 {
+    outline: 0;
+  }
+  .nd_donations_cursor_pointer {
+    cursor: pointer;
+  }
+  .nd_donations_cursor_not_allowed {
+    cursor: not-allowed;
+  }
+  .nd_donations_border_1_solid_grey {
+    border: 1px solid #f1f1f1;
+  }
+  #nd_donations_single_cause_form_donation_paypal_submit:hover {
+    background-repeat: no-repeat;
+    background-size: 57px;
+    background-position: right 20px top -10px;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 1199px) {
+    .nd_donations_display_none_responsive {
+      display: none;
+    }
+    .nd_donations_width_100_percentage_responsive {
+      width: 100%;
+    }
+    .nd_donations_padding_bottom_20_important_responsive {
+      padding-bottom: 20px !important;
+    }
+    .nd_donations_padding_0_responsive {
+      padding: 0px;
+    }
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    .nd_donations_line_height_25_all_iphone {
+      line-height: 25px;
+    }
+  }
+}
+/*! CSS Used from: http://www.nicdarkthemes.com/themes/charity/wp/demo/charity-foundation/wp-content/themes/charityfoundation/style.css?ver=5.2.2 ; media=all */
+@media all {
+  p,
+  h3,
+  h4,
+  h6 {
+    margin: 0px;
+    padding: 0px;
+    font-weight: normal;
+  }
+  a {
+    text-decoration: none;
+  }
+  h3,
+  h4,
+  h6 {
+    color: #727475;
+  }
+  p,
+  input,
+  textarea {
+    color: #a3a3a3;
+  }
+  a {
+    color: #a3a3a3;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 17px;
+    line-height: 17px;
+  }
+  h6 {
+    font-size: 13px;
+    line-height: 13px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 29px;
+  }
+  input,
+  textarea {
+    font-size: 15px;
+  }
+  h3,
+  h4,
+  h6 {
+    font-family: "Poppins", sans-serif;
+  }
+  p,
+  a,
+  input,
+  textarea {
+    font-family: "Poppins", sans-serif;
+  }
+  input,
+  textarea {
+    background-color: #f9f9f9;
+    outline: 0;
+    border: 1px solid #f1f1f1;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+}
+/*! CSS Used from: Embedded */
+.nd_donations_bg_greydark {
+  background-color: #444444;
+}
+.nd_donations_tabs .ui-tabs-active.ui-state-active {
+  border-bottom: 2px solid #444444;
+}
+/*! CSS Used from: Embedded */
+.nd_options_customizer_fonts .nd_options_first_font,
+.nd_options_customizer_fonts h3,
+.nd_options_customizer_fonts h4,
+.nd_options_customizer_fonts h6 {
+  font-family: "Poppins", sans-serif;
+}
+.nd_options_customizer_fonts p,
+.nd_options_customizer_fonts a,
+.nd_options_customizer_fonts textarea,
+.nd_options_customizer_fonts input {
+  font-family: "Poppins", sans-serif;
+}
+.nd_options_customizer_fonts .nd_options_color_greydark,
+.nd_options_customizer_fonts h3,
+.nd_options_customizer_fonts h4,
+.nd_options_customizer_fonts h6 {
+  color: #727475;
+}
+.nd_options_customizer_fonts .nd_options_color_grey,
+.nd_options_customizer_fonts p,
+.nd_options_customizer_fonts a,
+.nd_options_customizer_fonts textarea,
+.nd_options_customizer_fonts input {
+  color: #a3a3a3;
+}
+/*! CSS Used from: Embedded */
+.nd_options_customizer_forms input[type="text"],
+.nd_options_customizer_forms textarea {
+  background-color: #f9f9f9;
+  border-width: 1px;
+  border-color: #f1f1f1;
+  border-radius: 0px;
+  border-style: solid;
+  padding: 15px 20px;
+  -webkit-appearance: none;
+  color: #a3a3a3;
+}
+.nd_options_customizer_forms input[type="text"]::-webkit-input-placeholder,
+.nd_options_customizer_forms textarea::-webkit-input-placeholder {
+  color: #a3a3a3;
+}
+/*! CSS Used from: Embedded */
+.nd_options_customizer_forms input[type="submit"] {
+  background-color: #00baa3;
+  border-width: 0px;
+  border-color: #00baa3;
+  border-radius: 30px;
+  border-style: solid;
+  padding: 10px 20px;
+  -webkit-appearance: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
