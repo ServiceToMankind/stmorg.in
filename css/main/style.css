@@ -314,3 +314,11 @@ h6 {
   font-size: 1.75rem !important;
   font-weight: 550px !important;
 }
+.btn-pro {
+  /* background: none; */
+  color: black !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  cursor: default !important;
+  box-shadow: none !important;
+}

@@ -25,9 +25,13 @@ require('connection.php');
     <script src="main-js\typed.js"></script>
 
 
-    <!-- BS CSS -->
+    <!-- BS CSS / js-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+
 
     <!-- Favicons -->
 
@@ -160,8 +164,22 @@ require('connection.php');
                 <div class="login">
                     <?php
         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
-                    <h5>Hi <?php echo $_SESSION['USER_NAME']; ?></h5>
-                    <h5><a href="logout.php">logout <i class="fas fa-sign-out-alt"></i></a></h5>
+
+                    <div class="dropdown">
+                        Hi <?php echo $_SESSION['USER_NAME']; ?>
+                        <button class="btn btn-secondary dropdown-toggle btn-pro" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="far fa-user-circle"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
+                        </ul>
+
+                    </div>
+
+
                     <?php
           
         }else{
@@ -412,7 +430,6 @@ require('connection.php');
 
 
 
-        <!-- FOOTER , min show undali -->
         <!-- ******************** Footer Starts Here ******************* -->
         <div class="footer-ablove">
             <div class="container">
