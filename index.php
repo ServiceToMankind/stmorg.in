@@ -173,7 +173,7 @@ require('connection.php');
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                         </ul>
 
