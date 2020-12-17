@@ -1,6 +1,7 @@
 <?php
 require('connection.php');
 ?>
+<!-- i included connection.php file here -->
 <!doctype html>
 <html lang="en">
 
