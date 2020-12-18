@@ -1,9 +1,9 @@
 <?php
 require('connection.php');
 ?>
+<!-- i included connection.php file here -->
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -367,6 +367,7 @@ require('connection.php');
                 <div class="themes">OUR THEMES</div>
                 <div class="row">
                     <div class="col-lg-4">
+                        <!-- pic is not available in that folder -->
                         <img src="images/pics/theme1.jpeg" height="140" width="140" style="border-radius: 50%;">
                         <h2>Theme 1</h2>
                         <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole one month it
