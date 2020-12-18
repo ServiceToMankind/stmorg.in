@@ -2,7 +2,7 @@
 // session started here
 session_start();
 $con = mysqli_connect("localhost","root","mysql","stm");
-after trying for connection, if its fails
+// after trying for connection, if its failsarey sepp chalu ra nuvu mrg chepachu ga heh
 if(mysqli_connect_errno()) {  
     die("Failed to connect with MySQL: ". mysqli_connect_error());  
 }
