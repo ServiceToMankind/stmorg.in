@@ -285,6 +285,10 @@ require('connection.php');
                         </div>
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
+                        <!-- ghjhjkh -->
+                        <?php 
+                        if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ } else {
+                        ?>
                         <div class="nd_donations_section">
                             <div class="nd_donations_display_table nd_donations_float_left">
 
@@ -362,6 +366,7 @@ require('connection.php');
                             <input id="nd_donations_single_cause_form_donation_submit" class="nd_donations_display_none"
                                 disabled="disabled" type="submit" value="DONATE NOW">
                         </div>
+                        <?php } ?>
                     </form>
 
                     <button id="nd_donations_single_cause_form_donation_checkout_submit"
