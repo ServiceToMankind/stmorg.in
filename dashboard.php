@@ -1,5 +1,6 @@
 <?php
 require('connection.php');
+$user_id=$_SESSION['USER_ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1384,6 +1385,56 @@ require('connection.php');
                         </div>
                     </div>
                 </div>
+                <!-- anotherrow -->
+                <div class="row">
+                    <div class="col-lg-12 col-xl-12">
+                        <div class="card card-hover">
+                            <div class="card-body" style="
+                    background: url(../../assets/images/background/active-bg.png)
+                      no-repeat top center;
+                  ">
+                                <div class="pt-3 text-center">
+                                    <!-- Progress -->
+                                    <h5>Permanent Donors from you </h5>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sl</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Mobile</th>
+                                                <th scope="col">Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                        $row=mysqli_query($con,"SELECT * from `users` where `users`.`refer-by`='$user_id'");
+                                        while($data=mysqli_fetch_assoc($row)){
+                                        ?>
+                                            <tr>
+                                                <th scope="row"><?php echo $data['id'] ?></th>
+                                                <td><?php echo $data['name'] ?></td>
+                                                <td><?php echo $data['mobile'] ?></td>
+                                                <td><?php echo $data['email'] ?></td>
+                                            </tr>
+                                            <?php }
+                                            ?>
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <!-- Progress -->
+                                    <!-- row -->
+
+                                    <!-- <a href="javascript:void(0)"
+                                        class="waves-effect waves-light mt-3 btn btn-lg btn-info accent-4 mb-3">View
+                                        More Details</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- anotherrow -->
                 <!-- ============================================================== -->
                 <!-- Email campaign chart -->
                 <!-- ============================================================== -->
