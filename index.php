@@ -4,6 +4,7 @@ require('connection.php');
 <!-- i included connection.php file here -->
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -415,11 +416,11 @@ require('connection.php');
                                 width="100"></a></li>
                     <li><a href="https://www.facebook.com/Servicetomankindorg-110702720569831"><img
                                 src="images/social icons/facebook.png" height="80" width="80"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ?view_as=subscriber"><img
-                                src="images/social icons/youtube.png" height="80" width="auto"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ?view_as=subscriber"><i
+                                class="fab fa-youtube"></i></a></li>
                 </ul>
             </div>
-            <hr class="featurette-divider">
+            <hr class=" featurette-divider">
 
             <!--Contact-->
             <div class="contact-index">
@@ -450,10 +451,12 @@ require('connection.php');
                         <h2>Charity for Educaton</h2>
                     </div>
                     <div class="col-md-8 foot-addr">
-                        <p>Donec venenatis metus at diam condimentum pretiuteger aliquet a turpis quis pel len tesque
+                        <p>Donec venenatis metus at diam condimentum pretiuteger aliquet a turpis quis pel len
+                            tesque
                             ueta turpis quis venenatissolelementum</p>
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> Antonya Street, 23/H-2, Building, TA, AUS </li>
+                            <li><i class="fas fa-map-marker-alt"></i> Antonya Street, 23/H-2, Building, TA, AUS
+                            </li>
                             <li><i class="fas fa-mobile-alt"></i> +177 (089) 987665 </li>
                             <li><i class="far fa-envelope"></i> support@smarteyeapps.com </li>
                         </ul>
@@ -518,7 +521,8 @@ require('connection.php');
 
         <div class="copy">
             <div class="container">
-                <a href="https://www.smarteyeapps.com/">2020 � All Rights Reserved | Designed and Developed by STM</a>
+                <a href="https://www.smarteyeapps.com/">2020 � All Rights Reserved | Designed and Developed by
+                    STM</a>
 
                 <span>
                     <a><i class="fab fa-github"></i></a>

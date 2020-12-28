@@ -309,6 +309,8 @@ h6 {
   background: aliceblue;
   padding: 60px;
   font-family: "Merienda", cursive;
+  border: 1px aliceblue;
+  border-radius: 15px;
 }
 .lead {
   font-family: "Lateef", cursive;
