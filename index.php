@@ -1,7 +1,6 @@
 <?php
 require('connection.php');
 ?>
-<!-- i included connection.php file here -->
 <!doctype html>
 <html lang="en">
 
@@ -11,8 +10,6 @@ require('connection.php');
     <meta name="description"
         content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
     <title>STM-INDIA</title>
-
-    <!-- this is comment -->
 
     <!--styles-->
     <link rel="stylesheet" href="css/main/style.css">
