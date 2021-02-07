@@ -13,4 +13,3 @@ if(mysqli_connect_errno()) {
 // define('PRODUCT_IMAGE_SERVER_PATH', SERVER_PATH.'media/product/');
 // define('PRODUCT_IMAGEI_SITE_PATH', SITE_PATH.'media/product/');  
 ?>
-<!-- this code is for connecting this website to our database -->
