@@ -52,6 +52,9 @@ body {
 .page p {
   margin-top: 10px;
 }
+.page form {
+  width: 90%;
+}
 .pages .page:nth-of-type(1) .input {
   transform: translateX(-100%) scale(0.5);
 }
@@ -112,6 +115,7 @@ body {
   height: 50px;
   display: flex;
   background: #fff;
+  margin-top: 23px;
 }
 .tabs .tab {
   flex: 1;
@@ -235,4 +239,15 @@ input[type="radio"]:nth-of-type(2):checked
     transform: translateY(50%) scale(0, 0);
     opacity: 0;
   }
+}
+.email_error {
+  color: red;
+  font-size: 12px;
+}
+.otp_box {
+  margin-bottom: 12px;
+}
+.pass_error {
+  color: red;
+  font-size: 12px;
 }

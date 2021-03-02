@@ -59,68 +59,11 @@ require('connection.php');
         }
     }
     </style>
-    <!-- chimpmail -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
-    #mc_embed_signup {
-        background: #fff;
-        clear: left;
-        font: 14px Helvetica, Arial, sans-serif;
-    }
-
-    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    .cese {
-        text-align: center !important;
-    }
-
-    .email {
-        width: 50% !important;
-    }
-
-    .fara {
-        width: 50% !important;
-    }
-
-    .bday {
-        font-weight: bold !important;
-        color: #0984e3 !important;
-    }
-
-    .button {
-        padding: 7px 15px !important;
-        border-radius: 6px !important;
-        background-color: #0984e3 !important;
-        color: #fff !important;
-    }
-
-    .sara {
-        color: #0984e3 !important;
-    }
-
-    .asterisk {
-        color: red !important;
-        display: inline-block !important;
-    }
-
-    .clear {
-        display: inline-block !important;
-    }
-
-    .subfield,
-    .monthfield {
-        display: inline-block !important;
-    }
-
-    .small-meta,
-    .nowrap {
-        display: inline-block !important;
-    }
-    </style>
     <link href="css/main/carousel.css" rel="stylesheet">
 
     <!-- fontaswsome00000 -->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+
 
 </head>
 
@@ -337,7 +280,7 @@ require('connection.php');
                 </div>
                 <div class="col-md-5">
                     <!-- <img src="images/pics/whowe.png" width="350" height="500" > -->
-                    <object data="images\svg\who.svg" height="500" width="500">
+                    <object data="images\svg\who.svg" width="300">
 
                     </object>
                 </div>
@@ -354,7 +297,7 @@ require('connection.php');
                 </div>
                 <div class="col-md-5 order-md-1">
                     <!-- <img src="images/pics/wedo.jpeg" height="500" width="350" > -->
-                    <object data="images\svg\do.svg" height="500" width="500"></object>
+                    <object data="images\svg\do.svg" width="300"></object>
                 </div>
             </div>
             <hr class="featurette-divider">
@@ -371,22 +314,22 @@ require('connection.php');
                         <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole one month it
                             becomes Rs 30/- for better education and basic needs for needy people.
                         </p>
-                        <p><a class="btn btn-secondary" href="https://stm.imfast.io/gallary.html#food"
+                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#food"
                                 role="button">View details &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
                         <img src="images/pics/theme2.jpeg" height="140" width="140" style="border-radius: 50%;">
                         <h2>Theme 2</h2>
-                        <p>Donate books, clothes, blankets to needy people.<br><br><br><br></p>
-                        <p><a class="btn btn-secondary" href="https://stm.imfast.io/gallary.html#dona"
+                        <p>Donate books, clothes, blankets to needy people.</p>
+                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#dona"
                                 role="button">View details &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
                         <img src="images/pics/theme3.jpg" height="140" width="140" style="border-radius: 50%;">
                         <h2>Theme 3</h2>
                         <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens and grand
-                            parents.<br> We are family !! <br><br></p>
-                        <p><a class="btn btn-secondary" href="https://stm.imfast.io/gallary.html#bday"
+                            parents.<br> We are family !!</p>
+                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#bday"
                                 role="button">View details &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                 </div><!-- /.row -->
@@ -398,6 +341,170 @@ require('connection.php');
             <!-- /AYPAY .... -->
 
             <!--donation centre-->
+            <section>
+                <div>
+                    <h1>Dashboard</h1>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-md-flex align-items-center">
+                                        <div>
+                                            <h4 class="card-title">Donation Summary</h4>
+                                            <h5 class="card-subtitle">Overview of Latest Month</h5>
+                                        </div>
+                                        <div class="ml-auto d-flex no-block align-items-center">
+                                            <ul class="list-inline font-12 dl mr-3 mb-0">
+                                                <li class="list-inline-item text-info">
+                                                    <i class="fa fa-circle"></i> Stm
+                                                </li>
+                                                <li class="list-inline-item text-primary">
+                                                    <i class="fa fa-circle"></i> You
+                                                </li>
+                                            </ul>
+                                            <div class="dl">
+                                                <select class="custom-select">
+                                                    <option value="0" selected="">Monthly</option>
+                                                    <option value="1">Daily</option>
+                                                    <option value="2">Weekly</option>
+                                                    <option value="3">Yearly</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- column -->
+                                        <div class="col-lg-4">
+                                            <h1 class="mb-0 mt-4">Rs.6,890.68</h1>
+                                            <h6 class="font-light text-muted">
+                                                Current Month Donations
+                                            </h6>
+                                            <h3 class="mt-4 mb-0">Rs.1,540</h3>
+                                            <h6 class="font-light text-muted">Total</h6>
+                                            <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate.php">
+                                                Donate</a>
+                                        </div>
+                                        <!-- column -->
+                                        <div class="col-lg-8">
+                                            <div class="campaign ct-charts">
+                                                <div class="chartist-tooltip"></div>
+                                                <svg class="dashgra" xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 741 450">
+                                                    <defs>
+                                                    </defs>
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="77" y1="11" x2="10" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="171" y1="11" x2="77" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="238" y1="11" x2="171" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="292" y1="11" x2="238" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="367" y1="11" x2="292" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="466" y1="11" x2="367" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="512" y1="11" x2="466" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="588" y1="11" x2="511" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="645" y1="11" x2="588" y2="11" />
+                                                    <line fill="none" stroke="#4AC900" stroke-width="4"
+                                                        stroke-miterlimit="10" x1="731" y1="11" x2="645" y2="11" />
+                                                    <g>
+                                                        <circle fill="#FF8300" cx="10.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="77.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="171.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="238.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="292.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="367.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="466.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="510.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="588.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="645.5" cy="10.5" r="10.5" />
+                                                        <circle fill="#FF8300" cx="730.5" cy="10.5" r="10.5" />
+                                                    </g>
+                                                    <path id="graph-measurement" fill="none" stroke="#741E00"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-miterlimit="10"
+                                                        d="
+	M731,127H10 M10,127v-18 M113,127v-9.1 M731,109v18 M216,127v-9.1 M319,127v-9.1 M422,127v-9.1 M525,127v-9.1 M628,127v-9.1" />
+                                                </svg>
+
+                                            </div>
+                                        </div>
+                                        <!-- column -->
+                                    </div>
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Info Box -->
+                                <!-- ============================================================== -->
+                                <div class="card-body border-top">
+                                    <div class="row mb-0">
+                                        <!-- col -->
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="d-flex align-items-center">
+                                                <div class="mr-2">
+                                                    <span class="text-orange display-5"><i
+                                                            class="mdi mdi-wallet"></i></span>
+                                                </div>
+                                                <div>
+                                                    <span>This Month</span>
+                                                    <h3 class="font-medium mb-0">Rs.3,567.53</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- col -->
+                                        <!-- col -->
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="d-flex align-items-center">
+                                                <div class="mr-2">
+                                                    <span class="text-cyan display-5"><i
+                                                            class="mdi mdi-star-circle"></i></span>
+                                                </div>
+                                                <div>
+                                                    <span>This Year</span>
+                                                    <h3 class="font-medium mb-0">Rs.769.08</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- col -->
+                                        <!-- col -->
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="d-flex align-items-center">
+                                                <div class="mr-2">
+                                                    <span class="text-info display-5"><i
+                                                            class="mdi mdi-shopping"></i></span>
+                                                </div>
+                                                <div>
+                                                    <span>Permanent Donors</span>
+                                                    <h3 class="font-medium mb-0">104</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- col -->
+                                        <!-- col -->
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class="d-flex align-items-center">
+                                                <div class="mr-2">
+                                                    <span class="text-primary display-5"><i
+                                                            class="mdi mdi-currency-usd"></i></span>
+                                                </div>
+                                                <div>
+                                                    <span>Total</span>
+                                                    <h3 class="font-medium mb-0">Rs.23,568.90</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
             <!--join with us-->
@@ -406,25 +513,23 @@ require('connection.php');
             <!--social acc-->
             <div class="social-index">
                 <h1>Let us be social !!</h1>
-                <ul>
-                    <li><a href="https://www.instagram.com/servicetomankindorg/"><img
-                                src="images/social icons/instagram.png" height="100" width="100"></a></li>
-                    <li><a href="https://twitter.com/STM_ORG "><img src="images/social icons/twitter.png" height="100"
-                                width="100"></a></li>
-                    <li><a href="https://www.facebook.com/Servicetomankindorg-110702720569831"><img
-                                src="images/social icons/facebook.png" height="80" width="80"></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ?view_as=subscriber"><i
-                                class="fab fa-youtube"></i></a></li>
-                </ul>
+
+                <div class="social-btns">
+                    <a class="sofab btn facebook" href="#"><i class="sofa fab fa-facebook-f"></i></a>
+                    <a class="sofab btn twitter" href="#"><i class="sofa fab fa-twitter"></i></a>
+                    <a class="sofab btn google" href="#"><i class="sofa fab fa-instagram"></i></a>
+                    <a class="sofab btn dribbble" href="#"><i class="sofa fab fa-youtube"></i></a>
+                </div>
+
+
             </div>
-            <hr class=" featurette-divider">
 
             <!--Contact-->
-            <div class="contact-index">
+            <!-- <div class="contact-index">
                 <h1>Wanna contact us</h1>
                 <h2><a class="con-btn h-surprise" href="contact.html">Click Here.</a></h2>
-                <!-- <text class="h-surprise">helo!!</text> -->
-            </div>
+                <text class="h-surprise">helo!!</text>
+            </div> -->
             <!-- <hr class="featurette-divider"> -->
 
         </div><!-- /.container -->
@@ -522,9 +627,8 @@ require('connection.php');
                     STM</a>
 
                 <span>
-                    <a><i class="fab fa-github"></i></a>
-                    <a><i class="fab fa-google-plus-g"></i></a>
-                    <a><i class="fab fa-pinterest-p"></i></a>
+                    <a><i class="fab fa-youtube"></i></a>
+                    <a><i class="fab fa-instagram"></i></a>
                     <a><i class="fab fa-twitter"></i></a>
                     <a><i class="fab fa-facebook-f"></i></a>
                 </span>
@@ -534,35 +638,116 @@ require('connection.php');
 
 
     </main>
-
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
-    <!-- mailchimp -->
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-    <script type='text/javascript'>
-    (function($) {
-        window.fnames = new Array();
-        window.ftypes = new Array();
-        fnames[0] = 'EMAIL';
-        ftypes[0] = 'email';
-        fnames[1] = 'FNAME';
-        ftypes[1] = 'text';
-        fnames[2] = 'LNAME';
-        ftypes[2] = 'text';
-        fnames[3] = 'ADDRESS';
-        ftypes[3] = 'address';
-        fnames[4] = 'PHONE';
-        ftypes[4] = 'phone';
-        fnames[5] = 'BIRTHDAY';
-        ftypes[5] = 'birthday';
-    }(jQuery));
-    var $mcj = jQuery.noConflict(true);
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script>
+    var container = document.getElementById('container');
+    var graphMeasurement = document.getElementById('graph-measurement');
+
+    var allCircles = document.getElementsByTagName('circle');
+    var allLines = document.getElementsByTagName('line');
+
+    //console.log(topSVGNode)
+
+
+
+    var destArray = [15, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
+
+
+    TweenMax.set(allCircles, {
+        attr: {
+            fill: '#954CE9',
+            r: 5
+        },
+        transformOrigin: '50% 50%',
+        scale: 0
+    })
+    TweenMax.set([allLines], {
+        attr: {
+            stroke: '#18B5DD'
+        },
+        drawSVG: '100% 100%',
+        strokeWidth: 2
+    })
+    TweenMax.set([graphMeasurement], {
+        attr: {
+            stroke: '#18B5DD'
+        },
+        drawSVG: '100% 100%',
+        strokeWidth: 1
+    })
+
+    TweenMax.set([allCircles, allLines], {
+        y: '+=300'
+    })
+
+    TweenMax.set(graphMeasurement, {
+        y: '+=280',
+        alpha: 0.3
+    })
+    TweenMax.to(graphMeasurement, 3, {
+        drawSVG: '0% 100%',
+        delay: 1,
+        ease: Power2.easeInOut
+    })
+    TweenMax.set('svg', {
+        alpha: 1
+    })
+    for (var i = 0; i < allCircles.length; i++) {
+
+        TweenMax.to(allCircles[i], 2, {
+            attr: {
+                cy: '-=' + destArray[i]
+            },
+            onUpdate: moveLines,
+            onUpdateParams: [i],
+            delay: i / 5,
+            ease: Power4.easeInOut
+        })
+        if (allLines[i]) {
+
+            TweenMax.to(allLines[i], 1, {
+                drawSVG: '400',
+                delay: i / 5,
+                ease: Power4.easeInOut
+            })
+        }
+
+        TweenMax.to(allCircles[i], 1, {
+            scale: 1,
+            delay: i / 5,
+            ease: Power4.easeInOut
+        })
+
+    }
+
+    function moveLines(i) {
+
+        if (allLines[i]) {
+
+            TweenMax.set(allLines[i], {
+                attr: {
+                    x2: allCircles[i].getAttribute('cx'),
+                    y2: allCircles[i].getAttribute('cy')
+                }
+            })
+            TweenMax.set(allLines[i], {
+                attr: {
+                    x1: allCircles[i + 1].getAttribute('cx'),
+                    y1: allCircles[i + 1].getAttribute('cy')
+                }
+            })
+
+
+        }
+    }
     </script>
+
 </body>
 
 </html>

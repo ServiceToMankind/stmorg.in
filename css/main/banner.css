@@ -49,7 +49,7 @@
 }
 @media only screen and (max-width: 768px) {
   #header-area {
-    padding: 58px 0px;
+    /* padding: 58px 0px; */
   }
   .fund-heading h1 {
     font-size: 50px;
@@ -2161,6 +2161,7 @@ ul.list-style-none li {
 .campaign {
   position: relative;
   height: 250px;
+  text-align: left;
 }
 .campaign .ct-series-a .ct-area {
   fill-opacity: 0.2;
@@ -2747,3 +2748,17 @@ ul.list-style-none li {
 }
 /* gallary
  */
+/* chart */
+.dashgra {
+  position: relative;
+  bottom: 50px;
+  width: 80%;
+}
+.proholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.prorow {
+  margin-top: 35px;
+}

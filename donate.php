@@ -213,8 +213,7 @@ require('connection.php');
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post"
-                        action="http://www.nicdarkthemes.com/themes/charity/wp/demo/charity-foundation/donations-thankyou/">
+                    <form method="post" action="test.php">
 
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
@@ -237,21 +236,13 @@ require('connection.php');
 
                         <div class="nd_donations_section nd_donations_height_20"></div>
 
-                        <!--START hidden value-->
-                        <input name="nd_donations_single_cause_form" type="hidden" value="true">
-                        <input id="nd_donations_single_cause_form_donation_id" name="nd_donations_id" type="hidden"
-                            value="60">
-                        <input name="nd_donations_tx" type="hidden" value="978457114">
-                        <input id="nd_donations_single_cause_form_donation_value_offline" type="hidden"
-                            name="nd_donations_single_cause_form_donation_value_offline" value="">
-                        <!--END hidden value-->
 
                         <div class="nd_donations_section">
                             <div
                                 class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input
                                     class="nd_donations_cursor_pointer nd_donations_section nd_donations_fixed_value_donation nd_donations_single_cause_form_donation_value"
-                                    type="text" readonly="" value="50">
+                                    name='amount' type="text" readonly="" value="50">
                             </div>
                             <div
                                 class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_left_15 nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
@@ -272,6 +263,49 @@ require('connection.php');
                                     type="text" readonly="" value="200">
                             </div>
                         </div>
+                        <!-- sssssssss -->
+                        <script type="text/javascript">
+                        //<![CDATA[
+
+                        jQuery(document).ready(function() {
+
+                            jQuery(".nd_donations_single_cause_form_donation_value").on("click", function(e) {
+                                jQuery(".nd_donations_single_cause_form_donation_value").removeClass(
+                                    "nd_donations_fixed_value_donation_selected");
+                                jQuery('.nd_donations_single_cause_form_donation_value').removeAttr(
+                                    'name',
+                                    'amount');
+                                jQuery(this).addClass("nd_donations_fixed_value_donation_selected");
+                                jQuery(this).attr('name', 'amount');
+                            });
+
+                        });
+
+                        //]]>
+                        </script>
+                        <style type="text/css">
+                        .nd_donations_single_cause_form_donation_value.nd_donations_fixed_value_donation_selected {
+                            background-color: #00baa3 !important;
+                            border: 1px solid #00baa3 !important;
+                        }
+
+                        .nd_donations_single_cause_form_donation_value.nd_donations_fixed_value_donation_selected::-webkit-input-placeholder {
+                            color: #fff !important;
+                        }
+
+                        .nd_donations_single_cause_form_donation_value.nd_donations_fixed_value_donation_selected::-moz-placeholder {
+                            color: #fff !important;
+                        }
+
+                        .nd_donations_single_cause_form_donation_value.nd_donations_fixed_value_donation_selected:-ms-input-placeholder {
+                            color: #fff !important;
+                        }
+
+                        .nd_donations_single_cause_form_donation_value.nd_donations_fixed_value_donation_selected:-moz-placeholder {
+                            color: #fff !important;
+                        }
+                        </style>
+                        <!-- ssssssssssssssssss -->
 
                         <div class="nd_donations_section nd_donations_height_20"></div>
 
@@ -284,6 +318,15 @@ require('connection.php');
                                 placeholder="Insert custom value">
                         </div>
                         <!--start title-->
+
+
+
+
+
+
+
+
+
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <!-- ghjhjkh -->
                         <?php 
@@ -315,14 +358,12 @@ require('connection.php');
                             <div id="nd_donations_single_cause_form_donation_name_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="nd_donations_single_cause_form_donation_name" name="nd_donations_name"
-                                    type="text" placeholder="Name">
+                                    id="stm_name" name="nd_donations_name" type="text" placeholder="Name" required>
                             </div>
                             <div id="nd_donations_single_cause_form_donation_surname_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="nd_donations_single_cause_form_donation_surname" name="nd_donations_surname"
-                                    type="text" placeholder="Surname">
+                                    id="stm_mobile" name="mobile" type="text" placeholder="mobile">
                             </div>
                         </div>
                         <div class="nd_donations_section nd_donations_height_20"></div>
@@ -331,28 +372,15 @@ require('connection.php');
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
                                     id="nd_donations_single_cause_form_donation_email" name="nd_donations_email"
-                                    type="text" placeholder="Email">
+                                    type="text" placeholder="Email" required>
                             </div>
-                            <div
+                            <!-- <div
                                 class="nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
                                     name="nd_donations_address" type="text" placeholder="Address">
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="nd_donations_section nd_donations_height_20"></div>
-                        <div class="nd_donations_section">
-                            <div id="nd_donations_single_cause_form_donation_city_container"
-                                class="nd_donations_padding_bottom_20_important_responsive nd_donations_width_50_percentage nd_donations_float_left nd_donations_position_relative nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="nd_donations_single_cause_form_donation_city" name="nd_donations_city"
-                                    type="text" placeholder="City">
-                            </div>
-                            <div
-                                class="nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    name="nd_donations_country" type="text" placeholder="Country">
-                            </div>
-                        </div>
+
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div id="nd_donations_single_cause_form_donation_message_container"
                             class="nd_donations_section nd_donations_position_relative">
@@ -363,16 +391,15 @@ require('connection.php');
                         </div>
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div class="nd_donations_section">
-                            <input id="nd_donations_single_cause_form_donation_submit" class="nd_donations_display_none"
-                                disabled="disabled" type="submit" value="DONATE NOW">
+                            <input id="validate_fields_subset" class="nd_donations_display_none" type="submit"
+                                value="DONATE NOW">
                         </div>
                         <?php } ?>
                     </form>
 
-                    <button id="nd_donations_single_cause_form_donation_checkout_submit"
-                        style="background-color:#d55342;"
+                    <button id="validate_fields_sub" style="background-color:#d55342;"
                         class="nd_donations_border_radius_30 nd_donations_display_inline_block nd_donations_box_sizing_border_box nd_donations_color_white_important nd_options_first_font nd_donations_padding_10_20 nd_donations_cursor_pointer nd_donations_outline_0 nd_donations_font_size_15 nd_donations_border_width_0"
-                        onclick="nd_donations_single_cause_form_validate_fields(1)">CHECKOUT</button>
+                        onclick="validate_fields_sub()">CHECKOUT</button>
                     <div class="nd_donations_section nd_donations_height_40"></div>
 
                     <!--START Tabs-->
@@ -661,6 +688,11 @@ require('connection.php');
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script>
+    function validate_fields_sub() {
+        document.getElementById('validate_fields_subset').click();
+    }
     </script>
 </body>
 

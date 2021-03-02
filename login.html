@@ -21,25 +21,25 @@
       <input type="radio" name="tab" id="register" />
       <div class="pages">
         <div class="page">
-          <form method="post">
+          <form>
             <img class="brand-logo" src="brand-logo.png" alt="" />
             <h2>Welcome Back</h2>
             <p>Login to unleash your curiosity</p>
             <div class="input">
               <div class="title">Id/Email</div>
-              <input class="text" type="text" placeholder="" />
+              <input class="text" id="case" type="text" placeholder="" />
             </div>
             <div class="input">
               <div class="title">Password</div>
-              <input class="text" type="password" placeholder="" />
+              <input class="text" id="lopass" type="password" placeholder="" />
             </div>
             <div class="input">
-              <input type="submit" value="Continue" />
+              <input type="button" value="Continue" onclick="loginset()" />
             </div>
           </form>
         </div>
         <div class="page signup">
-          <form method="post">
+          <form>
             <img class="brand-logo" src="brand-logo.png" alt="" />
             <h2>Welcome To STM</h2>
             <p>Lets verify your email</p>
@@ -56,8 +56,10 @@
                 type="email"
                 placeholder=""
               />
+              <div>
+                <span id="email_error" class="email_error"></span>
+              </div>
             </div>
-            <span style="color: red" id="email_error"></span>
 
             <!-- <div class="input">
               <button
@@ -128,7 +130,7 @@
                 id="name"
                 name="name"
                 type="text"
-                placeholder=""
+                placeholder="Full Name"
                 hidden
               />
             </div>
@@ -140,16 +142,45 @@
                 class="text"
                 id="number"
                 name="number"
-                placeholder=""
+                placeholder="Mobile number"
                 hidden
               />
+            </div>
+            <div class="input">
+              <div id="pass_title" style="display: none" class="title">
+                Password
+              </div>
+              <input
+                class="text"
+                id="pass"
+                name="pass"
+                type="password"
+                placeholder="Password"
+                hidden
+              />
+            </div>
+            <div class="input">
+              <div id="cpass_title" style="display: none" class="title">
+                Re-enter Same Password
+              </div>
+              <input
+                class="text"
+                id="cpass"
+                name="cpass"
+                placeholder="Confirm Password"
+                hidden
+              />
+            </div>
+            <div>
+              <span class="pass_error" id="pass_error"></span>
             </div>
 
             <div class="input">
               <input
-                type="submit"
                 id="regiter_btn"
+                type="button"
                 value="Register-Now"
+                onclick="registerset()"
                 hidden
               />
             </div>
@@ -223,6 +254,10 @@
                 jQuery("#number").show();
                 jQuery("#name_title").show();
                 jQuery("#number_title").show();
+                jQuery("#pass_title").show();
+                jQuery("#cpass_title").show();
+                jQuery("#pass").show();
+                jQuery("#cpass").show();
                 jQuery("#regiter_btn").show();
                 jQuery("#email_otp_result").html("email Verified");
                 jQuery("#is_email_verified").val("1");
@@ -234,6 +269,60 @@
                 jQuery(".email_verify_ootp").html("Sent Otp");
                 jQuery(".email_verify_ootp").attr("disabled", false);
                 jQuery("#email_otp_result").html("Please enter valid otp");
+              }
+            },
+          });
+        }
+      }
+      function registerset() {
+        var email = jQuery("#email").val();
+        var name = jQuery("#name").val();
+        var number = jQuery("#number").val();
+        var pass = jQuery("#pass").val();
+        var cpass = jQuery("#cpass").val();
+        if (pass == cpass) {
+          if (email == "" || name == "" || number == "") {
+            alert(email);
+            alert("fuk u stupid");
+          } else {
+            jQuery.ajax({
+              url: "register.php",
+              type: "post",
+              data:
+                "email=" +
+                email +
+                "&name=" +
+                name +
+                "&number=" +
+                number +
+                "&pass=" +
+                pass,
+              success: function (result) {
+                if (result == "done") {
+                  alert("done");
+                } else {
+                  alert(result);
+                }
+              },
+            });
+          }
+        } else {
+          jQuery("#pass_error").html("Passwords do not matched");
+        }
+      }
+      function loginset() {
+        var locase = jQuery("#case").val();
+        var lopass = jQuery("#lopass").val();
+        if (locase != "" && lopass != "") {
+          jQuery.ajax({
+            url: "login.php",
+            type: "post",
+            data: "case=" + locase + "&pass=" + lopass,
+            success: function (result) {
+              if (result == "valid") {
+                window.location.href='index.php';
+              } else {
+                alert(result);
               }
             },
           });

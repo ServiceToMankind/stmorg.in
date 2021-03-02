@@ -11,5 +11,5 @@ if(mysqli_connect_errno()) {
 // define('SITE_PATH','http://localhost/ecom/');
 
 // define('PRODUCT_IMAGE_SERVER_PATH', SERVER_PATH.'media/product/');
-// define('PRODUCT_IMAGEI_SITE_PATH', SITE_PATH.'media/product/');  
+// define('PRODUCT_IMAGEI_SITE_PATH', SITE_PATH.'media/product/');
 ?>
