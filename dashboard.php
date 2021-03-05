@@ -6,40 +6,43 @@ $user_id=$_SESSION['USER_ID'];
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people." />
+        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
     <title>STM-INDIA</title>
 
-    <!-- this is comment -->
-
     <!--styles-->
-    <link rel="stylesheet" href="css/main/style.css" />
-    <link rel="stylesheet" href="css/main/banner.css" />
-    <link rel="stylesheet" href="css/main/btn.css" />
-    <link rel="stylesheet" href="css/default/css/catto.css" />
-    <link rel="stylesheet" href="css/defualt/css/catto.min.css" />
-
+    <link rel="stylesheet" href="css/main/style.css">
+    <link rel="stylesheet" href="css/main/banner.css">
+    <link rel="stylesheet" href="css/main/btn.css">
+    <link rel="stylesheet" href="css/default/css/catto.css">
+    <link rel="stylesheet" href="css/defualt/css/catto.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script src="js/jquery1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="main-js\typed.js"></script>
 
+
     <!-- BS CSS / js-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
     </script>
 
+
     <!-- Favicons -->
 
-    <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180" />
-    <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png" />
-    <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png" />
-    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c" />
-    <link rel="icon" href="accesories/fevicon 32.ico" />
-    <meta name="theme-color" content="#563d7c" />
+    <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180">
+    <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c">
+    <link rel="icon" href="accesories/fevicon 32.ico">
+    <meta name="theme-color" content="#563d7c">
+
 
     <style>
     .bd-placeholder-img {
@@ -57,76 +60,21 @@ $user_id=$_SESSION['USER_ID'];
         }
     }
     </style>
-    <!-- chimpmail -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-    #mc_embed_signup {
-        background: #fff;
-        clear: left;
-        font: 14px Helvetica, Arial, sans-serif;
-    }
-
-    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    .cese {
-        text-align: center !important;
-    }
-
-    .email {
-        width: 50% !important;
-    }
-
-    .fara {
-        width: 50% !important;
-    }
-
-    .bday {
-        font-weight: bold !important;
-        color: #0984e3 !important;
-    }
-
-    .button {
-        padding: 7px 15px !important;
-        border-radius: 6px !important;
-        background-color: #0984e3 !important;
-        color: #fff !important;
-    }
-
-    .sara {
-        color: #0984e3 !important;
-    }
-
-    .asterisk {
-        color: red !important;
-        display: inline-block !important;
-    }
-
-    .clear {
-        display: inline-block !important;
-    }
-
-    .subfield,
-    .monthfield {
-        display: inline-block !important;
-    }
-
-    .small-meta,
-    .nowrap {
-        display: inline-block !important;
-    }
-    </style>
-    <link href="css/main/carousel.css" rel="stylesheet" />
+    <link href="css/main/carousel.css" rel="stylesheet">
 
     <!-- fontaswsome00000 -->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+
+
 </head>
 
 <body>
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
-            <img style="border-radius: 50%; margin-right: 10px" src="accesories/service_to_man_kind-20200709-0001.jpg"
-                height="50px" width="50px" />
-            <a class="navbar-brand" href="index.php">Service To Mankind</a>
+            <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
+                height="50px" width="50px">
+            <a class="navbar-brand" href="#">Service To Mankind</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -134,50 +82,49 @@ $user_id=$_SESSION['USER_ID'];
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aboutus">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#themes">Our Themes</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="gallary.html">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact Us</a>
                     </li>
+
                 </ul>
-                <!-- <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-                <!-- <div class="but2">
-        <span><a href="#donate-index"></a></span>
-      </div> -->
                 <div class="login">
                     <?php
         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
 
                     <div class="dropdown">
-                        Hi
-                        <?php echo $_SESSION['USER_NAME']; ?>
+                        Hi <?php echo $_SESSION['USER_NAME']; ?>
                         <button class="btn btn-secondary dropdown-toggle btn-pro" type="button" id="dropdownMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-user-circle"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                             <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                         </ul>
+
                     </div>
+
 
                     <?php
           
         }else{
         ?>
-                    <h5>
-                        <a href="login.php">login <i class="fas fa-sign-in-alt"></i></a>
-                    </h5>
+                    <h5><a href="login.html">login <i class="fas fa-sign-in-alt"></i></a></h5>
                     <?php 
         } ?>
+
                 </div>
             </div>
         </nav>

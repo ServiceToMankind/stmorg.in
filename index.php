@@ -97,13 +97,6 @@ require('connection.php');
                     </li>
 
                 </ul>
-                <!-- <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-                <!-- <div class="but2">
-        <span><a href="#donate-index"></a></span>
-      </div> -->
                 <div class="login">
                     <?php
         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
