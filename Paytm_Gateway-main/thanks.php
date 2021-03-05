@@ -4,8 +4,10 @@ header("Cache-Control: no-cache");
 header("Expires: 0");
 
 // following files need to be included
-require_once("./Payment_Gateway/lib/config_paytm.php");
-require_once("./Payment_Gateway/lib/encdec_paytm.php");
+require_once("./lib/config_paytm.php");
+require_once("./lib/encdec_paytm.php");
+require('../connection.php');
+require('../functions.php');
 
 $paytmChecksum = "";
 $paramList = array();
@@ -16,12 +18,14 @@ $paytmChecksum = isset($_POST["CHECKSUMHASH"]) ? $_POST["CHECKSUMHASH"] : ""; //
 
 //Verify all parameters received from Paytm pg to your application. Like MID received from paytm pg is same as your application�s MID, TXN_AMOUNT and ORDER_ID are same as what was sent by you to Paytm PG for initiating transaction etc.
 $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecksum); //will return TRUE or FALSE string.
-
+$oid=$_POST['ORDERID'];
+$txid=$_POST['TXNID'];
 
 if($isValidChecksum == "TRUE") {
 	//echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
         echo"</br></br></br></br>";
+        mysqli_query($con,"UPDATE `donations` SET `txid`='$txid',`payment_status`='1' WHERE `donations`.`id`='$oid'");
 		echo "<center><h1>Transaction status is success</h1></center>" . "<br/>";
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
@@ -89,49 +93,52 @@ else {
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>User Login</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <style>
-                  @media print{
-                    .no_print, .no_print *{
-                        display: none !important;
-                    }
-       
-                  }
+    @media print {
+
+        .no_print,
+        .no_print * {
+            display: none !important;
+        }
+
+    }
     </style>
-	<script type="text/javascript" src="bootstrap/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="bootstrap/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 
 </head>
+
 <body>
-<?php include 'header.php'; ?>
-    
-<div class="container-fluid">
-    <div class="text-center" >
-     <!--  printing page -->
-     <input class="btn btn-primary btn-large algin-center no_print" 
-        type="button" 
-        value="Print this page" 
-        onClick="window.print()">
-    </div>
-		<div class="row row-style">     
+    <?php  // include 'header.php'; ?>
+
+    <div class="container-fluid">
+        <div class="text-center">
+            <!--  printing page -->
+            <input class="btn btn-primary btn-large algin-center no_print" type="button" value="Print this page"
+                onClick="window.print()">
+        </div>
+        <div class="row row-style">
             <div class="col-sm-4"></div>
-             <div class="col-sm-4 text-center">
+            <div class="col-sm-4 text-center">
                 <h3>Thank You👧 for Shopping with Metro Mobiles</h3>
-                <a class="no_print" href="home.php"><button class="btn btn-s btn-lg text-center ">Shop more latest items</button> </a>
-             </div>
-              <div class="col-sm-4"></div>
+                <a class="no_print" href="home.php"><button class="btn btn-s btn-lg text-center ">Shop more latest
+                        items</button> </a>
+            </div>
+            <div class="col-sm-4"></div>
         </div>
 
-		<?php include 'footer.php'; ?>
+        <?php // include 'footer.php'; ?>
     </div>
 
 </body>
 
- <!-- for Printing particular Div
+<!-- for Printing particular Div
      <script type="text/javascript">
     function printDiv(divName) {
         var printContents = document.getElementById(divName).innerHTML;
@@ -141,4 +148,5 @@ else {
         w.close();
     }
    </script>  -->
+
 </html>
