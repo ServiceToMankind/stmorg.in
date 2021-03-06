@@ -392,13 +392,16 @@ h6 {
 }
 .themescls {
   /* background: aliceblue; */
-  padding: 60px;
-  font-family: "Merienda", cursive;
+  /* padding: 60px;
+  font-family: "Merienda", cursive; */
   /* border: 1px aliceblue;
   border-radius: 15px; */
-  border-radius: 50px;
+  /* border-radius: 50px;
   background: #ffffff;
-  box-shadow: inset 7px 7px 0px #007bff, inset -35px -35px 70px #ffffff;
+  box-shadow: inset 7px 7px 0px #007bff, inset -35px -35px 70px #ffffff; */
+  margin: 0 auto;
+  padding: 15px;
+  /* font-family: "Lato", sans-serif; */
 }
 .lead {
   font-family: "Lateef", cursive;
@@ -412,4 +415,10 @@ h6 {
   border-color: transparent !important;
   cursor: default !important;
   box-shadow: none !important;
+}
+.wel {
+  margin: 10px;
+}
+.container.marketing{
+  margin-top: 30px;
 }

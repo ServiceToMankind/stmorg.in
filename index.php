@@ -155,7 +155,7 @@ require('connection.php');
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="urgent_cause_heading">
-                                <div class="power_highlight_tag">Last Month Donations</div>
+                                <div class="power_highlight_tag">This Month Donations</div>
                                 <h3>Food for homeless children</h3>
                             </div>
                         </div>
@@ -188,10 +188,11 @@ require('connection.php');
 
         <div class="wel" style="color:skyblue; text-align: center">
             <h5>WELCOME TO SERVICE MANKIND</h5>
+            <div style="color: black; text-align: center">
+                <h3>We Believe that we can save <br> more lifes with you...</h3>
+            </div>
         </div>
-        <div style="color: black; text-align: center">
-            <h3>We Believe that we can save <br> more lifes with you...</h3>
-        </div>
+
 
         <!-- boxes -->
         <div class="section">
@@ -234,8 +235,7 @@ require('connection.php');
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>PERMANENT DONOR</h5>
-                                <p>If Your Are Interested To Be Part For Making Good Society By Helping and Donating
-                                    Please Feel To Contact As.</p>
+                                <p>The Consistency makes our lives more beautiful than we think. </p>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,8 @@ require('connection.php');
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>BECOME VOLUNTEER</h5>
-                                <p>Lorem ipsum dolo amet cons ectetur adipis, cing elit sed congue erat condi eget.</p>
+                                <p>If You Are Interested To Be A Part Of Making Good Society By Helping and Donating,
+                                    Please Feel To Contact As.</p>
                             </div>
                         </div>
                     </div>
@@ -267,13 +268,13 @@ require('connection.php');
 
                 <div class="col-md-7">
                     <h2 class="featurette-heading">Who<span class="text-muted"> we are</span></h2>
-                    <p class="lead">Service to man kind is a students running , non-profitable Organization. STM is the
-                        living embodiment of the slogan “You make your livelihoods by what you get,But you make a life
-                        by what you give".STM is a platform with many volunteers.</p>
+                    <p class="lead">SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living
+                        embodiment " You make your livelihoods by what you get, But you make a life by what you give".
+                        STM is platform with many volunteers and a team contribute to a change in society</p>
                 </div>
                 <div class="col-md-5">
                     <!-- <img src="images/pics/whowe.png" width="350" height="500" > -->
-                    <object data="images\svg\who.svg" width="300">
+                    <object data="images\svg\undraw_Faq_re_31cw.svg" width="300">
 
                     </object>
                 </div>
@@ -282,7 +283,7 @@ require('connection.php');
             <hr class="featurette-divider">
 
             <div class="row featurette">
-                <div class="col-md-7 order-md-2" style="padding-left: 70px;">
+                <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">What <span class="text-muted">we do</span></h2>
                     <p class="lead">Our main objective is to provide moral support to orphanages and old age homes by
                         meeting their needs and supportive to the needy one. we have a vision to change the society by
@@ -290,7 +291,7 @@ require('connection.php');
                 </div>
                 <div class="col-md-5 order-md-1">
                     <!-- <img src="images/pics/wedo.jpeg" height="500" width="350" > -->
-                    <object data="images\svg\do.svg" width="300"></object>
+                    <object data="images\svg\undraw_gifts_btw0.svg" width="300"></object>
                 </div>
             </div>
             <hr class="featurette-divider">
@@ -299,33 +300,44 @@ require('connection.php');
 
 
                 <div class="themes">OUR THEMES</div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <!-- pic is not available in that folder -->
-                        <img src="images/pics/theme1.jpeg" height="140" width="140" style="border-radius: 50%;">
-                        <h2>Theme 1</h2>
-                        <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole one month it
-                            becomes Rs 30/- for better education and basic needs for needy people.
-                        </p>
-                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#food"
-                                role="button">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <img src="images/pics/theme2.jpeg" height="140" width="140" style="border-radius: 50%;">
-                        <h2>Theme 2</h2>
-                        <p>Donate books, clothes, blankets to needy people.</p>
-                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#dona"
-                                role="button">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <div class="col-lg-4">
-                        <img src="images/pics/theme3.jpg" height="140" width="140" style="border-radius: 50%;">
-                        <h2>Theme 3</h2>
-                        <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens and grand
-                            parents.<br> We are family !!</p>
-                        <p><a class="btn btn-secondary botten" href="https://stm.imfast.io/gallary.html#bday"
-                                role="button">View details &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                </div><!-- /.row -->
+
+                <div class="grid">
+                    <div class="section group">
+                        <div class="col col-3 card">
+                            <div class="card-content">
+                                <img src="images\pics\theme1.jpeg" />
+                                <div class="card-description">
+                                    <h2>Theme 1</h2>
+                                    <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole
+                                        one month it becomes Rs 30/- for better education and basic needs for needy
+                                        people. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-3 card">
+                            <div class="card-content">
+                                <img src="images\pics\theme3.jpg" />
+                                <div class="card-description">
+                                    <h2>Theme 2</h2>
+                                    <p>Donate books, clothes, blankets to needy people.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-3 card">
+                            <div class="card-content">
+                                <img src="images\pics\theme3.jpg" />
+                                <div class="card-description">
+                                    <h2>Theme 3</h2>
+                                    <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens
+                                        and grand parents.
+                                        We are family !!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <hr class="featurette-divider">
@@ -346,7 +358,7 @@ require('connection.php');
                                             <h4 class="card-title">Donation Summary</h4>
                                             <h5 class="card-subtitle">Overview of Latest Month</h5>
                                         </div>
-                                        <div class="ml-auto d-flex no-block align-items-center">
+                                        <!-- <div class="ml-auto d-flex no-block align-items-center">
                                             <ul class="list-inline font-12 dl mr-3 mb-0">
                                                 <li class="list-inline-item text-info">
                                                     <i class="fa fa-circle"></i> Stm
@@ -363,7 +375,7 @@ require('connection.php');
                                                     <option value="3">Yearly</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="row">
                                         <!-- column -->
@@ -438,9 +450,9 @@ require('connection.php');
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-2">
+                                                <div class="mr-3">
                                                     <span class="text-orange display-5"><i
-                                                            class="mdi mdi-wallet"></i></span>
+                                                            class="fas fa-calendar-alt"></i></span>
                                                 </div>
                                                 <div>
                                                     <span>This Month</span>
@@ -452,9 +464,9 @@ require('connection.php');
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-2">
+                                                <div class="mr-3">
                                                     <span class="text-cyan display-5"><i
-                                                            class="mdi mdi-star-circle"></i></span>
+                                                            class="fas fa-calendar-check"></i></span>
                                                 </div>
                                                 <div>
                                                     <span>This Year</span>
@@ -466,9 +478,9 @@ require('connection.php');
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-2">
+                                                <div class="mr-3">
                                                     <span class="text-info display-5"><i
-                                                            class="mdi mdi-shopping"></i></span>
+                                                            class="fas fa-award"></i></span>
                                                 </div>
                                                 <div>
                                                     <span>Permanent Donors</span>
@@ -480,9 +492,9 @@ require('connection.php');
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-2">
+                                                <div class="mr-3">
                                                     <span class="text-primary display-5"><i
-                                                            class="mdi mdi-currency-usd"></i></span>
+                                                            class="fas fa-rupee-sign"></i></span>
                                                 </div>
                                                 <div>
                                                     <span>Total</span>
@@ -543,17 +555,18 @@ require('connection.php');
             <div class="container">
                 <div class="footer-top row">
                     <div class="col-md-4 foot-logo">
-                        <h2>Charity for Educaton</h2>
+                        <h2>Service To Mankind</h2>
                     </div>
                     <div class="col-md-8 foot-addr">
-                        <p>Donec venenatis metus at diam condimentum pretiuteger aliquet a turpis quis pel len
-                            tesque
-                            ueta turpis quis venenatissolelementum</p>
+                        <p>SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living embodiment
+                            " You make your livelihoods by what you get, But you make a life by what you give". STM is
+                            platform with many volunteers and a team contribute to a change in society</p>
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> Antonya Street, 23/H-2, Building, TA, AUS
+                            <li><i class="fas fa-map-marker-alt"></i> H.No - 109/B, Lakshmi Nagar Colony, Suraram,
+                                Hyderabad, 500055
                             </li>
-                            <li><i class="fas fa-mobile-alt"></i> +177 (089) 987665 </li>
-                            <li><i class="far fa-envelope"></i> support@smarteyeapps.com </li>
+                            <li><i class="fas fa-mobile-alt"></i> +91 7729812798 </li>
+                            <li><i class="far fa-envelope"></i> servicetomankindorganization@gmail.com </li>
                         </ul>
                     </div>
                 </div>
@@ -563,17 +576,15 @@ require('connection.php');
                             <h5>IMPORTANT LINKS</h5>
                             <ul>
                                 <li><i class="fas fa-caret-right"></i> ABOUT US</li>
-                                <li><i class="fas fa-caret-right"></i> COMPANY PROFILE</li>
-                                <li><i class="fas fa-caret-right"></i> OUR SERVICES</li>
+                                <li><i class="fas fa-caret-right"></i> DONATE</li>
                                 <li><i class="fas fa-caret-right"></i> CONTACT US</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li>
                             </ul>
                         </div>
 
                     </div>
                     <div class="col-md-4">
                         <div class="fotter-coo">
-                            <h5>GLOBAL UPDATE NEWS</h5>
+                            <h5>LATEST LOGS</h5>
                             <ul>
                                 <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
                                 <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
@@ -589,22 +600,22 @@ require('connection.php');
                             <h5>PHOTO GALLERY</h5>
                             <div class="gallery-row row">
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g1.jpg" alt="">
+                                    <img src="images\pics\f1.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g2.jpg" alt="">
+                                    <img src="images\pics\f2.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g3.jpg" alt="">
+                                    <img src="images\pics\f6.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g4.jpg" alt="">
+                                    <img src="images\pics\f1.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g1.jpg" alt="">
+                                    <img src="images\pics\f2.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g2.jpg" alt="">
+                                    <img src="images\pics\f6.jpeg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -616,7 +627,7 @@ require('connection.php');
 
         <div class="copy">
             <div class="container">
-                <a href="https://www.smarteyeapps.com/">2020 � All Rights Reserved | Designed and Developed by
+                <a href="https://www.stmorg.in/">2020 � All Rights Reserved | Designed and Developed by
                     STM</a>
 
                 <span>

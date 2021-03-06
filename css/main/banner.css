@@ -5,8 +5,9 @@
 #header-area {
   position: relative;
   padding: 120px 0px;
-  background: url(http://iglyphic.com/themes/html/thefund/assets/images/2.jpg)
-    no-repeat center center;
+  /* background: url(http://iglyphic.com/themes/html/thefund/assets/images/2.jpg)
+    no-repeat center center; */
+  background: url(../../images/pics/banner-2.jpg) no-repeat center center;
   background-size: cover;
   position: relative;
 }
@@ -1727,6 +1728,9 @@ h6 {
 .mr-2 {
   margin-right: 0.5rem !important;
 }
+.mr-3 {
+  margin-right: 1.2rem !important;
+}
 .mt-3 {
   margin-top: 1rem !important;
 }
@@ -2751,8 +2755,25 @@ ul.list-style-none li {
 /* chart */
 .dashgra {
   position: relative;
-  bottom: 50px;
-  width: 80%;
+  bottom: 125px !important;
+}
+@media (max-width: 1200px) {
+  .dashgra {
+    bottom: 60px !important;
+  }
+}
+@media (max-width: 992px) {
+  .dashgra {
+    bottom: 97px !important;
+  }
+}
+@media (max-width: 768px) {
+  .dashgra {
+    bottom: 0px !important;
+  }
+  .campaign {
+    height: auto !important;
+  }
 }
 .proholder {
   display: flex;
@@ -2761,4 +2782,94 @@ ul.list-style-none li {
 }
 .prorow {
   margin-top: 35px;
+}
+.btn.btn-secondary.botten {
+  background-color: #007bff !important;
+}
+/* themes2 */
+
+.section {
+  clear: both;
+  padding: 0;
+  margin: 0;
+}
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  zoom: 1;
+}
+
+.col {
+  display: block;
+  float: left;
+  margin: 1% 0 1% 1.6%;
+}
+.col img {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  cursor: zoom-in;
+  transition: all 0.3s ease-in-out;
+}
+.col img:hover {
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
+  opacity: 0.8;
+}
+
+.col:first-child {
+  margin-left: 0;
+}
+
+.col-3 {
+  width: 32.26%;
+  max-width: 30% !important;
+}
+
+.card {
+  background: #fff;
+  border-radius: 0.25em;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 0px 0px;
+  overflow: hidden;
+}
+
+.card-description {
+  padding: 0.25rem 1rem;
+}
+.card-description h2 {
+  font-weight: 300;
+  color: #7f8c8d;
+  font-size: 1.4em;
+  margin: 0;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #eeeeee;
+}
+.card-description p {
+  color: #7f8c8d;
+  font-weight: 100;
+  font-size: 0.975em;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .col {
+    margin: 1% 0 1% 0% !important;
+  }
+
+  .col-3 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
