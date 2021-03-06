@@ -212,17 +212,7 @@ body {
     font-weight: 100px;
   }
 }
-.text-right {
-  /* background-color: rgba(87, 101, 116,.6); */
-  /* text-shadow: 2px 2px #333;
-  font-weight: 100px; */
-  -webkit-text-stroke: 1px black;
-  -webkit-text-fill-color: white;
-}
-.text-left {
-  -webkit-text-stroke: 1px black;
-  -webkit-text-fill-color: white;
-}
+
 .con-btn {
   background-color: #6c757d;
   border-radius: 5px;
@@ -419,6 +409,6 @@ h6 {
 .wel {
   margin: 10px;
 }
-.container.marketing{
+.container.marketing {
   margin-top: 30px;
 }

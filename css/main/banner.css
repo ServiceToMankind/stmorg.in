@@ -1409,6 +1409,7 @@ h6 {
   border: 1px solid #e9ecef;
   border-radius: 2px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-top: 10px;
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control {

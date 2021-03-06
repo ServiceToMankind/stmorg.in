@@ -1,0 +1,17 @@
+RewriteEngine On
+
+
+
+RewriteRule ^share share.php [NC,L]
+
+RewriteRule ^home index.php [NC,L]
+
+RewriteRule ^contact contact.php [NC,L]
+
+RewriteRule ^pay donate.php [NC,L]
+
+#RewriteCond %{HTTP_HOST} ^stmorg.in$
+#RewriteCond (.*) https://%(HTTP_HOST)%{REQUEST_URI} [L,R=301]
+
+#RewriteCond %{HTTP_HOST} ^www.stmorg.in$ [NC]
+#RewriteCond (.*) https://stmorg.in/$1 [R=301,L]

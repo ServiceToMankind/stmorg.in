@@ -15,7 +15,7 @@ require('../functions.php');
 	$name = $_POST['name'];
     $message = $_POST['message'];
     $added_on=date('Y-m-d h:i:s');
-	mysqli_query($con,"INSERT INTO `donations`(`name`, `mail`, `mobile`, `amount`, `txid`, `payment_status`, `custid`, `added_on`, `message`) VALUES ('$name','$mail','$mobile','$ammount','0','0','$custid','$added_on', '$message')");
+	mysqli_query($con,"INSERT INTO `donations`(`name`, `mail`, `mobile`,`type`, `amount`, `txid`, `payment_status`, `custid`, `added_on`, `message`) VALUES ('$name','$mail','$mobile','1','$ammount','0','0','$custid','$added_on', '$message')");
 	$oid=mysqli_insert_id($con);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

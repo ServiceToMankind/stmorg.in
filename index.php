@@ -42,23 +42,6 @@ require('connection.php');
     <link rel="icon" href="accesories/fevicon 32.ico">
     <meta name="theme-color" content="#563d7c">
 
-
-    <style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-        }
-    }
-    </style>
     <link href="css/main/carousel.css" rel="stylesheet">
 
     <!-- fontaswsome00000 -->
@@ -93,7 +76,7 @@ require('connection.php');
                         <a class="nav-link" href="gallary.html">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
 
                 </ul>
@@ -171,7 +154,7 @@ require('connection.php');
                                     </div>
                                 </div>
                                 <div class="power_button_group">
-                                    <a href="donate.php" class="power_button effect_1">
+                                    <a href="pay" class="power_button effect_1">
                                         <span class="button_value">Donate Now</span>
                                     </a>
                                 </div>
@@ -386,7 +369,7 @@ require('connection.php');
                                             </h6>
                                             <h3 class="mt-4 mb-0">Rs.1,540</h3>
                                             <h6 class="font-light text-muted">Total</h6>
-                                            <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate.php">
+                                            <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="pay">
                                                 Donate</a>
                                         </div>
                                         <!-- column -->

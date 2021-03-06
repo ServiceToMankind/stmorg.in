@@ -410,8 +410,7 @@ $email=$row['mail'];
         <div class="footer-ablove">
             <div class="container">
                 <div class="row">
-                    <p>
-                        Love All , Serve All !
+                    <p>Love All , Serve All !
                         <button class="btn btn-default">Donate Now</button>
                     </p>
                 </div>
@@ -421,23 +420,18 @@ $email=$row['mail'];
             <div class="container">
                 <div class="footer-top row">
                     <div class="col-md-4 foot-logo">
-                        <h2>Charity for Educaton</h2>
+                        <h2>Service To Mankind</h2>
                     </div>
                     <div class="col-md-8 foot-addr">
-                        <p>
-                            Donec venenatis metus at diam condimentum pretiuteger aliquet a
-                            turpis quis pel len tesque ueta turpis quis
-                            venenatissolelementum
-                        </p>
+                        <p>SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living embodiment
+                            " You make your livelihoods by what you get, But you make a life by what you give". STM is
+                            platform with many volunteers and a team contribute to a change in society</p>
                         <ul>
-                            <li>
-                                <i class="fas fa-map-marker-alt"></i> Antonya Street, 23/H-2,
-                                Building, TA, AUS
+                            <li><i class="fas fa-map-marker-alt"></i> H.No - 109/B, Lakshmi Nagar Colony, Suraram,
+                                Hyderabad, 500055
                             </li>
-                            <li><i class="fas fa-mobile-alt"></i> +177 (089) 987665</li>
-                            <li>
-                                <i class="far fa-envelope"></i> support@smarteyeapps.com
-                            </li>
+                            <li><i class="fas fa-mobile-alt"></i> +91 7729812798 </li>
+                            <li><i class="far fa-envelope"></i> servicetomankindorganization@gmail.com </li>
                         </ul>
                     </div>
                 </div>
@@ -447,59 +441,50 @@ $email=$row['mail'];
                             <h5>IMPORTANT LINKS</h5>
                             <ul>
                                 <li><i class="fas fa-caret-right"></i> ABOUT US</li>
-                                <li><i class="fas fa-caret-right"></i> COMPANY PROFILE</li>
-                                <li><i class="fas fa-caret-right"></i> OUR SERVICES</li>
+                                <li><i class="fas fa-caret-right"></i> DONATE</li>
                                 <li><i class="fas fa-caret-right"></i> CONTACT US</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li>
                             </ul>
                         </div>
+
                     </div>
                     <div class="col-md-4">
                         <div class="fotter-coo">
-                            <h5>GLOBAL UPDATE NEWS</h5>
+                            <h5>LATEST LOGS</h5>
                             <ul>
-                                <li>
-                                    <i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM
-                                    WAR ZONE
-                                </li>
-                                <li>
-                                    <i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD
-                                </li>
-                                <li>
-                                    <i class="fas fa-caret-right"></i> CREATE AWARENESS IN
-                                    EDUCATON
-                                </li>
-                                <li>
-                                    <i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!
-                                </li>
+                                <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
+                                <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
+                                <li><i class="fas fa-caret-right"></i> CREATE AWARENESS IN EDUCATON</li>
+                                <li><i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!</li>
                                 <li><i class="fas fa-caret-right"></i> READ BLOG</li>
                             </ul>
                         </div>
+
                     </div>
                     <div class="col-md-5">
                         <div class="fotter-coo">
                             <h5>PHOTO GALLERY</h5>
                             <div class="gallery-row row">
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g1.jpg" alt="" />
+                                    <img src="images\pics\f1.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g2.jpg" alt="" />
+                                    <img src="images\pics\f2.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g3.jpg" alt="" />
+                                    <img src="images\pics\f6.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g4.jpg" alt="" />
+                                    <img src="images\pics\f1.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g1.jpg" alt="" />
+                                    <img src="images\pics\f2.jpeg" alt="">
                                 </div>
                                 <div class="col-md-4 col-6 gall-col">
-                                    <img src="http://localhost/trackt/assets/images/gallery/g2.jpg" alt="" />
+                                    <img src="images\pics\f6.jpeg" alt="">
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -507,16 +492,17 @@ $email=$row['mail'];
 
         <div class="copy">
             <div class="container">
-                <a href="https://www.smarteyeapps.com/">2020 � All Rights Reserved | Designed and Developed by STM</a>
+                <a href="https://www.stmorg.in/">2020 � All Rights Reserved | Designed and Developed by
+                    STM</a>
 
                 <span>
-                    <a><i class="fab fa-github"></i></a>
-                    <a><i class="fab fa-google-plus-g"></i></a>
-                    <a><i class="fab fa-pinterest-p"></i></a>
+                    <a><i class="fab fa-youtube"></i></a>
+                    <a><i class="fab fa-instagram"></i></a>
                     <a><i class="fab fa-twitter"></i></a>
                     <a><i class="fab fa-facebook-f"></i></a>
                 </span>
             </div>
+
         </div>
     </main>
 
