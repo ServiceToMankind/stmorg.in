@@ -12,8 +12,9 @@ require('connection.php');
     <title>STM-INDIA</title>
 
     <!--styles-->
-    <link rel="stylesheet" href="css/main/style.css">
-    <link rel="stylesheet" href="css/main/banner.css">
+    <!-- <link rel="stylesheet" href="css/main/style.css"> -->
+    <link rel="stylesheet" href="css/main/style2.css">
+    <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner1.css">
     <link rel="stylesheet" href="css/main/btn.css">
     <link rel="stylesheet" href="css/default/css/catto.css">
