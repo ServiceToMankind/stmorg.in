@@ -14,6 +14,7 @@ require('connection.php');
     <!--styles-->
     <link rel="stylesheet" href="css/main/style.css">
     <link rel="stylesheet" href="css/main/banner.css">
+    <link rel="stylesheet" href="css/main/banner1.css">
     <link rel="stylesheet" href="css/main/btn.css">
     <link rel="stylesheet" href="css/default/css/catto.css">
     <link rel="stylesheet" href="css/defualt/css/catto.min.css">
