@@ -25,7 +25,7 @@ if($isValidChecksum == "TRUE") {
 	//echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
         echo"</br></br></br></br>";
-        mysqli_query($con,"UPDATE `donations` SET `txid`='$txid',`payment_status`='1' WHERE `donations`.`id`='$oid'");
+        mysqli_query($con,"UPDATE `donations` SET `txid`='$txid',`payment_status`='1', `type`='1' WHERE `donations`.`id`='$oid'");
 		echo "<center><h1>Transaction status is success</h1></center>" . "<br/>";
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
