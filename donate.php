@@ -315,7 +315,7 @@ $email=$row['mail'];
                                     YOU ARE DONATING AS GUEST
                                     <span class="nd_donations_font_size_13 nd_donations_margin_0_10">or</span>
                                     <a class="nd_donations_display_inline_block nd_donations_color_white_important nd_donations_bg_greydark nd_donations_padding_5_10 nd_donations_font_size_13"
-                                        href="http://www.nicdarkthemes.com/themes/charity/wp/demo/charity-foundation/donations-account/">LOGIN</a>
+                                        href="login">LOGIN</a>
                                 </h4>
                             </div>
                         </div>
@@ -326,7 +326,7 @@ $email=$row['mail'];
                         <div class="nd_donations_section">
                             <div id="nd_donations_single_cause_form_donation_name_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input class="nd_donations_section" id="stm_name" name="nd_donations_name" type="text"
+                                <input class="nd_donations_section" id="stm_name" name="name" type="text"
                                     placeholder="Name" required />
                             </div>
                             <div id="nd_donations_single_cause_form_donation_surname_container"
@@ -340,7 +340,7 @@ $email=$row['mail'];
                             <div id="nd_donations_single_cause_form_donation_email_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input class="nd_donations_section" id="nd_donations_single_cause_form_donation_email"
-                                    name="nd_donations_email" type="text" placeholder="Email " required />
+                                    name="email" type="text" placeholder="Email " required />
                             </div>
                             <!-- <div
                                 class="nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">

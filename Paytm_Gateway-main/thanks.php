@@ -26,22 +26,204 @@ if($isValidChecksum == "TRUE") {
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
         echo"</br></br></br></br>";
         mysqli_query($con,"UPDATE `donations` SET `txid`='$txid',`payment_status`='1', `type`='1' WHERE `donations`.`id`='$oid'");
-		echo "<center><h1>Transaction status is success</h1></center>" . "<br/>";
+		//echo "<center><h1>Transaction status is success</h1></center>" . "<br/>";
+        $tagline='1';
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
 	}
 	else {
-		echo "<b>Transaction status is failure</b>" . "<br/>";
+		//echo "<b>Transaction status is failure</b>" . "<br/>";
+        $tagline='0';
 	}
 
-	if (isset($_POST) && count($_POST)>0 )
+	?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Thankyou</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <style>
+    html,
+    body {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        font-size: 16px;
+        line-height: 1;
+        font-family: sans-serif;
+        color: magenta;
+        font-weight: bold;
+    }
+
+    * {
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    body {
+        background-color: #40354E;
+    }
+
+    .view {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+        font-family: "Helvetica Neue", sans-serif;
+        text-align: center;
+        padding-left: 16px;
+        padding-right: 16px;
+        align-self: center;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 375px) {
+        .view {
+            padding-left: 48px;
+            padding-right: 48px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .view {
+            max-width: 500px;
+            padding-top: 96px;
+            padding-bottom: 96px;
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .thankYou {
+        width: 100%;
+        height: auto;
+        margin-bottom: 48px;
+    }
+
+    .tagline {
+        font-size: 16px;
+        color: white;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 32px;
+    }
+
+    .button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #FF596F;
+        border-radius: 48px;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 500;
+        height: 48px;
+        padding-left: 24px;
+        padding-right: 24px;
+        color: white;
+        text-decoration: none;
+        transition: opacity 300ms ease-in-out;
+    }
+
+    .button:active,
+    .button:hover {
+        color: white;
+    }
+
+    .button:active {
+        transition-duration: 0ms;
+        opacity: 0.6;
+    }
+
+    .description {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 500;
+        line-height: 1.4;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .table.table-hover.text-center.tagline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        text-align: left;
+    }
+
+    @media print {
+
+        .no_print,
+        .no_print * {
+            display: none !important;
+        }
+
+    }
+    </style>
+    <script type="text/javascript" src="bootstrap/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+    <?php  // include 'header.php';
+    if (isset($_POST) && count($_POST)>0 )
 	{ 
 		// foreach($_POST as $paramName => $paramValue) {
 		// 		echo "<br/>" . $paramName . " = " . $paramValue;
         // }
        
-    
-echo"<table class='table table-hover text-center'  >
+ ?>
+    <div class="view">
+        <div class="container">
+            <?php if($tagline=='1'){ ?>
+            <img class="thankYou" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82974/yep.png" />
+            <p class="tagline">
+
+                Wahoo! Thanks for signing up. We can't wait to get you your own merch page. We bet you can't either. In
+                the
+                meantime ...
+                <?php
+                }else{ ?>
+            <p class="tagline">
+                Shit ! Transaction failed. Please try again later.
+                <?php
+                }
+                ?>
+                <?php   
+echo"
+<table class='table table-hover text-center tagline'  >
   <thead>
     <tr>
      <th></th>
@@ -67,10 +249,6 @@ echo"<table class='table table-hover text-center'  >
     <td>$_POST[ORDERID]</td>
     </tr>
     <tr>
-    <td>Expected Delivery Date</td>
-    <td>26 January 2021</td>
-    </tr>
-    <tr>
     <td>Transaction Ammount</td>
     <td><b>₹ $_POST[TXNAMOUNT]</b></td>
     </tr>
@@ -89,52 +267,19 @@ else {
 }
 
 ?>
-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>User Login</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-    <style>
-    @media print {
-
-        .no_print,
-        .no_print * {
-            display: none !important;
-        }
-
-    }
-    </style>
-    <script type="text/javascript" src="bootstrap/js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-
-</head>
-
-<body>
-    <?php  // include 'header.php'; ?>
-
-    <div class="container-fluid">
-        <div class="text-center">
-            <!--  printing page -->
-            <input class="btn btn-primary btn-large algin-center no_print" type="button" value="Print this page"
-                onClick="window.print()">
+            </p>
         </div>
-        <div class="row row-style">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 text-center">
-                <h3>Thank You👧 for Shopping with Metro Mobiles</h3>
-                <a class="no_print" href="home.php"><button class="btn btn-s btn-lg text-center ">Shop more latest
-                        items</button> </a>
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
+        <div class="actions">
+            <a class="button" onClick="window.print()">Learn more about Redbubble</a>
+            <p class="description">
+                "Bringing more creativity into the world."
+            </p>
+        </div><!-- actions -->
+    </div><!-- View -->
 
-        <?php // include 'footer.php'; ?>
-    </div>
+
+
+
 
 </body>
 
