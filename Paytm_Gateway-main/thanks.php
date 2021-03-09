@@ -180,6 +180,10 @@ if($isValidChecksum == "TRUE") {
         text-align: left;
     }
 
+    .td {
+        padding: 2px 10px;
+    }
+
     @media print {
 
         .no_print,
@@ -270,9 +274,10 @@ else {
             </p>
         </div>
         <div class="actions">
-            <a class="button" onClick="window.print()">Learn more about Redbubble</a>
+            <a style="margin-right:12px" class="button" onClick="window.print()">Print Reciept</a>
+            <a class="button" onClick="window.location.href='https://stmorg.in'">Go Home</a>
             <p class="description">
-                "Bringing more creativity into the world."
+                "Bringing more happiness into the world."
             </p>
         </div><!-- actions -->
     </div><!-- View -->
