@@ -7,8 +7,8 @@
 - Above details will be different for testing and production environment.
 */
 
-define('PAYTM_ENVIRONMENT', 'TEST'); // PROD
-define('PAYTM_MERCHANT_KEY', 'Db&CnwVQgdceAK!EMMF'); //Change this constant's value with Merchant key received from Paytm.
+define('PAYTM_ENVIRONMENT', 'PROD'); // PROD
+define('PAYTM_MERCHANT_KEY', 'CnwVQgdceAK!EMMF'); //Change this constant's value with Merchant key received from Paytm.
 define('PAYTM_MERCHANT_MID', 'tFqBXl72703739746840'); //Change this constant's value with MID (Merchant ID) received from Paytm.
 define('PAYTM_MERCHANT_WEBSITE', 'WEBSTAGING'); //Change this constant's value with Website name received from Paytm.
 
