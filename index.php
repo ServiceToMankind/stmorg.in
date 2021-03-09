@@ -156,7 +156,7 @@ require('connection.php');
                                     </div>
                                 </div>
                                 <div class="power_button_group">
-                                    <a href="pay" class="power_button effect_1">
+                                    <a href="donate" class="power_button effect_1">
                                         <span class="button_value">Donate Now</span>
                                     </a>
                                 </div>
@@ -328,7 +328,7 @@ require('connection.php');
             <hr class="featurette-divider">
 
 
-            <!-- /AYPAY .... -->
+            <!-- /AYdonate .... -->
 
             <!--donation centre-->
             <section>
@@ -371,7 +371,7 @@ require('connection.php');
                                             </h6>
                                             <h3 class="mt-4 mb-0">Rs.1,540</h3>
                                             <h6 class="font-light text-muted">Total</h6>
-                                            <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="pay">
+                                            <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
                                                 Donate</a>
                                         </div>
                                         <!-- column -->

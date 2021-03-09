@@ -3,7 +3,7 @@
 	header("Cache-Control: no-cache");
 	header("Expires: 0");
     require('../connection.php');
-require('../functions.php');
+    require('../functions.php');
 	$ammount = $_POST['amount'];
 	if(isset($_SESSION['USER_ID']) && ($_SESSION['USER_ID'] != '')) {
 		$custid=$_SESSION['USER_ID'];
@@ -74,7 +74,7 @@ require('../functions.php');
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input id="submitbutton" value="CheckOut" type="submit" onclick=""></td>
+                    <td><input id="submitbuttono" value="CheckOut" type="submit" onclick=""></td>
                 </tr>
             </tbody>
         </table>
@@ -83,7 +83,7 @@ require('../functions.php');
 </body>
 <script>
 window.onload = function() {
-    document.getElementById('submitbutton').click();
+    document.getElementById('submitbuttono').click();
 }
 </script>
 

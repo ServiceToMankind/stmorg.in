@@ -166,7 +166,7 @@ $email=$row['mail'];
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post" action="Paytm_Gateway-main\TxnTest.php">
+                    <form method="post" action="Paytm_Gateway-main/Txn.php">
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <div class="nd_donations_section">
@@ -326,22 +326,21 @@ $email=$row['mail'];
                         <div class="nd_donations_section">
                             <div id="nd_donations_single_cause_form_donation_name_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="stm_name" name="nd_donations_name" type="text" placeholder="Name" required />
+                                <input class="nd_donations_section" id="stm_name" name="nd_donations_name" type="text"
+                                    placeholder="Name" required />
                             </div>
                             <div id="nd_donations_single_cause_form_donation_surname_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="stm_mobile" name="mobile" type="text" placeholder="mobile" />
+                                <input class="nd_donations_section" id="stm_mobile" name="mobile" type="text"
+                                    placeholder="mobile" />
                             </div>
                         </div>
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div class="nd_donations_section">
                             <div id="nd_donations_single_cause_form_donation_email_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
-                                <input onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                    id="nd_donations_single_cause_form_donation_email" name="nd_donations_email"
-                                    type="text" placeholder="Email " required />
+                                <input class="nd_donations_section" id="nd_donations_single_cause_form_donation_email"
+                                    name="nd_donations_email" type="text" placeholder="Email " required />
                             </div>
                             <!-- <div
                                 class="nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
@@ -353,23 +352,22 @@ $email=$row['mail'];
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div id="nd_donations_single_cause_form_donation_message_container"
                             class="nd_donations_section nd_donations_position_relative">
-                            <textarea onclick="nd_donations_single_cause_form_filter()"
-                                onchange="nd_donations_single_cause_form_filter()" class="nd_donations_section"
-                                name="message" id="nd_donations_single_cause_form_donation_message" rows="5"
+                            <textarea class="nd_donations_section" name="message"
+                                id="nd_donations_single_cause_form_donation_message" rows="5"
                                 placeholder="Message (Optional)"></textarea>
                         </div>
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div class="nd_donations_section">
-                            <input id="validate_fields_subset" class="nd_donations_display_none" type="submit"
-                                value="DONATE NOW" />
+                            <input id="validate_fields_subset" type="submit" />
+                            <!-- class="nd_donations_display_none" -->
                         </div>
                     </form>
 
-                    <button id="validate_fields_sub" style="background-color: #d55342"
+                    <!-- <button id="validate_fields_sub" style="background-color: #d55342"
                         class="nd_donations_border_radius_30 nd_donations_display_inline_block nd_donations_box_sizing_border_box nd_donations_color_white_important nd_options_first_font nd_donations_padding_10_20 nd_donations_cursor_pointer nd_donations_outline_0 nd_donations_font_size_15 nd_donations_border_width_0"
                         onclick="validate_fields_sub()">
                         CHECKOUT
-                    </button>
+                    </button> -->
                     <div class="nd_donations_section nd_donations_height_40"></div>
 
                     <!--START Tabs-->
@@ -513,9 +511,9 @@ $email=$row['mail'];
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     <script>
-    function validate_fields_sub() {
-        document.getElementById("validate_fields_subset").click();
-    }
+    // function validate_fields_sub() {
+    //     document.getElementById("validate_fields_subset").click();
+    // }
     </script>
 </body>
 

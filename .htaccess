@@ -1,17 +1,15 @@
 RewriteEngine On
 
-
-
 RewriteRule ^share share.php [NC,L]
 
-RewriteRule ^home index.php [NC,L]ss
+RewriteRule ^home index.php [NC,L]
 
 RewriteRule ^contact contact.php [NC,L]
 
-RewriteRule ^pay donate.php [NC,L]
+RewriteRule ^donate donate.php [NC,L]
 
-RewriteCond %{HTTP:X-Forwarded-Proto} =http
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTP:X-Forwarded-Proto} =http
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 #RewriteCond %{SERVER_PORT} 80
 #RewriteRule ^(.*)$ https://www.stmorg.in/$1 [R,L]
