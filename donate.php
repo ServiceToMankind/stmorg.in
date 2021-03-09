@@ -340,7 +340,7 @@ $email=$row['mail'];
                             <div id="nd_donations_single_cause_form_donation_email_container"
                                 class="nd_donations_position_relative nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                                 <input class="nd_donations_section" id="nd_donations_single_cause_form_donation_email"
-                                    name="email" type="text" placeholder="Email " required />
+                                    name="mail" type="text" placeholder="Email " required />
                             </div>
                             <!-- <div
                                 class="nd_donations_width_50_percentage nd_donations_float_left nd_donations_padding_left_15 nd_donations_padding_0_responsive nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">

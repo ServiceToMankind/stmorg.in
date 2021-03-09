@@ -82,9 +82,9 @@
     </form>
 </body>
 <script>
-window.onload = function() {
-    document.getElementById('submitbuttono').click();
-}
+// window.onload = function() {
+//     document.getElementById('submitbuttono').click();
+// }
 </script>
 
 </html>
