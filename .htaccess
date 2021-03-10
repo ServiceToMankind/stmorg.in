@@ -8,6 +8,8 @@ RewriteRule ^contact contact.php [NC,L]
 
 RewriteRule ^donate donate.php [NC,L]
 
+RewriteRule ^login logino.php [NC,L]
+
 #RewriteCond %{HTTP:X-Forwarded-Proto} =http
 #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 

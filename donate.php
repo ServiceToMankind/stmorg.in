@@ -127,7 +127,7 @@ $email=$row['mail'];
           
         }else{
         ?>
-                    <h5><a href="login.html">login <i class="fas fa-sign-in-alt"></i></a></h5>
+                    <h5><a href="logino.php">login <i class="fas fa-sign-in-alt"></i></a></h5>
                     <?php 
         } ?>
 
