@@ -269,7 +269,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
         var lopass = jQuery("#lopass").val();
         if (locase != "" && lopass != "") {
             jQuery.ajax({
-                url: "logino.php",
+                url: "checklogin.php",
                 type: "post",
                 data: "case=" + locase + "&pass=" + lopass,
                 success: function(result) {
