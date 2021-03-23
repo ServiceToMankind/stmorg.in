@@ -215,9 +215,9 @@ if($isValidChecksum == "TRUE") {
             <img class="thankYou" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82974/yep.png" />
             <p class="tagline">
 
-                Wahoo! Thanks for signing up. We can't wait to get you your own merch page. We bet you can't either. In
-                the
-                meantime ...
+                Wahoo! Thanks for your kind donation. <br> You are donated to chandu , who is fighting to survive. For
+                more details, kindly <a style='color:#FF596F'
+                    href='https://milaap.org/fundraisers/support-chandu-17'>click here</a>
                 <?php
                 }else{ ?>
             <p class="tagline">

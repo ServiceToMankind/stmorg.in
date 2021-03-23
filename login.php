@@ -9,13 +9,34 @@ if(isset($_GET['by']) && $_GET['by']!=''){
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
+    <title>STM-INDIA</title>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="js/jquery1.js"></script>
+
+
+
+    <!-- Favicons -->
+
+    <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180">
+    <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c">
+    <link rel="icon" href="accesories/fevicon 32.ico">
+    <meta name="theme-color" content="#563d7c">
+
+
+
+    <!-- fontaswsome00000 -->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <script src="js\jquery1.js">
+    </script>
     <link rel="stylesheet" href="css\main\login.css" />
 </head>
 
@@ -25,7 +46,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
         <input type="radio" name="tab" id="register" />
         <div class="pages">
             <div class="page">
-                <form>
+                <form type='get'>
                     <img class="brand-logo" src="brand-logo.png" alt="" />
                     <h2>Welcome Back</h2>
                     <p>Login to unleash your curiosity</p>
@@ -157,7 +178,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
             jQuery(".email_sent_otp").attr("disabled", true);
             jQuery(".email_sent_otp");
             jQuery.ajax({
-                url: "send_otp.php",
+                url: "send_otp",
                 type: "post",
                 data: "email=" + email + "&type=email",
                 success: function(result) {
@@ -191,7 +212,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
             jQuery(".email_verify_ootp").attr("disabled", true);
             jQuery(".email_verify_ootp");
             jQuery.ajax({
-                url: "check_otp.php",
+                url: "check_otp",
                 type: "post",
                 data: "otp=" + otp + "&type=otp",
                 success: function(result) {
@@ -238,7 +259,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                 alert("fuk u stupid");
             } else {
                 jQuery.ajax({
-                    url: "register.php",
+                    url: "register",
                     type: "post",
                     data: "email=" +
                         email +
@@ -263,13 +284,14 @@ if(isset($_GET['by']) && $_GET['by']!=''){
             jQuery("#pass_error").html("Passwords do not matched");
         }
     }
-
+    </script>
+    <script>
     function loginset() {
         var locase = jQuery("#case").val();
         var lopass = jQuery("#lopass").val();
         if (locase != "" && lopass != "") {
             jQuery.ajax({
-                url: "checklogin.php",
+                url: "checklogin",
                 type: "post",
                 data: "case=" + locase + "&pass=" + lopass,
                 success: function(result) {

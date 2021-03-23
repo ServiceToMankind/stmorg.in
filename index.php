@@ -1,5 +1,10 @@
 <?php
 require('connection.php');
+date_default_timezone_set("Asia/Kolkata");
+$date=date('Y-m-d');
+$dateValue=strtotime($date);
+$month=date('m',$dateValue);
+$year = date('Y',$dateValue);
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +30,11 @@ require('connection.php');
     <script src="js/jquery1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="main-js\typed.js"></script>
-
+    <script>
+    alert(
+        'Parts of this page are under development, only DONATE section is made active for emergency donations. Thank you for co-operating with us. - STM'
+    );
+    </script>
 
     <!-- BS CSS / js-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -148,11 +157,20 @@ require('connection.php');
                             <div class="power_progress_content">
                                 <div class="power_progress_inner">
                                     <div class="power_progress_bar_back">
-                                        <div class="power_progress_bar" style="max-width: 95%;" back-ground
-                                            colour:"blue"><span class="power_progress_value">95%</span></div>
+                                        <?php 
+                                        $raised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year'");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $raised=$raised+$row['amount'];
+                                    }
+                                    $rpercent=($raised/10000)*100;
+                                    ?>
+                                        <div class="power_progress_bar" style="max-width: <?php echo $rpercent ?>%;"
+                                            back-ground colour:"blue"><span
+                                                class="power_progress_value"><?php echo $rpercent ?>%</span></div>
                                     </div>
                                     <div class="power_progress_amount"><span><b>Exepected:</b> Rs.10000</span>
-                                        <span><b>Raised:</b> Rs.9050</span>
+                                        <span><b>Raised:</b> Rs.<?php echo $raised; ?></span>
                                     </div>
                                 </div>
                                 <div class="power_button_group">
@@ -365,12 +383,26 @@ require('connection.php');
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-lg-4">
-                                            <h1 class="mb-0 mt-4">Rs.6,890.68</h1>
+                                            <?php 
+                                        $mraised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year'");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $mraised=$mraised+$row['amount'];
+                                    }
+                                    ?>
+                                            <h1 class="mb-0 mt-4">Rs.<?php echo $mraised ?></h1>
                                             <h6 class="font-light text-muted">
                                                 Current Month Donations
                                             </h6>
-                                            <h3 class="mt-4 mb-0">Rs.1,540</h3>
-                                            <h6 class="font-light text-muted">Total</h6>
+                                            <?php 
+                                        $draised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year' and day(`added_on`)='$day'");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $draised=$draised+$row['amount'];
+                                    }
+                                    ?>
+                                            <h3 class="mt-4 mb-0">Rs. <?php echo $draised ?></h3>
+                                            <h6 class="font-light text-muted">This Day</h6>
                                             <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
                                                 Donate</a>
                                         </div>
@@ -440,8 +472,15 @@ require('connection.php');
                                                             class="fas fa-calendar-alt"></i></span>
                                                 </div>
                                                 <div>
-                                                    <span>This Month</span>
-                                                    <h3 class="font-medium mb-0">Rs.3,567.53</h3>
+                                                    <?php 
+                                        $lmraised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year' and day(`added_on`)='$day'");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $lmraised=$lmraised+$row['amount'];
+                                    }
+                                    ?>
+                                                    <span>Last Month</span>
+                                                    <h3 class="font-medium mb-0">Rs.<?php echo $lmraised ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -454,8 +493,15 @@ require('connection.php');
                                                             class="fas fa-calendar-check"></i></span>
                                                 </div>
                                                 <div>
+                                                    <?php 
+                                        $yraised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and  year(`added_on`)='$year'");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $yraised=$yraised+$row['amount'];
+                                    }
+                                    ?>
                                                     <span>This Year</span>
-                                                    <h3 class="font-medium mb-0">Rs.769.08</h3>
+                                                    <h3 class="font-medium mb-0">Rs.<?php echo $yraised ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -482,8 +528,15 @@ require('connection.php');
                                                             class="fas fa-rupee-sign"></i></span>
                                                 </div>
                                                 <div>
+                                                    <?php 
+                                        $traised=0;
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' ");
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        $traised=$traised+$row['amount'];
+                                    }
+                                    ?>
                                                     <span>Total</span>
-                                                    <h3 class="font-medium mb-0">Rs.23,568.90</h3>
+                                                    <h3 class="font-medium mb-0">Rs.<?php echo $traised ?></h3>
                                                 </div>
                                             </div>
                                         </div>

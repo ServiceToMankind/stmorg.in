@@ -17,3 +17,4 @@ RewriteRule ^home index.php [NC,L]
 RewriteRule ^contact contact.php [NC,L]
 RewriteRule ^donate donate.php [NC,L]
 RewriteRule ^login login.php [NC,L]
+

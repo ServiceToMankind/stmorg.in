@@ -4,7 +4,7 @@ require('functions.php');
 
 $case=get_safe_value($con,$_POST['case']);
 $password=get_safe_value($con,$_POST['pass']);
-$res1=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`id`='$case' and `users`.`password`='$password'");
+$res1=mysqli_query($con,"SELECT * FROM `users` WHERE CONCAT(`users`.`ccode`,`users`.`id`)= '$case' and `password`='$password'");
 $res2=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mail`='$case' and `users`.`password`='$password'");
 $res3=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mobile`='$case' and `users`.`password`='$password'");
 $check_user1=mysqli_num_rows($res1);

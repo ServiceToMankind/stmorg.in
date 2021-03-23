@@ -88,13 +88,13 @@ $email=$row['mail'];
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#aboutus">About us</a>
+                        <a class="nav-link" href="home#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#themes">Our Themes</a>
+                        <a class="nav-link" href="home#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="gallary.html">Gallery</a>
@@ -144,13 +144,16 @@ $email=$row['mail'];
                         <div class="fund-heading text-center">
                             <h1>DONATE</h1>
                             <!-- <h2>Charity/Nonprofit</h2> -->
+                            <h2>Note : You are donating this amount to chandhu, who is fighting in ICU and need of neuro
+                                surgery. For more details, kindly <a
+                                    href='https://milaap.org/fundraisers/support-chandu-17'>click here</a></h2>
                             <div class="typed_wrap">
-                                <h2>
+                                <!-- <h2>
                                     hi
                                     <?php
-        if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!='') {  echo $_SESSION['USER_NAME']; } ?>,
+        // if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!='') {  echo $_SESSION['USER_NAME']; } ?>,
                                     <span class="typed2"></span>
-                                </h2>
+                                </h2> -->
                             </div>
                         </div>
                     </div>
@@ -358,7 +361,7 @@ $email=$row['mail'];
                         </div>
                         <div class="nd_donations_section nd_donations_height_20"></div>
                         <div class="nd_donations_section">
-                            <input id="validate_fields_subset" type="submit" />
+                            <input id="validate_fields_subset" value="Donate" type="submit" />
                             <!-- class="nd_donations_display_none" -->
                         </div>
                     </form>
