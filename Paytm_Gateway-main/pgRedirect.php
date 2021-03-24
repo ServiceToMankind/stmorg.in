@@ -23,7 +23,7 @@ $paramList["INDUSTRY_TYPE_ID"] = $INDUSTRY_TYPE_ID;
 $paramList["CHANNEL_ID"] = $CHANNEL_ID;
 $paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
 $paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
-$paramList["CALLBACK_URL"] = "http://localhost/stm/stm/Paytm_Gateway-main/thanks.php"; // add your call back url here
+$paramList["CALLBACK_URL"] = "https://stmorg.in/Paytm_Gateway-main/thanks"; // add your call back url here
 
 /*
 $paramList["CALLBACK_URL"] = "http://localhost/PaytmKit/pgResponse.php";

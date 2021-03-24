@@ -31,7 +31,7 @@
     <h1>Merchant Check Out Page</h1>
     <pre>
 	</pre>
-    <form method="post" hidden="" action="pgRedirect.php">
+    <form method="post" hidden="" action="pgRedirect">
         <table border="1">
             <tbody>
                 <tr>

@@ -134,7 +134,7 @@ require('functions.php');
 <body>
     <div class="row">
         <div class="col-md-12">
-            <form action="regora.php" method="post">
+            <form action="regora" method="post">
                 <h1>Sign Up</h1>
                 <p>This is only for us, for manual registrations.</p>
                 <fieldset>

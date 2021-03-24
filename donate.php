@@ -169,7 +169,7 @@ $email=$row['mail'];
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post" action="Paytm_Gateway-main/Txn.php">
+                    <form method="post" action="Paytm_Gateway-main/Txn">
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <div class="nd_donations_section">
