@@ -412,3 +412,8 @@ h6 {
 .container.marketing {
   margin-top: 30px;
 }
+.foot-p {
+  font-size: unset;
+  color: #fff;
+  margin-bottom: 0px;
+}

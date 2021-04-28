@@ -2816,7 +2816,7 @@ ul.list-style-none li {
 }
 .col img {
   width: 100%;
-  height: auto;
+  height: 180px;
   opacity: 1;
   cursor: zoom-in;
   transition: all 0.3s ease-in-out;
@@ -2841,6 +2841,8 @@ ul.list-style-none li {
   border-radius: 0.25em;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 0px 0px;
   overflow: hidden;
+}
+.group .card {
   height: 380px !important;
 }
 

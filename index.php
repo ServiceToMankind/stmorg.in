@@ -308,7 +308,7 @@ $year = date('Y',$dateValue);
                     <div class="section group">
                         <div class="col col-3 card">
                             <div class="card-content">
-                                <img src="images\pics\theme1.jpeg" />
+                                <img src="images\svg\undraw_Graduation_ktn0.svg" height="195px" />
                                 <div class="card-description">
                                     <h2>Theme 1</h2>
                                     <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole
@@ -320,7 +320,7 @@ $year = date('Y',$dateValue);
 
                         <div class="col col-3 card">
                             <div class="card-content">
-                                <img src="images\pics\theme3.jpg" />
+                                <img src="images\svg\undraw_happy_birthday_s72n.svg" />
                                 <div class="card-description">
                                     <h2>Theme 2</h2>
                                     <p>Donate books, clothes, blankets to needy people.</p>
@@ -330,7 +330,7 @@ $year = date('Y',$dateValue);
 
                         <div class="col col-3 card">
                             <div class="card-content">
-                                <img src="images\pics\theme3.jpg" />
+                                <img src="images\svg\undraw_Birthday_cake_2wxy.svg" />
                                 <div class="card-description">
                                     <h2>Theme 3</h2>
                                     <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens
@@ -351,7 +351,8 @@ $year = date('Y',$dateValue);
             <!--donation centre-->
             <section>
                 <div>
-                    <h1>Dashboard</h1>
+                    <!-- <h1>Dashboard</h1> -->
+                    <div class="themes">DASHBOARD</div>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
@@ -558,10 +559,15 @@ $year = date('Y',$dateValue);
                 <h1>Let us be social !!</h1>
 
                 <div class="social-btns">
-                    <a class="sofab btn facebook" href="#"><i class="sofa fab fa-facebook-f"></i></a>
-                    <a class="sofab btn twitter" href="#"><i class="sofa fab fa-twitter"></i></a>
-                    <a class="sofab btn google" href="#"><i class="sofa fab fa-instagram"></i></a>
-                    <a class="sofab btn dribbble" href="#"><i class="sofa fab fa-youtube"></i></a>
+                    <a class="sofab btn facebook" href="https://facebook.com/stmorg.in"><i
+                            class="sofa fab fa-facebook-f"></i></a>
+                    <a class="sofab btn twitter" href="https:/twitter.com/STM_ORG"><i
+                            class="sofa fab fa-twitter"></i></a>
+                    <a class="sofab btn google" href="https://www.instagram.com/servicetomankindorg/"><i
+                            class="sofa fab fa-instagram"></i></a>
+                    <a class="sofab btn dribbble"
+                        href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ?view_as=subscriber"><i
+                            class="sofa fab fa-youtube"></i></a>
                 </div>
 
 
@@ -583,7 +589,7 @@ $year = date('Y',$dateValue);
         <div class="footer-ablove">
             <div class="container">
                 <div class="row">
-                    <p>Love All , Serve All !
+                    <p class="foot-p">Love All , Serve All !
                         <button class="btn btn-default">Donate Now</button>
                     </p>
                 </div>
