@@ -5,7 +5,7 @@ $date=date('Y-m-d');
 $dateValue=strtotime($date);
 $month=date('m',$dateValue);
 $year = date('Y',$dateValue);
-?>
+$day= date('d',$dateValue); ?>
 <!doctype html>
 <html lang="en">
 
@@ -18,16 +18,16 @@ $year = date('Y',$dateValue);
 
     <!--styles-->
     <!-- <link rel="stylesheet" href="css/main/style.css"> -->
-    <link rel="stylesheet" href="css/main/style2.css">
+    <link rel="stylesheet" href="css/main/style.css">
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
-    <link rel="stylesheet" href="css/main/banner1.css">
+    <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
     <link rel="stylesheet" href="css/default/css/catto.css">
     <link rel="stylesheet" href="css/defualt/css/catto.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="js/jquery1.js"></script>
+    <!-- <script src="js/jquery1.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="main-js\typed.js"></script>
     <script>
@@ -68,9 +68,9 @@ $year = date('Y',$dateValue);
             <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
                 height="50px" width="50px">
             <a class="navbar-brand" href="#">Service To Mankind</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            <button class="navbar-toggler navbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon navicon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
@@ -188,13 +188,13 @@ $year = date('Y',$dateValue);
         <br>
         <br>
 
-
+        <!-- 
         <div class="wel" style="color:skyblue; text-align: center">
             <h5>WELCOME TO SERVICE MANKIND</h5>
             <div style="color: black; text-align: center">
                 <h3>We Believe that we can save <br> more lifes with you...</h3>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- boxes -->

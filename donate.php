@@ -1,5 +1,6 @@
 <?php
 require('connection.php');
+if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID']!=''){
 $id=$_SESSION['USER_ID'];
 $res=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`id`='$id'");
 $row=mysqli_fetch_assoc($res);
@@ -7,6 +8,7 @@ $row=mysqli_fetch_assoc($res);
 $name=$row['name'];
 $mobile=$row['mobile'];
 $email=$row['mail'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -143,17 +145,13 @@ $email=$row['mail'];
                     <div class="col-md-12">
                         <div class="fund-heading text-center">
                             <h1>DONATE</h1>
-                            <!-- <h2>Charity/Nonprofit</h2> -->
-                            <h2>Note : You are donating this amount to chandhu, who is fighting in ICU and need of neuro
-                                surgery. For more details, kindly <a
-                                    href='https://milaap.org/fundraisers/support-chandu-17'>click here</a></h2>
                             <div class="typed_wrap">
-                                <!-- <h2>
+                                <h2>
                                     hi
                                     <?php
-        // if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!='') {  echo $_SESSION['USER_NAME']; } ?>,
+         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!='') {  echo $_SESSION['USER_NAME']; } ?>,
                                     <span class="typed2"></span>
-                                </h2> -->
+                                </h2>
                             </div>
                         </div>
                     </div>

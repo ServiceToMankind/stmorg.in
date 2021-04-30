@@ -121,7 +121,7 @@ body {
   background-color: #fff;
   width: 90px;
   height: 90px;
-  line-height: 90px;
+  line-height: 65px;
   margin: 0 10px;
   text-align: center;
   position: relative;
@@ -326,7 +326,7 @@ h6 {
 .typed_wrap {
   text-align: center;
   position: relative;
-  right: 20px;
+  /* right: 20px; */
 }
 .typed_wrap h2 {
   display: inline;
@@ -411,4 +411,15 @@ h6 {
 }
 .container.marketing {
   margin-top: 30px;
+}
+.foot-p {
+  font-size: unset;
+  color: #fff;
+  margin-bottom: 0px;
+}
+.navbtn {
+  background: transparent !important;
+}
+.navicon {
+  background-image: url(../../images/svg/menu.svg) !important;
 }
