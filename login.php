@@ -273,9 +273,9 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                         by,
                     success: function(result) {
                         if (result == "done") {
-                            alert("done");
+                            alert("Registration successful, please login to continue");
                         } else {
-                            alert(result);
+                            alert("Error Occured ! Please Try Again After Sometime");
                         }
                     },
                 });

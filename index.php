@@ -22,26 +22,30 @@ $day= date('d',$dateValue); ?>
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
-    <link rel="stylesheet" href="css/default/css/catto.css">
-    <link rel="stylesheet" href="css/defualt/css/catto.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <link rel="stylesheet" href="css/defualt/catto.css">
+    <link rel="stylesheet" href="css/defualt/catto.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <!-- <script src="js/jquery1.js"></script> -->
+    </script> -->
+    <script src="js/jquery1.js"></script>
+    <script src="js/jquery-3.5.1-slim.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-    <script src="main-js\typed.js"></script>
-    <script>
+    <script src="js/typed-1.1.1.js"></script>
+    <script src="main-js/typed.js"></script>
+    <!-- <script>
     alert(
         'Parts of this page are under development, only DONATE section is made active for emergency donations. Thank you for co-operating with us. - STM'
     );
-    </script>
+    </script> -->
 
     <!-- BS CSS / js-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    <link rel="stylesheet" href="css/defualt/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script>
+    </script> -->
+    <script src="js/boostrap.js"></script>
 
 
     <!-- Favicons -->
@@ -686,13 +690,16 @@ $day= date('d',$dateValue); ?>
 
 
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script> -->
+    <script src='js/boostrap-4.5.js'></script>
+    <script src='js/popper.js'></script>
+    <script src='js/tweenmax.js'></script>
     <script>
     var container = document.getElementById('container');
     var graphMeasurement = document.getElementById('graph-measurement');

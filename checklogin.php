@@ -15,7 +15,7 @@ if($check_user1 > 0){
     $row=mysqli_fetch_assoc($res1);
     $_SESSION['USER_LOGIN']='yes';
     $_SESSION['USER_ID']=$row['id'];
-    $_SESSION['CC']=$row['ccname'];
+    $_SESSION['CC']=$row['ccode'];
     $_SESSION['USER_NAME']=$row['name'];
     echo"valid";
     // if(!isset($_SESSION['WISHLIST_ID']) && $_SESSION['WISHLIST_ID']!=''){
@@ -28,14 +28,14 @@ if($check_user1 > 0){
     $row=mysqli_fetch_assoc($res2);
     $_SESSION['USER_LOGIN']='yes';
     $_SESSION['USER_ID']=$row['id'];
-    $_SESSION['CC']=$row['ccname'];
+    $_SESSION['CC']=$row['ccode'];
     $_SESSION['USER_NAME']=$row['name'];
     echo"valid";
 }elseif ($check_user3 > 0) {
     $row=mysqli_fetch_assoc($res3);
     $_SESSION['USER_LOGIN']='yes';
     $_SESSION['USER_ID']=$row['id'];
-    $_SESSION['CC']=$row['ccname'];
+    $_SESSION['CC']=$row['ccode'];
     $_SESSION['USER_NAME']=$row['name'];
     echo"valid";
 }

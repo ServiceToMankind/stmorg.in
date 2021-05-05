@@ -394,8 +394,8 @@ h6 {
   /* font-family: "Lato", sans-serif; */
 }
 .lead {
-  font-family: "Lateef", cursive;
-  font-size: 1.75rem !important;
+  /* font-family: "Lateef", cursive; */
+  font-size: 1rem !important;
   font-weight: 550px !important;
 }
 .btn-pro {
