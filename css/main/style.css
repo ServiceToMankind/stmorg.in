@@ -423,3 +423,13 @@ h6 {
 .navicon {
   background-image: url(../../images/svg/menu.svg) !important;
 }
+.dashion {
+  width: 50px;
+}
+.dahionc {
+  text-align: left !important;
+}
+.fotter-coo ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}

@@ -1087,3 +1087,33 @@
                 </div>
 
                 backup 2
+
+                <h2>Material Photo Gallery</h2>
+<p>
+	<a href="https://github.com/ettrics/material-photo-gallery" class="demo-btn">Documentation</a>
+	<a href="https://github.com/ettrics/material-photo-gallery/archive/master.zip" class="demo-btn" download="material-photo-gallery">Download</a>
+</p>
+
+<div class="m-p-g">
+	<div class="m-p-g__thumbs" data-google-image-layout data-max-height="350">
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1200/800?image=940" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1280/900?image=906" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1100/840?image=885" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1200/700?image=815" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1120/1000?image=677" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1340/820?image=401" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1240/680?image=623" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1580/780?image=339" class="m-p-g__thumbs-img" />
+	</div>
+
+	<div class="m-p-g__fullscreen"></div>
+</div>
+
+<script>
+	var elem = document.querySelector('.m-p-g');
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var gallery = new MaterialPhotoGallery(elem);
+	});
+</script>

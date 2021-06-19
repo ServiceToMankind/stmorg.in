@@ -59,17 +59,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:red !important;
+                        " href="https://covid.stmorg.in">COVID</a>
+                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="home#aboutus">About us</a>
+                        <a class="nav-link" href="index#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="home#themes">Our Themes</a>
+                        <a class="nav-link" href="index#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallary.html">Gallery</a>
+                        <a class="nav-link" href="undermaintanance.html">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
@@ -87,8 +91,8 @@
                             <i class="far fa-user-circle"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="undermaintanance.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="undermaintanance.html">Dashboard</a></li>
                             <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                         </ul>
 

@@ -18,7 +18,7 @@ $day= date('d',$dateValue); ?>
 
     <!--styles-->
     <!-- <link rel="stylesheet" href="css/main/style.css"> -->
-    <link rel="stylesheet" href="css/main/style.css">
+    <link rel="stylesheet" href="css/main/style.css?v=2">
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
@@ -31,7 +31,7 @@ $day= date('d',$dateValue); ?>
     <script src="js/jquery-3.5.1-slim.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     <script src="js/typed-1.1.1.js"></script>
-    <script src="main-js/typed.js"></script>
+    <script src="main-js/typed.js?v=1"></script>
     <!-- <script>
     alert(
         'Parts of this page are under development, only DONATE section is made active for emergency donations. Thank you for co-operating with us. - STM'
@@ -78,6 +78,10 @@ $day= date('d',$dateValue); ?>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:red !important;
+                        " href="https://covid.stmorg.in">COVID</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -88,7 +92,7 @@ $day= date('d',$dateValue); ?>
                         <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallary.html">Gallery</a>
+                        <a class="nav-link" href="undermaintanance.html">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
@@ -106,8 +110,8 @@ $day= date('d',$dateValue); ?>
                             <i class="far fa-user-circle"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="undermaintanance.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="undermaintanance.html">Dashboard</a></li>
                             <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                         </ul>
 
@@ -137,7 +141,7 @@ $day= date('d',$dateValue); ?>
                             <h1>STM</h1>
                             <!-- <h2>Charity/Nonprofit</h2> -->
                             <div class="typed_wrap">
-                                <h2>We <span class="typed"></span></h2>
+                                <h2> <span class="typed"></span></h2>
                             </div>
                         </div>
                     </div>
@@ -472,11 +476,11 @@ $day= date('d',$dateValue); ?>
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-3">
+                                                <div class="mr-3 dashion">
                                                     <span class="text-orange display-5"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                 </div>
-                                                <div>
+                                                <div class='dahionc'>
                                                     <?php 
                                         $lmraised=0;
                                     $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year' and day(`added_on`)='$day'");
@@ -493,11 +497,11 @@ $day= date('d',$dateValue); ?>
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-3">
+                                                <div class="mr-3 dashion">
                                                     <span class="text-cyan display-5"><i
                                                             class="fas fa-calendar-check"></i></span>
                                                 </div>
-                                                <div>
+                                                <div class='dahionc'>
                                                     <?php 
                                         $yraised=0;
                                     $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and  year(`added_on`)='$year'");
@@ -514,11 +518,11 @@ $day= date('d',$dateValue); ?>
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-3">
+                                                <div class="mr-3 dashion">
                                                     <span class="text-info display-5"><i
                                                             class="fas fa-award"></i></span>
                                                 </div>
-                                                <div>
+                                                <div class='dahionc'>
                                                     <span>Permanent Donors</span>
                                                     <h3 class="font-medium mb-0">104</h3>
                                                 </div>
@@ -528,11 +532,11 @@ $day= date('d',$dateValue); ?>
                                         <!-- col -->
                                         <div class="col-lg-3 col-md-6">
                                             <div class="d-flex align-items-center">
-                                                <div class="mr-3">
+                                                <div class="mr-3 dashion">
                                                     <span class="text-primary display-5"><i
                                                             class="fas fa-rupee-sign"></i></span>
                                                 </div>
-                                                <div>
+                                                <div class='dahionc'>
                                                     <?php 
                                         $traised=0;
                                     $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' ");
@@ -623,9 +627,9 @@ $day= date('d',$dateValue); ?>
                         <div class="fotter-coo">
                             <h5>IMPORTANT LINKS</h5>
                             <ul>
-                                <li><i class="fas fa-caret-right"></i> ABOUT US</li>
-                                <li><i class="fas fa-caret-right"></i> DONATE</li>
-                                <li><i class="fas fa-caret-right"></i> CONTACT US</li>
+                                <li><a href='index#aboutus'><i class="fas fa-caret-right"></i> ABOUT US</a></li>
+                                <li><a href='donate'><i class="fas fa-caret-right"></i> DONATE</a></li>
+                                <li><a href='contact'><i class="fas fa-caret-right"></i> CONTACT US</a></li>
                             </ul>
                         </div>
 
@@ -634,11 +638,12 @@ $day= date('d',$dateValue); ?>
                         <div class="fotter-coo">
                             <h5>LATEST LOGS</h5>
                             <ul>
-                                <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
+                                <!-- <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
                                 <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
                                 <li><i class="fas fa-caret-right"></i> CREATE AWARENESS IN EDUCATON</li>
                                 <li><i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li>
+                                <li><i class="fas fa-caret-right"></i> READ BLOG</li> -->
+                                <li><i class="fas fa-caret-right"></i> Coming Soon</li>
                             </ul>
                         </div>
 

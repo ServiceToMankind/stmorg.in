@@ -90,19 +90,19 @@ $email=$row['mail'];
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="home#aboutus">About us</a>
+                        <a class="nav-link" href="index#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="home#themes">Our Themes</a>
+                        <a class="nav-link" href="index#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallary.html">Gallery</a>
+                        <a class="nav-link" href="undermaintanance.html">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link" href="undermaintanance.html">Contact Us</a>
                     </li>
 
                 </ul>
@@ -167,7 +167,7 @@ $email=$row['mail'];
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post" action="Paytm_Gateway-main/Txn">
+                    <form method="post" action="paymentmanager/checkout/start">
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <div class="nd_donations_section">
