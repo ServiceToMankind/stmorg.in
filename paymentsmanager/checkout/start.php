@@ -87,12 +87,12 @@ require('../../connection.php');
             </div>
             <div class="form-group">
                 <label>Return URL:</label><br>
-                <input class="form-control" name="returnUrl" value="https://stmorg.in/paymentmanager/checkout/response"
+                <input class="form-control" name="returnUrl" value="https://stmorg.in/paymentsmanager/checkout/response"
                     placeholder="Enter the URL to which customer will be redirected (Ex. www.example.com)" />
             </div>
             <div class="form-group">
                 <label>Notify URL:</label><br>
-                <input class="form-control" name="notifyUrl" value="https://cottonseeds.org"
+                <input class="form-control" name="notifyUrl" value="https://stmorg.in"
                     placeholder="Enter the URL to get server notificaitons (Ex. www.example.com)" />
             </div>
             <button type="submi" class="btn btn-primary btn-block" value="Pay">Submit</button>
