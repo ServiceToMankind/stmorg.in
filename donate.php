@@ -167,7 +167,7 @@ $email=$row['mail'];
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post" action="paymentmanager/checkout/start">
+                    <form method="post" action="paymentsmanager/checkout/start">
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <div class="nd_donations_section">
