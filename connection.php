@@ -1,14 +1,9 @@
 <?php
 // session started here
 session_start();
-$con = mysqli_connect("localhost","root","","stm");
+$con = mysqli_connect("35.224.143.203","common","common@2001@common","stm");
 if(mysqli_connect_errno()) {  
     die("Failed to connect with MySQL: ". mysqli_connect_error());  
 }
 
-// define('SERVER_PATH', $_SERVER['DOCUMENT_ROOT'].'/ecom/');
-// define('SITE_PATH','http://localhost/ecom/');
-
-// define('PRODUCT_IMAGE_SERVER_PATH', SERVER_PATH.'media/product/');
-// define('PRODUCT_IMAGEI_SITE_PATH', SITE_PATH.'media/product/');
 ?>
