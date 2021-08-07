@@ -3,7 +3,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   --height: 240;
   /* Minimal row height */
   --ratio: 1;
@@ -12,8 +12,8 @@
 
 .item {
   -webkit-box-flex: calc(var(--height) / var(--ratio));
-      -ms-flex: calc(var(--height) / var(--ratio));
-          flex: calc(var(--height) / var(--ratio));
+  -ms-flex: calc(var(--height) / var(--ratio));
+  flex: calc(var(--height) / var(--ratio));
   min-width: calc(var(--height) / var(--ratio) * 1px);
   margin: 2px;
   font-size: 0;
@@ -26,8 +26,8 @@
 
 .placeholder {
   -webkit-box-flex: 99999;
-      -ms-flex-positive: 99999;
-          flex-grow: 99999;
+  -ms-flex-positive: 99999;
+  flex-grow: 99999;
 }
 
 /* Shine */
@@ -50,13 +50,20 @@
 }
 
 .headingdate {
-  width: 100vh;
+  width: 100vw;
   text-align: center;
   padding: 20px 0px;
 }
 
 .headingdate h3 {
-  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: #1e1e1e;
+  letter-spacing: 1.75px;
+  line-height: 38px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: "Raleway", sans-serif;
 }
 
 main {
