@@ -99,10 +99,10 @@ $email=$row['mail'];
                         <a class="nav-link" href="index#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="undermaintanance.html">Gallery</a>
+                        <a class="nav-link" href="gallary">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="undermaintanance.html">Contact Us</a>
+                        <a class="nav-link" href="contact">Contact Us</a>
                     </li>
 
                 </ul>

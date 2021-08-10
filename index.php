@@ -92,7 +92,7 @@ $day= date('d',$dateValue); ?>
                         <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="undermaintanance.html">Gallery</a>
+                        <a class="nav-link" href="gallary">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
