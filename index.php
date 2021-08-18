@@ -99,34 +99,35 @@ $day= date('d',$dateValue); ?>
                     </li>
 
                 </ul>
-                <div class="login">
-                    <?php
+
+            </div>
+            <div class="login">
+                <?php
         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
 
-                    <div class="dropdown">
-                        Hi <?php echo $_SESSION['USER_NAME']; ?>
-                        <button class="btn btn-secondary dropdown-toggle btn-pro" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-user-circle"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="undermaintanance.html">Profile</a></li>
-                            <li><a class="dropdown-item" href="undermaintanance.html">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
-                        </ul>
+                <div class="dropdown">
+                    Hi <?php echo $_SESSION['USER_NAME']; ?>
+                    <button class="btn btn-secondary dropdown-toggle btn-pro" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="far fa-user-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="undermaintanance.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="undermaintanance.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
+                    </ul>
 
-                    </div>
+                </div>
 
 
-                    <?php
+                <?php
           
         }else{
         ?>
-                    <h5><a href="login">login <i class="fas fa-sign-in-alt"></i></a></h5>
-                    <?php 
+                <h5><a href="login">login <i class="fas fa-sign-in-alt"></i></a></h5>
+                <?php 
         } ?>
 
-                </div>
             </div>
         </nav>
     </header>

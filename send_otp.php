@@ -1,4 +1,8 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+  
+require 'vendor/autoload.php';
 require('connection.php');
 require('functions.php');
 
@@ -18,7 +22,7 @@ die();
 	$_SESSION['EMAIL_OTP']=$otp;
 	$html="hey, $otp is your otp!";
 
-    include('smtp/PHPMailerAutoload.php');
+    // include('smtp/PHPMailerAutoload.php');
 	$mail=new PHPMailer(true);
 	$mail->isSMTP();
 	$mail->Host="smtp.gmail.com";
