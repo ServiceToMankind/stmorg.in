@@ -1,8 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-  
-require 'vendor/autoload.php';
 require('connection.php');
 require('functions.php');
 
@@ -20,33 +16,39 @@ die();
 }
 	$otp=rand(111111,999999);
 	$_SESSION['EMAIL_OTP']=$otp;
-	$html="hey, $otp is your otp!";
+
 
     // include('smtp/PHPMailerAutoload.php');
-	$mail=new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->Host="smtp.gmail.com";
-	$mail->Port=587;
-	$mail->SMTPSecure="tls";
-	$mail->SMTPAuth=true;
-	$mail->Username="otp.stm@gmail.com";
-	$mail->Password="otpmankind004";
-	$mail->SetFrom("otp.stm@gmail.com");
-	$mail->addAddress("$email");
+include('smtp/PHPMailerAutoload.php');
+$html="hey, $otp is your otp!";
+echo smtp_mailer('user_email_id','OTP MASTER',$html);
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->SMTPDebug  = 3;
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
 	$mail->IsHTML(true);
-	$mail->Subject="Otp Master";
-	$mail->Body=$html;
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "otp.stm@gmail.com";
+	$mail->Password = "otpmankind004";
+	$mail->SetFrom("otp.stm@gmail.com");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
 	$mail->SMTPOptions=array('ssl'=>array(
 		'verify_peer'=>false,
 		'verify_peer_name'=>false,
 		'allow_self_signed'=>false
 	));
-	if($mail->send()){
-		echo "done";
+	if(!$mail->Send()){
+		echo $mail->ErrorInfo;
 	}else{
-		//echo "Error occur";
+		return 'Sent';
 	}
-	// echo $msg;
+}
 
 
 }
