@@ -20,7 +20,7 @@ die();
 
     // include('smtp/PHPMailerAutoload.php');
 // include('smtp/PHPMailerAutoload.php');
-	$url='http://cottonmail.rf.gd/mailer.php?html='.$html.'&to='.$to;
+	$url='http://cottonmail.rf.gd/mailer.php?otp='.$otp.'&to='.$email;
 	$ch=curl_init();
 	curl_setopt($ch,CURLOPT_URL,$url);
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
