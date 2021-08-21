@@ -182,7 +182,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                 type: "post",
                 data: "email=" + email + "&type=email",
                 success: function(result) {
-                    if (result == "done") {
+                    if (result == "Sent") {
                         jQuery("#email").attr("disabled", false);
                         jQuery(".email_verify_ootp").show();
                         jQuery("#email_otp").show();
