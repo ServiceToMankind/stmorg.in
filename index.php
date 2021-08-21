@@ -18,7 +18,7 @@ $day= date('d',$dateValue); ?>
 
     <!--styles-->
     <!-- <link rel="stylesheet" href="css/main/style.css"> -->
-    <link rel="stylesheet" href="css/main/style.css?v=2">
+    <link rel="stylesheet" href="css/main/style.css?v=2.1">
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
