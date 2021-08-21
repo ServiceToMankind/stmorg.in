@@ -433,3 +433,9 @@ h6 {
   color: #ffffff;
   text-decoration: none;
 }
+.navbar {
+  justify-content: none !important;
+}
+.navbtn {
+  margin: 0 0 0 auto;
+}

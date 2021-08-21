@@ -39,7 +39,7 @@ $day= date('d',$dateValue); ?>
     </script> -->
 
     <!-- BS CSS / js-->
-    <link rel="stylesheet" href="css/defualt/bootstrap.css" />
+    <link rel="stylesheet" href="css/defualt/bootstrap.css?v=1" />
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -71,7 +71,7 @@ $day= date('d',$dateValue); ?>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
             <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
                 height="50px" width="50px">
-            <a class="navbar-brand" href="#">Service To Mankind</a>
+            <!-- <a class="navbar-brand" href="#">Service To Mankind</a> -->
             <button class="navbar-toggler navbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon navicon"></span>
@@ -101,7 +101,7 @@ $day= date('d',$dateValue); ?>
                 </ul>
 
             </div>
-            <div class="login">
+            <span class="login">
                 <?php
         if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
 
@@ -124,11 +124,11 @@ $day= date('d',$dateValue); ?>
           
         }else{
         ?>
-                <h5><a href="login">login <i class="fas fa-sign-in-alt"></i></a></h5>
+                <h5><a href="login"><i class="far fa-user-circle"></i></a></h5>
                 <?php 
         } ?>
 
-            </div>
+            </span>
         </nav>
     </header>
 

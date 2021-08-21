@@ -3249,7 +3249,7 @@ tbody.collapse.show {
   -ms-flex-align: center;
       align-items: center;
   -ms-flex-pack: justify;
-      justify-content: space-between;
+      /* justify-content: space-between; */
   padding: 0.5rem 1rem;
 }
 
@@ -3262,7 +3262,7 @@ tbody.collapse.show {
   -ms-flex-align: center;
       align-items: center;
   -ms-flex-pack: justify;
-      justify-content: space-between;
+      /* justify-content: space-between; */
 }
 
 .navbar-brand {
