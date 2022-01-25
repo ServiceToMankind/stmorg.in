@@ -2,7 +2,7 @@
 require('connection.php');
 require('functions.php');
 
-$name=get_safe_value($con,$_POST['username']);
+$name=get_safe_value($con,$_POST['email']);
 $password=get_safe_value($con,$_POST['pass']);
 $res=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`name`='$name' and `users`.`password`='$password'");
 $check_user=mysqli_num_rows($res);
