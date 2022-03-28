@@ -47,7 +47,7 @@
     <script>
     window.onload = function() {
         window.location.href =
-            'https://docs.google.com/forms/d/e/1FAIpQLSdUY4aWwEwItkPFbMiN4gRIRgB8R6V8wpoIxOBQdva2k_E53g/viewform?usp=sf_link';
+            'https://docs.google.com/forms/d/e/1FAIpQLScRQs89R_SED9zCgB3lUVh1gq2HuKhGoNnIlYaN66lNR1hsBg/viewform';
     }
     </script>
 </body>
