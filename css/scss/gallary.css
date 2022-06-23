@@ -1,0 +1,65 @@
+.grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  --height: 240;
+  /* Minimal row height */
+  --ratio: 1;
+  /* Default aspect ratio for photos that are not loaded yet */
+}
+
+.item {
+  -webkit-box-flex: calc(var(--height) / var(--ratio));
+      -ms-flex: calc(var(--height) / var(--ratio));
+          flex: calc(var(--height) / var(--ratio));
+  min-width: calc(var(--height) / var(--ratio) * 1px);
+  margin: 2px;
+  font-size: 0;
+}
+
+.item img {
+  width: 100%;
+  max-width: 100vw;
+}
+
+.placeholder {
+  -webkit-box-flex: 99999;
+      -ms-flex-positive: 99999;
+          flex-grow: 99999;
+}
+
+/* Shine */
+.shine {
+  height: 20px;
+  width: 80%;
+  background-image: radial-gradient(farthest-side at 50% -50%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  position: relative;
+  margin: 0 auto;
+}
+
+.shine::before {
+  height: 1px;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75) 50%, rgba(0, 0, 0, 0));
+}
+
+.headingdate {
+  width: 100vh;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.headingdate h3 {
+  font-family: sans-serif;
+}
+
+main {
+  margin-top: 80px;
+}
+/*# sourceMappingURL=gallary.css.map */

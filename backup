@@ -49,3 +49,1071 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+  backup 1
+   <div class="row">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="card card-hover">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Email Campaigns</h4>
+                                        <h5 class="card-subtitle">Overview of Email Campaigns</h5>
+                                    </div>
+                                    <div class="ml-auto align-items-center">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected="">Monthly</option>
+                                                <option value="1">Daily</option>
+                                                <option value="2">Weekly</option>
+                                                <option value="3">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- column -->
+                                <div class="row mt-5">
+                                    <!-- column -->
+                                    <div class="col-lg-6">
+                                        <div id="visitor" style="
+                          height: 290px;
+                          width: 100%;
+                          max-height: 290px;
+                          position: relative;
+                        " class="mt-3 c3">
+                                            <!-- <svg
+                          width="647.2000122070312"
+                          height="290"
+                          style="overflow: hidden"
+                        >
+                          <defs>
+                            <clipPath id="c3-1608195626958-clip">
+                              <rect
+                                width="647.2000122070312"
+                                height="266"
+                              ></rect>
+                            </clipPath>
+                            <clipPath id="c3-1608195626958-clip-xaxis">
+                              <rect
+                                x="-31"
+                                y="-20"
+                                width="709.2000122070312"
+                                height="40"
+                              ></rect>
+                            </clipPath>
+                            <clipPath id="c3-1608195626958-clip-yaxis">
+                              <rect
+                                x="-29"
+                                y="-4"
+                                width="20"
+                                height="290"
+                              ></rect>
+                            </clipPath>
+                            <clipPath id="c3-1608195626958-clip-grid">
+                              <rect
+                                width="647.2000122070312"
+                                height="266"
+                              ></rect>
+                            </clipPath>
+                            <clipPath id="c3-1608195626958-clip-subchart">
+                              <rect width="647.2000122070312"></rect>
+                            </clipPath>
+                          </defs>
+                          <g transform="translate(0.5,4.5)">
+                            <text
+                              class="c3-text c3-empty"
+                              text-anchor="middle"
+                              dominant-baseline="middle"
+                              x="323.6000061035156"
+                              y="133"
+                              style="opacity: 0"
+                            ></text>
+                            <rect
+                              class="c3-zoom-rect"
+                              width="647.2000122070312"
+                              height="266"
+                              style="opacity: 0"
+                            ></rect>
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip)"
+                              class="c3-regions"
+                              style="visibility: hidden"
+                            ></g>
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-grid)"
+                              class="c3-grid"
+                              style="visibility: hidden"
+                            >
+                              <g class="c3-xgrid-focus">
+                                <line
+                                  class="c3-xgrid-focus"
+                                  x1="-10"
+                                  x2="-10"
+                                  y1="0"
+                                  y2="266"
+                                  style="visibility: hidden"
+                                ></line>
+                              </g>
+                            </g>
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip)"
+                              class="c3-chart"
+                            >
+                              <g
+                                class="c3-event-rects c3-event-rects-single"
+                                style="fill-opacity: 0"
+                              >
+                                <rect
+                                  class="c3-event-rect c3-event-rect-0"
+                                  x="0.399993896484375"
+                                  y="0"
+                                  width="647.2000122070312"
+                                  height="266"
+                                ></rect>
+                              </g>
+                              <g class="c3-chart-bars">
+                                <g
+                                  class="c3-chart-bar c3-target c3-target-Open"
+                                  style="pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Open c3-bars c3-bars-Open"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-bar c3-target c3-target-Clicked"
+                                  style="pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Clicked c3-bars c3-bars-Clicked"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-bar c3-target c3-target-Un-opened"
+                                  style="pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Un-opened c3-bars c3-bars-Un-opened"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-bar c3-target c3-target-Bounced"
+                                  style="pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Bounced c3-bars c3-bars-Bounced"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                              </g>
+                              <g class="c3-chart-lines">
+                                <g
+                                  class="c3-chart-line c3-target c3-target-Open"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Open c3-lines c3-lines-Open"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Open c3-areas c3-areas-Open"
+                                  ></g>
+                                  <g
+                                    class="c3-selected-circles c3-selected-circles-Open"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Open c3-circles c3-circles-Open"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-line c3-target c3-target-Clicked"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Clicked c3-lines c3-lines-Clicked"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Clicked c3-areas c3-areas-Clicked"
+                                  ></g>
+                                  <g
+                                    class="c3-selected-circles c3-selected-circles-Clicked"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Clicked c3-circles c3-circles-Clicked"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-line c3-target c3-target-Un-opened"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Un-opened c3-lines c3-lines-Un-opened"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Un-opened c3-areas c3-areas-Un-opened"
+                                  ></g>
+                                  <g
+                                    class="c3-selected-circles c3-selected-circles-Un-opened"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Un-opened c3-circles c3-circles-Un-opened"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                                <g
+                                  class="c3-chart-line c3-target c3-target-Bounced"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Bounced c3-lines c3-lines-Bounced"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Bounced c3-areas c3-areas-Bounced"
+                                  ></g>
+                                  <g
+                                    class="c3-selected-circles c3-selected-circles-Bounced"
+                                  ></g>
+                                  <g
+                                    class="c3-shapes c3-shapes-Bounced c3-circles c3-circles-Bounced"
+                                    style="cursor: pointer"
+                                  ></g>
+                                </g>
+                              </g>
+                              <g
+                                class="c3-chart-arcs"
+                                transform="translate(323.6000061035156,128)"
+                              >
+                                <text
+                                  class="c3-chart-arcs-title"
+                                  style="text-anchor: middle; opacity: 1"
+                                >
+                                  Ratio
+                                </text>
+                                <g
+                                  class="c3-chart-arc c3-target c3-target-Open"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Open c3-arcs c3-arcs-Open"
+                                  >
+                                    <path
+                                      class="c3-shape c3-shape c3-arc c3-arc-Open"
+                                      transform=""
+                                      style="
+                                        fill: rgb(64, 196, 255);
+                                        cursor: pointer;
+                                      "
+                                      d="M7.445852538815907e-15,-121.6A121.6,121.6 0 0,1 52.76026267669507,109.55781433693416L37.574331807580535,78.02390396034949A86.6,86.6 0 0,0 5.302720640308039e-15,-86.6Z"
+                                    ></path>
+                                  </g>
+                                  <text
+                                    dy=".35em"
+                                    class=""
+                                    transform="translate(94.8409872970478,-21.646836455270265)"
+                                    style="
+                                      opacity: 1;
+                                      text-anchor: middle;
+                                      pointer-events: none;
+                                    "
+                                  ></text>
+                                </g>
+                                <g
+                                  class="c3-chart-arc c3-target c3-target-Clicked"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Clicked c3-arcs c3-arcs-Clicked"
+                                  >
+                                    <path
+                                      class="c3-shape c3-shape c3-arc c3-arc-Clicked"
+                                      transform=""
+                                      style="
+                                        fill: rgb(41, 97, 255);
+                                        cursor: pointer;
+                                      "
+                                      d="M-95.07070826811243,-75.81635990602197A121.6,121.6 0 0,1 -2.233755761644772e-14,-121.6L-1.5908161920924117e-14,-86.6A86.6,86.6 0 0,0 -67.70660638173139,-53.99421684096631Z"
+                                    ></path>
+                                  </g>
+                                  <text
+                                    dy=".35em"
+                                    class=""
+                                    transform="translate(-42.20821014135607,-87.64625146954732)"
+                                    style="
+                                      opacity: 1;
+                                      text-anchor: middle;
+                                      pointer-events: none;
+                                    "
+                                  ></text>
+                                </g>
+                                <g
+                                  class="c3-chart-arc c3-target c3-target-Un-opened"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Un-opened c3-arcs c3-arcs-Un-opened"
+                                  >
+                                    <path
+                                      class="c3-shape c3-shape c3-arc c3-arc-Un-opened"
+                                      transform=""
+                                      style="
+                                        fill: rgb(255, 130, 28);
+                                        cursor: pointer;
+                                      "
+                                      d="M52.76026267669507,109.55781433693416A121.6,121.6 0 0,1 -111.81457714225638,47.79184384911712L-79.63110510295562,34.03596774122979A86.6,86.6 0 0,0 37.574331807580535,78.02390396034949Z"
+                                    ></path>
+                                  </g>
+                                  <text
+                                    dy=".35em"
+                                    class=""
+                                    transform="translate(-34.18174288663301,91.07692821583363)"
+                                    style="
+                                      opacity: 1;
+                                      text-anchor: middle;
+                                      pointer-events: none;
+                                    "
+                                  ></text>
+                                </g>
+                                <g
+                                  class="c3-chart-arc c3-target c3-target-Bounced"
+                                >
+                                  <g
+                                    class="c3-shapes c3-shapes-Bounced c3-arcs c3-arcs-Bounced"
+                                  >
+                                    <path
+                                      class="c3-shape c3-shape c3-arc c3-arc-Bounced"
+                                      transform=""
+                                      style="
+                                        fill: rgb(126, 116, 251);
+                                        cursor: pointer;
+                                      "
+                                      d="M-111.81457714225638,47.79184384911712A121.6,121.6 0 0,1 -95.07070826811243,-75.81635990602197L-67.70660638173139,-53.99421684096631A86.6,86.6 0 0,0 -79.63110510295562,34.03596774122979Z"
+                                    ></path>
+                                  </g>
+                                  <text
+                                    dy=".35em"
+                                    class=""
+                                    transform="translate(-96.3995928247847,-13.058212098741512)"
+                                    style="
+                                      opacity: 1;
+                                      text-anchor: middle;
+                                      pointer-events: none;
+                                    "
+                                  ></text>
+                                </g>
+                              </g>
+                              <g class="c3-chart-texts">
+                                <g
+                                  class="c3-chart-text c3-target c3-target-Open"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g class="c3-texts c3-texts-Open"></g>
+                                </g>
+                                <g
+                                  class="c3-chart-text c3-target c3-target-Clicked"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g class="c3-texts c3-texts-Clicked"></g>
+                                </g>
+                                <g
+                                  class="c3-chart-text c3-target c3-target-Un-opened"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g class="c3-texts c3-texts-Un-opened"></g>
+                                </g>
+                                <g
+                                  class="c3-chart-text c3-target c3-target-Bounced"
+                                  style="opacity: 1; pointer-events: none"
+                                >
+                                  <g class="c3-texts c3-texts-Bounced"></g>
+                                </g>
+                              </g>
+                            </g>
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-grid)"
+                              class="c3-grid c3-grid-lines"
+                            >
+                              <g class="c3-xgrid-lines"></g>
+                              <g class="c3-ygrid-lines"></g>
+                            </g>
+                            <g
+                              class="c3-axis c3-axis-x"
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-xaxis)"
+                              transform="translate(0,266)"
+                              style="visibility: visible; opacity: 0"
+                            >
+                              <text
+                                class="c3-axis-x-label"
+                                transform=""
+                                style="text-anchor: end"
+                                x="647.2000122070312"
+                                dx="-0.5em"
+                                dy="-0.5em"
+                              ></text>
+                              <g
+                                class="tick"
+                                transform="translate(324, 0)"
+                                style="opacity: 1"
+                              >
+                                <line x1="0" x2="0" y2="6"></line>
+                                <text
+                                  x="0"
+                                  y="9"
+                                  transform=""
+                                  style="text-anchor: middle; display: block"
+                                >
+                                  <tspan x="0" dy=".71em" dx="0">0</tspan>
+                                </text>
+                              </g>
+                              <path
+                                class="domain"
+                                d="M0,6V0H647.2000122070312V6"
+                              ></path>
+                            </g>
+                            <g
+                              class="c3-axis c3-axis-y"
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-yaxis)"
+                              transform="translate(0,0)"
+                              style="visibility: visible; opacity: 0"
+                            >
+                              <text
+                                class="c3-axis-y-label"
+                                transform="rotate(-90)"
+                                style="text-anchor: end"
+                                x="0"
+                                dx="-0.5em"
+                                dy="1.2em"
+                              ></text>
+                              <g
+                                class="tick"
+                                transform="translate(0,244)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">15</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,208)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">20</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,171)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">25</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,134)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">30</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,97)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">35</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,60)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">40</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,24)"
+                                style="opacity: 1"
+                              >
+                                <line x2="-6"></line>
+                                <text x="-9" y="0" style="text-anchor: end">
+                                  <tspan x="-9" dy="3">45</tspan>
+                                </text>
+                              </g>
+                              <path class="domain" d="M-6,1H0V266H-6"></path>
+                            </g>
+                            <g
+                              class="c3-axis c3-axis-y2"
+                              transform="translate(647.2000122070312,0)"
+                              style="visibility: hidden; opacity: 0"
+                            >
+                              <text
+                                class="c3-axis-y2-label"
+                                transform="rotate(-90)"
+                                style="text-anchor: end"
+                                x="0"
+                                dx="-0.5em"
+                                dy="-0.5em"
+                              ></text>
+                              <g
+                                class="tick"
+                                transform="translate(0,266)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,240)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.1</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,213)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.2</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,187)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.3</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,160)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.4</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,134)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.5</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,107)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.6</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,81)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.7</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,54)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.8</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,28)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">0.9</tspan>
+                                </text>
+                              </g>
+                              <g
+                                class="tick"
+                                transform="translate(0,1)"
+                                style="opacity: 1"
+                              >
+                                <line x2="6" y2="0"></line>
+                                <text x="9" y="0" style="text-anchor: start">
+                                  <tspan x="9" dy="3">1</tspan>
+                                </text>
+                              </g>
+                              <path class="domain" d="M6,1H0V266H6"></path>
+                            </g>
+                          </g>
+                          <g
+                            transform="translate(0.5,290.5)"
+                            style="visibility: hidden"
+                          >
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-subchart)"
+                              class="c3-chart"
+                            >
+                              <g class="c3-chart-bars"></g>
+                              <g class="c3-chart-lines"></g>
+                            </g>
+                            <g
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip)"
+                              class="c3-brush"
+                              style="
+                                pointer-events: all;
+                                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                              "
+                            >
+                              <rect
+                                class="background"
+                                x="0"
+                                width="376.3999938964844"
+                                style="visibility: hidden; cursor: crosshair"
+                              ></rect>
+                              <rect
+                                class="extent"
+                                x="0"
+                                width="0"
+                                style="cursor: move"
+                              ></rect>
+                              <g
+                                class="resize e"
+                                transform="translate(0,0)"
+                                style="cursor: ew-resize; display: none"
+                              >
+                                <rect
+                                  x="-3"
+                                  width="6"
+                                  height="6"
+                                  style="visibility: hidden"
+                                ></rect>
+                              </g>
+                              <g
+                                class="resize w"
+                                transform="translate(0,0)"
+                                style="cursor: ew-resize; display: none"
+                              >
+                                <rect
+                                  x="-3"
+                                  width="6"
+                                  height="6"
+                                  style="visibility: hidden"
+                                ></rect>
+                              </g>
+                            </g>
+                            <g
+                              class="c3-axis-x"
+                              transform="translate(0,0)"
+                              clip-path="url(https://wrappixel.com/demos/admin-templates/xtreme-admin/html/ltr/index.html#c3-1608195626958-clip-xaxis)"
+                              style="visibility: hidden; opacity: 0"
+                            >
+                              <g
+                                class="tick"
+                                transform="translate(324, 0)"
+                                style="opacity: 1"
+                              >
+                                <line x1="0" x2="0" y2="6"></line>
+                                <text
+                                  x="0"
+                                  y="9"
+                                  transform=""
+                                  style="text-anchor: middle; display: block"
+                                >
+                                  <tspan x="0" dy=".71em" dx="0">0</tspan>
+                                </text>
+                              </g>
+                              <path
+                                class="domain"
+                                d="M0,6V0H647.2000122070312V6"
+                              ></path>
+                            </g>
+                          </g>
+                          <g transform="translate(0,270)">
+                            <g
+                              class="c3-legend-item c3-legend-item-Open"
+                              style="visibility: hidden; cursor: pointer"
+                            >
+                              <text x="14" y="9" style="pointer-events: none">
+                                Open
+                              </text>
+                              <rect
+                                class="c3-legend-item-event"
+                                x="0"
+                                y="-5"
+                                width="0"
+                                height="0"
+                                style="fill-opacity: 0"
+                              ></rect>
+                              <line
+                                class="c3-legend-item-tile"
+                                x1="-2"
+                                y1="4"
+                                x2="8"
+                                y2="4"
+                                stroke-width="10"
+                                style="
+                                  stroke: rgb(64, 196, 255);
+                                  pointer-events: none;
+                                "
+                              ></line>
+                            </g>
+                            <g
+                              class="c3-legend-item c3-legend-item-Clicked"
+                              style="visibility: hidden; cursor: pointer"
+                            >
+                              <text x="14" y="9" style="pointer-events: none">
+                                Clicked
+                              </text>
+                              <rect
+                                class="c3-legend-item-event"
+                                x="0"
+                                y="-5"
+                                width="0"
+                                height="0"
+                                style="fill-opacity: 0"
+                              ></rect>
+                              <line
+                                class="c3-legend-item-tile"
+                                x1="-2"
+                                y1="4"
+                                x2="8"
+                                y2="4"
+                                stroke-width="10"
+                                style="
+                                  stroke: rgb(41, 97, 255);
+                                  pointer-events: none;
+                                "
+                              ></line>
+                            </g>
+                            <g
+                              class="c3-legend-item c3-legend-item-Un-opened"
+                              style="visibility: hidden; cursor: pointer"
+                            >
+                              <text x="14" y="9" style="pointer-events: none">
+                                Un-opened
+                              </text>
+                              <rect
+                                class="c3-legend-item-event"
+                                x="0"
+                                y="-5"
+                                width="0"
+                                height="0"
+                                style="fill-opacity: 0"
+                              ></rect>
+                              <line
+                                class="c3-legend-item-tile"
+                                x1="-2"
+                                y1="4"
+                                x2="8"
+                                y2="4"
+                                stroke-width="10"
+                                style="
+                                  stroke: rgb(255, 130, 28);
+                                  pointer-events: none;
+                                "
+                              ></line>
+                            </g>
+                            <g
+                              class="c3-legend-item c3-legend-item-Bounced"
+                              style="visibility: hidden; cursor: pointer"
+                            >
+                              <text x="14" y="9" style="pointer-events: none">
+                                Bounced
+                              </text>
+                              <rect
+                                class="c3-legend-item-event"
+                                x="0"
+                                y="-5"
+                                width="0"
+                                height="0"
+                                style="fill-opacity: 0"
+                              ></rect>
+                              <line
+                                class="c3-legend-item-tile"
+                                x1="-2"
+                                y1="4"
+                                x2="8"
+                                y2="4"
+                                stroke-width="10"
+                                style="
+                                  stroke: rgb(126, 116, 251);
+                                  pointer-events: none;
+                                "
+                              ></line>
+                            </g>
+                          </g>
+                          <text
+                            class="c3-title"
+                            x="323.6000061035156"
+                            y="0"
+                          ></text>
+                        </svg> -->
+                                            <div class="c3-tooltip-container" style="
+                            position: absolute;
+                            pointer-events: none;
+                            display: none;
+                          "></div>
+                                        </div>
+                                    </div>
+                                    <!-- column -->
+                                    <div class="col-lg-6">
+                                        <h1 class="display-6 mb-0 font-medium">45%</h1>
+                                        <span>Open Ratio for Campaigns</span>
+                                        <ul class="list-style-none">
+                                            <li class="mt-3 d-flex align-items-center">
+                                                <i class="fas fa-circle mr-2 text-cyan font-12"></i>
+                                                Open Ratio <span class="ml-auto">45%</span>
+                                            </li>
+                                            <li class="mt-3 d-flex align-items-center">
+                                                <i class="fas fa-circle mr-1 text-info font-12"></i>
+                                                Clicked Ratio <span class="ml-auto">14%</span>
+                                            </li>
+                                            <li class="mt-3 d-flex align-items-center">
+                                                <i class="fas fa-circle mr-1 text-orange font-12"></i>
+                                                Un-Open Ratio <span class="ml-auto">25%</span>
+                                            </li>
+                                            <li class="mt-3 d-flex align-items-center">
+                                                <i class="fas fa-circle mr-1 text-primary font-12"></i>
+                                                Bounced Ratio <span class="ml-auto">17%</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- column -->
+                                <!-- col -->
+
+                                <!-- col -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xl-6">
+                        <div class="card card-hover">
+                            <div class="card-body" style="
+                    background: url(../../assets/images/background/active-bg.png)
+                      no-repeat top center;
+                  ">
+                                <div class="pt-3 text-center">
+                                    <i class="mdi mdi-file-chart display-4 text-orange d-block"></i>
+                                    <span class="display-4 d-block font-medium">368</span>
+                                    <span>Active Visitors on Site</span>
+                                    <!-- Progress -->
+                                    <div class="progress mt-5" style="height: 4px">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 15%"
+                                            aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-orange" role="progressbar" style="width: 30%"
+                                            aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 65%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <!-- Progress -->
+                                    <!-- row -->
+                                    <div class="row mt-4 mb-3">
+                                        <!-- column -->
+                                        <div class="col-4 border-right text-left">
+                                            <h3 class="mb-0 font-medium">60%</h3>
+                                            Desktop
+                                        </div>
+                                        <!-- column -->
+                                        <div class="col-4 border-right">
+                                            <h3 class="mb-0 font-medium">28%</h3>
+                                            Mobile
+                                        </div>
+                                        <!-- column -->
+                                        <div class="col-4 text-right">
+                                            <h3 class="mb-0 font-medium">12%</h3>
+                                            Tablet
+                                        </div>
+                                    </div>
+                                    <a href="javascript:void(0)"
+                                        class="waves-effect waves-light mt-3 btn btn-lg btn-info accent-4 mb-3">View
+                                        More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                backup 1
+
+                backup 2
+
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-4">
+                        <div class="card bg-info text-white card-hover">
+                            <div class="card-body">
+                                <h4 class="card-title">Revenue Statistics</h4>
+                                <div class="d-flex align-items-center mt-4">
+                                    <div class="" id="ravenue">
+                                        <canvas width="94" height="100" style="
+                          display: inline-block;
+                          width: 94px;
+                          height: 100px;
+                          vertical-align: top;
+                        "></canvas>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <h3 class="font-medium white-text mb-0">$351</h3>
+                                        <span class="white-text op-5">Jan 10 - Jan 20</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                    <div class="col-lg-4">
+                        <div class="card bg-cyan text-white card-hover">
+                            <div class="card-body">
+                                <h4 class="card-title">Page Views</h4>
+                                <h3 class="white-text mb-0">
+                                    <i class="ti-arrow-up"></i> 6548
+                                </h3>
+                            </div>
+                            <div class="mt-3" id="views">
+                                <canvas width="687" height="72" style="
+                      display: inline-block;
+                      width: 687.2px;
+                      height: 72px;
+                      vertical-align: top;
+                    "></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                    <div class="col-lg-4">
+                        <div class="card card-hover">
+                            <div class="card-body">
+                                <h4 class="card-title">Bounce Rate</h4>
+                                <div class="d-flex no-block align-items-center mt-4">
+                                    <div class="">
+                                        <h3 class="font-medium mb-0">56.33%</h3>
+                                        <span class="">Total Bounce</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div style="max-width: 150px; height: 60px" class="mb-5">
+                                            <div class="chartjs-size-monitor" style="
+                            position: absolute;
+                            inset: 0px;
+                            overflow: hidden;
+                            pointer-events: none;
+                            visibility: hidden;
+                            z-index: -1;
+                          ">
+                                                <div class="chartjs-size-monitor-expand" style="
+                              position: absolute;
+                              left: 0;
+                              top: 0;
+                              right: 0;
+                              bottom: 0;
+                              overflow: hidden;
+                              pointer-events: none;
+                              visibility: hidden;
+                              z-index: -1;
+                            ">
+                                                    <div style="
+                                position: absolute;
+                                width: 1000000px;
+                                height: 1000000px;
+                                left: 0;
+                                top: 0;
+                              "></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink" style="
+                              position: absolute;
+                              left: 0;
+                              top: 0;
+                              right: 0;
+                              bottom: 0;
+                              overflow: hidden;
+                              pointer-events: none;
+                              visibility: hidden;
+                              z-index: -1;
+                            ">
+                                                    <div style="
+                                position: absolute;
+                                width: 200%;
+                                height: 200%;
+                                left: 0;
+                                top: 0;
+                              "></div>
+                                                </div>
+                                            </div>
+                                            <canvas id="bouncerate" width="187" height="93"
+                                                class="chartjs-render-monitor"
+                                                style="display: block; height: 75px; width: 150px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                backup 2
+
+                <h2>Material Photo Gallery</h2>
+<p>
+	<a href="https://github.com/ettrics/material-photo-gallery" class="demo-btn">Documentation</a>
+	<a href="https://github.com/ettrics/material-photo-gallery/archive/master.zip" class="demo-btn" download="material-photo-gallery">Download</a>
+</p>
+
+<div class="m-p-g">
+	<div class="m-p-g__thumbs" data-google-image-layout data-max-height="350">
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1200/800?image=940" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1280/900?image=906" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1100/840?image=885" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1200/700?image=815" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1120/1000?image=677" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1340/820?image=401" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1240/680?image=623" class="m-p-g__thumbs-img" />
+		<img src="https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg" data-full="http://unsplash.it/1580/780?image=339" class="m-p-g__thumbs-img" />
+	</div>
+
+	<div class="m-p-g__fullscreen"></div>
+</div>
+
+<script>
+	var elem = document.querySelector('.m-p-g');
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var gallery = new MaterialPhotoGallery(elem);
+	});
+</script>

@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Lateef&family=Merienda:wght@700&display=swap");
+:root {
+  --primary: #0984e3;
+  --secondary: #8e44ad;
+}
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth !important;
+}
 body {
   padding: 0 !important;
   margin: 0;
@@ -5,10 +15,14 @@ body {
 .themes {
   text-align: center;
   font-weight: bold;
-  padding-bottom: 20px;
+  margin-bottom: 2.5rem;
   padding-top: 0px;
-  margin-top: -28px;
+  margin-top: -5px;
   font-size: 40px;
+}
+.botton {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
 }
 .wellc {
   text-align: center;
@@ -38,21 +52,108 @@ body {
 .contact-index h2 a {
   background-color: #0984e3;
 }
+/* social icons */
+/* @import "//codepen.io/chrisdothtml/pen/ojLzJK.css"; */
 .social-index {
   text-align: center;
+  margin-bottom: 40px;
 }
-.social-index ul li {
-  list-style: none;
-  display: inline;
-  margin-left: 25px;
-  margin-right: 25px;
+.social-btns .btn,
+.social-btns .btn:before,
+.social-btns .btn .sofa {
+  transition: all 0.35s;
+  transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
 }
+.social-btns .btn:before {
+  top: 90%;
+  left: -110%;
+}
+.social-btns .btn .sofa {
+  transform: scale(0.8);
+}
+.social-btns .btn.facebook:before {
+  background-color: #3b5998;
+}
+.social-btns .btn.facebook .sofa {
+  color: #3b5998;
+}
+.social-btns .btn.twitter:before {
+  background-color: #3cf;
+}
+.social-btns .btn.twitter .sofa {
+  color: #3cf;
+}
+.social-btns .btn.google:before {
+  background-color: #dc4a38;
+}
+.social-btns .btn.google .sofa {
+  color: #dc4a38;
+}
+.social-btns .btn.dribbble:before {
+  background-color: #f26798;
+}
+.social-btns .btn.dribbble .sofa {
+  color: #f26798;
+}
+.social-btns .btn.skype:before {
+  background-color: #00aff0;
+}
+.social-btns .btn.skype .sofa {
+  color: #00aff0;
+}
+.social-btns .btn:focus:before,
+.social-btns .btn:hover:before {
+  top: -10%;
+  left: -10%;
+}
+.sofab:focus .sofa,
+.sofab:hover .sofa {
+  color: #fff !important;
+  transform: scale(1);
+  position: relative;
+}
+.social-btns {
+  margin: auto;
+  font-size: 0;
+}
+.social-btns .btn {
+  display: inline-block;
+  background-color: #fff;
+  width: 90px;
+  height: 90px;
+  line-height: 65px;
+  margin: 0 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28%;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  opacity: 0.99;
+}
+.social-btns .btn:before {
+  content: "";
+  width: 120%;
+  height: 120%;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.social-btns .btn .sofa {
+  font-size: 38px;
+  vertical-align: middle;
+}
+
 .sub-btn {
   margin-left: 10px;
   margin-top: 5px;
 }
 .traicentre {
   text-align: center;
+}
+.login h5 {
+  margin-bottom: 0px !important;
+}
+.login {
+  padding: 10px;
 }
 @media (max-width: 450px) {
   .carousel-item img {
@@ -111,17 +212,7 @@ body {
     font-weight: 100px;
   }
 }
-.text-right {
-  /* background-color: rgba(87, 101, 116,.6); */
-  /* text-shadow: 2px 2px #333;
-  font-weight: 100px; */
-  -webkit-text-stroke: 1px black;
-  -webkit-text-fill-color: white;
-}
-.text-left {
-  -webkit-text-stroke: 1px black;
-  -webkit-text-fill-color: white;
-}
+
 .con-btn {
   background-color: #6c757d;
   border-radius: 5px;
@@ -235,7 +326,7 @@ h6 {
 .typed_wrap {
   text-align: center;
   position: relative;
-  right: 20px;
+  /* right: 20px; */
 }
 .typed_wrap h2 {
   display: inline;
@@ -288,4 +379,57 @@ h6 {
   100% {
     opacity: 1;
   }
+}
+.themescls {
+  /* background: aliceblue; */
+  /* padding: 60px;
+  font-family: "Merienda", cursive; */
+  /* border: 1px aliceblue;
+  border-radius: 15px; */
+  /* border-radius: 50px;
+  background: #ffffff;
+  box-shadow: inset 7px 7px 0px #007bff, inset -35px -35px 70px #ffffff; */
+  margin: 0 auto;
+  padding: 15px;
+  /* font-family: "Lato", sans-serif; */
+}
+.lead {
+  /* font-family: "Lateef", cursive; */
+  font-size: 1rem !important;
+  font-weight: 550px !important;
+}
+.btn-pro {
+  /* background: none; */
+  color: black !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  cursor: default !important;
+  box-shadow: none !important;
+}
+.wel {
+  margin: 10px;
+}
+.container.marketing {
+  margin-top: 30px;
+}
+.foot-p {
+  font-size: unset;
+  color: #fff;
+  margin-bottom: 0px;
+}
+.navbtn {
+  background: transparent !important;
+}
+.navicon {
+  background-image: url(../../images/svg/menu.svg) !important;
+}
+.dashion {
+  width: 50px;
+}
+.dahionc {
+  text-align: left !important;
+}
+.fotter-coo ul li a {
+  color: #ffffff;
+  text-decoration: none;
 }

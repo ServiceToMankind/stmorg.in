@@ -1,0 +1,3 @@
+[submodule "paymentmanager"]
+	path = paymentmanager
+	url = https://github.com/cashfree/php-pg-integration.git
