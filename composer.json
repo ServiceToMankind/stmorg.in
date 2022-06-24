@@ -1,5 +1,6 @@
 {
   "require": {
-    "phpmailer/phpmailer": "~5.2"
+    "phpmailer/phpmailer": "~5.2",
+    "stripe/stripe-php": "^8.8"
   }
 }

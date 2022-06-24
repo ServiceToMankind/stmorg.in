@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitcc50fae73d80ec4c791a9982d7c87352
 {
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
@@ -21,6 +35,8 @@ class ComposerStaticInitcc50fae73d80ec4c791a9982d7c87352
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcc50fae73d80ec4c791a9982d7c87352::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcc50fae73d80ec4c791a9982d7c87352::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitcc50fae73d80ec4c791a9982d7c87352::$classMap;
 
         }, null, ClassLoader::class);
