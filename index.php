@@ -311,9 +311,9 @@ $day= date('d',$dateValue); ?>
 
 
 
-                <div class="themes">OUR THEMES</div>
+                <!-- <div class="themes">OUR THEMES</div> -->
 
-                <div class="grid">
+                <!-- <div class="grid">
                     <div class="section group">
                         <div class="col col-3 card">
                             <div class="card-content">
@@ -349,7 +349,69 @@ $day= date('d',$dateValue); ?>
                             </div>
                         </div>
                     </div>
+                </div> -->
+                <div class="feat bg-gray pt-5 pb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-head col-sm-12">
+                                <h4><span>Our</span> Themes</h4>
+                                <p>This is how, the STM functions !</p>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_one"><i
+                                            class="fa-solid fa-box-heart"><object type="image/svg+xml"
+                                                data="images/svg/donate.svg" width="50" height="50"></object></i></span>
+                                    <h6>A Rupee A Day</h6>
+                                    <p>Help needy people by contributing Rs 1/- per day for better education and basic
+                                        needs for needy people.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_two"><i
+                                            class="fa-solid fa-newspaper"><object type="image/svg+xml"
+                                                data="images/svg/survey.svg" width="50" height="50"></object></i></span>
+                                    <h6>Drives, Research & Survey</h6>
+                                    <p>Research on various realtime topics, and various donation drices.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_three"><i
+                                            class="fa-solid fa-droplet-degree"><object type="image/svg+xml"
+                                                data="images/svg/blood.svg" width="50" height="50"></object></i></span>
+                                    <h6>Blood Donations</h6>
+                                    <p>STM has a dedicated Blood Bank Management system with a good database of blood
+                                        donors.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_four"><i
+                                            class="fa-solid fa-gift"><object type="image/svg+xml"
+                                                data="images/svg/celebrations.svg" width="50"
+                                                height="50"></object></i></span>
+                                    <h6>Event Celebrations</h6>
+                                    <p>We Celebrate Your Celebrations. Celebrating birthday's,festivals in orphanges and
+                                        old age homes with childrens and grand parents. We are family !!</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_five"><object type="image/svg+xml"
+                                            data="images/svg/animal.svg" width="50" height="50"></object></span>
+                                    <h6>Animal Care</h6>
+                                    <p>Not only humans, animals are living beings too and We truely care about them.</p>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4 col-sm-6">
+                                <div class="item"> <span class="icon feature_box_col_six"><i
+                                            class="fa fa-camera"></i></span>
+                                    <h6>Retina Ready</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                                        eget dolor Aenean massa.</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <hr class="featurette-divider">
