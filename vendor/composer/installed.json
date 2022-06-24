@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "07cf8eecea915ca52c13ed3df3362c7b",
     "packages": [
         {
             "name": "phpmailer/phpmailer",
             "version": "v5.2.28",
+            "version_normalized": "5.2.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
@@ -47,7 +42,9 @@
             "suggest": {
                 "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
             },
+            "time": "2020-03-19T14:29:37+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "class.phpmailer.php",
@@ -99,16 +96,9 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-19T14:29:37+00:00"
+            "install-path": "../phpmailer/phpmailer"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": []
 }
