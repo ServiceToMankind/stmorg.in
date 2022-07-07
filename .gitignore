@@ -1,3 +1,4 @@
 connection.php
 paymentsmanager/*
 .vscode/
+!paymentsmanager/checkout/cancel.php
