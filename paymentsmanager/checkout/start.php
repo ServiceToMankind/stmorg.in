@@ -31,8 +31,8 @@ $checkout_session = \Stripe\Checkout\Session::create([
     'quantity' => "$ammount",
   ]],
   'mode' => 'payment',
-  'success_url' => $YOUR_DOMAIN . 'paymentsmanager/checkout/thanks?session_id={CHECKOUT_SESSION_ID}&oid='.$oid,
-  'cancel_url' => $YOUR_DOMAIN . 'paymentsmanager/checkout/cancel.html',
+  'success_url' => $YOUR_DOMAIN . '/paymentsmanager/checkout/thanks?session_id={CHECKOUT_SESSION_ID}&oid='.$oid,
+  'cancel_url' => $YOUR_DOMAIN . '/paymentsmanager/checkout/cancel.html',
 ]);
 
 header("HTTP/1.1 303 See Other");
