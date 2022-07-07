@@ -86,6 +86,9 @@ $day= date('d',$dateValue); ?>
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="logs">Payment Logs</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
