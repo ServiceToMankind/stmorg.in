@@ -866,7 +866,7 @@ $date=date('Y-m-d h:i:s');
                 </thead>
                 <tbody>
                     <?php
-$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND `donations`.`payment_status`='1'");
+$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
 while($row=mysqli_fetch_assoc($res)){
 ?>
                     <tr>
