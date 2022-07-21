@@ -13,8 +13,16 @@ $desc=$_POST['desc'];
 $amount=$_POST['amt'];
 $txid=$_POST['txid'];
 
-mysqli_query($con,"INSERT INTO `donations`(`id`, `name`, `mail`, `mobile`, `amount`, `type`, `message`, `txid`, `payment_status`, `custid`, `added_on`) VALUES (NULL,'$name','$mail','$mobile','$amount','0','$desc','$txid','1','0','$added_on')");
-
+$sqlstat = mysqli_query($con,"INSERT INTO `donations`(`id`, `name`, `mail`, `mobile`, `amount`, `type`, `message`, `txid`, `payment_status`, `custid`, `added_on`) VALUES (NULL,'$name','$mail','$mobile','$amount','0','$desc','$txid','1','0','$added_on')");
+$msg = '';
+if( $sqlstat !== false ) { 
+   $msg = "Transaction record has been updated.";
+   $msgcolor="#5fcf80";
+}else {
+   $msg = "Error description: " . mysqli_error($con);
+   $msgcolor="red";
+}
+mysqli_close($con);
 }
 ?>
 <html>
@@ -152,6 +160,7 @@ mysqli_query($con,"INSERT INTO `donations`(`id`, `name`, `mail`, `mobile`, `amou
             <form method="post">
                 <h1>Manual Payments</h1>
                 <p>This is only for us, for manual payments.</p>
+                <p style="color:<?php echo $msgcolor; ?>"><?php echo $msg; ?></p>
                 <fieldset>
                     <legend><span class="number">1</span> Donor Info</legend>
 
