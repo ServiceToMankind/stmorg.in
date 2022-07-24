@@ -516,16 +516,16 @@ $row=mysqli_fetch_assoc($res);
                         " href="https://ask.stmorg.in">#ASKSTM</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logs">Payment Logs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#aboutus">About us</a>
+                        <a class="nav-link" href="index#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#themes">Our Themes</a>
+                        <a class="nav-link" href="index#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="gallary">Gallery</a>
@@ -608,7 +608,7 @@ $row=mysqli_fetch_assoc($res);
                     <?php } ?>
                     <li class="nav-item active">
                         <span><i class="fa-solid fa-house"></i></span>
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-list"></i></span>
@@ -616,11 +616,11 @@ $row=mysqli_fetch_assoc($res);
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-circle-info"></i></span>
-                        <a class="nav-link" href="#aboutus">About us</a>
+                        <a class="nav-link" href="index#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-map"></i></span>
-                        <a class="nav-link" href="#themes">Our Themes</a>
+                        <a class="nav-link" href="index#themes">Our Themes</a>
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-image"></i></span>
