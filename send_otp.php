@@ -68,7 +68,7 @@ $mail = new PHPMailer(true);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Verify Your Mail';
     $mail->Body    = '<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
   <div style="margin:50px auto;width:70%;padding:20px 0">
     <div style="border-bottom:1px solid #eee">
@@ -86,7 +86,7 @@ $mail = new PHPMailer(true);
     </div>
   </div>
 </div>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->AltBody = 'Thank you for being a part of STM. Use the following OTP to complete your Sign Up procedures. OTP is valid for 5 minutes. OTP : '.$otp;
 
     $mail->send();
     echo 'Sent';
