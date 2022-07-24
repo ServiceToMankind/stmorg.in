@@ -61,6 +61,11 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                     <div class="input">
                         <input type="button" value="Continue" onclick="loginset()" />
                     </div>
+                    <label class="tab" for="register">
+                        <div class="text" style="margin-top: 0.5em;"><a href="forgotpass" style="
+    font-size: 0.8em;
+    padding: 0px 30px;text-decoration:none;color:#000;font-weight:600;">Forgot Password ?</a></div>
+                    </label>
                 </form>
             </div>
             <div class="page signup">
