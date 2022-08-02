@@ -3,6 +3,10 @@ require('connection.php');
 require('functions.php');
 date_default_timezone_set("Asia/Kolkata");
 $date=date('Y-m-d h:i:s');
+$last_month_first_day='';
+if(isset($_GET['month']) && $_GET['month']=='last'){
+$last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -844,13 +848,36 @@ $date=date('Y-m-d h:i:s');
             background-color: #ffccbc;
         }
     }
+    .lm-row{
+        display: flex;
+    }
+    .lm-btn{
+        border-radius: 50px;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    padding: 0.6em 0.9em;
+    max-width: 17em;
+        margin: 1em 1em 1.3em 0em;
+    }
     </style>
 </head>
 
 <body>
     <div id="demo">
         <h1>Payments Logs</h1>
-        <h2>Payments logs of <?php echo date("M"); ?>'2022</h2>
+
+<?php if($last_month_first_day==''){?>
+            <h2>Payments logs of <?php echo date("M"); ?>'2022</h2>
+        <div class="lm-row">
+        <div class="lm-btn"><a href="logs?month=last">Last Month</a></div>
+        <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$date);?></a></div>
+        <?php }else{ ?>
+                    <h2>Payments logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
+        <div class="lm-row">
+        <div class="lm-btn"><a href="logs">current Month</a></div>
+        <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$last_month_first_day);?></a></div>
+        <?php } ?>
+</div>
 
         <!-- Responsive table starts here -->
         <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
@@ -866,7 +893,12 @@ $date=date('Y-m-d h:i:s');
                 </thead>
                 <tbody>
                     <?php
+                    if($last_month_first_day==''){
 $res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+                    }else{
+$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$last_month_first_day') AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+                    }
+
 while($row=mysqli_fetch_assoc($res)){
 ?>
                     <tr>
@@ -875,7 +907,6 @@ while($row=mysqli_fetch_assoc($res)){
                             if($row['message']==''){ ?>
                         <td data-title="Description">NULL</td>
                         <?php
-
                             }else{
                         ?>
                         <td data-title="Description"><?php echo $row['message'] ?></td>
