@@ -82,6 +82,13 @@ function get_total_price_by_month($con,$date){
        $raised=$raised+$row['amount'];
     }
     return $raised;
-   // echo "SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`donations`.`added_on`)=month('$date') and year(`added_on`)=year('$date')";
+}
+function get_total_spends_by_month($con,$date){
+  $raised=0;
+      $resp=mysqli_query($con,"SELECT `spends`.`amount` from `spends` where month(`spends`.`date`)=month('$date') and year(`date`)=year('$date')");
+    while($row=mysqli_fetch_assoc($resp)){
+       $raised=$raised+$row['amount'];
+    }
+    return $raised;
 }
 ?>
