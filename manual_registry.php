@@ -266,6 +266,7 @@ mysqli_close($con);
 
                     <label for="blood">Blood :</label>
                     <select name="blood">
+                        <option value="9">None</option>
                         <option value="1">A+</option>
                         <option value="2">A-</option>
                         <option value="3">B+</option>
