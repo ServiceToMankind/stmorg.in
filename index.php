@@ -448,7 +448,7 @@ $day= date('d',$dateValue); ?>
                                             class="fa-solid fa-newspaper"><object type="image/svg+xml"
                                                 data="images/svg/survey.svg" width="50" height="50"></object></i></span>
                                     <h6>Drives, Research & Survey</h6>
-                                    <p>Research on various realtime topics, and various donation drices.</p>
+                                    <p>Research on various realtime topics, and various donation drives.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
