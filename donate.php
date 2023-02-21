@@ -77,6 +77,9 @@ $email=$row['mail'];
 </head>
 
 <body>
+    <script>
+    window.location.href = "misc/tempdonate"
+    </script>
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
