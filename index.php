@@ -352,81 +352,23 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
         <div id="aboutus"></div>
 
         <div class="container marketing">
-
-            <div class="row featurette">
-
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">Who<span class="text-muted"> we are</span></h2>
-                    <p class="lead">SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living
-                        embodiment " You make your livelihoods by what you get, But you make a life by what you give".
-                        STM is platform with many volunteers and a team contribute to a change in society</p>
-                </div>
-                <div class="col-md-5">
-                    <!-- <img src="images/pics/whowe.png" width="350" height="500" > -->
-                    <object data="images\svg\undraw_Faq_re_31cw.svg" width="300">
-
-                    </object>
-                </div>
-            </div>
-
             <hr class="featurette-divider">
 
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">What <span class="text-muted">we do</span></h2>
-                    <p class="lead">Our main objective is to provide moral support to orphanages and old age homes by
-                        meeting their needs and supportive to the needy one. we have a vision to change the society by
-                        spreading smiles in every one's life.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <!-- <img src="images/pics/wedo.jpeg" height="500" width="350" > -->
-                    <object data="images\svg\undraw_gifts_btw0.svg" width="300"></object>
-                </div>
+            <div class="section-head col-sm-12">
+                <h4><span>About</span> Us</h4>
+                <p>Welcome to STM, where we strive to make a positive impact in the world through our volunteer work.
+                    Our dedicated team of volunteers come from all walks of life and are committed to serving those in
+                    need. Whether it's providing food and shelter to the homeless, conducting medical camps, or raising
+                    funds for critical medical cases, we believe that even small acts of kindness can make a big
+                    difference. Join us in our mission to spread love, compassion, and hope to those who need it the
+                    most.</p>
             </div>
+
+
+
+
             <hr class="featurette-divider">
             <div id="themes" class="themescls">
-
-
-
-                <!-- <div class="themes">OUR THEMES</div> -->
-
-                <!-- <div class="grid">
-                    <div class="section group">
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_Graduation_ktn0.svg" height="195px" />
-                                <div class="card-description">
-                                    <h2>Theme 1</h2>
-                                    <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole
-                                        one month it becomes Rs 30/- for better education and basic needs for needy
-                                        people. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_happy_birthday_s72n.svg" />
-                                <div class="card-description">
-                                    <h2>Theme 2</h2>
-                                    <p>Donate books, clothes, blankets to needy people.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_Birthday_cake_2wxy.svg" />
-                                <div class="card-description">
-                                    <h2>Theme 3</h2>
-                                    <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens
-                                        and grand parents.
-                                        We are family !!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="feat bg-gray pt-5 pb-5">
                     <div class="container">
                         <div class="row">
