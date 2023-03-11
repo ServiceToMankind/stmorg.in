@@ -236,7 +236,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                         <div class="col-lg-4">
                             <div class="urgent_cause_heading">
                                 <div class="power_highlight_tag">This Month Donations</div>
-                                <h3>Food for homeless children</h3>
+                                <h3>Every Contribution Counts</h3>
                             </div>
                         </div>
                         <div class="col-lg-8">
@@ -324,7 +324,12 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>PERMANENT DONOR</h5>
-                                <p>The Consistency makes our lives more beautiful than we think. </p>
+                                <p>Become a permanent donor and make a lasting impact on the lives of those in need.
+                                    Join us in our mission to create a better world, one act of kindness at a time.
+
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -338,8 +343,9 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>BECOME VOLUNTEER</h5>
-                                <p>If You Are Interested To Be A Part Of Making Good Society By Helping and Donating,
-                                    Please Feel To Contact As.</p>
+                                <p>Join our team of enthusiastic and passionate volunteers. Whether you have a few hours
+                                    a week or a few hours a month, your time and
+                                    skills can help us create a better world for everyone.</p>
                             </div>
                         </div>
                     </div>
@@ -352,81 +358,23 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
         <div id="aboutus"></div>
 
         <div class="container marketing">
-
-            <div class="row featurette">
-
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">Who<span class="text-muted"> we are</span></h2>
-                    <p class="lead">SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living
-                        embodiment " You make your livelihoods by what you get, But you make a life by what you give".
-                        STM is platform with many volunteers and a team contribute to a change in society</p>
-                </div>
-                <div class="col-md-5">
-                    <!-- <img src="images/pics/whowe.png" width="350" height="500" > -->
-                    <object data="images\svg\undraw_Faq_re_31cw.svg" width="300">
-
-                    </object>
-                </div>
-            </div>
-
             <hr class="featurette-divider">
 
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">What <span class="text-muted">we do</span></h2>
-                    <p class="lead">Our main objective is to provide moral support to orphanages and old age homes by
-                        meeting their needs and supportive to the needy one. we have a vision to change the society by
-                        spreading smiles in every one's life.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <!-- <img src="images/pics/wedo.jpeg" height="500" width="350" > -->
-                    <object data="images\svg\undraw_gifts_btw0.svg" width="300"></object>
-                </div>
+            <div class="section-head col-sm-12">
+                <h4><span>About</span> Us</h4>
+                <p>Welcome to STM, where we strive to make a positive impact in the world through our volunteer work.
+                    Our dedicated team of volunteers come from all walks of life and are committed to serving those in
+                    need. Whether it's providing food and shelter to the homeless, conducting medical camps, or raising
+                    funds for critical medical cases, we believe that even small acts of kindness can make a big
+                    difference. Join us in our mission to spread love, compassion, and hope to those who need it the
+                    most.</p>
             </div>
+
+
+
+
             <hr class="featurette-divider">
             <div id="themes" class="themescls">
-
-
-
-                <!-- <div class="themes">OUR THEMES</div> -->
-
-                <!-- <div class="grid">
-                    <div class="section group">
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_Graduation_ktn0.svg" height="195px" />
-                                <div class="card-description">
-                                    <h2>Theme 1</h2>
-                                    <p>Help needy people by contributing Rs 1/- per day, so that when it comes to whole
-                                        one month it becomes Rs 30/- for better education and basic needs for needy
-                                        people. </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_happy_birthday_s72n.svg" />
-                                <div class="card-description">
-                                    <h2>Theme 2</h2>
-                                    <p>Donate books, clothes, blankets to needy people.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col col-3 card">
-                            <div class="card-content">
-                                <img src="images\svg\undraw_Birthday_cake_2wxy.svg" />
-                                <div class="card-description">
-                                    <h2>Theme 3</h2>
-                                    <p>Celebrating birthday's,festivals in orphanges and old age homes with childrens
-                                        and grand parents.
-                                        We are family !!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="feat bg-gray pt-5 pb-5">
                     <div class="container">
                         <div class="row">
@@ -712,104 +660,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
 
 
         <!-- ******************** Footer Starts Here ******************* -->
-        <div class="footer-ablove">
-            <div class="container">
-                <div class="row">
-                    <p class="foot-p">Love All , Serve All !
-                        <button class="btn btn-default">Donate Now</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <footer class="container-fluid footer-cont">
-            <div class="container">
-                <div class="footer-top row">
-                    <div class="col-md-4 foot-logo">
-                        <h2>Service To Mankind</h2>
-                    </div>
-                    <div class="col-md-8 foot-addr">
-                        <p>SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living embodiment
-                            " You make your livelihoods by what you get, But you make a life by what you give". STM is
-                            platform with many volunteers and a team contribute to a change in society</p>
-                        <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> H.No - 109/B, Lakshmi Nagar Colony, Suraram,
-                                Hyderabad, 500055
-                            </li>
-                            <li><i class="fas fa-mobile-alt"></i> +91 7729812798 </li>
-                            <li><i class="far fa-envelope"></i> servicetomankindorganization@gmail.com </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="foot-botom row">
-                    <div class="col-md-3">
-                        <div class="fotter-coo">
-                            <h5>IMPORTANT LINKS</h5>
-                            <ul>
-                                <li><a href='index#aboutus'><i class="fas fa-caret-right"></i> ABOUT US</a></li>
-                                <li><a href='donate'><i class="fas fa-caret-right"></i> DONATE</a></li>
-                                <li><a href='contact'><i class="fas fa-caret-right"></i> CONTACT US</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fotter-coo">
-                            <h5>LATEST LOGS</h5>
-                            <ul>
-                                <!-- <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
-                                <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
-                                <li><i class="fas fa-caret-right"></i> CREATE AWARENESS IN EDUCATON</li>
-                                <li><i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li> -->
-                                <li><i class="fas fa-caret-right"></i> Coming Soon</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-5">
-                        <div class="fotter-coo">
-                            <h5>PHOTO GALLERY</h5>
-                            <div class="gallery-row row">
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f1.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f2.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f6.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f1.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f2.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f6.jpeg" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <div class="copy">
-            <div class="container">
-                <a href="https://www.stmorg.in/">2020 � All Rights Reserved | Designed and Developed by
-                    STM</a>
-
-                <span>
-                    <a><i class="fab fa-youtube"></i></a>
-                    <a><i class="fab fa-instagram"></i></a>
-                    <a><i class="fab fa-twitter"></i></a>
-                    <a><i class="fab fa-facebook-f"></i></a>
-                </span>
-            </div>
-
-        </div>
+        <?php include('footer.php') ?>
 
 
     </main>
