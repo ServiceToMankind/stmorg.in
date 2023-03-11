@@ -295,7 +295,11 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>MISSION</h5>
-                                <p>We Will be help Orphanages,Old Age Homes,Poor People,Needy One.</p>
+                                <p>To empower and serve the underprivileged communities by providing them with
+                                    education, healthcare, and basic necessities, while encouraging volunteerism and
+                                    creating awareness on social issues.
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -310,7 +314,9 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>VISION</h5>
-                                <p>To Get A Change In The Society By Spreading Smiles In Every One's Life.</p>
+                                <p>To create a just and equitable society where everyone has access to basic needs and
+                                    opportunities for growth and development, and where volunteerism and social
+                                    responsibility are integral parts of the community.</p>
                             </div>
                         </div>
                     </div>
