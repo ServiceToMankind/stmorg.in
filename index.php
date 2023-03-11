@@ -1,11 +1,11 @@
 <?php
 require('connection.php');
+require('functions.php');
 date_default_timezone_set("Asia/Kolkata");
-$date=date('Y-m-d');
-$dateValue=strtotime($date);
-$month=date('m',$dateValue);
-$year = date('Y',$dateValue);
-$day= date('d',$dateValue); ?>
+// $date=date('Y-m-d');
+$date=date('Y-m-d h:i:s');
+$last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+ ?>
 <!doctype html>
 <html lang="en">
 
@@ -245,7 +245,7 @@ $day= date('d',$dateValue); ?>
                                     <div class="power_progress_bar_back">
                                         <?php 
                                         $raised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year'");
+                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)=month('$date') and year(`added_on`)='$year'");
                                     while($row=mysqli_fetch_assoc($res)){
                                         $raised=$raised+$row['amount'];
                                     }
@@ -532,25 +532,13 @@ $day= date('d',$dateValue); ?>
                                     <div class="row">
                                         <!-- column -->
                                         <div class="col-lg-4">
-                                            <?php 
-                                        $mraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $mraised=$mraised+$row['amount'];
-                                    }
-                                    ?>
-                                            <h1 class="mb-0 mt-4">Rs.<?php echo $mraised ?></h1>
+                                            <h1 class="mb-0 mt-4">Rs. <?php echo get_total_price_by_month($con,$date);?>
+                                            </h1>
                                             <h6 class="font-light text-muted">
                                                 Current Month Donations
                                             </h6>
-                                            <?php 
-                                        $draised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year' and day(`added_on`)='$day'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $draised=$draised+$row['amount'];
-                                    }
-                                    ?>
-                                            <h3 class="mt-4 mb-0">Rs. <?php echo $draised ?></h3>
+                                            <h3 class="mt-4 mb-0">Rs.
+                                                <?php echo get_total_price_by_date($con, $date); ?></h3>
                                             <h6 class="font-light text-muted">This Day</h6>
                                             <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
                                                 Donate</a>
@@ -622,14 +610,16 @@ $day= date('d',$dateValue); ?>
                                                 </div>
                                                 <div class='dahionc'>
                                                     <?php 
-                                        $lmraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year' and day(`added_on`)='$day'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $lmraised=$lmraised+$row['amount'];
-                                    }
+                                    //     $lmraised=0;
+                                    // $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)=month('$date')-1 and year(`added_on`)='$year' and day(`added_on`)='$day'");
+                                    // while($row=mysqli_fetch_assoc($res)){
+                                    //     $lmraised=$lmraised+$row['amount'];
+                                    // }
                                     ?>
                                                     <span>Last Month</span>
-                                                    <h3 class="font-medium mb-0">Rs.<?php echo $lmraised ?></h3>
+                                                    <h3 class="font-medium mb-0">Rs.
+                                                        <?php echo get_total_price_by_month($con,$last_month_first_day);?>
+                                                    </h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -642,15 +632,9 @@ $day= date('d',$dateValue); ?>
                                                             class="fas fa-calendar-check"></i></span>
                                                 </div>
                                                 <div class='dahionc'>
-                                                    <?php 
-                                        $yraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and  year(`added_on`)='$year'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $yraised=$yraised+$row['amount'];
-                                    }
-                                    ?>
                                                     <span>This Year</span>
-                                                    <h3 class="font-medium mb-0">Rs.<?php echo $yraised ?></h3>
+                                                    <h3 class="font-medium mb-0">
+                                                        Rs.<?php echo get_total_price_by_year($con, $date); ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -677,15 +661,9 @@ $day= date('d',$dateValue); ?>
                                                             class="fas fa-rupee-sign"></i></span>
                                                 </div>
                                                 <div class='dahionc'>
-                                                    <?php 
-                                        $traised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' ");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $traised=$traised+$row['amount'];
-                                    }
-                                    ?>
                                                     <span>Total</span>
-                                                    <h3 class="font-medium mb-0">Rs.<?php echo $traised ?></h3>
+                                                    <h3 class="font-medium mb-0">
+                                                        Rs.<?php echo get_total_donations($con, $date); ?></h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -853,11 +831,11 @@ $day= date('d',$dateValue); ?>
     var allCircles = document.getElementsByTagName('circle');
     var allLines = document.getElementsByTagName('line');
 
-    //console.log(topSVGNode)
+    // console.log(topSVGNode)
 
 
 
-    var destArray = [15, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
+    var destArray = [0, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
 
 
     TweenMax.set(allCircles, {
