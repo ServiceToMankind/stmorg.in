@@ -774,3 +774,6 @@ p.awesome_line {
     display: none !important;
   }
 }
+.themeicon {
+  margin-bottom: 0.3em;
+}
