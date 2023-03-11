@@ -236,7 +236,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                         <div class="col-lg-4">
                             <div class="urgent_cause_heading">
                                 <div class="power_highlight_tag">This Month Donations</div>
-                                <h3>Food for homeless children</h3>
+                                <h3>Every Contribution Counts</h3>
                             </div>
                         </div>
                         <div class="col-lg-8">
@@ -324,7 +324,12 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>PERMANENT DONOR</h5>
-                                <p>The Consistency makes our lives more beautiful than we think. </p>
+                                <p>Become a permanent donor and make a lasting impact on the lives of those in need.
+                                    Join us in our mission to create a better world, one act of kindness at a time.
+
+
+
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -338,8 +343,9 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                             </div>
                             <div class="power_iconbox_content">
                                 <h5>BECOME VOLUNTEER</h5>
-                                <p>If You Are Interested To Be A Part Of Making Good Society By Helping and Donating,
-                                    Please Feel To Contact As.</p>
+                                <p>Join our team of enthusiastic and passionate volunteers. Whether you have a few hours
+                                    a week or a few hours a month, your time and
+                                    skills can help us create a better world for everyone.</p>
                             </div>
                         </div>
                     </div>
@@ -654,104 +660,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
 
 
         <!-- ******************** Footer Starts Here ******************* -->
-        <div class="footer-ablove">
-            <div class="container">
-                <div class="row">
-                    <p class="foot-p">Love All , Serve All !
-                        <button class="btn btn-default">Donate Now</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <footer class="container-fluid footer-cont">
-            <div class="container">
-                <div class="footer-top row">
-                    <div class="col-md-4 foot-logo">
-                        <h2>Service To Mankind</h2>
-                    </div>
-                    <div class="col-md-8 foot-addr">
-                        <p>SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living embodiment
-                            " You make your livelihoods by what you get, But you make a life by what you give". STM is
-                            platform with many volunteers and a team contribute to a change in society</p>
-                        <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> H.No - 109/B, Lakshmi Nagar Colony, Suraram,
-                                Hyderabad, 500055
-                            </li>
-                            <li><i class="fas fa-mobile-alt"></i> +91 7729812798 </li>
-                            <li><i class="far fa-envelope"></i> servicetomankindorganization@gmail.com </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="foot-botom row">
-                    <div class="col-md-3">
-                        <div class="fotter-coo">
-                            <h5>IMPORTANT LINKS</h5>
-                            <ul>
-                                <li><a href='index#aboutus'><i class="fas fa-caret-right"></i> ABOUT US</a></li>
-                                <li><a href='donate'><i class="fas fa-caret-right"></i> DONATE</a></li>
-                                <li><a href='contact'><i class="fas fa-caret-right"></i> CONTACT US</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-4">
-                        <div class="fotter-coo">
-                            <h5>LATEST LOGS</h5>
-                            <ul>
-                                <!-- <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
-                                <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
-                                <li><i class="fas fa-caret-right"></i> CREATE AWARENESS IN EDUCATON</li>
-                                <li><i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li> -->
-                                <li><i class="fas fa-caret-right"></i> Coming Soon</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="col-md-5">
-                        <div class="fotter-coo">
-                            <h5>PHOTO GALLERY</h5>
-                            <div class="gallery-row row">
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f1.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f2.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f6.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f1.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f2.jpeg" alt="">
-                                </div>
-                                <div class="col-md-4 col-6 gall-col">
-                                    <img src="images\pics\f6.jpeg" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <div class="copy">
-            <div class="container">
-                <a href="https://www.stmorg.in/">2020 � All Rights Reserved | Designed and Developed by
-                    STM</a>
-
-                <span>
-                    <a><i class="fab fa-youtube"></i></a>
-                    <a><i class="fab fa-instagram"></i></a>
-                    <a><i class="fab fa-twitter"></i></a>
-                    <a><i class="fab fa-facebook-f"></i></a>
-                </span>
-            </div>
-
-        </div>
+        <?php include('footer.php') ?>
 
 
     </main>
