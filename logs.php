@@ -848,15 +848,17 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
             background-color: #ffccbc;
         }
     }
-    .lm-row{
+
+    .lm-row {
         display: flex;
     }
-    .lm-btn{
+
+    .lm-btn {
         border-radius: 50px;
-    background: #ffffff;
-    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-    padding: 0.6em 0.9em;
-    max-width: 17em;
+        background: #ffffff;
+        box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+        padding: 0.6em 0.9em;
+        max-width: 17em;
         margin: 1em 1em 1.3em 0em;
     }
     </style>
@@ -866,129 +868,130 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
     <div id="demo">
         <h1>Payments Logs</h1>
 
-<?php if($last_month_first_day==''){?>
-            <h2>Payments logs of <?php echo date("M"); ?>'2022</h2>
+        <?php if($last_month_first_day==''){?>
+        <h2>Payments logs of <?php echo date("M"); ?>'2022</h2>
         <div class="lm-row">
-        <div class="lm-btn"><a href="logs?month=last">Last Month</a></div>
-        <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$date);?></a></div>
-        <?php }else{ ?>
-                    <h2>Payments logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
-        <div class="lm-row">
-        <div class="lm-btn"><a href="logs">current Month</a></div>
-        <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$last_month_first_day);?></a></div>
-        <?php } ?>
-</div>
+            <div class="lm-btn"><a href="logs?month=last">Last Month</a></div>
+            <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$date);?></a></div>
+            <?php }else{ ?>
+            <h2>Payments logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
+            <div class="lm-row">
+                <div class="lm-btn"><a href="logs">current Month</a></div>
+                <div class="lm-btn"><a>Total : <?php echo get_total_price_by_month($con,$last_month_first_day);?></a>
+                </div>
+                <?php } ?>
+            </div>
 
-        <!-- Responsive table starts here -->
-        <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
-        <div class="table-responsive-vertical shadow-z-1">
-            <!-- Table starts here -->
-            <table id="table" class="table table-hover table-mc-light-blue">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Descriptiopn</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+            <!-- Responsive table starts here -->
+            <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+            <div class="table-responsive-vertical shadow-z-1">
+                <!-- Table starts here -->
+                <table id="table" class="table table-hover table-mc-light-blue">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Descriptiopn</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                     if($last_month_first_day==''){
-$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND year(`donations`.`added_on`)=year($date) AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
                     }else{
-$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$last_month_first_day') AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$last_month_first_day') AND year(`donations`.`added_on`)=year($last_month_first_day) AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
                     }
 
 while($row=mysqli_fetch_assoc($res)){
 ?>
-                    <tr>
-                        <td data-title="Name"><?php echo $row['name'] ?></td>
-                        <?php
+                        <tr>
+                            <td data-title="Name"><?php echo $row['name'] ?></td>
+                            <?php
                             if($row['message']==''){ ?>
-                        <td data-title="Description">NULL</td>
-                        <?php
+                            <td data-title="Description">NULL</td>
+                            <?php
                             }else{
                         ?>
-                        <td data-title="Description"><?php echo $row['message'] ?></td>
-                        <?php } ?>
-                        <td data-title="Amount">Rs. <?php echo $row['amount'] ?></td>
-                    </tr>
-                    <?php }
+                            <td data-title="Description"><?php echo $row['message'] ?></td>
+                            <?php } ?>
+                            <td data-title="Amount">Rs. <?php echo $row['amount'] ?></td>
+                        </tr>
+                        <?php }
                     ?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
+
+
         </div>
+        <script>
+        /**
+         * Created by Kupletsky Sergey on 05.11.14.
+         *
+         * Material Design Responsive Table
+         * Tested on Win8.1 with browsers: Chrome 37, Firefox 32, Opera 25, IE 11, Safari 5.1.7
+         * You can use this table in Bootstrap (v3) projects. Material Design Responsive Table CSS-style will override basic bootstrap style.
+         * JS used only for table constructor: you don't need it in your project
+         */
 
+        $(document).ready(function() {
 
+            var table = $('#table');
 
-    </div>
-    <script>
-    /**
-     * Created by Kupletsky Sergey on 05.11.14.
-     *
-     * Material Design Responsive Table
-     * Tested on Win8.1 with browsers: Chrome 37, Firefox 32, Opera 25, IE 11, Safari 5.1.7
-     * You can use this table in Bootstrap (v3) projects. Material Design Responsive Table CSS-style will override basic bootstrap style.
-     * JS used only for table constructor: you don't need it in your project
-     */
+            // Table bordered
+            $('#table-bordered').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-bordered').addClass(value);
+            });
 
-    $(document).ready(function() {
+            // Table striped
+            $('#table-striped').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-striped').addClass(value);
+            });
 
-        var table = $('#table');
+            // Table hover
+            $('#table-hover').change(function() {
+                var value = $(this).val();
+                table.removeClass('table-hover').addClass(value);
+            });
 
-        // Table bordered
-        $('#table-bordered').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-bordered').addClass(value);
+            // Table color
+            $('#table-color').change(function() {
+                var value = $(this).val();
+                table.removeClass(/^table-mc-/).addClass(value);
+            });
         });
 
-        // Table striped
-        $('#table-striped').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-striped').addClass(value);
-        });
+        // jQuery’s hasClass and removeClass on steroids
+        // by Nikita Vasilyev
+        // https://github.com/NV/jquery-regexp-classes
+        (function(removeClass) {
 
-        // Table hover
-        $('#table-hover').change(function() {
-            var value = $(this).val();
-            table.removeClass('table-hover').addClass(value);
-        });
+            jQuery.fn.removeClass = function(value) {
+                if (value && typeof value.test === "function") {
+                    for (var i = 0, l = this.length; i < l; i++) {
+                        var elem = this[i];
+                        if (elem.nodeType === 1 && elem.className) {
+                            var classNames = elem.className.split(/\s+/);
 
-        // Table color
-        $('#table-color').change(function() {
-            var value = $(this).val();
-            table.removeClass(/^table-mc-/).addClass(value);
-        });
-    });
-
-    // jQuery’s hasClass and removeClass on steroids
-    // by Nikita Vasilyev
-    // https://github.com/NV/jquery-regexp-classes
-    (function(removeClass) {
-
-        jQuery.fn.removeClass = function(value) {
-            if (value && typeof value.test === "function") {
-                for (var i = 0, l = this.length; i < l; i++) {
-                    var elem = this[i];
-                    if (elem.nodeType === 1 && elem.className) {
-                        var classNames = elem.className.split(/\s+/);
-
-                        for (var n = classNames.length; n--;) {
-                            if (value.test(classNames[n])) {
-                                classNames.splice(n, 1);
+                            for (var n = classNames.length; n--;) {
+                                if (value.test(classNames[n])) {
+                                    classNames.splice(n, 1);
+                                }
                             }
+                            elem.className = jQuery.trim(classNames.join(" "));
                         }
-                        elem.className = jQuery.trim(classNames.join(" "));
                     }
+                } else {
+                    removeClass.call(this, value);
                 }
-            } else {
-                removeClass.call(this, value);
+                return this;
             }
-            return this;
-        }
 
-    })(jQuery.fn.removeClass);
-    </script>
+        })(jQuery.fn.removeClass);
+        </script>
 </body>
 
 </html>
