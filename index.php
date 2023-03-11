@@ -18,7 +18,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
 
     <!--styles-->
     <!-- <link rel="stylesheet" href="css/main/style.css"> -->
-    <link rel="stylesheet" href="css/main/style.css?v=2.7">
+    <link rel="stylesheet" href="css/main/style.css?v=2.8">
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
@@ -380,49 +380,47 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                         <div class="row">
                             <div class="section-head col-sm-12">
                                 <h4><span>Our</span> Themes</h4>
-                                <p>This is how, the STM functions !</p>
+                                <p>Join us in making a difference through our diverse themes"</p>
                             </div>
                             <div class="col-lg-4 col-sm-6">
-                                <div class="item"> <span class="icon feature_box_col_one"><i
-                                            class="fa-solid fa-box-heart"><object type="image/svg+xml"
-                                                data="images/svg/donate.svg" width="50" height="50"></object></i></span>
+                                <div class="item"> <span class="icon feature_box_col_one"><img class="themeicon"
+                                            src="images/icons/rupee.png" width="50" height="50"></img></span>
                                     <h6>A Rupee A Day</h6>
-                                    <p>Help needy people by contributing Rs 1/- per day for better education and basic
-                                        needs for needy people.</p>
+                                    <p>Change the world with just a rupee a day! Your small contribution
+                                        can go a long way in providing food, shelter, and education to those who need it
+                                        most.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
-                                <div class="item"> <span class="icon feature_box_col_two"><i
-                                            class="fa-solid fa-newspaper"><object type="image/svg+xml"
-                                                data="images/svg/survey.svg" width="50" height="50"></object></i></span>
+                                <div class="item"> <span class="icon feature_box_col_two"><img class="themeicon"
+                                            src="images/icons/research.png" width="50" height="50"></span>
                                     <h6>Drives, Research & Survey</h6>
-                                    <p>Research on various realtime topics, and various donation drives.</p>
+                                    <p>Be a part of our team in conducting research, surveys, and drives to make a
+                                        positive impact in the society</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
-                                <div class="item"> <span class="icon feature_box_col_three"><i
-                                            class="fa-solid fa-droplet-degree"><object type="image/svg+xml"
-                                                data="images/svg/blood.svg" width="50" height="50"></object></i></span>
+                                <div class="item"> <span class="icon feature_box_col_three"><img class="themeicon"
+                                            src="images/icons/blood.png" width="50" height="50"></span>
                                     <h6>Blood Donations</h6>
-                                    <p>STM has a dedicated Blood Bank Management system with a good database of blood
-                                        donors.</p>
+                                    <p>Be a hero, save a life. Join us in our mission to donate blood and help those in
+                                        need. Your one pint of blood can save up to three lives.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
-                                <div class="item"> <span class="icon feature_box_col_four"><i
-                                            class="fa-solid fa-gift"><object type="image/svg+xml"
-                                                data="images/svg/celebrations.svg" width="50"
-                                                height="50"></object></i></span>
+                                <div class="item"> <span class="icon feature_box_col_four"><img class="themeicon"
+                                            src="images/icons/gift.png" width="50" height="50"></span>
                                     <h6>Event Celebrations</h6>
-                                    <p>We Celebrate Your Celebrations. Celebrating birthday's,festivals in orphanges and
-                                        old age homes with childrens and grand parents. We are family !!</p>
+                                    <p>Celebrate your special occasions with the less fortunate. Make their day as
+                                        special as yours.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
-                                <div class="item"> <span class="icon feature_box_col_five"><object type="image/svg+xml"
-                                            data="images/svg/animal.svg" width="50" height="50"></object></span>
+                                <div class="item"> <span class="icon feature_box_col_five"><img class="themeicon"
+                                            src="images/icons/animal.png" width="50" height="50"></span>
                                     <h6>Animal Care</h6>
-                                    <p>Not only humans, animals are living beings too and We truely care about them.</p>
+                                    <p>Be a hero for the voiceless. Join us in our mission to provide care and love for
+                                        our furry friends.</p>
                                 </div>
                             </div>
                             <!-- <div class="col-lg-4 col-sm-6">
