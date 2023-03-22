@@ -1,26 +1,25 @@
 <?php
+include '../functions.php';
 
-use Stripe\Stripe;
+if(isset($_GET['oid'])){
+    $oid=$_GET['oid'];
+    $data=get_api_data('https://apis.stmorg.in/paydata/paymentdetails?oid='.$oid);
+    $data=json_decode($data,true);
+    $data=$data['data'];
+    $name=$data[0]['name'];
+    $email=$data[0]['mail'];
+    $amount=$data[0]['amount'];
+    $mobile=$data[0]['mobile'];
+    $txid=$data[0]['txid'];
+    $date=$data[0]['added_on'];
+    $payment_status=$data[0]['payment_status'];
+    $payment_mode=$data[0]['type'];
+    $message=$data[0]['message'];
+    $custid=$data[0]['custid'];
 
-require('../../connection.php');
-require('../../vendor/autoload.php');
-
-$session_id=$_GET['session_id'];
-$oid=$_GET['oid'];
-
-$stripe = new \Stripe\StripeClient(
-  'YOUR_SECRET_KEY'
-);
-$payment_data = $stripe->checkout->sessions->retrieve(
-  $session_id,
-  []
-);
-$txid=$payment_data['payment_intent'];
-$name=$payment_data['customer_details']['name'];
-$email=$payment_data['customer_details']['email'];
-
-mysqli_query($con,"UPDATE `donations` SET `txid`='$txid',`payment_status`='1', `type`='1' WHERE `donations`.`id`='$oid'");
-
+}else{
+    echo "<script>window.location.href='index.php'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

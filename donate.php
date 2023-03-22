@@ -8,6 +8,8 @@ $row=mysqli_fetch_assoc($res);
 $name=$row['name'];
 $mobile=$row['mobile'];
 $email=$row['mail'];
+}else{
+    $id='0';
 }
 ?>
 <!doctype html>
@@ -77,9 +79,6 @@ $email=$row['mail'];
 </head>
 
 <body>
-    <script>
-    window.location.href = "misc/tempdonate"
-    </script>
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white">
@@ -170,7 +169,7 @@ $email=$row['mail'];
                     <h3><strong>DONATE NOW</strong></h3>
 
                     <!--START FORM-->
-                    <form method="post" action="paymentsmanager/checkout/start">
+                    <form method="post" action="https://apis.stmorg.in/pay/start">
                         <!--start title-->
                         <div class="nd_donations_section nd_donations_height_40"></div>
                         <div class="nd_donations_section">
@@ -299,12 +298,14 @@ $email=$row['mail'];
                                 </h4>
                             </div>
                         </div>
+                        <input name="uid" value="<?php echo $_SESSION['USER_ID'] ?>" hidden />
                         <input name="name" value="<?php echo $name ?>" hidden />
                         <input name="mail" value="<?php echo $email ?>" hidden />
                         <input name="mobile" value="<?php echo $mobile ?>" hidden />
                         <?php
                          } else {
                         ?>
+                        <input name="uid" value="0" hidden />
                         <div class="nd_donations_section">
                             <div class="nd_donations_display_table nd_donations_float_left">
                                 <div style="background-color: #d55342"
