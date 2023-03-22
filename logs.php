@@ -2,10 +2,12 @@
 require('connection.php');
 require('functions.php');
 date_default_timezone_set("Asia/Kolkata");
-$date=date('Y-m-d h:i:s');
+$date=date('Y-m-d');
 $last_month_first_day='';
 if(isset($_GET['month']) && $_GET['month']=='last'){
 $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+// get  month 
+$last_month=date('m',strtotime($last_month_first_day));
 }
 ?>
 <!DOCTYPE html>
@@ -897,12 +899,29 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                     <tbody>
                         <?php
                     if($last_month_first_day==''){
-$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$date') AND year(`donations`.`added_on`)=year($date) AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+                       $data=get_api_data('https://apis.stmorg.in/logs/donations');
+                       $data=json_decode($data,true);
+                       // Check for API errors
+                        if ($data['status'] !== "success") {
+                            echo "API error: " . $data['message'];
+                            exit;
+                        }
+                        // Get payment logs data
+                        $payment_logs = $data['data'];
+
                     }else{
-$res=mysqli_query($con,"SELECT * FROM `donations` WHERE month(`donations`.`added_on`)=month('$last_month_first_day') AND year(`donations`.`added_on`)=year($last_month_first_day) AND `donations`.`payment_status`='1' ORDER BY `donations`.`added_on` DESC;");
+                        $data=get_api_data('https://apis.stmorg.in/logs/donations?month='.$last_month);
+                        $data=json_decode($data,true);
+                        // Check for API errors
+                        if ($data['status'] !== "success") {
+                            echo "API error: " . $data['message'];
+                            exit;
+                        }
+                        // Get payment logs data
+                        $payment_logs = $data['data'];
                     }
 
-while($row=mysqli_fetch_assoc($res)){
+                    foreach ($payment_logs as $row) {
 ?>
                         <tr>
                             <td data-title="Name"><?php echo $row['name'] ?></td>
