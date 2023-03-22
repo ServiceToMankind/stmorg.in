@@ -244,11 +244,7 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                                 <div class="power_progress_inner">
                                     <div class="power_progress_bar_back">
                                         <?php 
-                                        $raised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)=month('$date') and year(`added_on`)='$year'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $raised=$raised+$row['amount'];
-                                    }
+                                        $raised=get_total_price_by_month($con,$date);
                                     $rpercent=($raised/10000)*100;
                                     ?>
                                         <div class="power_progress_bar" style="max-width: <?php echo $rpercent ?>%;"
