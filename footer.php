@@ -52,6 +52,14 @@
                         <li><i class="fas fa-caret-right"></i> Coming Soon</li>
                     </ul>
                 </div>
+                <div class="fotter-coo">
+                    <h5>POLICIES</h5>
+                    <ul>
+                        <li><a href="terms-of-service"><i class="fas fa-caret-right"></i> Terms Of Service</a></li>
+                        <li><a href="privacy-policy"><i class="fas fa-caret-right"></i> Privacy Policy</a></li>
+                        <li><a href="cancellation"><i class="fas fa-caret-right"></i> Cancellation and Refund</a></li>
+                    </ul>
+                </div>
 
             </div>
             <div class="col-md-5">
