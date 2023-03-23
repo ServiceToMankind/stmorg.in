@@ -86,9 +86,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="gallary">Gallery</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
@@ -181,10 +181,10 @@
                         <span><i class="fa-solid fa-map"></i></span>
                         <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <span><i class="fa-solid fa-image"></i></span>
                         <a class="nav-link" href="gallary">Gallery</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <span><i class="fa-solid fa-id-card"></i></span>
                         <a class="nav-link" href="contact">Contact Us</a>
