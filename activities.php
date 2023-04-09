@@ -873,11 +873,11 @@ $last_month=date('m',strtotime($last_month_first_day));
         <?php if($last_month_first_day==''){?>
         <h2>Activity logs of <?php echo date("M"); ?>'2023</h2>
         <div class="lm-row">
-            <div class="lm-btn"><a href="logs?month=last">Last Month</a></div>
+            <div class="lm-btn"><a href="activities?month=last">Last Month</a></div>
             <?php }else{ ?>
             <h2>Payments logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
             <div class="lm-row">
-                <div class="lm-btn"><a href="logs">current Month</a></div>
+                <div class="lm-btn"><a href="activities">current Month</a></div>
                 <?php } ?>
             </div>
 
@@ -908,7 +908,7 @@ $last_month=date('m',strtotime($last_month_first_day));
                         $payment_logs = $data['data'];
 
                     }else{
-                        $data=get_api_data('https://apis.stmorg.in/logs/activities?month='.$last_month);
+                        $data=get_api_data('https://apis.stmorg.in/activities/activities?month='.$last_month);
                         $data=json_decode($data,true);
                         // Check for API errors
                         if ($data['status'] !== "success") {
