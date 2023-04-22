@@ -1,15 +1,28 @@
 <?php
 require('connection.php');
+require('functions.php');
 date_default_timezone_set("Asia/Kolkata");
-$date=date('Y-m-d');
-$dateValue=strtotime($date);
-$month=date('m',$dateValue);
-$year = date('Y',$dateValue);
-$day= date('d',$dateValue);
-$user_id=$_SESSION['USER_ID'];
-$res=mysqli_query($con,"SELECT * FROM `users` WHERE `id`='$user_id'");
-$row=mysqli_fetch_assoc($res);
-?>
+// $date=date('Y-m-d');
+$date=date('Y-m-d h:i:s');
+$last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+
+$uid=$_SESSION['USER_ID'];
+$uid='stmo'.$uid;
+
+// get user details
+$user_details = get_api_data("https://apis.stmorg.in/common/users?uid=$uid");
+$user_details = json_decode($user_details, true);
+// Check for API errors
+if ($user_details['status'] !== "success") {
+    echo "API error: " . $user_details['message'];
+    exit;
+}
+// get user details
+$user_details = $user_details['data'];
+$user_details = $user_details[0];
+
+
+ ?>
 
 <!doctype html>
 <html lang="en">
@@ -23,7 +36,7 @@ $row=mysqli_fetch_assoc($res);
 
     <!--styles-->
     <!-- <link rel="stylesheet" href="css/main/style.css"> -->
-    <link rel="stylesheet" href="css/main/style.css?v=2.7">
+    <link rel="stylesheet" href="css/main/style.css?v=2.8">
     <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
@@ -67,434 +80,437 @@ $row=mysqli_fetch_assoc($res);
     <!-- fontaswsome00000 -->
     <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
 
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
-    <link rel="stylesgeet"
-        href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
-
     <style>
-    /* html * {
-        -webkit-font-smoothing: antialiased;
-    }
+    @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
 
-    .h6,
-    h6 {
-        font-size: .75rem !important;
-        font-weight: 500;
-        font-family: Roboto, Helvetica, Arial, sans-serif;
-        line-height: 1.5em;
-        text-transform: uppercase;
-    } */
-
-    .name h6 {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .navbar {
-        border: 0;
-        border-radius: 3px;
-        padding: .625rem 0;
-        margin-bottom: 20px;
-        color: #555;
-        background-color: #fff !important;
-        box-shadow: 0 4px 18px 0 rgba(0, 0, 0, .12), 0 7px 10px -5px rgba(0, 0, 0, .15) !important;
-        z-index: 1000 !important;
-        transition: all 150ms ease 0s;
-
-    }
-
-    .navbar.navbar-transparent {
-        z-index: 1030;
-        background-color: transparent !important;
-        box-shadow: none !important;
-        padding-top: 25px;
-        color: #fff;
-    }
-
-    .navbar .navbar-brand {
+    html {
         position: relative;
-        color: inherit;
-        height: 50px;
-        font-size: 1.125rem;
-        line-height: 30px;
-        padding: .625rem 0;
-        font-weight: 300;
-        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden !important;
     }
 
-    .navbar .navbar-nav .nav-item .nav-link:not(.btn) .material-icons {
-        margin-top: -7px;
-        top: 3px;
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Quicksand", sans-serif;
+        color: #324e63;
+    }
+
+    a,
+    a:hover {
+        text-decoration: none;
+    }
+
+    .icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+    }
+
+    .wrapper {
+        width: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 50px 20px;
+        padding-top: 180px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            height: auto;
+            min-height: 100vh;
+            padding-top: 180px;
+        }
+    }
+
+    .profile-card {
+        width: 100%;
+        min-height: 460px;
+        margin: auto;
+        box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+        background: #fff;
+        border-radius: 12px;
+        max-width: 700px;
         position: relative;
-        margin-right: 3px;
     }
 
-    .navbar .navbar-nav .nav-item .nav-link .material-icons {
-        font-size: 1.25rem;
-        max-width: 24px;
-        margin-top: -1.1em;
+    .profile-card.active .profile-card__cnt {
+        filter: blur(6px);
     }
 
-    .navbar .navbar-nav .nav-item .nav-link .fa,
-    .navbar .navbar-nav .nav-item .nav-link .material-icons {
-        font-size: 1.25rem;
-        max-width: 24px;
-        margin-top: 0px;
+    .profile-card.active .profile-card-message,
+    .profile-card.active .profile-card__overlay {
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: 0.1s;
     }
 
-    .navbar .navbar-nav .nav-item .nav-link {
+    .profile-card.active .profile-card-form {
+        transform: none;
+        transition-delay: 0.1s;
+    }
+
+    .profile-card__img {
+        width: 150px;
+        height: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        overflow: hidden;
         position: relative;
-        color: inherit;
-        padding: .9375rem;
-        font-weight: 400;
-        font-size: 12px;
-        border-radius: 3px;
-        line-height: 20px;
+        z-index: 4;
+        box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
     }
 
-    a .material-icons {
-        vertical-align: middle;
+    @media screen and (max-width: 576px) {
+        .profile-card__img {
+            width: 120px;
+            height: 120px;
+        }
     }
 
-    .fixed-top {
-        position: fixed;
-        z-index: 1030;
-        left: 0;
-        right: 0;
-    }
-
-    .page-header {
-        height: 380px;
-        background-position: center;
-    }
-
-    .page-header {
-        height: 80vh;
-        background-size: cover;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        display: flex;
-        align-items: center;
-    }
-
-    .header-filter:after,
-    .header-filter:before {
-        position: absolute;
-        z-index: 1;
+    .profile-card__img img {
+        display: block;
         width: 100%;
         height: 100%;
-        display: block;
-        left: 0;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .profile-card__cnt {
+        margin-top: -35px;
+        text-align: center;
+        padding: 0 20px;
+        padding-bottom: 40px;
+        transition: all 0.3s;
+    }
+
+    .profile-card__name {
+        font-weight: 700;
+        font-size: 24px;
+        color: #6944ff;
+        margin-bottom: 15px;
+    }
+
+    .profile-card__txt {
+        font-size: 18px;
+        font-weight: 500;
+        color: #324e63;
+        margin-bottom: 15px;
+    }
+
+    .profile-card__txt strong {
+        font-weight: 700;
+    }
+
+    .profile-card-loc {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .profile-card-loc__icon {
+        display: inline-flex;
+        font-size: 27px;
+        margin-right: 10px;
+    }
+
+    .profile-card-inf {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: 35px;
+    }
+
+    .profile-card-inf__item {
+        padding: 10px 35px;
+        min-width: 150px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .profile-card-inf__item {
+            padding: 10px 20px;
+            min-width: 120px;
+        }
+    }
+
+    .profile-card-inf__title {
+        font-weight: 700;
+        font-size: 27px;
+        color: #324e63;
+    }
+
+    .profile-card-inf__txt {
+        font-weight: 500;
+        margin-top: 7px;
+    }
+
+    .profile-card-social {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .profile-card-social__item {
+        display: inline-flex;
+        width: 55px;
+        height: 55px;
+        margin: 15px;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: #405de6;
+        box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+        position: relative;
+        font-size: 21px;
+        flex-shrink: 0;
+        transition: all 0.3s;
+    }
+
+    @media screen and (max-width: 768px) {
+        .profile-card-social__item {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .profile-card-social__item:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .profile-card-social__item.facebook {
+        background: linear-gradient(45deg, #3b5998, #0078d7);
+        box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+    }
+
+    .profile-card-social__item.twitter {
+        background: linear-gradient(45deg, #1da1f2, #0e71c8);
+        box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
+    }
+
+    .profile-card-social__item.instagram {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+    }
+
+    .profile-card-social__item.behance {
+        background: linear-gradient(45deg, #1769ff, #213fca);
+        box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
+    }
+
+    .profile-card-social__item.github {
+        background: linear-gradient(45deg, #333333, #626b73);
+        box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+    }
+
+    .profile-card-social__item.codepen {
+        background: linear-gradient(45deg, #324e63, #414447);
+        box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
+    }
+
+    .profile-card-social__item.link {
+        background: linear-gradient(45deg, #d5135a, #f05924);
+        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+    }
+
+    .profile-card-social .icon-font {
+        display: inline-flex;
+    }
+
+    .profile-card-ctr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    @media screen and (max-width: 576px) {
+        .profile-card-ctr {
+            flex-wrap: wrap;
+        }
+    }
+
+    .profile-card__button {
+        background: none;
+        border: none;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        margin: 15px 35px;
+        padding: 15px 40px;
+        min-width: 201px;
+        border-radius: 50px;
+        min-height: 55px;
+        color: #fff;
+        cursor: pointer;
+        backface-visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    @media screen and (max-width: 768px) {
+        .profile-card__button {
+            min-width: 170px;
+            margin: 15px 25px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        .profile-card__button {
+            min-width: inherit;
+            margin: 0;
+            margin-bottom: 16px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .profile-card__button:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .profile-card__button:focus {
+        outline: none !important;
+    }
+
+    @media screen and (min-width: 768px) {
+        .profile-card__button:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    .profile-card__button:first-child {
+        margin-left: 0;
+    }
+
+    .profile-card__button:last-child {
+        margin-right: 0;
+    }
+
+    .profile-card__button.button--blue {
+        background: linear-gradient(45deg, #1da1f2, #0e71c8);
+        box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+    }
+
+    .profile-card__button.button--blue:hover {
+        box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+    }
+
+    .profile-card__button.button--orange {
+        background: linear-gradient(45deg, #d5135a, #f05924);
+        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+    }
+
+    .profile-card__button.button--orange:hover {
+        box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+    }
+
+    .profile-card__button.button--gray {
+        box-shadow: none;
+        background: #dcdcdc;
+        color: #142029;
+    }
+
+    .profile-card-message {
+        width: 100%;
+        height: 100%;
+        position: absolute;
         top: 0;
-        content: "";
+        left: 0;
+        padding-top: 130px;
+        padding-bottom: 100px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s;
     }
 
-    .header-filter::before {
-        background: rgba(0, 0, 0, .5);
-    }
-
-    .main-raised {
-        margin: -60px 30px 0;
-        border-radius: 6px;
-        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
-    }
-
-    .main {
-        background: #FFF;
+    .profile-card-form {
+        box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        background: #fff;
+        border-radius: 10px;
+        padding: 35px;
+        transform: scale(0.8);
         position: relative;
         z-index: 3;
+        transition: all 0.3s;
     }
 
-    .profile {
-        text-align: center;
+    @media screen and (max-width: 768px) {
+        .profile-card-form {
+            max-width: 90%;
+            height: auto;
+        }
     }
 
-    .profile img {
-        max-width: 160px;
-        width: 100%;
-        margin: 0 auto;
-        -webkit-transform: translate3d(0, -50%, 0);
-        -moz-transform: translate3d(0, -50%, 0);
-        -o-transform: translate3d(0, -50%, 0);
-        -ms-transform: translate3d(0, -50%, 0);
-        transform: translate3d(0, -50%, 0);
+    @media screen and (max-width: 576px) {
+        .profile-card-form {
+            padding: 20px;
+        }
     }
 
-    .img-raised {
-        box-shadow: 0 5px 15px -8px rgba(0, 0, 0, .24), 0 8px 10px -5px rgba(0, 0, 0, .2);
-    }
-
-    .rounded-circle {
-        border-radius: 50% !important;
-    }
-
-    .img-fluid,
-    .img-thumbnail {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .title {
-        margin-top: 30px;
-        margin-bottom: 25px;
-        min-height: 32px;
-        color: #3C4858;
-        font-weight: 700;
-        font-family: "Roboto Slab", "Times New Roman", serif;
-    }
-
-    .description {
-        margin: 1.071rem auto 0;
-        max-width: 600px;
-        color: #999;
-        font-weight: 300;
-    }
-
-    p {
-        font-size: 14px;
-        margin: 0 0 10px;
-    }
-
-    .profile-tabs {
-        margin-top: 4.284rem;
-    }
-
-    .nav-pills,
-    .nav-tabs {
-        border: 0;
-        border-radius: 3px;
-        padding: 0 15px;
-    }
-
-    .nav .nav-item {
-        position: relative;
-        margin: 0 2px;
-    }
-
-    .nav-pills.nav-pills-icons .nav-item .nav-link {
-        border-radius: 4px;
-    }
-
-    .nav-pills .nav-item .nav-link.active {
-        color: #fff;
-        background-color: #9c27b0;
-        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgba(156, 39, 176, .6);
-    }
-
-    .nav-pills .nav-item .nav-link {
-        line-height: 24px;
-        font-size: 12px;
-        font-weight: 500;
-        min-width: 100px;
-        color: #555;
-        transition: all .3s;
-        border-radius: 30px;
-        padding: 10px 15px;
-        text-align: center;
-    }
-
-    .nav-pills .nav-item .nav-link:not(.active):hover {
-        background-color: rgba(200, 200, 200, .2);
-    }
-
-
-    .nav-pills .nav-item i {
-        display: block;
-        font-size: 30px;
-        padding: 15px 0;
-    }
-
-    .tab-space {
-        padding: 20px 0 50px;
-    }
-
-    .gallery {
-        margin-top: 3.213rem;
-        padding-bottom: 50px;
-    }
-
-    .gallery img {
-        width: 100%;
-        margin-bottom: 2.142rem;
-    }
-
-    .profile .name {
-        margin-top: -80px;
-    }
-
-    img.rounded {
-        border-radius: 6px !important;
-    }
-
-    .tab-content>.active {
-        display: block;
-    }
-
-    /*buttons*/
-    .btn {
-        position: relative;
-        padding: 12px 30px;
-        margin: .3125rem 1px;
-        font-size: .75rem;
-        font-weight: 400;
-        line-height: 1.428571;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0;
-        border: 0;
-        border-radius: .2rem;
-        outline: 0;
-        transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1);
-        will-change: box-shadow, transform;
-    }
-
-    .btn.btn-just-icon {
-        font-size: 20px;
-        height: 41px;
-        min-width: 41px;
-        width: 41px;
-        padding: 0;
-        overflow: hidden;
-        position: relative;
-        line-height: 41px;
-    }
-
-    .btn.btn-just-icon fa {
-        margin-top: 0;
-        position: absolute;
-        width: 100%;
-        transform: none;
-        left: 0;
-        top: 0;
-        height: 100%;
-        line-height: 41px;
-        font-size: 20px;
-    }
-
-    .btn.btn-link {
-        background-color: transparent;
-        color: #999;
-    }
-
-    /* dropdown */
-
-
-
-
-    .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-        float: left;
-        min-width: 11rem !important;
-        margin: .125rem 0 0;
-        font-size: 1rem;
-        color: #212529;
-        text-align: left;
-        background-color: #fff;
-        background-clip: padding-box;
-        border-radius: .25rem;
-        transition: transform .3s cubic-bezier(.4, 0, .2, 1), opacity .2s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .dropdown-menu.show {
-        transition: transform .3s cubic-bezier(.4, 0, .2, 1), opacity .2s cubic-bezier(.4, 0, .2, 1);
-    }
-
-
-    .dropdown-menu .dropdown-item:focus,
-    .dropdown-menu .dropdown-item:hover,
-    .dropdown-menu a:active,
-    .dropdown-menu a:focus,
-    .dropdown-menu a:hover {
-        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4);
-        background-color: #9c27b0;
-        color: #FFF;
-    }
-
-    .show .dropdown-toggle:after {
-        transform: rotate(180deg);
-    }
-
-    .dropdown-toggle:after {
-        will-change: transform;
-        transition: transform .15s linear;
-    }
-
-
-    .dropdown-menu .dropdown-item,
-    .dropdown-menu li>a {
-        position: relative;
-        width: auto;
+    .profile-card-form__bottom {
+        justify-content: space-between;
         display: flex;
-        flex-flow: nowrap;
-        align-items: center;
-        color: #333;
-        font-weight: 400;
-        text-decoration: none;
-        font-size: .8125rem;
-        border-radius: .125rem;
-        margin: 0 .3125rem;
-        transition: all .15s linear;
-        min-width: 7rem;
-        padding: 0.625rem 1.25rem;
-        min-height: 1rem !important;
-        overflow: hidden;
-        line-height: 1.428571;
-        text-overflow: ellipsis;
-        word-wrap: break-word;
     }
 
-    .dropdown-menu.dropdown-with-icons .dropdown-item {
-        padding: .75rem 1.25rem .75rem .75rem;
+    @media screen and (max-width: 576px) {
+        .profile-card-form__bottom {
+            flex-wrap: wrap;
+        }
     }
 
-    .dropdown-menu.dropdown-with-icons .dropdown-item .material-icons {
-        vertical-align: middle;
-        font-size: 24px;
-        position: relative;
-        margin-top: -4px;
-        top: 1px;
-        margin-right: 12px;
-        opacity: .5;
+    .profile-card textarea {
+        width: 100%;
+        resize: none;
+        height: 210px;
+        margin-bottom: 20px;
+        border: 2px solid #dcdcdc;
+        border-radius: 10px;
+        padding: 15px 20px;
+        color: #324e63;
+        font-weight: 500;
+        font-family: "Quicksand", sans-serif;
+        outline: none;
+        transition: all 0.3s;
     }
 
-    /* footer */
-
-    footer {
-        margin-top: 10px;
-        color: #555;
-        padding: 25px;
-        font-weight: 300;
-
+    .profile-card textarea:focus {
+        outline: none;
+        border-color: #8a979e;
     }
 
-    .footer p {
-        margin-bottom: 0;
-        font-size: 14px;
-        margin: 0 0 10px;
-        font-weight: 300;
-    }
-
-    footer p a {
-        color: #555;
-        font-weight: 400;
-    }
-
-    footer p a:hover {
-        color: #9f26aa;
-        text-decoration: none;
+    .profile-card__overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+        background: rgba(22, 33, 72, 0.35);
+        border-radius: 12px;
+        transition: all 0.3s;
     }
     </style>
+
 
 </head>
 
@@ -516,20 +532,20 @@ $row=mysqli_fetch_assoc($res);
                         " href="https://ask.stmorg.in">#ASKSTM</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logs">Payment Logs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index#aboutus">About us</a>
+                        <a class="nav-link" href="#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index#themes">Our Themes</a>
+                        <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="gallary">Gallery</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact Us</a>
                     </li>
@@ -608,7 +624,7 @@ $row=mysqli_fetch_assoc($res);
                     <?php } ?>
                     <li class="nav-item active">
                         <span><i class="fa-solid fa-house"></i></span>
-                        <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-list"></i></span>
@@ -616,16 +632,16 @@ $row=mysqli_fetch_assoc($res);
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-circle-info"></i></span>
-                        <a class="nav-link" href="index#aboutus">About us</a>
+                        <a class="nav-link" href="#aboutus">About us</a>
                     </li>
                     <li class="nav-item">
                         <span><i class="fa-solid fa-map"></i></span>
-                        <a class="nav-link" href="index#themes">Our Themes</a>
+                        <a class="nav-link" href="#themes">Our Themes</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <span><i class="fa-solid fa-image"></i></span>
                         <a class="nav-link" href="gallary">Gallery</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <span><i class="fa-solid fa-id-card"></i></span>
                         <a class="nav-link" href="contact">Contact Us</a>
@@ -642,352 +658,244 @@ $row=mysqli_fetch_assoc($res);
 
     </header>
 
-    <div class="page-header header-filter" data-parallax="true" style="
-      background-image: url('images/pics/banner-2.jpg');
-    "></div>
-    <div class="main main-raised" style="margin-bottom: 3em;">
-        <div class="profile-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
-                        <div class="profile">
-                            <div class="avatar">
-                                <img src="accesories/service_to_man_kind-20200709-0001.jpg" alt="Circle Image"
-                                    class="img-raised rounded-circle img-fluid" style="width:6em;" />
-                            </div>
-                            <div class="name">
-                                <h3 class="title"><?php echo $row['name']; ?></h3>
-                                <h6><?php
-                                $rolid=$row['role'];
-                                $rolres=mysqli_query($con,"SELECT * FROM `roles` WHERE `roles`.`id`='$rolid'");
-                                $rolname=mysqli_fetch_assoc($rolres);
-                                echo $rolname['role-name'];
-                                ?> (Id: <?php echo $row['ccode'].$row['id']; ?>)</h6>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i
-                                        class="fa-solid fa-trophy"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i
-                                        class="fa-solid fa-trophy"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest">
-                                    <<i class="fa-solid fa-trophy"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="description text-center">
-                    <p>
-                        This profile page is still under development. Technical Dept. of STM are working hard to meet
-                        the standards. Your donations will boosts us more.
-                    </p>
-                </div>
 
-                <!--donation centre-->
-                <section>
-                    <div>
-                        <!-- <h1>Dashboard</h1> -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-md-flex align-items-center">
-                                            <div>
-                                                <h4 class="card-title">Donation Summary</h4>
-                                                <h5 class="card-subtitle">Overview of Latest Month</h5>
-                                            </div>
-                                            <!-- <div class="ml-auto d-flex no-block align-items-center">
-                                            <ul class="list-inline font-12 dl mr-3 mb-0">
-                                                <li class="list-inline-item text-info">
-                                                    <i class="fa fa-circle"></i> Stm
-                                                </li>
-                                                <li class="list-inline-item text-primary">
-                                                    <i class="fa fa-circle"></i> You
-                                                </li>
-                                            </ul>
-                                            <div class="dl">
-                                                <select class="custom-select">
-                                                    <option value="0" selected="">Monthly</option>
-                                                    <option value="1">Daily</option>
-                                                    <option value="2">Weekly</option>
-                                                    <option value="3">Yearly</option>
-                                                </select>
-                                            </div>
-                                        </div> -->
-                                        </div>
-                                        <div class="row">
-                                            <!-- column -->
-                                            <div class="col-lg-4">
-                                                <?php 
-                                        $mraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $mraised=$mraised+$row['amount'];
-                                    }
-                                    ?>
-                                                <h1 class="mb-0 mt-4">Rs.<?php echo $mraised ?></h1>
-                                                <h6 class="font-light text-muted">
-                                                    Current Month Donations
-                                                </h6>
-                                                <?php 
-                                        $draised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month' and year(`added_on`)='$year' and day(`added_on`)='$day'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $draised=$draised+$row['amount'];
-                                    }
-                                    ?>
-                                                <h3 class="mt-4 mb-0">Rs. <?php echo $draised ?></h3>
-                                                <h6 class="font-light text-muted">This Day</h6>
-                                                <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
-                                                    Donate</a>
-                                            </div>
-                                            <!-- column -->
-                                            <div class="col-lg-8">
-                                                <div class="campaign ct-charts">
-                                                    <div class="chartist-tooltip"></div>
-                                                    <svg class="dashgra" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                        viewBox="0 0 741 450">
-                                                        <defs>
-                                                        </defs>
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="77" y1="11" x2="10" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="171" y1="11" x2="77" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="238" y1="11" x2="171" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="292" y1="11" x2="238" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="367" y1="11" x2="292" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="466" y1="11" x2="367" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="512" y1="11" x2="466" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="588" y1="11" x2="511" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="645" y1="11" x2="588" y2="11" />
-                                                        <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                            stroke-miterlimit="10" x1="731" y1="11" x2="645" y2="11" />
-                                                        <g>
-                                                            <circle fill="#FF8300" cx="10.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="77.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="171.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="238.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="292.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="367.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="466.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="510.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="588.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="645.5" cy="10.5" r="10.5" />
-                                                            <circle fill="#FF8300" cx="730.5" cy="10.5" r="10.5" />
-                                                        </g>
-                                                        <path id="graph-measurement" fill="none" stroke="#741E00"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-miterlimit="10"
-                                                            d="
-	M731,127H10 M10,127v-18 M113,127v-9.1 M731,109v18 M216,127v-9.1 M319,127v-9.1 M422,127v-9.1 M525,127v-9.1 M628,127v-9.1" />
-                                                    </svg>
+    <main role="main">
 
-                                                </div>
-                                            </div>
-                                            <!-- column -->
-                                        </div>
-                                    </div>
-                                    <!-- ============================================================== -->
-                                    <!-- Info Box -->
-                                    <!-- ============================================================== -->
-                                    <div class="card-body border-top">
-                                        <div class="row mb-0">
-                                            <!-- col -->
-                                            <div class="col-lg-3 col-md-6">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="mr-3 dashion">
-                                                        <span class="text-orange display-5"><i
-                                                                class="fas fa-calendar-alt"></i></span>
-                                                    </div>
-                                                    <div class='dahionc'>
-                                                        <?php 
-                                        $lmraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)='$month-1' and year(`added_on`)='$year' and day(`added_on`)='$day'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $lmraised=$lmraised+$row['amount'];
-                                    }
-                                    ?>
-                                                        <span>Last Month</span>
-                                                        <h3 class="font-medium mb-0">Rs.<?php echo $lmraised ?></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- col -->
-                                            <!-- col -->
-                                            <div class="col-lg-3 col-md-6">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="mr-3 dashion">
-                                                        <span class="text-cyan display-5"><i
-                                                                class="fas fa-calendar-check"></i></span>
-                                                    </div>
-                                                    <div class='dahionc'>
-                                                        <?php 
-                                        $yraised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and  year(`added_on`)='$year'");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $yraised=$yraised+$row['amount'];
-                                    }
-                                    ?>
-                                                        <span>This Year</span>
-                                                        <h3 class="font-medium mb-0">Rs.<?php echo $yraised ?></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- col -->
-                                            <!-- col -->
-                                            <div class="col-lg-3 col-md-6">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="mr-3 dashion">
-                                                        <span class="text-info display-5"><i
-                                                                class="fas fa-award"></i></span>
-                                                    </div>
-                                                    <div class='dahionc'>
-                                                        <span>Permanent Donors</span>
-                                                        <h3 class="font-medium mb-0">104</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- col -->
-                                            <!-- col -->
-                                            <div class="col-lg-3 col-md-6">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="mr-3 dashion">
-                                                        <span class="text-primary display-5"><i
-                                                                class="fas fa-rupee-sign"></i></span>
-                                                    </div>
-                                                    <div class='dahionc'>
-                                                        <?php 
-                                        $traised=0;
-                                    $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' ");
-                                    while($row=mysqli_fetch_assoc($res)){
-                                        $traised=$traised+$row['amount'];
-                                    }
-                                    ?>
-                                                        <span>Total</span>
-                                                        <h3 class="font-medium mb-0">Rs.<?php echo $traised ?></h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- col -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- ******************** Footer Starts Here ******************* -->
-    <div class="footer-ablove">
+        <!-- <header id="header-area">
         <div class="container">
             <div class="row">
-                <p class="foot-p">Love All , Serve All !
-                    <button class="btn btn-default">Donate Now</button>
-                </p>
+                <div class="col-md-12">
+                    <div class="fund-heading text-center">
+                        <h1>STM</h1>
+                        <div class="typed_wrap">
+                            <h2> <span class="typed"></span></h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <footer class="container-fluid footer-cont">
-        <div class="container">
-            <div class="footer-top row">
-                <div class="col-md-4 foot-logo">
-                    <h2>Service To Mankind</h2>
+    </header> -->
+
+        <div class="wrapper">
+            <div class="profile-card js-profile-card">
+                <div class="profile-card__img">
+                    <img src="accesories/service_to_man_kind-20200709-0001.jpg" alt="profile card">
                 </div>
-                <div class="col-md-8 foot-addr">
-                    <p>SERVICE TO MANKIND is a student running Non-Profit Organization. STM is the living embodiment
-                        " You make your livelihoods by what you get, But you make a life by what you give". STM is
-                        platform with many volunteers and a team contribute to a change in society</p>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> H.No - 109/B, Lakshmi Nagar Colony, Suraram,
-                            Hyderabad, 500055
-                        </li>
-                        <li><i class="fas fa-mobile-alt"></i> +91 7729812798 </li>
-                        <li><i class="far fa-envelope"></i> servicetomankindorganization@gmail.com </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="foot-botom row">
-                <div class="col-md-3">
-                    <div class="fotter-coo">
-                        <h5>IMPORTANT LINKS</h5>
-                        <ul>
-                            <li><a href='index#aboutus'><i class="fas fa-caret-right"></i> ABOUT US</a></li>
-                            <li><a href='donate'><i class="fas fa-caret-right"></i> DONATE</a></li>
-                            <li><a href='contact'><i class="fas fa-caret-right"></i> CONTACT US</a></li>
-                        </ul>
+
+                <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name"><?php echo $user_details['name']; ?>(<?php echo $uid; ?>)</div>
+                    <div class="profile-card__txt"><?php $role= $user_details['role'];
+                    if($role==1){
+                        echo "Admin";
+                    }elseif($role==2){
+                        echo "Volunteer";
+                    }elseif($role==3){
+                        echo "Permanent Donor";
+                    }elseif($role==4){
+                        echo "Donor";
+                    }elseif($role==5){
+                        echo "Coordinator";
+                    }
+                    ?> <strong>From STM</strong>
+                    </div>
+                    <div class="profile-card-loc">
+                        <span class="profile-card-loc__icon">
+                            <svg class="icon">
+                                <use xlink:href="#icon-location"></use>
+                            </svg>
+                        </span>
+
+                        <span class="profile-card-loc__txt">
+                            India
+                        </span>
                     </div>
 
-                </div>
-                <div class="col-md-4">
-                    <div class="fotter-coo">
-                        <h5>LATEST LOGS</h5>
-                        <ul>
-                            <!-- <li><i class="fas fa-caret-right"></i> 100 CHILDREN RESCUE FROM WAR ZONE</li>
-                                <li><i class="fas fa-caret-right"></i> THR FRESH HOUSE CHILD</li>
-                                <li><i class="fas fa-caret-right"></i> CREATE AWARENESS IN EDUCATON</li>
-                                <li><i class="fas fa-caret-right"></i> WHAT HAPPEN WHEN WE LIVE!</li>
-                                <li><i class="fas fa-caret-right"></i> READ BLOG</li> -->
-                            <li><i class="fas fa-caret-right"></i> Coming Soon</li>
-                        </ul>
-                    </div>
+                    <div class="profile-card-inf">
+                        <div class="profile-card-inf__item">
+                            <div class="profile-card-inf__title">0</div>
+                            <div class="profile-card-inf__txt">Blood Donations</div>
+                        </div>
 
-                </div>
-                <div class="col-md-5">
-                    <div class="fotter-coo">
-                        <h5>PHOTO GALLERY</h5>
-                        <div class="gallery-row row">
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f1.jpeg" alt="">
-                            </div>
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f2.jpeg" alt="">
-                            </div>
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f6.jpeg" alt="">
-                            </div>
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f1.jpeg" alt="">
-                            </div>
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f2.jpeg" alt="">
-                            </div>
-                            <div class="col-md-4 col-6 gall-col">
-                                <img src="images\pics\f6.jpeg" alt="">
-                            </div>
+                        <div class="profile-card-inf__item">
+                            <div class="profile-card-inf__title">0</div>
+                            <div class="profile-card-inf__txt">Volunteering</div>
+                        </div>
+
+                        <div class="profile-card-inf__item">
+                            <div class="profile-card-inf__title">0</div>
+                            <div class="profile-card-inf__txt">Donations</div>
                         </div>
                     </div>
 
+                    <div class="profile-card-social">
+                        <a href="https://facebook.com/stmorg.in" class="profile-card-social__item facebook"
+                            target="_blank">
+                            <span class="icon-font">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-facebook"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="https://twitter.com/STM_ORG" class="profile-card-social__item twitter" target="_blank">
+                            <span class="icon-font">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-twitter"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="https://www.instagram.com/servicetomankindorg/"
+                            class="profile-card-social__item instagram" target="_blank">
+                            <span class="icon-font">
+                                <svg class="icon">
+                                    <use xlink:href="#icon-instagram"></use>
+                                </svg>
+                            </span>
+                        </a>
+
+                    </div>
+
+                    <div class="profile-card-ctr">
+                        <button class="profile-card__button button--blue js-message-btn">Message</button>
+                        <button class="profile-card__button button--orange">Follow</button>
+                    </div>
                 </div>
+
+                <div class="profile-card-message js-message">
+                    <form class="profile-card-form">
+                        <div class="profile-card-form__container">
+                            <textarea placeholder="Say something..."></textarea>
+                        </div>
+
+                        <div class="profile-card-form__bottom">
+                            <button class="profile-card__button button--blue js-message-close">
+                                Send
+                            </button>
+
+                            <button class="profile-card__button button--gray js-message-close">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="profile-card__overlay js-message-close"></div>
+                </div>
+
             </div>
-        </div>
-    </footer>
 
-    <div class="copy">
-        <div class="container">
-            <a href="https://www.stmorg.in/">2020 All Rights Reserved | Designed and Developed by
-                STM</a>
-
-            <span>
-                <a><i class="fab fa-youtube"></i></a>
-                <a><i class="fab fa-instagram"></i></a>
-                <a><i class="fab fa-twitter"></i></a>
-                <a><i class="fab fa-facebook-f"></i></a>
-            </span>
         </div>
 
-    </div>
+        <svg hidden="hidden">
+            <defs>
+                <symbol id="icon-codepen" viewBox="0 0 32 32">
+                    <title>codepen</title>
+                    <path
+                        d="M31.872 10.912v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096l-0.192-0.192v-0.064l-0.064-0.064-14.592-9.696c-0.448-0.32-1.056-0.32-1.536 0l-14.528 9.696-0.32 0.32c0 0-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064 0 0.064-0.064 0.096v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.096 0 0.16v9.696c0 0.064 0 0.096 0 0.16v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096l0.256 0.256 0.064 0.032 14.528 9.728c0.224 0.16 0.48 0.224 0.768 0.224s0.544-0.064 0.768-0.224l14.528-9.728 0.32-0.32c0 0 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0-0.064 0.064-0.096v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.096 0-0.16v-9.664c0-0.064 0-0.096 0-0.224zM17.312 4l10.688 7.136-4.768 3.168-5.92-3.936v-6.368zM14.56 4v6.368l-5.92 3.968-4.768-3.168 10.688-7.168zM2.784 13.664l3.392 2.304-3.392 2.304c0 0 0-4.608 0-4.608zM14.56 28l-10.688-7.136 4.768-3.2 5.92 3.936v6.4zM15.936 19.2l-4.832-3.232 4.832-3.232 4.832 3.232-4.832 3.232zM17.312 28v-6.432l5.92-3.936 4.8 3.168-10.72 7.2zM29.12 18.272l-3.392-2.304 3.392-2.304v4.608z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-github" viewBox="0 0 32 32">
+                    <title>github</title>
+                    <path
+                        d="M16.192 0.512c-8.832 0-16 7.168-16 16 0 7.072 4.576 13.056 10.944 15.168 0.8 0.16 1.088-0.352 1.088-0.768 0-0.384 0-1.632-0.032-2.976-4.448 0.96-5.376-1.888-5.376-1.888-0.736-1.856-1.792-2.336-1.792-2.336-1.44-0.992 0.096-0.96 0.096-0.96 1.6 0.128 2.464 1.664 2.464 1.664 1.44 2.432 3.744 1.728 4.672 1.344 0.128-1.024 0.544-1.728 1.024-2.144-3.552-0.448-7.296-1.824-7.296-7.936 0-1.76 0.64-3.168 1.664-4.288-0.16-0.416-0.704-2.016 0.16-4.224 0 0 1.344-0.416 4.416 1.632 1.28-0.352 2.656-0.544 4-0.544s2.72 0.192 4 0.544c3.040-2.080 4.384-1.632 4.384-1.632 0.864 2.208 0.32 3.84 0.16 4.224 1.024 1.12 1.632 2.56 1.632 4.288 0 6.144-3.744 7.488-7.296 7.904 0.576 0.512 1.088 1.472 1.088 2.976 0 2.144-0.032 3.872-0.032 4.384 0 0.416 0.288 0.928 1.088 0.768 6.368-2.112 10.944-8.128 10.944-15.168 0-8.896-7.168-16.032-16-16.032z">
+                    </path>
+                    <path
+                        d="M6.24 23.488c-0.032 0.064-0.16 0.096-0.288 0.064-0.128-0.064-0.192-0.16-0.128-0.256 0.032-0.096 0.16-0.096 0.288-0.064 0.128 0.064 0.192 0.16 0.128 0.256v0z">
+                    </path>
+                    <path
+                        d="M6.912 24.192c-0.064 0.064-0.224 0.032-0.32-0.064s-0.128-0.256-0.032-0.32c0.064-0.064 0.224-0.032 0.32 0.064s0.096 0.256 0.032 0.32v0z">
+                    </path>
+                    <path
+                        d="M7.52 25.12c-0.096 0.064-0.256 0-0.352-0.128s-0.096-0.32 0-0.384c0.096-0.064 0.256 0 0.352 0.128 0.128 0.128 0.128 0.32 0 0.384v0z">
+                    </path>
+                    <path
+                        d="M8.384 26.016c-0.096 0.096-0.288 0.064-0.416-0.064s-0.192-0.32-0.096-0.416c0.096-0.096 0.288-0.064 0.416 0.064 0.16 0.128 0.192 0.32 0.096 0.416v0z">
+                    </path>
+                    <path
+                        d="M9.6 26.528c-0.032 0.128-0.224 0.192-0.384 0.128-0.192-0.064-0.288-0.192-0.256-0.32s0.224-0.192 0.416-0.128c0.128 0.032 0.256 0.192 0.224 0.32v0z">
+                    </path>
+                    <path
+                        d="M10.912 26.624c0 0.128-0.16 0.256-0.352 0.256s-0.352-0.096-0.352-0.224c0-0.128 0.16-0.256 0.352-0.256 0.192-0.032 0.352 0.096 0.352 0.224v0z">
+                    </path>
+                    <path
+                        d="M12.128 26.4c0.032 0.128-0.096 0.256-0.288 0.288s-0.352-0.032-0.384-0.16c-0.032-0.128 0.096-0.256 0.288-0.288s0.352 0.032 0.384 0.16v0z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-location" viewBox="0 0 32 32">
+                    <title>location</title>
+                    <path
+                        d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z">
+                    </path>
+                    <path
+                        d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-facebook" viewBox="0 0 32 32">
+                    <title>facebook</title>
+                    <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-instagram" viewBox="0 0 32 32">
+                    <title>instagram</title>
+                    <path
+                        d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z">
+                    </path>
+                    <path
+                        d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z">
+                    </path>
+                    <path
+                        d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-twitter" viewBox="0 0 32 32">
+                    <title>twitter</title>
+                    <path
+                        d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z">
+                    </path>
+                </symbol>
+
+                <symbol id="icon-behance" viewBox="0 0 32 32">
+                    <title>behance</title>
+                    <path
+                        d="M9.281 6.412c0.944 0 1.794 0.081 2.569 0.25 0.775 0.162 1.431 0.438 1.988 0.813 0.55 0.375 0.975 0.875 1.287 1.5 0.3 0.619 0.45 1.394 0.45 2.313 0 0.994-0.225 1.819-0.675 2.481-0.456 0.662-1.119 1.2-2.006 1.625 1.213 0.35 2.106 0.962 2.706 1.831 0.6 0.875 0.887 1.925 0.887 3.163 0 1-0.194 1.856-0.575 2.581-0.387 0.731-0.912 1.325-1.556 1.781-0.65 0.462-1.4 0.8-2.237 1.019-0.831 0.219-1.688 0.331-2.575 0.331h-9.544v-19.688h9.281zM8.719 14.363c0.769 0 1.406-0.181 1.906-0.55 0.5-0.363 0.738-0.963 0.738-1.787 0-0.456-0.081-0.838-0.244-1.131-0.169-0.294-0.387-0.525-0.669-0.688-0.275-0.169-0.588-0.281-0.956-0.344-0.356-0.069-0.731-0.1-1.113-0.1h-4.050v4.6h4.388zM8.956 22.744c0.425 0 0.831-0.038 1.213-0.125 0.387-0.087 0.731-0.219 1.019-0.419 0.287-0.194 0.531-0.45 0.706-0.788 0.175-0.331 0.256-0.756 0.256-1.275 0-1.012-0.287-1.738-0.856-2.175-0.569-0.431-1.325-0.644-2.262-0.644h-4.7v5.419h4.625z">
+                    </path>
+                    <path
+                        d="M22.663 22.675c0.587 0.575 1.431 0.863 2.531 0.863 0.788 0 1.475-0.2 2.044-0.6s0.913-0.825 1.044-1.262h3.45c-0.556 1.719-1.394 2.938-2.544 3.675-1.131 0.738-2.519 1.113-4.125 1.113-1.125 0-2.131-0.181-3.038-0.538-0.906-0.363-1.663-0.869-2.3-1.531-0.619-0.663-1.106-1.45-1.45-2.375-0.337-0.919-0.512-1.938-0.512-3.038 0-1.069 0.175-2.063 0.525-2.981 0.356-0.925 0.844-1.719 1.494-2.387s1.413-1.2 2.313-1.588c0.894-0.387 1.881-0.581 2.975-0.581 1.206 0 2.262 0.231 3.169 0.706 0.9 0.469 1.644 1.1 2.225 1.887s0.994 1.694 1.25 2.706c0.256 1.012 0.344 2.069 0.275 3.175h-10.294c0 1.119 0.375 2.188 0.969 2.756zM27.156 15.188c-0.462-0.512-1.256-0.794-2.212-0.794-0.625 0-1.144 0.106-1.556 0.319-0.406 0.213-0.738 0.475-0.994 0.787-0.25 0.313-0.425 0.65-0.525 1.006-0.1 0.344-0.163 0.663-0.181 0.938h6.375c-0.094-1-0.438-1.738-0.906-2.256z">
+                    </path>
+                    <path d="M20.887 8h7.981v1.944h-7.981v-1.944z"></path>
+                </symbol>
+
+                <symbol id="icon-link" viewBox="0 0 32 32">
+                    <title>link</title>
+                    <path
+                        d="M17.984 11.456c-0.704 0.704-0.704 1.856 0 2.56 2.112 2.112 2.112 5.568 0 7.68l-5.12 5.12c-2.048 2.048-5.632 2.048-7.68 0-1.024-1.024-1.6-2.4-1.6-3.84s0.576-2.816 1.6-3.84c0.704-0.704 0.704-1.856 0-2.56s-1.856-0.704-2.56 0c-1.696 1.696-2.624 3.968-2.624 6.368 0 2.432 0.928 4.672 2.656 6.4 1.696 1.696 3.968 2.656 6.4 2.656s4.672-0.928 6.4-2.656l5.12-5.12c3.52-3.52 3.52-9.248 0-12.8-0.736-0.672-1.888-0.672-2.592 0.032z">
+                    </path>
+                    <path
+                        d="M29.344 2.656c-1.696-1.728-3.968-2.656-6.4-2.656s-4.672 0.928-6.4 2.656l-5.12 5.12c-3.52 3.52-3.52 9.248 0 12.8 0.352 0.352 0.8 0.544 1.28 0.544s0.928-0.192 1.28-0.544c0.704-0.704 0.704-1.856 0-2.56-2.112-2.112-2.112-5.568 0-7.68l5.12-5.12c2.048-2.048 5.632-2.048 7.68 0 1.024 1.024 1.6 2.4 1.6 3.84s-0.576 2.816-1.6 3.84c-0.704 0.704-0.704 1.856 0 2.56s1.856 0.704 2.56 0c1.696-1.696 2.656-3.968 2.656-6.4s-0.928-4.704-2.656-6.4z">
+                    </path>
+                </symbol>
+            </defs>
+        </svg>
+
+        <!--Contact-->
+        <!-- <div class="contact-index">
+                <h1>Wanna contact us</h1>
+                <h2><a class="con-btn h-surprise" href="contact.html">Click Here.</a></h2>
+                <text class="h-surprise">helo!!</text>
+            </div> -->
+        <!-- <hr class="featurette-divider"> -->
+
+        </div><!-- /.container -->
+
+
+
+        <!-- ******************** Footer Starts Here ******************* -->
+        <?php include('footer.php') ?>
 
 
     </main>
@@ -1009,11 +917,11 @@ $row=mysqli_fetch_assoc($res);
     var allCircles = document.getElementsByTagName('circle');
     var allLines = document.getElementsByTagName('line');
 
-    //console.log(topSVGNode)
+    // console.log(topSVGNode)
 
 
 
-    var destArray = [15, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
+    var destArray = [0, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
 
 
     TweenMax.set(allCircles, {
@@ -1104,253 +1012,7 @@ $row=mysqli_fetch_assoc($res);
         }
     }
     </script>
-    <script>
-    var big_image;
 
-    $(document).ready(function() {
-        BrowserDetect.init();
-
-        // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
-        $('body').bootstrapMaterialDesign();
-
-        window_width = $(window).width();
-
-        $navbar = $('.navbar[color-on-scroll]');
-        scroll_distance = $navbar.attr('color-on-scroll') || 500;
-
-        $navbar_collapse = $('.navbar').find('.navbar-collapse');
-
-        //  Activate the Tooltips
-        $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
-
-        // Activate Popovers
-        $('[data-toggle="popover"]').popover();
-
-        if ($('.navbar-color-on-scroll').length != 0) {
-            $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
-        }
-
-        materialKit.checkScrollForTransparentNavbar();
-
-        if (window_width >= 768) {
-            big_image = $('.page-header[data-parallax="true"]');
-            if (big_image.length != 0) {
-                $(window).on('scroll', materialKit.checkScrollForParallax);
-            }
-
-        }
-
-
-    });
-
-    $(document).on('click', '.navbar-toggler', function() {
-        $toggle = $(this);
-
-        if (materialKit.misc.navbar_menu_visible == 1) {
-            $('html').removeClass('nav-open');
-            materialKit.misc.navbar_menu_visible = 0;
-            $('#bodyClick').remove();
-            setTimeout(function() {
-                $toggle.removeClass('toggled');
-            }, 550);
-
-            $('html').removeClass('nav-open-absolute');
-        } else {
-            setTimeout(function() {
-                $toggle.addClass('toggled');
-            }, 580);
-
-
-            div = '<div id="bodyClick"></div>';
-            $(div).appendTo("body").click(function() {
-                $('html').removeClass('nav-open');
-
-                if ($('nav').hasClass('navbar-absolute')) {
-                    $('html').removeClass('nav-open-absolute');
-                }
-                materialKit.misc.navbar_menu_visible = 0;
-                $('#bodyClick').remove();
-                setTimeout(function() {
-                    $toggle.removeClass('toggled');
-                }, 550);
-            });
-
-            if ($('nav').hasClass('navbar-absolute')) {
-                $('html').addClass('nav-open-absolute');
-            }
-
-            $('html').addClass('nav-open');
-            materialKit.misc.navbar_menu_visible = 1;
-        }
-    });
-
-    materialKit = {
-        misc: {
-            navbar_menu_visible: 0,
-            window_width: 0,
-            transparent: true,
-            fixedTop: false,
-            navbar_initialized: false,
-            isWindow: document.documentMode || /Edge/.test(navigator.userAgent)
-        },
-
-        initFormExtendedDatetimepickers: function() {
-            $('.datetimepicker').datetimepicker({
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-chevron-up",
-                    down: "fa fa-chevron-down",
-                    previous: 'fa fa-chevron-left',
-                    next: 'fa fa-chevron-right',
-                    today: 'fa fa-screenshot',
-                    clear: 'fa fa-trash',
-                    close: 'fa fa-remove'
-                }
-            });
-        },
-
-        initSliders: function() {
-            // Sliders for demo purpose
-            var slider = document.getElementById('sliderRegular');
-
-            noUiSlider.create(slider, {
-                start: 40,
-                connect: [true, false],
-                range: {
-                    min: 0,
-                    max: 100
-                }
-            });
-
-            var slider2 = document.getElementById('sliderDouble');
-
-            noUiSlider.create(slider2, {
-                start: [20, 60],
-                connect: true,
-                range: {
-                    min: 0,
-                    max: 100
-                }
-            });
-        },
-
-        checkScrollForParallax: function() {
-            oVal = ($(window).scrollTop() / 3);
-            big_image.css({
-                'transform': 'translate3d(0,' + oVal + 'px,0)',
-                '-webkit-transform': 'translate3d(0,' + oVal + 'px,0)',
-                '-ms-transform': 'translate3d(0,' + oVal + 'px,0)',
-                '-o-transform': 'translate3d(0,' + oVal + 'px,0)'
-            });
-        },
-
-        checkScrollForTransparentNavbar: debounce(function() {
-            if ($(document).scrollTop() > scroll_distance) {
-                if (materialKit.misc.transparent) {
-                    materialKit.misc.transparent = false;
-                    $('.navbar-color-on-scroll').removeClass('navbar-transparent');
-                }
-            } else {
-                if (!materialKit.misc.transparent) {
-                    materialKit.misc.transparent = true;
-                    $('.navbar-color-on-scroll').addClass('navbar-transparent');
-                }
-            }
-        }, 17)
-    };
-
-    // Returns a function, that, as long as it continues to be invoked, will not
-    // be triggered. The function will be called after it stops being called for
-    // N milliseconds. If `immediate` is passed, trigger the function on the
-    // leading edge, instead of the trailing.
-
-    function debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-            var context = this,
-                args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            }, wait);
-            if (immediate && !timeout) func.apply(context, args);
-        };
-    };
-
-    var BrowserDetect = {
-        init: function() {
-            this.browser = this.searchString(this.dataBrowser) || "Other";
-            this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator
-                .appVersion) || "Unknown";
-        },
-        searchString: function(data) {
-            for (var i = 0; i < data.length; i++) {
-                var dataString = data[i].string;
-                this.versionSearchString = data[i].subString;
-
-                if (dataString.indexOf(data[i].subString) !== -1) {
-                    return data[i].identity;
-                }
-            }
-        },
-        searchVersion: function(dataString) {
-            var index = dataString.indexOf(this.versionSearchString);
-            if (index === -1) {
-                return;
-            }
-
-            var rv = dataString.indexOf("rv:");
-            if (this.versionSearchString === "Trident" && rv !== -1) {
-                return parseFloat(dataString.substring(rv + 3));
-            } else {
-                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
-            }
-        },
-
-        dataBrowser: [{
-                string: navigator.userAgent,
-                subString: "Chrome",
-                identity: "Chrome"
-            },
-            {
-                string: navigator.userAgent,
-                subString: "MSIE",
-                identity: "Explorer"
-            },
-            {
-                string: navigator.userAgent,
-                subString: "Trident",
-                identity: "Explorer"
-            },
-            {
-                string: navigator.userAgent,
-                subString: "Firefox",
-                identity: "Firefox"
-            },
-            {
-                string: navigator.userAgent,
-                subString: "Safari",
-                identity: "Safari"
-            },
-            {
-                string: navigator.userAgent,
-                subString: "Opera",
-                identity: "Opera"
-            }
-        ]
-
-    };
-    </script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
-    </script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>
