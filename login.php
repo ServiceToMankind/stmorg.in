@@ -260,8 +260,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
         var by = '<?php echo $by; ?>'
         if (pass == cpass) {
             if (email == "" || name == "" || number == "") {
-                alert(email);
-                alert("fuk u stupid");
+                alert("Please fill all the fields");
             } else {
                 jQuery.ajax({
                     url: "register",
@@ -303,7 +302,7 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                     if (result == "valid") {
                         window.location.href = 'index.php';
                     } else {
-                        alert(result);
+                        alert("Invalid Credentials");
                     }
                 },
             });

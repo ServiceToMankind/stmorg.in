@@ -228,6 +228,7 @@
                     success: function(result) {
                         if (result == "done") {
                             alert("Password reset successful, please login to continue");
+                            window.location.href = "login";
                         } else {
                             alert("Error Occured ! Please Try Again After Sometime");
                         }
