@@ -9,18 +9,40 @@ $type=get_safe_value($con,$_POST['type']);
 
 if($type=='email'){
 $email=get_safe_value($con,$_POST['email']);
+$otp=rand(111111,999999);
+$_SESSION['EMAIL_OTP']=$otp;
 $check_user=mysqli_num_rows(mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mail`='$email'"));
 if($check_user>0){
 echo "email_present";
 die();
 }
-send_otp($email);
+$data=get_api_data("https://apis.stmorg.in/common/otp?mail=$email&otp=$otp");
+
+$data = json_decode($data, true);
+// Check for API errors
+if ($data['status'] !== "success") {
+    echo "API error: " . $user_details['message'];
+    exit;
+}else{
+	echo 'sent';
+}
 }
 if($type=='passreset'){
 $email=get_safe_value($con,$_POST['email']);
+$otp=rand(111111,999999);
+$_SESSION['EMAIL_OTP']=$otp;
 $check_user=mysqli_num_rows(mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mail`='$email'"));
 if($check_user>0){
-send_otp($email);
+$data=get_api_data("https://apis.stmorg.in/common/otp?mail=$email&otp=$otp");
+
+$data = json_decode($data, true);
+// Check for API errors
+if ($data['status'] !== "success") {
+	echo "API error: " . $user_details['message'];
+	exit;
+}else{
+	echo 'sent';
+}
 }else{
   echo "email_absent";
   die();

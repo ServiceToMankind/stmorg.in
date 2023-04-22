@@ -145,7 +145,7 @@
                 type: "post",
                 data: "email=" + email + "&type=passreset",
                 success: function(result) {
-                    if (result == "Sent") {
+                    if (result == "sent") {
                         jQuery("#email").attr("disabled", false);
                         jQuery(".email_verify_ootp").show();
                         jQuery("#email_otp").show();
@@ -156,6 +156,7 @@
                         jQuery(".email_sent_otp").attr("disabled", false);
                         jQuery("#email_error").html("This email is not registered, please use SignUp");
                     } else {
+                        alert(result);
                         jQuery(".email_sent_otp").html("Send Again");
                         jQuery(".email_sent_otp").attr("disabled", false);
                         jQuery("#email_error").html("Please try again later");
