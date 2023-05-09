@@ -10,7 +10,7 @@ $document_name = $_POST['dn'];
 $document_description = $_POST['dd'];
 $file_path = $_POST['fp'];
 
-$data=get_api_data('http://apis.stmorg.in/documents/doc_registration?dt='.$document_type.'&dn='.$document_name.'&dd='.$document_description.'&fp='.$file_path.'');
+$data=get_api_data('https://apis.stmorg.in/documents/doc_registration?dt='.$document_type.'&dn='.$document_name.'&dd='.$document_description.'&fp='.$file_path.'');
 $data=json_decode($data,true);
 // Check for API errors
 if ($data['status'] !== "success") {
@@ -51,11 +51,12 @@ if ($data['status'] !== "success") {
                                     <option value="">-- Select Document Type --</option>
                                     <?php
                                     // fetch all document types
-                                    $data=get_api_data('http://apis.stmorg.in/documents/doc_types');
+                                    $data=get_api_data('https://apis.stmorg.in/documents/doc_types');
                                     $data=json_decode($data,true);
                                     // Check for API errors
+                                    print_r($data);
                                     if ($data['status'] !== "success") {
-                                        echo "API error: " . $data['message'];
+                                        echo "API error: " . $data['data'];
                                         exit;
                                     }else{
                                         foreach($data['data'] as $document_type){
