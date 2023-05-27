@@ -239,6 +239,36 @@ include('header.php');
 
         </div>
 
+        <!-- sponsers & partners -->
+        <hr class="featurette-divider">
+        <div id="themes" class="themescls">
+            <div class="feat bg-gray pt-5 pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-head col-sm-12">
+                            <h4><span>Our</span> Sponsers & Patners</h4>
+                            <p>Empowering Change Through Generosity and Support</p>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a href="https://weber.cottonseeds.org">
+                                <img class="themeicon" src="http://localhost/weber.cottonseeds.org/weber.svg" width="50"
+                                    alt="Weber Technologies"></img>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <a href="https://aims.ac.in/">
+                                <img class="themeicon"
+                                    src="https://aims.ac.in/wp-content/uploads/2023/04/logo-1024x319.png" width="260"
+                                    alt="Weber Technologies"></img>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <hr class="featurette-divider">
 
 
