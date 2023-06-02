@@ -5,10 +5,10 @@ require('functions.php');
 // Check if form is submitted successfully
 if (isset($_POST["dt"]) && isset($_POST["dn"]) && isset($_POST["dd"]) && isset($_POST["fp"])) {
 // Get form data
-$document_type = $_POST['dt'];
-$document_name = $_POST['dn'];
-$document_description = $_POST['dd'];
-$file_path = $_POST['fp'];
+$document_type = urlencode($_POST['dt']);
+$document_name = urlencode($_POST['dn']);
+$document_description = urlencode($_POST['dd']);
+$file_path = urlencode($_POST['fp']);
 
 $data=get_api_data('https://apis.stmorg.in/documents/doc_registration?dt='.$document_type.'&dn='.$document_name.'&dd='.$document_description.'&fp='.$file_path.'');
 $data=json_decode($data,true);
