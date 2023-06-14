@@ -244,14 +244,14 @@ include('header.php');
         <div id="themes" class="themescls">
             <div class="feat bg-gray pt-5 pb-5">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" style="justify-content: center;">
                         <div class="section-head col-sm-12">
                             <h4><span>Our</span> Sponsers & Patners</h4>
                             <p>Empowering Change Through Generosity and Support</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <a href="https://weber.cottonseeds.org">
-                                <img class="themeicon" src="http://localhost/weber.cottonseeds.org/weber.svg" width="50"
+                                <img class="themeicon" src="images/sponsers/weber_technologies.png" width="350"
                                     alt="Weber Technologies"></img>
                             </a>
                         </div>
