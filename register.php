@@ -10,6 +10,6 @@ if(isset($_POST['email']) && $_POST['email']!=''){
     $by=get_safe_value($con,$_POST['by']);
     date_default_timezone_set("Asia/Kolkata");
     $added_on=date('Y-m-d h:i:s');
-    mysqli_query($con,"INSERT INTO `users`(`ccode`, `name`, `mail`, `mobile`, `password`, `role`, `image`, `refer-by`, `added_on`) VALUES ('stmo','$name','$email','$number','$pass','4','0','$by','$added_on')");
+    mysqli_query($con,"INSERT INTO `users`(`ccode`, `name`, `mail`, `mobile`, `password`, `role`, `image`, `refer-by`, `added_on`) VALUES ('stmo','$name','$email','$number','$pass','3','0','$by','$added_on')");
     echo "done";
 }
