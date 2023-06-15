@@ -8,7 +8,10 @@ if(isset($_GET['month']) && $_GET['month']=='last'){
 $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
 // get  month 
 $last_month=date('m',strtotime($last_month_first_day));
+}elseif(isset($_GET['month']) && $_GET['month']!='last'){
+$last_month=$_GET['month'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
