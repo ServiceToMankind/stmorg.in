@@ -2,16 +2,19 @@
 require('connection.php');
 require('functions.php');
 date_default_timezone_set("Asia/Kolkata");
+
 // $date=date('Y-m-d');
 $date=date('Y-m-d h:i:s');
 $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
 
 $uid=$_SESSION['USER_ID'];
+$ouid=$uid;
 $uid='stmo'.$uid;
 
 // get user details
 $user_details = get_api_data("https://apis.stmorg.in/common/users?uid=$uid");
 $user_details = json_decode($user_details, true);
+
 // Check for API errors
 if ($user_details['status'] !== "success") {
     echo "API error: " . $user_details['message'];
@@ -21,8 +24,12 @@ if ($user_details['status'] !== "success") {
 $user_details = $user_details['data'];
 $user_details = $user_details[0];
 
+// get volunteering activity count
+$volunteering_activity_count = get_api_data("https://apis.stmorg.in/activities/activities_vol?uid=".$ouid."&count=true");
+$volunteering_activity_count = json_decode($volunteering_activity_count, true);
+$volunteering_activity_count = $volunteering_activity_count['data']['data'];
 
- ?>
+?>
 
 <!doctype html>
 <html lang="en">
@@ -686,14 +693,8 @@ $user_details = $user_details[0];
                     <div class="profile-card__name"><?php echo $user_details['name']; ?>(<?php echo $uid; ?>)</div>
                     <div class="profile-card__txt"><?php $role= $user_details['role'];
                     if($role==1){
-                        echo "Admin";
-                    }elseif($role==2){
                         echo "Volunteer";
-                    }elseif($role==3){
-                        echo "Permanent Donor";
-                    }elseif($role==4){
-                        echo "Donor";
-                    }elseif($role==5){
+                    }elseif($role==2){
                         echo "Coordinator";
                     }
                     ?> <strong>From STM</strong>
@@ -717,7 +718,11 @@ $user_details = $user_details[0];
                         </div>
 
                         <div class="profile-card-inf__item">
-                            <div class="profile-card-inf__title">0</div>
+                            <div class="profile-card-inf__title"><?php if($volunteering_activity_count!=''){
+                                echo $volunteering_activity_count;
+                            }else{
+                                echo "0";
+                            } ?></div>
                             <div class="profile-card-inf__txt">Volunteering</div>
                         </div>
 
@@ -760,6 +765,7 @@ $user_details = $user_details[0];
                         <button class="profile-card__button button--blue js-message-btn">Message</button>
                         <button class="profile-card__button button--orange">Follow</button>
                     </div>
+                    <i>This page is under developement, contents of this page may not work properly as expected.</i>
                 </div>
 
                 <div class="profile-card-message js-message">
