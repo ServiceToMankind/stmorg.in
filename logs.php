@@ -1,6 +1,17 @@
 <?php
 require('connection.php');
 require('functions.php');
+
+// display errors 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
 date_default_timezone_set("Asia/Kolkata");
 $date=date('Y-m-d');
 $last_month_first_day='';
@@ -866,6 +877,54 @@ $last_month=$_GET['month'];
         max-width: 17em;
         margin: 1em 1em 1.3em 0em;
     }
+
+    /* pagination  */
+    .pagination {
+        list-style-type: none;
+        padding: 10px 0;
+        display: inline-flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    .pagination li {
+        box-sizing: border-box;
+        padding-right: 10px;
+    }
+
+    .pagination li a {
+        box-sizing: border-box;
+        background-color: #e2e6e6;
+        padding: 8px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: #616872;
+        border-radius: 4px;
+    }
+
+    .pagination li a:hover {
+        background-color: #d4dada;
+    }
+
+    .pagination .next a,
+    .pagination .prev a {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .pagination .currentpage a {
+        background-color: #518acb;
+        color: #fff;
+    }
+
+    .pagination .currentpage a:hover {
+        background-color: #518acb;
+    }
+
+    .page-group {
+        margin-top: 0.6em;
+    }
     </style>
 </head>
 
@@ -902,7 +961,7 @@ $last_month=$_GET['month'];
                     <tbody>
                         <?php
                     if($last_month_first_day==''){
-                       $data=get_api_data('https://apis.stmorg.in/logs/donations');
+                       $data=get_api_data("https://apis.stmorg.in/logs/donations?page=".$page);
                        $data=json_decode($data,true);
                        // Check for API errors
                         if ($data['status'] !== "success") {
@@ -910,10 +969,11 @@ $last_month=$_GET['month'];
                             exit;
                         }
                         // Get payment logs data
+                        $total_pages = $data['total_pages'];
                         $payment_logs = $data['data'];
 
                     }else{
-                        $data=get_api_data('https://apis.stmorg.in/logs/donations?month='.$last_month);
+                        $data=get_api_data('https://apis.stmorg.in/logs/donations?month='.$last_month.'&page='.$page);
                         $data=json_decode($data,true);
                         // Check for API errors
                         if ($data['status'] !== "success") {
@@ -921,6 +981,7 @@ $last_month=$_GET['month'];
                             exit;
                         }
                         // Get payment logs data
+                        $total_pages = $data['total_pages'];
                         $payment_logs = $data['data'];
                     }
 
@@ -942,6 +1003,49 @@ $last_month=$_GET['month'];
                     ?>
                     </tbody>
                 </table>
+                <!-- pagination -->
+                <div class="btn-group page-group" role="group" aria-label="Basic example">
+                    <?php if ($total_pages): ?>
+                    <ul class="pagination">
+                        <?php if ($page > 1): ?>
+                        <li class="prev"><a href="?page=<?php echo $page-1 ?>">Prev</a></li>
+                        <?php endif; ?>
+
+                        <?php if ($page > 3): ?>
+                        <li class="start"><a href="?page=1">1</a></li>
+                        <li class="dots">...</li>
+                        <?php endif; ?>
+
+                        <?php if ($page-2 > 0): ?><li class="page"><a
+                                href="?page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a>
+                        </li><?php endif; ?>
+                        <?php if ($page-1 > 0): ?><li class="page"><a
+                                href="?page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a>
+                        </li><?php endif; ?>
+
+                        <li class="currentpage"><a href="?page=<?php echo $page ?>"><?php echo $page ?></a>
+                        </li>
+
+                        <?php if ($page+1 < $total_pages+1): ?><li class="page"><a
+                                href="?page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a>
+                        </li><?php endif; ?>
+                        <?php if ($page+2 < $total_pages+1): ?><li class="page"><a
+                                href="?page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a>
+                        </li><?php endif; ?>
+
+                        <?php if ($page < $total_pages-2): ?>
+                        <li class="dots">...</li>
+                        <li class="end"><a href="?page=<?php echo $total_pages ?>"><?php echo $total_pages ?></a>
+                        </li>
+                        <?php endif; ?>
+
+                        <?php if ($page < $total_pages): ?>
+                        <li class="next"><a href="?page=<?php echo $page+1 ?>">Next</a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <?php endif; ?>
+
+                </div>
             </div>
 
 
