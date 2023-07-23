@@ -48,19 +48,21 @@ include('header.php');
                 
     <body>
 
+    <div class="phonepe">
     <!-- Image added using the <img> element -->
     <img src="images\pics\phonephe stm.jpg" alt="phonepe number is  7729817298 ">
 
     <p>donate through phonepay here .</p>
-
+    </div>
    
+    <div class="Google pay">
     <!-- Image added using the <img> element -->
     <img src="images\pics\google pay stm.jpg" alt="google pay number  is  7729817298 ">
 
-    <p>donate through google pay here .</p> 
+    <p>donate through google pay here .</p> </div>
 </body>
 
-
+            </html>
                 
 
                 <!--START FORM-->
