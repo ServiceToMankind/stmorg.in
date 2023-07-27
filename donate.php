@@ -41,6 +41,29 @@ include('header.php');
             <div id="nd_donations_single_cause_form_section"
                 class="nd_donations_section nd_donations_padding_15 nd_donations_box_sizing_border_box">
                 <h3><strong>DONATE NOW</strong></h3>
+                
+                 <!DOCTYPE html>
+                <head>
+    <title>donate here through phonepay or googlepay</title></head>
+                
+    <body>
+
+    <div class="phonepe">
+    <!-- Image added using the <img> element -->
+    <img src="images\pics\phonephe stm.jpg" alt="phonepe number is  7729817298 ">
+
+    <p>donate through phonepay here .</p>
+    </div>
+   
+    <div class="Google pay">
+    <!-- Image added using the <img> element -->
+    <img src="images\pics\google pay stm.jpg" alt="google pay number  is  7729817298 ">
+
+    <p>donate through google pay here .</p> </div>
+</body>
+
+            </html>
+                
 
                 <!--START FORM-->
                 <form method="post" action="https://apis.stmorg.in/pay/start">
