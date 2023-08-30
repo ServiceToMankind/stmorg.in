@@ -1,9 +1,12 @@
 <?php
-function get_safe_value($con, $str){
-    if($str!=''){
-        $str=trim($str);
-    return mysqli_real_escape_string($con, $str);
-    }
+function sanitize_input($input) {
+  return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+}
+function get_safe_value($con, $str) {
+  if ($str != '') {
+      $str = trim($str);
+      return mysqli_real_escape_string($con, sanitize_input($str));
+  }
 }
 function pr($arr){
     echo'<pre>';
