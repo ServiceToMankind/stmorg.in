@@ -278,8 +278,9 @@ if(isset($_GET['by']) && $_GET['by']!=''){
                     success: function(result) {
                         if (result == "done") {
                             alert("Registration successful, please login to continue");
+                            window.location.href = 'login';
                         } else {
-                            alert("Error Occured ! Please Try Again After Sometime");
+                            alert("Error Occured ! Please Try Again After Sometime" + result);
                         }
                     },
                 });
