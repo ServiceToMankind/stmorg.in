@@ -41,29 +41,15 @@ include('header.php');
             <div id="nd_donations_single_cause_form_section"
                 class="nd_donations_section nd_donations_padding_15 nd_donations_box_sizing_border_box">
                 <h3><strong>DONATE NOW</strong></h3>
-                
-                 <!DOCTYPE html>
-                <head>
-    <title>donate here through phonepay or googlepay</title></head>
-                
-    <body>
+                <p class="text-success">Our payment gateway isn't working right now. Please use the following details to
+                    donate.</p>
 
-    <div class="phonepe">
-    <!-- Image added using the <img> element -->
-    <img src="images\pics\phonephe stm.jpg" alt="phonepe number is  7729817298 ">
+                <div class="Google pay">
+                    <!-- Image added using the <img> element -->
+                    <img src="images\pics\google pay stm.jpg" alt="google pay number  is 7729817298"
+                        style="width:20em;">
 
-    <p>donate through phonepay here .</p>
-    </div>
-   
-    <div class="Google pay">
-    <!-- Image added using the <img> element -->
-    <img src="images\pics\google pay stm.jpg" alt="google pay number  is  7729817298 ">
-
-    <p>donate through google pay here .</p> </div>
-</body>
-
-            </html>
-                
+                </div>
 
                 <!--START FORM-->
                 <form method="post" action="https://apis.stmorg.in/pay/start">
@@ -84,6 +70,8 @@ include('header.php');
                             </h4>
                         </div>
                     </div>
+                    <!-- danger text  -->
+                    <p class="text-danger">Temporarily Unavailable</p>
                     <!--end title-->
 
                     <div class="nd_donations_section nd_donations_height_20"></div>
