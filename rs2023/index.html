@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people."
+    />
+    <title>R&S 2023</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css"
+    />
+
+    <style>
+      body {
+        --background-color: #18181b;
+        --text-color: #a1a1aa;
+        --card-background-color: rgba(255, 255, 255, 0.015);
+        --card-border-color: rgba(255, 255, 255, 0.1);
+        --card-box-shadow-1: rgba(0, 0, 0, 0.05);
+        --card-box-shadow-1-y: 3px;
+        --card-box-shadow-1-blur: 6px;
+        --card-box-shadow-2: rgba(0, 0, 0, 0.1);
+        --card-box-shadow-2-y: 8px;
+        --card-box-shadow-2-blur: 15px;
+        --card-label-color: #ffffff;
+        --card-icon-color: #d4d4d8;
+        --card-icon-background-color: rgba(255, 255, 255, 0.08);
+        --card-icon-border-color: rgba(255, 255, 255, 0.12);
+        --card-shine-opacity: 0.1;
+        --card-shine-gradient: conic-gradient(
+          from 205deg at 50% 50%,
+          rgba(16, 185, 129, 0) 0deg,
+          #10b981 25deg,
+          rgba(52, 211, 153, 0.18) 295deg,
+          rgba(16, 185, 129, 0) 360deg
+        );
+        --card-line-color: #2a2b2c;
+        --card-tile-color: rgba(16, 185, 129, 0.05);
+        --card-hover-border-color: rgba(255, 255, 255, 0.2);
+        --card-hover-box-shadow-1: rgba(0, 0, 0, 0.04);
+        --card-hover-box-shadow-1-y: 5px;
+        --card-hover-box-shadow-1-blur: 10px;
+        --card-hover-box-shadow-2: rgba(0, 0, 0, 0.3);
+        --card-hover-box-shadow-2-y: 15px;
+        --card-hover-box-shadow-2-blur: 25px;
+        --card-hover-icon-color: #34d399;
+        --card-hover-icon-background-color: rgba(52, 211, 153, 0.1);
+        --card-hover-icon-border-color: rgba(52, 211, 153, 0.2);
+        --blur-opacity: 0.01;
+      }
+      body.light {
+        --background-color: #fafafa;
+        --text-color: #52525b;
+        --card-background-color: transparent;
+        --card-border-color: rgba(24, 24, 27, 0.08);
+        --card-box-shadow-1: rgba(24, 24, 27, 0.02);
+        --card-box-shadow-1-y: 3px;
+        --card-box-shadow-1-blur: 6px;
+        --card-box-shadow-2: rgba(24, 24, 27, 0.04);
+        --card-box-shadow-2-y: 2px;
+        --card-box-shadow-2-blur: 7px;
+        --card-label-color: #18181b;
+        --card-icon-color: #18181b;
+        --card-icon-background-color: rgba(24, 24, 27, 0.04);
+        --card-icon-border-color: rgba(24, 24, 27, 0.1);
+        --card-shine-opacity: 0.3;
+        --card-shine-gradient: conic-gradient(
+          from 225deg at 50% 50%,
+          rgba(16, 185, 129, 0) 0deg,
+          #10b981 25deg,
+          #edfaf6 285deg,
+          #ffffff 345deg,
+          rgba(16, 185, 129, 0) 360deg
+        );
+        --card-line-color: #e9e9e7;
+        --card-tile-color: rgba(16, 185, 129, 0.08);
+        --card-hover-border-color: rgba(24, 24, 27, 0.15);
+        --card-hover-box-shadow-1: rgba(24, 24, 27, 0.05);
+        --card-hover-box-shadow-1-y: 3px;
+        --card-hover-box-shadow-1-blur: 6px;
+        --card-hover-box-shadow-2: rgba(24, 24, 27, 0.1);
+        --card-hover-box-shadow-2-y: 8px;
+        --card-hover-box-shadow-2-blur: 15px;
+        --card-hover-icon-color: #18181b;
+        --card-hover-icon-background-color: rgba(24, 24, 27, 0.04);
+        --card-hover-icon-border-color: rgba(24, 24, 27, 0.34);
+        --blur-opacity: 0.1;
+      }
+      main.toggle .grid * {
+        transition-duration: 0s !important;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 240px);
+        grid-gap: 32px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card {
+        background-color: var(--background-color);
+        box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur)
+            var(--card-box-shadow-1),
+          0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur)
+            var(--card-box-shadow-2),
+          0 0 0 1px var(--card-border-color);
+        padding: 56px 16px 26px 16px;
+        border-radius: 15px;
+        cursor: pointer;
+        position: relative;
+        transition: box-shadow 0.25s;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 15px;
+        background-color: var(--card-background-color);
+      }
+      .card .icon {
+        z-index: 2;
+        position: relative;
+        display: table;
+        padding: 8px;
+      }
+      .card .icon::after {
+        content: "";
+        position: absolute;
+        inset: 4.5px;
+        border-radius: 50%;
+        background-color: var(--card-icon-background-color);
+        border: 1px solid var(--card-icon-border-color);
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        transition: background-color 0.25s, border-color 0.25s;
+      }
+      .card .icon svg {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 24px;
+        height: 24px;
+        transform: translateZ(0);
+        color: var(--card-icon-color);
+        transition: color 0.25s;
+      }
+      .card h4 {
+        z-index: 2;
+        position: relative;
+        margin: 12px 0 4px 0;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 2;
+        color: var(--card-label-color);
+      }
+      .card p {
+        z-index: 2;
+        position: relative;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-color);
+        margin-bottom: 1.5em;
+      }
+      .card .shine {
+        border-radius: inherit;
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .card .shine:before {
+        content: "";
+        width: 150%;
+        padding-bottom: 150%;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        bottom: 55%;
+        filter: blur(35px);
+        opacity: var(--card-shine-opacity);
+        transform: translateX(-50%);
+        background-image: var(--card-shine-gradient);
+      }
+      .card .background {
+        border-radius: inherit;
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        -webkit-mask-image: radial-gradient(
+          circle at 60% 5%,
+          black 0%,
+          black 15%,
+          transparent 60%
+        );
+        mask-image: radial-gradient(
+          circle at 60% 5%,
+          black 0%,
+          black 15%,
+          transparent 60%
+        );
+      }
+      .card .background .tiles {
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .card .background .tiles .tile {
+        position: absolute;
+        background-color: var(--card-tile-color);
+        -webkit-animation-duration: 8s;
+        animation-duration: 8s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        opacity: 0;
+      }
+      .card .background .tiles .tile.tile-4,
+      .card .background .tiles .tile.tile-6,
+      .card .background .tiles .tile.tile-10 {
+        -webkit-animation-delay: -2s;
+        animation-delay: -2s;
+      }
+      .card .background .tiles .tile.tile-3,
+      .card .background .tiles .tile.tile-5,
+      .card .background .tiles .tile.tile-8 {
+        -webkit-animation-delay: -4s;
+        animation-delay: -4s;
+      }
+      .card .background .tiles .tile.tile-2,
+      .card .background .tiles .tile.tile-9 {
+        -webkit-animation-delay: -6s;
+        animation-delay: -6s;
+      }
+      .card .background .tiles .tile.tile-1 {
+        top: 0;
+        left: 0;
+        height: 10%;
+        width: 22.5%;
+      }
+      .card .background .tiles .tile.tile-2 {
+        top: 0;
+        left: 22.5%;
+        height: 10%;
+        width: 27.5%;
+      }
+      .card .background .tiles .tile.tile-3 {
+        top: 0;
+        left: 50%;
+        height: 10%;
+        width: 27.5%;
+      }
+      .card .background .tiles .tile.tile-4 {
+        top: 0;
+        left: 77.5%;
+        height: 10%;
+        width: 22.5%;
+      }
+      .card .background .tiles .tile.tile-5 {
+        top: 10%;
+        left: 0;
+        height: 22.5%;
+        width: 22.5%;
+      }
+      .card .background .tiles .tile.tile-6 {
+        top: 10%;
+        left: 22.5%;
+        height: 22.5%;
+        width: 27.5%;
+      }
+      .card .background .tiles .tile.tile-7 {
+        top: 10%;
+        left: 50%;
+        height: 22.5%;
+        width: 27.5%;
+      }
+      .card .background .tiles .tile.tile-8 {
+        top: 10%;
+        left: 77.5%;
+        height: 22.5%;
+        width: 22.5%;
+      }
+      .card .background .tiles .tile.tile-9 {
+        top: 32.5%;
+        left: 50%;
+        height: 22.5%;
+        width: 27.5%;
+      }
+      .card .background .tiles .tile.tile-10 {
+        top: 32.5%;
+        left: 77.5%;
+        height: 22.5%;
+        width: 22.5%;
+      }
+      @-webkit-keyframes tile {
+        0%,
+        12.5%,
+        100% {
+          opacity: 1;
+        }
+        25%,
+        82.5% {
+          opacity: 0;
+        }
+      }
+      @keyframes tile {
+        0%,
+        12.5%,
+        100% {
+          opacity: 1;
+        }
+        25%,
+        82.5% {
+          opacity: 0;
+        }
+      }
+      .card .background .line {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.35s;
+      }
+      .card .background .line:before,
+      .card .background .line:after {
+        content: "";
+        position: absolute;
+        background-color: var(--card-line-color);
+        transition: transform 0.35s;
+      }
+      .card .background .line:before {
+        left: 0;
+        right: 0;
+        height: 1px;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+      }
+      .card .background .line:after {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        transform-origin: 50% 0;
+        transform: scaleY(0);
+      }
+      .card .background .line.line-1:before {
+        top: 10%;
+      }
+      .card .background .line.line-1:after {
+        left: 22.5%;
+      }
+      .card .background .line.line-1:before,
+      .card .background .line.line-1:after {
+        transition-delay: 0.3s;
+      }
+      .card .background .line.line-2:before {
+        top: 32.5%;
+      }
+      .card .background .line.line-2:after {
+        left: 50%;
+      }
+      .card .background .line.line-2:before,
+      .card .background .line.line-2:after {
+        transition-delay: 0.15s;
+      }
+      .card .background .line.line-3:before {
+        top: 55%;
+      }
+      .card .background .line.line-3:after {
+        right: 22.5%;
+      }
+      .card:hover {
+        box-shadow: 0px 3px 6px var(--card-hover-box-shadow-1),
+          0px var(--card-hover-box-shadow-2-y)
+            var(--card-hover-box-shadow-2-blur) var(--card-hover-box-shadow-2),
+          0 0 0 1px var(--card-hover-border-color);
+      }
+      .card:hover .icon::after {
+        background-color: var(--card-hover-icon-background-color);
+        border-color: var(--card-hover-icon-border-color);
+      }
+      .card:hover .icon svg {
+        color: var(--card-hover-icon-color);
+      }
+      .card:hover .shine {
+        opacity: 1;
+        transition-duration: 0.5s;
+        transition-delay: 0s;
+      }
+      .card:hover .background .tiles {
+        opacity: 1;
+        transition-delay: 0.25s;
+      }
+      .card:hover .background .tiles .tile {
+        -webkit-animation-name: tile;
+        animation-name: tile;
+      }
+      .card:hover .background .line {
+        opacity: 1;
+        transition-duration: 0.15s;
+      }
+      .card:hover .background .line:before {
+        transform: scaleX(1);
+      }
+      .card:hover .background .line:after {
+        transform: scaleY(1);
+      }
+      .card:hover .background .line.line-1:before,
+      .card:hover .background .line.line-1:after {
+        transition-delay: 0s;
+      }
+      .card:hover .background .line.line-2:before,
+      .card:hover .background .line.line-2:after {
+        transition-delay: 0.15s;
+      }
+      .card:hover .background .line.line-3:before,
+      .card:hover .background .line.line-3:after {
+        transition-delay: 0.3s;
+      }
+
+      .day-night {
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        opacity: 0.3;
+      }
+      .day-night input {
+        display: none;
+      }
+      .day-night input + div {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        box-shadow: inset 8px -8px 0 0 var(--text-color);
+        transform: scale(1) rotate(-2deg);
+        transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+      }
+      .day-night input + div:before {
+        content: "";
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: background-color 0.3s ease;
+      }
+      .day-night input + div:after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        margin: -3px 0 0 -3px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-shadow: 0 -23px 0 var(--text-color), 0 23px 0 var(--text-color),
+          23px 0 0 var(--text-color), -23px 0 0 var(--text-color),
+          15px 15px 0 var(--text-color), -15px 15px 0 var(--text-color),
+          15px -15px 0 var(--text-color), -15px -15px 0 var(--text-color);
+        transform: scale(0);
+        transition: all 0.3s ease;
+      }
+      .day-night input:checked + div {
+        box-shadow: inset 20px -20px 0 0 var(--text-color);
+        transform: scale(0.5) rotate(0deg);
+        transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+      }
+      .day-night input:checked + div:before {
+        background: var(--text-color);
+        transition: background-color 0.3s ease 0.1s;
+      }
+      .day-night input:checked + div:after {
+        transform: scale(1);
+        transition: transform 0.5s ease 0.15s;
+      }
+
+      html {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * {
+        box-sizing: inherit;
+      }
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: "Inter", Arial;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--background-color);
+      }
+      body:before {
+        position: absolute;
+        inset: 0 -60% 65% -60%;
+        background-image: radial-gradient(
+          ellipse at top,
+          #10b981 0%,
+          var(--background-color) 50%
+        );
+        opacity: var(--blur-opacity);
+      }
+      main .twitter {
+        position: fixed;
+        display: block;
+        right: 12px;
+        bottom: 12px;
+      }
+      main .twitter svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+      }
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .welcome {
+        color: #a1a1aa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 4em 0 6em 0;
+      }
+      .welcome h1 {
+        color: #a1a1aa;
+        font-size: 3em;
+        margin: 1em 0 0.2em 0;
+        text-align: center;
+      }
+      .btn-card {
+        background: #7f6ed2;
+        padding: 0.5em 1.5em;
+        border-radius: 11px;
+        color: #fff !important;
+        width: 5.5em;
+        text-decoration: none;
+        margin-bottom: 0em !important;
+      }
+      .card {
+        max-width: 50em;
+      }
+      .main-box {
+        padding: 2em;
+      }
+      @media (max-width: 450px) {
+        .welcome h1 {
+          font-size: 2em;
+        }
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- welcome in the middle -->
+    <div class="welcome">
+      <h1>Research & Survey Tour 2023</h1>
+      <p>Service to Mankind</p>
+    </div>
+    <main>
+      <!-- partial:index.partial.html -->
+      <div class="main-box">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScVOgSqdnj0S4oDd1W193iNoKSG29pVg47OO7wjbR8XwYWiig/viewform?usp=sf_link"
+        >
+          <div class="card">
+            <span class="icon">
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 200 200"
+                enable-background="new 0 0 200 200"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    fill="#FDE4DF"
+                    d="M155.9,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1c0,3.9,0,9.3,0,12.9c0,0,0.1,0,0.1,0h6V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M171.7,132.7c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c12.1,0,21.9-9.8,21.9-21.9V91.7
+		c-1,0.3-2,0.5-3.1,0.5c-2.4,0-4.6-0.9-6.3-2.4c-1.7,1.5-3.9,2.4-6.3,2.4c-1,0-2-0.2-2.9-0.5c-1.2,3.9-4.8,6.7-9.1,6.7h-6.6l0,4.6
+		l11.8,5.1c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-13.8-5.9c-1.2-0.5-1.9-1.7-1.9-2.9l0-9.9
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h9.8c1.7,0,3.1-1.4,3.1-3.1S167.7,86,166,86h-16.1c-0.6,0-1.1,0.2-1.6,0.4
+		c0,0-0.1,0-0.1,0.1c-0.9,0.6-1.4,1.5-1.4,2.6v14.7c0,8.3,4.5,16.1,11.7,20.3c1,0.6,1.6,1.6,1.6,2.8l0,69.5h23.2v-66
+		C179.7,131.8,175.8,132.7,171.7,132.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M168.5,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v12.9h3.7c0.9,0,1.7,0.1,2.5,0.3V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M181.1,72.6v-5.9c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v16.1c0,1.7,1.4,3.1,3.1,3.1
+		c1.7,0,3.1-1.4,3.1-3.1C181.1,82.8,181.1,72.6,181.1,72.6z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M190.5,69.5c-1.7,0-3.1,1.4-3.1,3.1v10.2c0,1.7,1.4,3.1,3.1,3.1s3.1-1.4,3.1-3.1V72.6
+		C193.6,70.9,192.2,69.5,190.5,69.5z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M190.5,63.1c-1.2,0-2.4,0.2-3.5,0.7c-1.2-3.8-4.8-6.6-9-6.6c-2.4,0-4.6,0.9-6.3,2.4
+		c-1.7-1.5-3.9-2.4-6.3-2.4c-2.4,0-4.6,0.9-6.3,2.4c-1.7-1.5-3.9-2.4-6.3-2.4c-5.2,0-9.4,4.2-9.4,9.5c0,9.1,0,13.4,0,15.5
+		c-1.9,1.8-3,4.2-3,6.9v14.7c0,10,5.1,19.3,13.3,24.8l0,67.7c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-69.5
+		c0-1.1-0.6-2.2-1.6-2.8c-7.2-4.2-11.7-11.9-11.7-20.3V89.1c0-1.1,0.5-2,1.4-2.6c0,0,0.1,0,0.1-0.1c0.5-0.3,1-0.4,1.6-0.4H166
+		c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-9.8c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,9.9c0,1.3,0.8,2.4,1.9,2.9
+		l13.8,5.9c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-11.8-5.1l0-4.6h6.6c4.3,0,7.9-2.8,9.1-6.7
+		c0.9,0.3,1.9,0.5,2.9,0.5c2.4,0,4.6-0.9,6.3-2.4c1.7,1.5,3.9,2.4,6.3,2.4c1.1,0,2.1-0.2,3.1-0.5v12.7c0,12.1-9.8,21.9-21.9,21.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.1,0,8-0.9,11.6-2.5v66c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-70
+		c6.3-5.2,10.3-13.1,10.3-21.9V72.6C200,67.4,195.8,63.1,190.5,63.1z M149.8,79.6c0-3.6,0-9,0-12.9c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v12.9h-6C149.9,79.6,149.8,79.6,149.8,79.6z M166,79.6h-3.7V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v13.2C167.7,79.7,166.9,79.6,166,79.6z M178,85.9c-1.7,0-3.1-1.4-3.1-3.1V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v5.9c0,0,0,10.2,0,10.2C181.1,84.5,179.7,85.9,178,85.9z M190.5,85.9c-1.7,0-3.1-1.4-3.1-3.1V72.6
+		c0-1.7,1.4-3.1,3.1-3.1c1.7,0,3.1,1.4,3.1,3.1v10.2C193.6,84.5,192.2,85.9,190.5,85.9z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M43.6,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M33.3,148.3c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c13.1,0,23.7-10.6,23.7-23.7v-13.9
+		c-1.1,0.4-2.3,0.7-3.5,0.7c-2.6,0-5-1-6.7-2.6C45,104,42.6,105,40,105c-1.1,0-2.3-0.2-3.3-0.6c-1.2,4.2-5,7.3-9.6,7.3h-7.3l0,5.3
+		l12.8,5.5c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3L15.4,122c-1.2-0.5-1.9-1.7-1.9-2.9l0-10.6
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h10.5c2,0,3.5-1.6,3.5-3.5c0-2-1.6-3.5-3.5-3.5H9.9c-0.6,0-1.3,0.2-1.8,0.5
+		c0,0-0.1,0-0.1,0.1c-1,0.6-1.6,1.7-1.6,3v15.8c0,9,4.9,17.4,12.7,21.9c1,0.6,1.6,1.6,1.6,2.8l0,54.6h25.3v-51.3
+		C42.1,147.3,37.8,148.3,33.3,148.3z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M16.6,77.8c0-2-1.6-3.5-3.5-3.5c-1.9,0-3.5,1.6-3.5,3.5c0,4.4,0,10.2,0,14.1c0.1,0,0.2,0,0.4,0h6.7V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M30.1,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5c0,0,0,14.1,0,14.1h4.2c1,0,2,0.2,2.9,0.4V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M53.5,80.6c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V84.1
+		C57,82.2,55.4,80.6,53.5,80.6z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M53.5,74.2c-1.4,0-2.7,0.3-3.9,0.8c-1.2-4.1-5-7.1-9.5-7.1c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6
+		c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6c-5.4,0-9.9,4.5-9.9,9.9c0,9.9,0,14.5,0,16.7c-2,1.9-3.2,4.5-3.2,7.3v15.8
+		c0,10.7,5.4,20.6,14.3,26.5l0,52.8c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-54.6c0-1.1-0.6-2.2-1.6-2.8
+		c-7.8-4.5-12.7-12.9-12.7-21.9v-15.8c0-1.2,0.6-2.3,1.6-3c0,0,0.1,0,0.1-0.1c0.5-0.3,1.2-0.5,1.8-0.5h17.2c2,0,3.5,1.6,3.5,3.5
+		c0,2-1.6,3.5-3.5,3.5H16.7c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,10.6c0,1.3,0.8,2.4,1.9,2.9l14.7,6.3
+		c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2L19.8,117l0-5.3h7.3c4.6,0,8.4-3.1,9.6-7.3
+		c1,0.4,2.1,0.6,3.3,0.6c2.6,0,5-1,6.7-2.6c1.8,1.6,4.1,2.6,6.7,2.6c1.2,0,2.4-0.2,3.5-0.7v13.9c0,13.1-10.6,23.7-23.7,23.7
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.5,0,8.8-1,12.6-2.8v51.3c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-55.3
+		c6.8-5.5,11.1-13.9,11.1-23.3V84.1C63.4,78.7,59,74.2,53.5,74.2z M9.6,91.9c0-3.9,0-9.7,0-14.1c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5c0,0,0,14.1,0,14.1H9.9C9.8,91.8,9.7,91.9,9.6,91.9z M27.2,91.8H23V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5v14.5C29.2,92,28.2,91.8,27.2,91.8z M40,98.6c-2,0-3.5-1.6-3.5-3.5V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5V95C43.6,97,42,98.6,40,98.6z M53.5,98.6c-2,0-3.5-1.6-3.5-3.5V84.1c0-2,1.6-3.5,3.5-3.5c2,0,3.5,1.6,3.5,3.5
+		V95C57,97,55.4,98.6,53.5,98.6z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M126,13.9c-2.7,0-4.8,2.2-4.8,4.8v13c0,2.7,2.2,4.8,4.8,4.8c2.7,0,4.8-2.2,4.8-4.8v-13
+		C130.8,16.1,128.7,13.9,126,13.9z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M114.8,18.8v-7.6c0-2.7-2.2-4.8-4.8-4.8c-2.7,0-4.8,2.2-4.8,4.8v20.6c0,2.7,2.2,4.8,4.8,4.8
+		s4.8-2.2,4.8-4.8C114.8,31.8,114.8,18.8,114.8,18.8z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M98.7,11.2c0-2.7-2.2-4.8-4.8-4.8S89,8.6,89,11.2v17.4h5.6c1.4,0,2.8,0.3,4.1,0.8V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M82.6,11.2c0-2.7-2.2-4.8-4.8-4.8c-2.6,0-4.8,2.2-4.8,4.8c0,5.5,0,12.9,0,17.5c0.3,0,0.7-0.1,1-0.1h8.6
+		V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M101.9,94.8c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c16,0,28.9-13,28.9-28.9V42
+		c-1.5,0.7-3.1,1.1-4.8,1.1c-3.1,0-6-1.3-8-3.4c-2,2.1-4.9,3.4-8,3.4c-1.5,0-3-0.3-4.3-0.9c-1.1,5.1-5.6,8.9-11,8.9h-9.4l0,7.4
+		l15.7,6.7c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-17.6-7.6c-1.2-0.5-1.9-1.7-1.9-2.9l0-12.7
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h12.6c2.7,0,4.8-2.2,4.8-4.8c0-2.7-2.2-4.8-4.8-4.8H74c-0.9,0-1.8,0.2-2.5,0.7
+		c0,0-0.1,0-0.1,0.1c-1.4,0.9-2.2,2.4-2.2,4.1v18.8c0,11,5.9,21.2,15.4,26.7c1,0.6,1.6,1.6,1.6,2.8l0,108.6h31.4V91.2
+		C112.9,93.5,107.6,94.8,101.9,94.8z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M137.2,31.8v-13c0-6.2-5-11.2-11.2-11.2c-1.8,0-3.6,0.4-5.1,1.2c-1.1-5-5.6-8.8-11-8.8c-3.1,0-6,1.3-8,3.4
+		c-2-2.1-4.9-3.4-8-3.4c-3.1,0-6,1.3-8,3.4c-2-2.1-4.9-3.4-8-3.4c-6.2,0-11.2,5-11.2,11.2c0,12.4,0,17.8,0,20.2
+		c-2.4,2.1-3.8,5.2-3.8,8.5v18.8c0,12.6,6.5,24.4,17,31.3l0,106.9c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-108.6
+		c0-1.1-0.6-2.2-1.6-2.8c-9.5-5.5-15.4-15.7-15.4-26.7V39.9c0-1.7,0.8-3.2,2.2-4.1c0,0,0.1,0,0.1-0.1c0.8-0.5,1.6-0.7,2.5-0.7h20.6
+		c2.7,0,4.8,2.2,4.8,4.8c0,2.7-2.2,4.8-4.8,4.8H82c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,12.7c0,1.3,0.8,2.4,1.9,2.9
+		l17.6,7.6c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-15.7-6.7l0-7.4h9.4c5.4,0,9.9-3.8,11-8.9
+		c1.3,0.6,2.8,0.9,4.3,0.9c3.1,0,6-1.3,8-3.4c2,2.1,4.9,3.4,8,3.4c1.7,0,3.4-0.4,4.8-1.1v17.6c0,16-13,28.9-28.9,28.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c5.6,0,11-1.3,15.7-3.7v105.7c0,1.8,1.4,3.2,3.2,3.2s3.2-1.4,3.2-3.2V87.1
+		c8.1-6.5,13.2-16.4,13.2-27.5C137.2,59.5,137.2,31.8,137.2,31.8z M73,28.7c0-4.6,0-12,0-17.5c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v17.4H74C73.6,28.6,73.3,28.7,73,28.7z M94.6,28.6H89V11.2c0-2.7,2.2-4.8,4.8-4.8s4.8,2.2,4.8,4.8v18.2
+		C97.4,28.9,96,28.6,94.6,28.6z M109.9,36.7c-2.7,0-4.8-2.2-4.8-4.8V11.2c0-2.7,2.2-4.8,4.8-4.8c2.7,0,4.8,2.2,4.8,4.8v7.6
+		c0,0,0,13,0,13C114.8,34.5,112.6,36.7,109.9,36.7z M126,36.7c-2.7,0-4.8-2.2-4.8-4.8v-13c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v13C130.8,34.5,128.7,36.7,126,36.7z"
+                  />
+                </g>
+              </svg>
+            </span>
+            <h4>Agriculture Survey</h4>
+            <p>
+              Agriculture Survey in Vedukaropalle, Nagarkurnool Dist. We are
+              collecting information about agricultural practices in
+              Vedukaropalle, Ngarkurnool Dist. to improve them.
+            </p>
+            <p
+              onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScVOgSqdnj0S4oDd1W193iNoKSG29pVg47OO7wjbR8XwYWiig/viewform?usp=sf_link'"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScVOgSqdnj0S4oDd1W193iNoKSG29pVg47OO7wjbR8XwYWiig/viewform?usp=sf_link"
+              class="btn-card"
+            >
+              Start
+            </p>
+            <div class="shine"></div>
+            <div class="background">
+              <div class="tiles">
+                <div class="tile tile-1"></div>
+                <div class="tile tile-2"></div>
+                <div class="tile tile-3"></div>
+                <div class="tile tile-4"></div>
+
+                <div class="tile tile-5"></div>
+                <div class="tile tile-6"></div>
+                <div class="tile tile-7"></div>
+                <div class="tile tile-8"></div>
+
+                <div class="tile tile-9"></div>
+                <div class="tile tile-10"></div>
+              </div>
+
+              <div class="line line-1"></div>
+              <div class="line line-2"></div>
+              <div class="line line-3"></div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc6TQ4zV4CjwnKxuJOvtgf7LX8echjT3i7NKZUPxwU2dk1FKw/viewform?usp=sf_link"
+        >
+          <div class="card" style="margin-top: 2em">
+            <span class="icon">
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 200 200"
+                enable-background="new 0 0 200 200"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    fill="#FDE4DF"
+                    d="M155.9,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1c0,3.9,0,9.3,0,12.9c0,0,0.1,0,0.1,0h6V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M171.7,132.7c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c12.1,0,21.9-9.8,21.9-21.9V91.7
+		c-1,0.3-2,0.5-3.1,0.5c-2.4,0-4.6-0.9-6.3-2.4c-1.7,1.5-3.9,2.4-6.3,2.4c-1,0-2-0.2-2.9-0.5c-1.2,3.9-4.8,6.7-9.1,6.7h-6.6l0,4.6
+		l11.8,5.1c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-13.8-5.9c-1.2-0.5-1.9-1.7-1.9-2.9l0-9.9
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h9.8c1.7,0,3.1-1.4,3.1-3.1S167.7,86,166,86h-16.1c-0.6,0-1.1,0.2-1.6,0.4
+		c0,0-0.1,0-0.1,0.1c-0.9,0.6-1.4,1.5-1.4,2.6v14.7c0,8.3,4.5,16.1,11.7,20.3c1,0.6,1.6,1.6,1.6,2.8l0,69.5h23.2v-66
+		C179.7,131.8,175.8,132.7,171.7,132.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M168.5,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v12.9h3.7c0.9,0,1.7,0.1,2.5,0.3V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M181.1,72.6v-5.9c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v16.1c0,1.7,1.4,3.1,3.1,3.1
+		c1.7,0,3.1-1.4,3.1-3.1C181.1,82.8,181.1,72.6,181.1,72.6z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M190.5,69.5c-1.7,0-3.1,1.4-3.1,3.1v10.2c0,1.7,1.4,3.1,3.1,3.1s3.1-1.4,3.1-3.1V72.6
+		C193.6,70.9,192.2,69.5,190.5,69.5z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M190.5,63.1c-1.2,0-2.4,0.2-3.5,0.7c-1.2-3.8-4.8-6.6-9-6.6c-2.4,0-4.6,0.9-6.3,2.4
+		c-1.7-1.5-3.9-2.4-6.3-2.4c-2.4,0-4.6,0.9-6.3,2.4c-1.7-1.5-3.9-2.4-6.3-2.4c-5.2,0-9.4,4.2-9.4,9.5c0,9.1,0,13.4,0,15.5
+		c-1.9,1.8-3,4.2-3,6.9v14.7c0,10,5.1,19.3,13.3,24.8l0,67.7c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-69.5
+		c0-1.1-0.6-2.2-1.6-2.8c-7.2-4.2-11.7-11.9-11.7-20.3V89.1c0-1.1,0.5-2,1.4-2.6c0,0,0.1,0,0.1-0.1c0.5-0.3,1-0.4,1.6-0.4H166
+		c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-9.8c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,9.9c0,1.3,0.8,2.4,1.9,2.9
+		l13.8,5.9c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-11.8-5.1l0-4.6h6.6c4.3,0,7.9-2.8,9.1-6.7
+		c0.9,0.3,1.9,0.5,2.9,0.5c2.4,0,4.6-0.9,6.3-2.4c1.7,1.5,3.9,2.4,6.3,2.4c1.1,0,2.1-0.2,3.1-0.5v12.7c0,12.1-9.8,21.9-21.9,21.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.1,0,8-0.9,11.6-2.5v66c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-70
+		c6.3-5.2,10.3-13.1,10.3-21.9V72.6C200,67.4,195.8,63.1,190.5,63.1z M149.8,79.6c0-3.6,0-9,0-12.9c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v12.9h-6C149.9,79.6,149.8,79.6,149.8,79.6z M166,79.6h-3.7V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v13.2C167.7,79.7,166.9,79.6,166,79.6z M178,85.9c-1.7,0-3.1-1.4-3.1-3.1V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v5.9c0,0,0,10.2,0,10.2C181.1,84.5,179.7,85.9,178,85.9z M190.5,85.9c-1.7,0-3.1-1.4-3.1-3.1V72.6
+		c0-1.7,1.4-3.1,3.1-3.1c1.7,0,3.1,1.4,3.1,3.1v10.2C193.6,84.5,192.2,85.9,190.5,85.9z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M43.6,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M33.3,148.3c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c13.1,0,23.7-10.6,23.7-23.7v-13.9
+		c-1.1,0.4-2.3,0.7-3.5,0.7c-2.6,0-5-1-6.7-2.6C45,104,42.6,105,40,105c-1.1,0-2.3-0.2-3.3-0.6c-1.2,4.2-5,7.3-9.6,7.3h-7.3l0,5.3
+		l12.8,5.5c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3L15.4,122c-1.2-0.5-1.9-1.7-1.9-2.9l0-10.6
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h10.5c2,0,3.5-1.6,3.5-3.5c0-2-1.6-3.5-3.5-3.5H9.9c-0.6,0-1.3,0.2-1.8,0.5
+		c0,0-0.1,0-0.1,0.1c-1,0.6-1.6,1.7-1.6,3v15.8c0,9,4.9,17.4,12.7,21.9c1,0.6,1.6,1.6,1.6,2.8l0,54.6h25.3v-51.3
+		C42.1,147.3,37.8,148.3,33.3,148.3z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M16.6,77.8c0-2-1.6-3.5-3.5-3.5c-1.9,0-3.5,1.6-3.5,3.5c0,4.4,0,10.2,0,14.1c0.1,0,0.2,0,0.4,0h6.7V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M30.1,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5c0,0,0,14.1,0,14.1h4.2c1,0,2,0.2,2.9,0.4V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M53.5,80.6c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V84.1
+		C57,82.2,55.4,80.6,53.5,80.6z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M53.5,74.2c-1.4,0-2.7,0.3-3.9,0.8c-1.2-4.1-5-7.1-9.5-7.1c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6
+		c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6c-5.4,0-9.9,4.5-9.9,9.9c0,9.9,0,14.5,0,16.7c-2,1.9-3.2,4.5-3.2,7.3v15.8
+		c0,10.7,5.4,20.6,14.3,26.5l0,52.8c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-54.6c0-1.1-0.6-2.2-1.6-2.8
+		c-7.8-4.5-12.7-12.9-12.7-21.9v-15.8c0-1.2,0.6-2.3,1.6-3c0,0,0.1,0,0.1-0.1c0.5-0.3,1.2-0.5,1.8-0.5h17.2c2,0,3.5,1.6,3.5,3.5
+		c0,2-1.6,3.5-3.5,3.5H16.7c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,10.6c0,1.3,0.8,2.4,1.9,2.9l14.7,6.3
+		c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2L19.8,117l0-5.3h7.3c4.6,0,8.4-3.1,9.6-7.3
+		c1,0.4,2.1,0.6,3.3,0.6c2.6,0,5-1,6.7-2.6c1.8,1.6,4.1,2.6,6.7,2.6c1.2,0,2.4-0.2,3.5-0.7v13.9c0,13.1-10.6,23.7-23.7,23.7
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.5,0,8.8-1,12.6-2.8v51.3c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-55.3
+		c6.8-5.5,11.1-13.9,11.1-23.3V84.1C63.4,78.7,59,74.2,53.5,74.2z M9.6,91.9c0-3.9,0-9.7,0-14.1c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5c0,0,0,14.1,0,14.1H9.9C9.8,91.8,9.7,91.9,9.6,91.9z M27.2,91.8H23V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5v14.5C29.2,92,28.2,91.8,27.2,91.8z M40,98.6c-2,0-3.5-1.6-3.5-3.5V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5V95C43.6,97,42,98.6,40,98.6z M53.5,98.6c-2,0-3.5-1.6-3.5-3.5V84.1c0-2,1.6-3.5,3.5-3.5c2,0,3.5,1.6,3.5,3.5
+		V95C57,97,55.4,98.6,53.5,98.6z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M126,13.9c-2.7,0-4.8,2.2-4.8,4.8v13c0,2.7,2.2,4.8,4.8,4.8c2.7,0,4.8-2.2,4.8-4.8v-13
+		C130.8,16.1,128.7,13.9,126,13.9z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M114.8,18.8v-7.6c0-2.7-2.2-4.8-4.8-4.8c-2.7,0-4.8,2.2-4.8,4.8v20.6c0,2.7,2.2,4.8,4.8,4.8
+		s4.8-2.2,4.8-4.8C114.8,31.8,114.8,18.8,114.8,18.8z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M98.7,11.2c0-2.7-2.2-4.8-4.8-4.8S89,8.6,89,11.2v17.4h5.6c1.4,0,2.8,0.3,4.1,0.8V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M82.6,11.2c0-2.7-2.2-4.8-4.8-4.8c-2.6,0-4.8,2.2-4.8,4.8c0,5.5,0,12.9,0,17.5c0.3,0,0.7-0.1,1-0.1h8.6
+		V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M101.9,94.8c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c16,0,28.9-13,28.9-28.9V42
+		c-1.5,0.7-3.1,1.1-4.8,1.1c-3.1,0-6-1.3-8-3.4c-2,2.1-4.9,3.4-8,3.4c-1.5,0-3-0.3-4.3-0.9c-1.1,5.1-5.6,8.9-11,8.9h-9.4l0,7.4
+		l15.7,6.7c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-17.6-7.6c-1.2-0.5-1.9-1.7-1.9-2.9l0-12.7
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h12.6c2.7,0,4.8-2.2,4.8-4.8c0-2.7-2.2-4.8-4.8-4.8H74c-0.9,0-1.8,0.2-2.5,0.7
+		c0,0-0.1,0-0.1,0.1c-1.4,0.9-2.2,2.4-2.2,4.1v18.8c0,11,5.9,21.2,15.4,26.7c1,0.6,1.6,1.6,1.6,2.8l0,108.6h31.4V91.2
+		C112.9,93.5,107.6,94.8,101.9,94.8z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M137.2,31.8v-13c0-6.2-5-11.2-11.2-11.2c-1.8,0-3.6,0.4-5.1,1.2c-1.1-5-5.6-8.8-11-8.8c-3.1,0-6,1.3-8,3.4
+		c-2-2.1-4.9-3.4-8-3.4c-3.1,0-6,1.3-8,3.4c-2-2.1-4.9-3.4-8-3.4c-6.2,0-11.2,5-11.2,11.2c0,12.4,0,17.8,0,20.2
+		c-2.4,2.1-3.8,5.2-3.8,8.5v18.8c0,12.6,6.5,24.4,17,31.3l0,106.9c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-108.6
+		c0-1.1-0.6-2.2-1.6-2.8c-9.5-5.5-15.4-15.7-15.4-26.7V39.9c0-1.7,0.8-3.2,2.2-4.1c0,0,0.1,0,0.1-0.1c0.8-0.5,1.6-0.7,2.5-0.7h20.6
+		c2.7,0,4.8,2.2,4.8,4.8c0,2.7-2.2,4.8-4.8,4.8H82c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,12.7c0,1.3,0.8,2.4,1.9,2.9
+		l17.6,7.6c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-15.7-6.7l0-7.4h9.4c5.4,0,9.9-3.8,11-8.9
+		c1.3,0.6,2.8,0.9,4.3,0.9c3.1,0,6-1.3,8-3.4c2,2.1,4.9,3.4,8,3.4c1.7,0,3.4-0.4,4.8-1.1v17.6c0,16-13,28.9-28.9,28.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c5.6,0,11-1.3,15.7-3.7v105.7c0,1.8,1.4,3.2,3.2,3.2s3.2-1.4,3.2-3.2V87.1
+		c8.1-6.5,13.2-16.4,13.2-27.5C137.2,59.5,137.2,31.8,137.2,31.8z M73,28.7c0-4.6,0-12,0-17.5c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v17.4H74C73.6,28.6,73.3,28.7,73,28.7z M94.6,28.6H89V11.2c0-2.7,2.2-4.8,4.8-4.8s4.8,2.2,4.8,4.8v18.2
+		C97.4,28.9,96,28.6,94.6,28.6z M109.9,36.7c-2.7,0-4.8-2.2-4.8-4.8V11.2c0-2.7,2.2-4.8,4.8-4.8c2.7,0,4.8,2.2,4.8,4.8v7.6
+		c0,0,0,13,0,13C114.8,34.5,112.6,36.7,109.9,36.7z M126,36.7c-2.7,0-4.8-2.2-4.8-4.8v-13c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v13C130.8,34.5,128.7,36.7,126,36.7z"
+                  />
+                </g>
+              </svg>
+            </span>
+            <h4>Education Survey</h4>
+            <p>
+              This form is designed to collect feedback on the education system
+              in Vedakuraopalle village, Nagarkurnool district. The information
+              collected will be used to improve the quality of education in the
+              village.
+            </p>
+            <p
+              onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc6TQ4zV4CjwnKxuJOvtgf7LX8echjT3i7NKZUPxwU2dk1FKw/viewform?usp=sf_link'"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSc6TQ4zV4CjwnKxuJOvtgf7LX8echjT3i7NKZUPxwU2dk1FKw/viewform?usp=sf_link"
+              class="btn-card"
+            >
+              Start
+            </p>
+            <div class="shine"></div>
+            <div class="background">
+              <div class="tiles">
+                <div class="tile tile-1"></div>
+                <div class="tile tile-2"></div>
+                <div class="tile tile-3"></div>
+                <div class="tile tile-4"></div>
+
+                <div class="tile tile-5"></div>
+                <div class="tile tile-6"></div>
+                <div class="tile tile-7"></div>
+                <div class="tile tile-8"></div>
+
+                <div class="tile tile-9"></div>
+                <div class="tile tile-10"></div>
+              </div>
+
+              <div class="line line-1"></div>
+              <div class="line line-2"></div>
+              <div class="line line-3"></div>
+            </div>
+          </div>
+        </a>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScpVLcbCqDjIXXpBfXo0C0KcWczes68jKj0KtGxdttnJIptaA/viewform?usp=sf_link"
+        >
+          <div class="card" style="margin-top: 2em">
+            <span class="icon">
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 200 200"
+                enable-background="new 0 0 200 200"
+                xml:space="preserve"
+              >
+                <g>
+                  <path
+                    fill="#FDE4DF"
+                    d="M155.9,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1c0,3.9,0,9.3,0,12.9c0,0,0.1,0,0.1,0h6V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M171.7,132.7c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c12.1,0,21.9-9.8,21.9-21.9V91.7
+		c-1,0.3-2,0.5-3.1,0.5c-2.4,0-4.6-0.9-6.3-2.4c-1.7,1.5-3.9,2.4-6.3,2.4c-1,0-2-0.2-2.9-0.5c-1.2,3.9-4.8,6.7-9.1,6.7h-6.6l0,4.6
+		l11.8,5.1c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-13.8-5.9c-1.2-0.5-1.9-1.7-1.9-2.9l0-9.9
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h9.8c1.7,0,3.1-1.4,3.1-3.1S167.7,86,166,86h-16.1c-0.6,0-1.1,0.2-1.6,0.4
+		c0,0-0.1,0-0.1,0.1c-0.9,0.6-1.4,1.5-1.4,2.6v14.7c0,8.3,4.5,16.1,11.7,20.3c1,0.6,1.6,1.6,1.6,2.8l0,69.5h23.2v-66
+		C179.7,131.8,175.8,132.7,171.7,132.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M168.5,66.7c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v12.9h3.7c0.9,0,1.7,0.1,2.5,0.3V66.7z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M181.1,72.6v-5.9c0-1.7-1.4-3.1-3.1-3.1c-1.7,0-3.1,1.4-3.1,3.1v16.1c0,1.7,1.4,3.1,3.1,3.1
+		c1.7,0,3.1-1.4,3.1-3.1C181.1,82.8,181.1,72.6,181.1,72.6z"
+                  />
+                  <path
+                    fill="#FDE4DF"
+                    d="M190.5,69.5c-1.7,0-3.1,1.4-3.1,3.1v10.2c0,1.7,1.4,3.1,3.1,3.1s3.1-1.4,3.1-3.1V72.6
+		C193.6,70.9,192.2,69.5,190.5,69.5z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M190.5,63.1c-1.2,0-2.4,0.2-3.5,0.7c-1.2-3.8-4.8-6.6-9-6.6c-2.4,0-4.6,0.9-6.3,2.4
+		c-1.7-1.5-3.9-2.4-6.3-2.4c-2.4,0-4.6,0.9-6.3,2.4c-1.7-1.5-3.9-2.4-6.3-2.4c-5.2,0-9.4,4.2-9.4,9.5c0,9.1,0,13.4,0,15.5
+		c-1.9,1.8-3,4.2-3,6.9v14.7c0,10,5.1,19.3,13.3,24.8l0,67.7c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-69.5
+		c0-1.1-0.6-2.2-1.6-2.8c-7.2-4.2-11.7-11.9-11.7-20.3V89.1c0-1.1,0.5-2,1.4-2.6c0,0,0.1,0,0.1-0.1c0.5-0.3,1-0.4,1.6-0.4H166
+		c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1h-9.8c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,9.9c0,1.3,0.8,2.4,1.9,2.9
+		l13.8,5.9c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-11.8-5.1l0-4.6h6.6c4.3,0,7.9-2.8,9.1-6.7
+		c0.9,0.3,1.9,0.5,2.9,0.5c2.4,0,4.6-0.9,6.3-2.4c1.7,1.5,3.9,2.4,6.3,2.4c1.1,0,2.1-0.2,3.1-0.5v12.7c0,12.1-9.8,21.9-21.9,21.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.1,0,8-0.9,11.6-2.5v66c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-70
+		c6.3-5.2,10.3-13.1,10.3-21.9V72.6C200,67.4,195.8,63.1,190.5,63.1z M149.8,79.6c0-3.6,0-9,0-12.9c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v12.9h-6C149.9,79.6,149.8,79.6,149.8,79.6z M166,79.6h-3.7V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v13.2C167.7,79.7,166.9,79.6,166,79.6z M178,85.9c-1.7,0-3.1-1.4-3.1-3.1V66.7c0-1.7,1.4-3.1,3.1-3.1
+		c1.7,0,3.1,1.4,3.1,3.1v5.9c0,0,0,10.2,0,10.2C181.1,84.5,179.7,85.9,178,85.9z M190.5,85.9c-1.7,0-3.1-1.4-3.1-3.1V72.6
+		c0-1.7,1.4-3.1,3.1-3.1c1.7,0,3.1,1.4,3.1,3.1v10.2C193.6,84.5,192.2,85.9,190.5,85.9z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M43.6,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M33.3,148.3c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c13.1,0,23.7-10.6,23.7-23.7v-13.9
+		c-1.1,0.4-2.3,0.7-3.5,0.7c-2.6,0-5-1-6.7-2.6C45,104,42.6,105,40,105c-1.1,0-2.3-0.2-3.3-0.6c-1.2,4.2-5,7.3-9.6,7.3h-7.3l0,5.3
+		l12.8,5.5c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3L15.4,122c-1.2-0.5-1.9-1.7-1.9-2.9l0-10.6
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h10.5c2,0,3.5-1.6,3.5-3.5c0-2-1.6-3.5-3.5-3.5H9.9c-0.6,0-1.3,0.2-1.8,0.5
+		c0,0-0.1,0-0.1,0.1c-1,0.6-1.6,1.7-1.6,3v15.8c0,9,4.9,17.4,12.7,21.9c1,0.6,1.6,1.6,1.6,2.8l0,54.6h25.3v-51.3
+		C42.1,147.3,37.8,148.3,33.3,148.3z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M16.6,77.8c0-2-1.6-3.5-3.5-3.5c-1.9,0-3.5,1.6-3.5,3.5c0,4.4,0,10.2,0,14.1c0.1,0,0.2,0,0.4,0h6.7V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M30.1,77.8c0-2-1.6-3.5-3.5-3.5c-2,0-3.5,1.6-3.5,3.5c0,0,0,14.1,0,14.1h4.2c1,0,2,0.2,2.9,0.4V77.8z"
+                  />
+                  <path
+                    fill="#BB8C82"
+                    d="M53.5,80.6c-2,0-3.5,1.6-3.5,3.5V95c0,2,1.6,3.5,3.5,3.5c2,0,3.5-1.6,3.5-3.5V84.1
+		C57,82.2,55.4,80.6,53.5,80.6z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M53.5,74.2c-1.4,0-2.7,0.3-3.9,0.8c-1.2-4.1-5-7.1-9.5-7.1c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6
+		c-2.6,0-5,1-6.7,2.6c-1.8-1.6-4.1-2.6-6.7-2.6c-5.4,0-9.9,4.5-9.9,9.9c0,9.9,0,14.5,0,16.7c-2,1.9-3.2,4.5-3.2,7.3v15.8
+		c0,10.7,5.4,20.6,14.3,26.5l0,52.8c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-54.6c0-1.1-0.6-2.2-1.6-2.8
+		c-7.8-4.5-12.7-12.9-12.7-21.9v-15.8c0-1.2,0.6-2.3,1.6-3c0,0,0.1,0,0.1-0.1c0.5-0.3,1.2-0.5,1.8-0.5h17.2c2,0,3.5,1.6,3.5,3.5
+		c0,2-1.6,3.5-3.5,3.5H16.7c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,10.6c0,1.3,0.8,2.4,1.9,2.9l14.7,6.3
+		c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2L19.8,117l0-5.3h7.3c4.6,0,8.4-3.1,9.6-7.3
+		c1,0.4,2.1,0.6,3.3,0.6c2.6,0,5-1,6.7-2.6c1.8,1.6,4.1,2.6,6.7,2.6c1.2,0,2.4-0.2,3.5-0.7v13.9c0,13.1-10.6,23.7-23.7,23.7
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c4.5,0,8.8-1,12.6-2.8v51.3c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2v-55.3
+		c6.8-5.5,11.1-13.9,11.1-23.3V84.1C63.4,78.7,59,74.2,53.5,74.2z M9.6,91.9c0-3.9,0-9.7,0-14.1c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5c0,0,0,14.1,0,14.1H9.9C9.8,91.8,9.7,91.9,9.6,91.9z M27.2,91.8H23V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5v14.5C29.2,92,28.2,91.8,27.2,91.8z M40,98.6c-2,0-3.5-1.6-3.5-3.5V77.8c0-2,1.6-3.5,3.5-3.5
+		c2,0,3.5,1.6,3.5,3.5V95C43.6,97,42,98.6,40,98.6z M53.5,98.6c-2,0-3.5-1.6-3.5-3.5V84.1c0-2,1.6-3.5,3.5-3.5c2,0,3.5,1.6,3.5,3.5
+		V95C57,97,55.4,98.6,53.5,98.6z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M126,13.9c-2.7,0-4.8,2.2-4.8,4.8v13c0,2.7,2.2,4.8,4.8,4.8c2.7,0,4.8-2.2,4.8-4.8v-13
+		C130.8,16.1,128.7,13.9,126,13.9z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M114.8,18.8v-7.6c0-2.7-2.2-4.8-4.8-4.8c-2.7,0-4.8,2.2-4.8,4.8v20.6c0,2.7,2.2,4.8,4.8,4.8
+		s4.8-2.2,4.8-4.8C114.8,31.8,114.8,18.8,114.8,18.8z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M98.7,11.2c0-2.7-2.2-4.8-4.8-4.8S89,8.6,89,11.2v17.4h5.6c1.4,0,2.8,0.3,4.1,0.8V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M82.6,11.2c0-2.7-2.2-4.8-4.8-4.8c-2.6,0-4.8,2.2-4.8,4.8c0,5.5,0,12.9,0,17.5c0.3,0,0.7-0.1,1-0.1h8.6
+		V11.2z"
+                  />
+                  <path
+                    fill="#F7BAAD"
+                    d="M101.9,94.8c-1.8,0-3.2-1.4-3.2-3.2c0-1.8,1.4-3.2,3.2-3.2c16,0,28.9-13,28.9-28.9V42
+		c-1.5,0.7-3.1,1.1-4.8,1.1c-3.1,0-6-1.3-8-3.4c-2,2.1-4.9,3.4-8,3.4c-1.5,0-3-0.3-4.3-0.9c-1.1,5.1-5.6,8.9-11,8.9h-9.4l0,7.4
+		l15.7,6.7c1.6,0.7,2.4,2.6,1.7,4.2c-0.5,1.2-1.7,1.9-2.9,1.9c-0.4,0-0.8-0.1-1.3-0.3l-17.6-7.6c-1.2-0.5-1.9-1.7-1.9-2.9l0-12.7
+		c0-0.8,0.3-1.7,0.9-2.3c0.6-0.6,1.4-0.9,2.3-0.9h12.6c2.7,0,4.8-2.2,4.8-4.8c0-2.7-2.2-4.8-4.8-4.8H74c-0.9,0-1.8,0.2-2.5,0.7
+		c0,0-0.1,0-0.1,0.1c-1.4,0.9-2.2,2.4-2.2,4.1v18.8c0,11,5.9,21.2,15.4,26.7c1,0.6,1.6,1.6,1.6,2.8l0,108.6h31.4V91.2
+		C112.9,93.5,107.6,94.8,101.9,94.8z"
+                  />
+                  <path
+                    fill="#422938"
+                    d="M137.2,31.8v-13c0-6.2-5-11.2-11.2-11.2c-1.8,0-3.6,0.4-5.1,1.2c-1.1-5-5.6-8.8-11-8.8c-3.1,0-6,1.3-8,3.4
+		c-2-2.1-4.9-3.4-8-3.4c-3.1,0-6,1.3-8,3.4c-2-2.1-4.9-3.4-8-3.4c-6.2,0-11.2,5-11.2,11.2c0,12.4,0,17.8,0,20.2
+		c-2.4,2.1-3.8,5.2-3.8,8.5v18.8c0,12.6,6.5,24.4,17,31.3l0,106.9c0,1.8,1.4,3.2,3.2,3.2c1.8,0,3.2-1.4,3.2-3.2l0-108.6
+		c0-1.1-0.6-2.2-1.6-2.8c-9.5-5.5-15.4-15.7-15.4-26.7V39.9c0-1.7,0.8-3.2,2.2-4.1c0,0,0.1,0,0.1-0.1c0.8-0.5,1.6-0.7,2.5-0.7h20.6
+		c2.7,0,4.8,2.2,4.8,4.8c0,2.7-2.2,4.8-4.8,4.8H82c-0.8,0-1.7,0.3-2.3,0.9c-0.6,0.6-0.9,1.4-0.9,2.3l0,12.7c0,1.3,0.8,2.4,1.9,2.9
+		l17.6,7.6c0.4,0.2,0.8,0.3,1.3,0.3c1.2,0,2.4-0.7,2.9-1.9c0.7-1.6-0.1-3.5-1.7-4.2l-15.7-6.7l0-7.4h9.4c5.4,0,9.9-3.8,11-8.9
+		c1.3,0.6,2.8,0.9,4.3,0.9c3.1,0,6-1.3,8-3.4c2,2.1,4.9,3.4,8,3.4c1.7,0,3.4-0.4,4.8-1.1v17.6c0,16-13,28.9-28.9,28.9
+		c-1.8,0-3.2,1.4-3.2,3.2c0,1.8,1.4,3.2,3.2,3.2c5.6,0,11-1.3,15.7-3.7v105.7c0,1.8,1.4,3.2,3.2,3.2s3.2-1.4,3.2-3.2V87.1
+		c8.1-6.5,13.2-16.4,13.2-27.5C137.2,59.5,137.2,31.8,137.2,31.8z M73,28.7c0-4.6,0-12,0-17.5c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v17.4H74C73.6,28.6,73.3,28.7,73,28.7z M94.6,28.6H89V11.2c0-2.7,2.2-4.8,4.8-4.8s4.8,2.2,4.8,4.8v18.2
+		C97.4,28.9,96,28.6,94.6,28.6z M109.9,36.7c-2.7,0-4.8-2.2-4.8-4.8V11.2c0-2.7,2.2-4.8,4.8-4.8c2.7,0,4.8,2.2,4.8,4.8v7.6
+		c0,0,0,13,0,13C114.8,34.5,112.6,36.7,109.9,36.7z M126,36.7c-2.7,0-4.8-2.2-4.8-4.8v-13c0-2.7,2.2-4.8,4.8-4.8
+		c2.7,0,4.8,2.2,4.8,4.8v13C130.8,34.5,128.7,36.7,126,36.7z"
+                  />
+                </g>
+              </svg>
+            </span>
+            <h4>Medical Survey</h4>
+            <p>
+              This form is to gather information about your health care needs
+              and experiences. Your responses will help us to develop programs
+              to improve the health of the community.
+            </p>
+            <p
+              onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScpVLcbCqDjIXXpBfXo0C0KcWczes68jKj0KtGxdttnJIptaA/viewform?usp=sf_link'"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScpVLcbCqDjIXXpBfXo0C0KcWczes68jKj0KtGxdttnJIptaA/viewform?usp=sf_link"
+              class="btn-card"
+            >
+              Start
+            </p>
+            <div class="shine"></div>
+            <div class="background">
+              <div class="tiles">
+                <div class="tile tile-1"></div>
+                <div class="tile tile-2"></div>
+                <div class="tile tile-3"></div>
+                <div class="tile tile-4"></div>
+
+                <div class="tile tile-5"></div>
+                <div class="tile tile-6"></div>
+                <div class="tile tile-7"></div>
+                <div class="tile tile-8"></div>
+
+                <div class="tile tile-9"></div>
+                <div class="tile tile-10"></div>
+              </div>
+
+              <div class="line line-1"></div>
+              <div class="line line-2"></div>
+              <div class="line line-3"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- resources  -->
+
+      <label class="day-night">
+        <input type="checkbox" checked />
+        <div></div>
+      </label>
+
+      <!-- partial -->
+      <script>
+        // Dark & Light toggle
+
+        document
+          .querySelector(".day-night input")
+          .addEventListener("change", () => {
+            document.querySelector("body").classList.add("toggle");
+            setTimeout(() => {
+              document.querySelector("body").classList.toggle("light");
+
+              setTimeout(
+                () => document.querySelector("body").classList.remove("toggle"),
+                10
+              );
+            }, 5);
+          });
+      </script>
+    </main>
+    <div>
+      <div class="schedule">
+        <h2>Schedule</h2>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Activity</th>
+          </tr>
+          <tr>
+            <td>Day Before Surveytour</td>
+            <td>5:00 PM</td>
+            <td>
+              Pass all rules and regulations for Volunteers in Whatsapp groups.
+              And make sure all arrangements are done.
+            </td>
+          </tr>
+          <tr>
+            <td>Day Before Surveytour</td>
+            <td>9:30 PM</td>
+            <td>
+              Every member should move to a suitable location to arrive at the
+              bus in the early morning.
+            </td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>4:15 AM</td>
+            <td>All Volunteers should gather at the Bus.</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>4:30 AM</td>
+            <td>Bus starts at JNTUH college for the tour</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>7:00 AM - 8:00 AM</td>
+            <td>Breakfast in the bus</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>11:00 AM</td>
+            <td>Arrival at the destination</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>11:15 AM</td>
+            <td>Discussion and allotment of the survey plan</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>11:30 AM - 2:30 PM</td>
+            <td>Conducting the survey</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>2:30 PM - 3:30 PM</td>
+            <td>Lunch</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>4:00 PM - 6:00 PM</td>
+            <td>Continue with the survey</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>6:15 PM - 7:00 PM</td>
+            <td>Reach Kollapur for night stay</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 1</td>
+            <td>7:00 PM - 8:00 PM</td>
+            <td>Dinner followed by preparing survey report</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>8:00 AM - 8:30 AM</td>
+            <td>Breakfast</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>9:30 AM - 11:30 AM</td>
+            <td>Field Trip to KLI</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>12:00 PM - 2:00 PM</td>
+            <td>Palamuru Rangareddy Lift Irrigation Project</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>2:00 PM - 4:30 PM</td>
+            <td>Lunch followed by Visiting Somacilla</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>5:00 PM</td>
+            <td>Start journey Back to Hyderabad</td>
+          </tr>
+          <tr>
+            <td>Surveytour Day 2</td>
+            <td>9:00 PM</td>
+            <td>Arrival in Hyderabad</td>
+          </tr>
+        </table>
+        <style>
+          /* Add your custom CSS styles here */
+          .schedule {
+            margin-top: 20px;
+            padding: 2em;
+          }
+          .schedule h2 {
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 2em;
+            line-height: 2;
+            color: var(--card-label-color);
+            text-align: center;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: var(--background-color);
+            box-shadow: 0px var(--card-box-shadow-1-y)
+                var(--card-box-shadow-1-blur) var(--card-box-shadow-1),
+              0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur)
+                var(--card-box-shadow-2),
+              0 0 0 1px var(--card-border-color);
+            color: var(--text-color);
+          }
+
+          th,
+          td {
+            border: 1px solid var(--card-border-color);
+            padding: 8px;
+            text-align: left;
+            padding: 1.2em;
+            line-height: 1.5em;
+          }
+
+          th {
+            background-color: #f2f2f2;
+          }
+        </style>
+      </div>
+      <!-- blueprint  -->
+      <div class="schedule" style="display: flex; flex-direction: column">
+        <h2>Resources</h2>
+        <p>For more resources, please refer the following blueprint</p>
+        <!-- button  -->
+
+        <a class="btn-card" href="blueprint/blueprint_rs2023.pdf"> Download </a>
+      </div>
+    </div>
+    <style>
+      .schedule p {
+        color: var(--text-color);
+        text-align: center;
+      }
+      .schedule .btn-card {
+        color: var(--text-color);
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 1em;
+        padding: 1em 2em;
+        width: 10em;
+      }
+      .dbtn {
+        margin: 0 auto;
+      }
+    </style>
+
+    <!--social acc-->
+    <!-- <div class="social-index">
+      <h1>Let us be social !!</h1>
+
+      <div class="social-btns">
+        <a class="sofab btn facebook" href="https://facebook.com/stmorg.in"
+          ><i class="sofa fab fa-facebook-f"></i
+        ></a>
+        <a class="sofab btn twitter" href="https:/twitter.com/STM_ORG"
+          ><i class="sofa fab fa-twitter"></i
+        ></a>
+        <a
+          class="sofab btn google"
+          href="https://www.instagram.com/servicetomankindorg/"
+          ><i class="sofa fab fa-instagram"></i
+        ></a>
+        <a
+          class="sofab btn dribbble"
+          href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ?view_as=subscriber"
+          ><i class="sofa fab fa-youtube"></i
+        ></a>
+      </div>
+    </div> -->
+  </body>
+</html>
