@@ -1,0 +1,41 @@
+name: Deploy to Google Cloud Instance
+
+on:
+  push:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Compute Engine Instance
+      run: |
+        # Define variables
+        INSTANCE_NAME="test"
+        ZONE="us-central1-c"  # Replace with your instance's zone
+        SSH_USER="weberqbot"  # Replace with the user for the instance
+        SSH_KEY="${{ secrets.GCP_SSH_PRIVATE_KEY }}"  # Add private SSH key to secrets
+        DEPLOY_SCRIPT="Script.sh"  # Script to run on the instance
+
+        # Write SSH key to a file
+        echo "$SSH_KEY" > private_key
+        chmod 600 private_key
+
+        # Generate public key
+        ssh-keygen -y -f private_key > private_key.pub
+
+        mkdir -p ~/.ssh
+
+        # Add the instance to known_hosts to prevent host key verification issues
+        ssh-keyscan -H 34.68.69.253 >> ~/.ssh/known_hosts
+
+        
+
+        # Connect to the instance and execute the script
+        scp -i private_key $DEPLOY_SCRIPT "$SSH_USER@34.68.69.253:~/"
+        ssh -i private_key "$SSH_USER@34.68.69.253"  "bash ~/Script.sh"
+
+        
