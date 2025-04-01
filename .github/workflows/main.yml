@@ -11,31 +11,38 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Deploy to Compute Engine Instance
+    - name: Set Variables
       run: |
-        # Define variables
-        INSTANCE_NAME="test"
-        ZONE="us-central1-c"  # Replace with your instance's zone
-        SSH_USER="weberqbot"  # Replace with the user for the instance
-        SSH_KEY="${{ secrets.GCP_SSH_PRIVATE_KEY }}"  # Add private SSH key to secrets
-        DEPLOY_SCRIPT="Script.sh"  # Script to run on the instance
+        echo "INSTANCE_NAME=test" >> $GITHUB_ENV
+        echo "ZONE=us-central1-c" >> $GITHUB_ENV
+        echo "SSH_USER=weberqbot" >> $GITHUB_ENV
+        echo "INSTANCE_IP=34.68.69.253" >> $GITHUB_ENV
+        echo "DEPLOY_SCRIPT=Script.sh" >> $GITHUB_ENV
+      shell: bash
 
-        # Write SSH key to a file
+    - name: Prepare SSH Key
+      env:
+        SSH_KEY: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+      run: |
+        echo "Writing private SSH key..."
         echo "$SSH_KEY" > private_key
         chmod 600 private_key
 
-        # Generate public key
-        ssh-keygen -y -f private_key > private_key.pub
+        echo "Generating public key from private key..."
+        ssh-keygen -y -f private_key > private_key.pub || { echo "SSH key generation failed"; exit 1; }
 
+    - name: Setup Known Hosts
+      run: |
+        echo "Scanning and adding instance to known_hosts..."
         mkdir -p ~/.ssh
+        ssh-keyscan -H $INSTANCE_IP >> ~/.ssh/known_hosts || { echo "Failed to add instance to known_hosts"; exit 1; }
 
-        # Add the instance to known_hosts to prevent host key verification issues
-        ssh-keyscan -H 34.68.69.253 >> ~/.ssh/known_hosts
+    - name: Copy Deploy Script
+      run: |
+        echo "Copying deploy script ($DEPLOY_SCRIPT) to instance..."
+        scp -i private_key "$DEPLOY_SCRIPT" "$SSH_USER@$INSTANCE_IP:~/" || { echo "SCP failed"; exit 1; }
 
-        
-
-        # Connect to the instance and execute the script
-        scp -i private_key $DEPLOY_SCRIPT "$SSH_USER@34.68.69.253:~/"
-        ssh -i private_key "$SSH_USER@34.68.69.253"  "bash ~/Script.sh"
-
-        
+    - name: Execute Deploy Script
+      run: |
+        echo "Executing deploy script on remote instance..."
+        ssh -i private_key "$SSH_USER@$INSTANCE_IP" "bash ~/$DEPLOY_SCRIPT" || { echo "Remote execution failed"; exit 1; }
