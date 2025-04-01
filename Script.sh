@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Print starting message
-echo "I am starting the game now"
+echo "I am starting the game not  now "
 
 mkdir changes
 
