@@ -6,7 +6,6 @@ echo "🚀 Starting deployment process..."
 PROJECT_DIR="/home/weberqbot/orbits/stm.org"
 CONTAINER_NAME="stm.weberq.in"
 IMAGE_NAME="stm-image"
-GIT_DIR_CHANGED=false
 
 echo "📁 Changing to project directory..."
 cd "$PROJECT_DIR" || { echo "❌ Failed to change directory."; exit 1; }
@@ -40,11 +39,19 @@ if echo "$CHANGED_FILES" | grep -qE 'Dockerfile|composer.json|composer.lock'; th
     echo "❌ Failed to start container."; exit 1
   }
 
-  echo "✅ Deployment complete!"
+  echo "✅ Deployment complete with full rebuild!"
 else
-  echo "✅ No changes requiring Docker rebuild. Skipping image build."
+  echo "✅ No changes requiring Docker rebuild. Syncing updated code into container..."
 
-  # Optional: restart container to pick up hot code changes (like PHP file edits)
-  echo "🔁 Restarting existing container (hot reload)..."
-  docker restart $CONTAINER_NAME || echo "No existing container to restart."
+  echo "📦 Copying updated code into running container..."
+  docker cp . $CONTAINER_NAME:/var/www/html || {
+    echo "❌ Failed to copy updated files to container."; exit 1;
+  }
+
+  echo "🔁 Restarting container to reflect changes..."
+  docker restart $CONTAINER_NAME || {
+    echo "❌ Failed to restart container."; exit 1;
+  }
+
+  echo "✅ Code sync complete without rebuild!"
 fi
