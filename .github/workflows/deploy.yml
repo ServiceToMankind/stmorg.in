@@ -1,0 +1,50 @@
+name: Deploy stmorg.weberq.in
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}       # Your Server IP
+          username: ${{ secrets.VPS_USER }}   # weberqbot
+          key: ${{ secrets.VPS_SSH_KEY }}     # Server Private Key
+          script: |
+            # --- Configuration ---
+            APP_NAME="stmorg.weberq.in"
+            REPO_URL="git@github.com:${{ github.repository }}.git"
+            PROJECT_DIR="/home/weberqbot/apps/$APP_NAME"
+            # ---------------------
+
+            echo "🚀 Deploying $APP_NAME..."
+            
+            # 1. Ensure apps directory exists
+            mkdir -p /home/weberqbot/apps
+
+            # 2. Clone or Pull
+            if [ -d "$PROJECT_DIR" ]; then
+              echo "📂 App directory exists. Pulling latest changes..."
+              cd "$PROJECT_DIR"
+              git pull origin main
+            else
+              echo "✨ Cloning repository..."
+              git clone "$REPO_URL" "$PROJECT_DIR"
+              cd "$PROJECT_DIR"
+            fi
+
+            # 3. Build and Start
+            echo "🐳 Rebuilding Container..."
+            # Force recreate to ensure new builds are picked up
+            docker compose down --remove-orphans || true
+            docker compose up -d --build
+
+            echo "✅ Deployment of $APP_NAME Complete!"
+

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: stmorg.weberq.in_app
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      # Router Config
+      - "traefik.http.routers.stmorg.weberq.in.rule=Host(`stmorg.weberq.in`)"
+      - "traefik.http.routers.stmorg.weberq.in.entrypoints=web"
+      # Load Balancer Config (Port 80 is standard for our PHP image)
+      - "traefik.http.services.stmorg.weberq.in.loadbalancer.server.port=80"
+    networks:
+      - web_network
+
+networks:
+  web_network:
+    external: true
+
