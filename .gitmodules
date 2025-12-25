@@ -1,3 +1,7 @@
 [submodule "paymentmanager"]
 	path = paymentmanager
 	url = https://github.com/cashfree/php-pg-integration.git
+
+[submodule "infra-config"]
+	path = infra-config
+	url = https://github.com/weberq/infra-config.git

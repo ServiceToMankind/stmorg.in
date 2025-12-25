@@ -17,6 +17,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}       # Your Server IP
           username: ${{ secrets.VPS_USER }}   # weberqbot
           key: ${{ secrets.VPS_SSH_KEY }}     # Server Private Key
+          command_timeout: 30m                # Increase timeout for long builds
           script: |
             # --- Configuration ---
             APP_NAME="stmorg.weberq.in"
