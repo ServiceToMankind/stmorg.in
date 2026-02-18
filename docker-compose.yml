@@ -1,4 +1,6 @@
+version: "3.9"
 
+services:
   web:
     image: ghcr.io/servicetomankind/stmorg:latest
     container_name: stmorg
