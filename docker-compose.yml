@@ -1,7 +1,6 @@
 
-services:
   web:
-    image: ghcr.io/weberq/stmorg:latest
+    image: ghcr.io/servicetomankind/stmorg:latest
     container_name: stmorg
     restart: unless-stopped
     labels:
@@ -12,7 +11,7 @@ services:
     networks:
       - web_network
 
-networks:
-  web_network:
-    external: true
+  networks:
+    web_network:
+      external: true
 

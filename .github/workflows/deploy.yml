@@ -19,7 +19,8 @@ jobs:
 
       - name: Build and Push Image
         run: |
-          IMAGE=ghcr.io/${{ github.repository_owner }}/stmorg:latest
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE=ghcr.io/$OWNER_LC/stmorg:latest
           docker build -t $IMAGE .
           docker push $IMAGE
 
