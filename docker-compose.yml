@@ -1,14 +1,14 @@
 
 services:
   web:
-    image: ghcr.io/weberq/stmorg.weberq.in:latest
-    container_name: stmorg.weberq.in
+    image: ghcr.io/weberq/stmorg:latest
+    container_name: stmorg
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.stmorg.weberq.in.rule=Host(`stmorg.weberq.in`)"
-      - "traefik.http.routers.stmorg.weberq.in.entrypoints=web"
-      - "traefik.http.services.stmorg.weberq.in.loadbalancer.server.port=80"
+      - "traefik.http.routers.stmorg.rule=Host(`stmorg.weberq.in`)"
+      - "traefik.http.routers.stmorg.entrypoints=web"
+      - "traefik.http.services.stmorg.loadbalancer.server.port=80"
     networks:
       - web_network
 
