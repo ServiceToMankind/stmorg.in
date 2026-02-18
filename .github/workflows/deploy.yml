@@ -40,14 +40,17 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             APP_NAME="stmorg"
-            IMAGE="ghcr.io/${{ github.repository_owner }}/$APP_NAME:${{ github.sha }}"
+
+            OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+            IMAGE="ghcr.io/$OWNER_LC/$APP_NAME:${{ github.sha }}"
+
             PROJECT_DIR="/home/weberqbot/apps/$APP_NAME"
             REPO_URL="git@github.com:${{ github.repository }}.git"
 
             mkdir -p /home/weberqbot/apps
 
-            echo "🔐 Login to GHCR..."
-            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+            echo "Login to GHCR..."
+            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u $OWNER_LC --password-stdin
 
             if [ -d "$PROJECT_DIR" ]; then
               cd "$PROJECT_DIR"
@@ -57,13 +60,13 @@ jobs:
               cd "$PROJECT_DIR"
             fi
 
-            echo "📥 Pull exact image..."
+            echo "Pull exact image..."
             docker pull $IMAGE
 
-            echo "🛑 Stop old container..."
+            echo "Stop old container..."
             docker rm -f $APP_NAME || true
 
-            echo "🚀 Run new container..."
+            echo "Run new container..."
             docker run -d \
               --name $APP_NAME \
               --network web_network \
@@ -73,9 +76,4 @@ jobs:
               -l "traefik.http.routers.$APP_NAME.entrypoints=web" \
               -l "traefik.http.services.$APP_NAME.loadbalancer.server.port=80" \
               $IMAGE
-
-            echo "🧹 Cleanup unused images..."
-            docker image prune -f
-
-            echo "✅ Deployment Complete!"
 
