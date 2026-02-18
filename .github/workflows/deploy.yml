@@ -36,13 +36,27 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /home/weberqbot/apps/stmorg
+            # --- Configuration ---
+            PROJECT_DIR="/home/weberqbot/apps/stmorg"
+            REPO_URL="git@github.com:${{ github.repository }}.git"
+            # ---------------------
+
+            # Ensure apps directory exists
+            mkdir -p /home/weberqbot/apps
 
             echo "🔐 Login to GHCR..."
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
 
-            echo "📂 Pull latest repo..."
-            git pull origin main
+            echo "📂 Deploying Application..."
+            if [ -d "$PROJECT_DIR" ]; then
+              echo "   Pulling latest changes..."
+              cd "$PROJECT_DIR"
+              git pull origin main
+            else
+              echo "   Cloning repository..."
+              git clone "$REPO_URL" "$PROJECT_DIR"
+              cd "$PROJECT_DIR"
+            fi
 
             echo "📥 Pull latest image..."
             docker compose pull

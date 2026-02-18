@@ -11,7 +11,7 @@
     networks:
       - web_network
 
-  networks:
-    web_network:
-      external: true
+networks:
+  web_network:
+    external: true
 
