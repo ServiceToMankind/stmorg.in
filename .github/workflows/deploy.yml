@@ -72,7 +72,7 @@ jobs:
               --network web_network \
               --restart unless-stopped \
               -l "traefik.enable=true" \
-              -l "traefik.http.routers.$APP_NAME.rule=Host(\`stmorg.weberq.in\`)" \
+              -l "traefik.http.routers.$APP_NAME.rule=Host(\`stmorg.in\`)" \
               -l "traefik.http.routers.$APP_NAME.entrypoints=web" \
               -l "traefik.http.services.$APP_NAME.loadbalancer.server.port=80" \
               $IMAGE
