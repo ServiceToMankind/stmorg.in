@@ -25,7 +25,6 @@ jobs:
           IMAGE=ghcr.io/${OWNER_LC}/stmorg:${{ github.sha }}
           docker build --no-cache -t $IMAGE .
           docker push $IMAGE
-          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
 
   deploy:
     needs: build
@@ -72,8 +71,10 @@ jobs:
               --network web_network \
               --restart unless-stopped \
               -l "traefik.enable=true" \
-              -l "traefik.http.routers.$APP_NAME.rule=Host(\`stmorg.in\`)" \
-              -l "traefik.http.routers.$APP_NAME.entrypoints=web" \
+              -l "traefik.http.routers.$APP_NAME.rule=Host("stmorg.in") || Host("www.stmorg.in")" \
+              -l "traefik.http.routers.$APP_NAME.entrypoints=web,websecure" \
+              -l "traefik.http.routers.$APP_NAME.tls=true" \
+              -l "traefik.http.routers.$APP_NAME.tls.certresolver=letsencrypt" \
               -l "traefik.http.services.$APP_NAME.loadbalancer.server.port=80" \
               $IMAGE
 
