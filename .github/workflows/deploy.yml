@@ -71,7 +71,7 @@ jobs:
               --network web_network \
               --restart unless-stopped \
               -l "traefik.enable=true" \
-              -l "traefik.http.routers.$APP_NAME.rule=Host("stmorg.in") || Host("www.stmorg.in")" \
+              -l "traefik.http.routers.$APP_NAME.rule=Host(\`stmorg.in\` || \`www.stmorg.in\`)" \
               -l "traefik.http.routers.$APP_NAME.entrypoints=web,websecure" \
               -l "traefik.http.routers.$APP_NAME.tls=true" \
               -l "traefik.http.routers.$APP_NAME.tls.certresolver=letsencrypt" \
