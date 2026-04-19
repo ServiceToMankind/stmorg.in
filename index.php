@@ -268,190 +268,132 @@ include('header.php');
 
         </div>
 
+        <!--donation centre-->
         <hr class="featurette-divider">
 
 
-        <!-- /AYdonate .... -->
+        <?php
+        // Fetch monthly data for chart (last 6 months)
+        $idx_labels = [];
+        $idx_data   = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $ts = strtotime("-$i month");
+            $index_m = date('n', $ts); $index_y = date('Y', $ts);
+            $idx_labels[] = date('M', $ts);
+            $r = json_decode(get_api_data($api_url . '/logs/donations?month=' . $index_m . '&year=' . $index_y), true);
+            $idx_data[] = ($r && $r['status']=='success') ? (int)$r['total_amount'] : 0;
+        }
+        $this_month_amt = get_total_price_by_month_api($date);
+        $today_amt      = get_total_price_by_date_api($date);
+        $last_month_amt = get_total_price_by_month_api($last_month_first_day);
+        $year_amt       = get_total_price_by_year_api($date);
+        $all_amt        = get_total_donations_api();
+        $goal           = 10000;
+        $pct            = min(100, round(($this_month_amt / $goal) * 100));
+        ?>
 
-        <!--donation centre-->
-        <section>
-            <div>
-                <!-- <h1>Dashboard</h1> -->
-                <div class="themes">DASHBOARD</div>
+        <div class="feat pt-4 pb-5">
+            <div class="container">
+
+                <!-- Section heading — same style as "Our Themes" -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Donation Summary</h4>
-                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
-                                    </div>
-                                    <!-- <div class="ml-auto d-flex no-block align-items-center">
-                                            <ul class="list-inline font-12 dl mr-3 mb-0">
-                                                <li class="list-inline-item text-info">
-                                                    <i class="fa fa-circle"></i> Stm
-                                                </li>
-                                                <li class="list-inline-item text-primary">
-                                                    <i class="fa fa-circle"></i> You
-                                                </li>
-                                            </ul>
-                                            <div class="dl">
-                                                <select class="custom-select">
-                                                    <option value="0" selected="">Monthly</option>
-                                                    <option value="1">Daily</option>
-                                                    <option value="2">Weekly</option>
-                                                    <option value="3">Yearly</option>
-                                                </select>
-                                            </div>
-                                        </div> -->
-                                </div>
-                                <div class="row">
-                                    <!-- column -->
-                                    <div class="col-lg-4">
-                                        <h1 class="mb-0 mt-4">Rs. <?php echo get_total_price_by_month_api($date);?>
-                                        </h1>
-                                        <h6 class="font-light text-muted">
-                                            Current Month Donations
-                                        </h6>
-                                        <h3 class="mt-4 mb-0">Rs.
-                                            <?php echo get_total_price_by_date_api($date); ?></h3>
-                                        <h6 class="font-light text-muted">This Day</h6>
-                                        <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
-                                            Donate</a>
-                                    </div>
-                                    <!-- column -->
-                                    <div class="col-lg-8">
-                                        <div class="campaign ct-charts">
-                                            <div class="chartist-tooltip"></div>
-                                            <svg class="dashgra" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 741 450">
-                                                <defs>
-                                                </defs>
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="77" y1="11" x2="10" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="171" y1="11" x2="77" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="238" y1="11" x2="171" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="292" y1="11" x2="238" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="367" y1="11" x2="292" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="466" y1="11" x2="367" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="512" y1="11" x2="466" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="588" y1="11" x2="511" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="645" y1="11" x2="588" y2="11" />
-                                                <line fill="none" stroke="#4AC900" stroke-width="4"
-                                                    stroke-miterlimit="10" x1="731" y1="11" x2="645" y2="11" />
-                                                <g>
-                                                    <circle fill="#FF8300" cx="10.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="77.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="171.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="238.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="292.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="367.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="466.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="510.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="588.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="645.5" cy="10.5" r="10.5" />
-                                                    <circle fill="#FF8300" cx="730.5" cy="10.5" r="10.5" />
-                                                </g>
-                                                <path id="graph-measurement" fill="none" stroke="#741E00"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    stroke-miterlimit="10"
-                                                    d="
-	M731,127H10 M10,127v-18 M113,127v-9.1 M731,109v18 M216,127v-9.1 M319,127v-9.1 M422,127v-9.1 M525,127v-9.1 M628,127v-9.1" />
-                                            </svg>
+                    <div class="section-head col-sm-12">
+                        <h4><span>Donation</span> Overview</h4>
+                        <p>Real-time fundraising progress. Every rupee counts — see our community in action.</p>
+                    </div>
+                </div>
 
-                                        </div>
-                                    </div>
-                                    <!-- column -->
-                                </div>
-                            </div>
-                            <!-- ============================================================== -->
-                            <!-- Info Box -->
-                            <!-- ============================================================== -->
-                            <div class="card-body border-top">
-                                <div class="row mb-0">
-                                    <!-- col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-3 dashion">
-                                                <span class="text-orange display-5"><i
-                                                        class="fas fa-calendar-alt"></i></span>
-                                            </div>
-                                            <div class='dahionc'>
-                                                <?php 
-                                    //     $lmraised=0;
-                                    // $res=mysqli_query($con,"SELECT `donations`.`amount` from `donations` where `donations`.`payment_status`='1' and month(`added_on`)=month('$date')-1 and year(`added_on`)='$year' and day(`added_on`)='$day'");
-                                    // while($row=mysqli_fetch_assoc($res)){
-                                    //     $lmraised=$lmraised+$row['amount'];
-                                    // }
-                                    ?>
-                                                <span>Last Month</span>
-                                                <h3 class="font-medium mb-0">Rs.
-                                                    <?php echo get_total_price_by_month_api($last_month_first_day);?>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- col -->
-                                    <!-- col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-3 dashion">
-                                                <span class="text-cyan display-5"><i
-                                                        class="fas fa-calendar-check"></i></span>
-                                            </div>
-                                            <div class='dahionc'>
-                                                <span>This Year</span>
-                                                <h3 class="font-medium mb-0">
-                                                    Rs.<?php echo get_total_price_by_year_api($date); ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- col -->
-                                    <!-- col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-3 dashion">
-                                                <span class="text-info display-5"><i class="fas fa-award"></i></span>
-                                            </div>
-                                            <div class='dahionc'>
-                                                <span>Permanent Donors</span>
-                                                <h3 class="font-medium mb-0">104</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- col -->
-                                    <!-- col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="d-flex align-items-center">
-                                            <div class="mr-3 dashion">
-                                                <span class="text-primary display-5"><i
-                                                        class="fas fa-rupee-sign"></i></span>
-                                            </div>
-                                            <div class='dahionc'>
-                                                <span>Total</span>
-                                                <h3 class="font-medium mb-0">
-                                                    Rs.<?php echo get_total_donations_api(); ?></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- col -->
-                                </div>
-                            </div>
+                <!-- Stat numbers row — 4 columns like the themes grid -->
+                <div class="row text-center" style="margin-bottom:32px;">
+                    <div class="col-lg-3 col-md-6 col-6" style="margin-bottom:20px;">
+                        <div style="padding:20px 10px;border-bottom:3px solid #0984e3;">
+                            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:.1em;color:#b2bec3;font-weight:600;margin-bottom:6px;">Today</div>
+                            <div style="font-size:1.7rem;font-weight:700;color:#0984e3;">₹<?php echo number_format($today_amt); ?></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-6" style="margin-bottom:20px;">
+                        <div style="padding:20px 10px;border-bottom:3px solid #8e44ad;">
+                            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:.1em;color:#b2bec3;font-weight:600;margin-bottom:6px;">This Month</div>
+                            <div style="font-size:1.7rem;font-weight:700;color:#8e44ad;">₹<?php echo number_format($this_month_amt); ?></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-6" style="margin-bottom:20px;">
+                        <div style="padding:20px 10px;border-bottom:3px solid #f91942;">
+                            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:.1em;color:#b2bec3;font-weight:600;margin-bottom:6px;">This Year</div>
+                            <div style="font-size:1.7rem;font-weight:700;color:#f91942;">₹<?php echo number_format($year_amt); ?></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-6" style="margin-bottom:20px;">
+                        <div style="padding:20px 10px;border-bottom:3px solid #27ae60;">
+                            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:.1em;color:#b2bec3;font-weight:600;margin-bottom:6px;">All Time</div>
+                            <div style="font-size:1.7rem;font-weight:700;color:#27ae60;">₹<?php echo number_format($all_amt); ?></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
+                <!-- Chart + Goal row -->
+                <div class="row" style="align-items:center;">
+                    <!-- Trend chart -->
+                    <div class="col-lg-8" style="margin-bottom:24px;">
+                        <canvas id="indexDonationChart" height="80"></canvas>
+                    </div>
+
+                    <!-- Monthly goal + CTA -->
+                    <div class="col-lg-4" style="margin-bottom:24px;text-align:center;">
+                        <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:.1em;color:#b2bec3;font-weight:600;margin-bottom:8px;"><?php echo date('F Y'); ?> Goal</div>
+                        <div style="font-size:3rem;font-weight:700;color:#0984e3;line-height:1;"><?php echo $pct; ?>%</div>
+                        <div style="font-size:0.85rem;color:#636e72;margin:8px 0 14px;">₹<?php echo number_format($this_month_amt); ?> of ₹<?php echo number_format($goal); ?> raised</div>
+                        <div style="background:#ecf0f1;border-radius:99px;height:6px;overflow:hidden;margin-bottom:22px;">
+                            <div style="height:100%;border-radius:99px;background:linear-gradient(90deg,#0984e3,#8e44ad);width:<?php echo $pct; ?>%;transition:width 1.2s ease;"></div>
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                            <a href="donate" class="btn btn-primary" style="background:linear-gradient(135deg,#0984e3,#8e44ad);border:none;padding:10px 24px;font-weight:600;border-radius:6px;">Donate Now</a>
+                            <a href="dashboard" class="btn" style="border:2px solid #0984e3;color:#0984e3;background:transparent;padding:10px 20px;font-weight:600;border-radius:6px;">Full Dashboard →</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        <script>
+        (function(){
+            var ctx = document.getElementById('indexDonationChart');
+            if(!ctx) return;
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: <?php echo json_encode($idx_labels); ?>,
+                    datasets: [{
+                        label: 'Donations (₹)',
+                        data: <?php echo json_encode($idx_data); ?>,
+                        fill: true,
+                        backgroundColor: 'rgba(9,132,227,0.08)',
+                        borderColor: '#0984e3',
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#8e44ad',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => ' ₹' + c.parsed.y.toLocaleString() } }
+                    },
+                    scales: {
+                        y: { beginAtZero:true, ticks:{ callback: v=>'₹'+v.toLocaleString(), color:'#b2bec3', font:{size:11} }, grid:{color:'#ecf0f1'}, border:{display:false} },
+                        x: { ticks:{color:'#b2bec3', font:{size:11}}, grid:{display:false}, border:{display:false} }
+                    }
+                }
+            });
+        })();
+        </script>
+
+        <hr class="featurette-divider">
 
         <!--join with us-->
 

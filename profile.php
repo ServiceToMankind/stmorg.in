@@ -2,1022 +2,359 @@
 require('includes/functions.php');
 date_default_timezone_set("Asia/Kolkata");
 
-// $date=date('Y-m-d');
-$date=date('Y-m-d h:i:s');
-$last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+$date = date('Y-m-d H:i:s');
+$ouid = isset($_SESSION['USER_ID'])   ? $_SESSION['USER_ID']   : '';
+$uid  = 'stmo' . $ouid;
 
-$uid=$_SESSION['USER_ID'];
-$ouid=$uid;
-$uid='stmo'.$uid;
-
-// get user details
-$user_details = get_api_data("https://apis.stmorg.in/common/users?uid=$uid");
-$user_details = json_decode($user_details, true);
-
-// Check for API errors
-if ($user_details['status'] !== "success") {
-    echo "API error: " . $user_details['message'];
-    exit;
+if (!$ouid) {
+    header('Location: login'); exit;
 }
-// get user details
-$user_details = $user_details['data'];
-$user_details = $user_details[0];
 
-// get volunteering activity count
-$volunteering_activity_count = get_api_data("https://apis.stmorg.in/activities/activities_vol?uid=".$ouid."&count=true");
-$volunteering_activity_count = json_decode($volunteering_activity_count, true);
-$volunteering_activity_count = $volunteering_activity_count['data']['data'];
+// User details via local API
+$user_raw     = get_api_data($api_url . '/global/users?uid=' . $uid);
+$user_resp    = json_decode($user_raw, true);
+$user_details = [];
+if ($user_resp && $user_resp['status'] === 'success' && is_array($user_resp['data']) && isset($user_resp['data'][0])) {
+    $user_details = $user_resp['data'][0];
+}
 
+// Volunteering activity count
+$vol_raw   = get_api_data($api_url . '/activities/activities_vol?uid=' . $ouid . '&count=true');
+$vol_resp  = json_decode($vol_raw, true);
+$vol_count = ($vol_resp && isset($vol_resp['data']['data'])) ? $vol_resp['data']['data'] : 0;
+
+// User's personal donation total
+$don_raw   = get_api_data($api_url . '/logs/donations');
+$don_resp  = json_decode($don_raw, true);
+$my_don_total = 0;
+$my_don_count = 0;
+if ($don_resp && $don_resp['status'] === 'success') {
+    foreach ($don_resp['data'] as $d) {
+        if ($d['custid'] == $ouid || $d['custid'] == $uid) {
+            $my_don_total += $d['amount'];
+            $my_don_count++;
+        }
+    }
+}
+
+// Role label
+$role_id    = isset($user_details['role_id']) ? $user_details['role_id'] : '';
+$role_label = isset($user_details['role'])    ? $user_details['role']    : 'Member';
+
+// Member since
+$member_since = '';
+if (isset($user_details['added_on'])) {
+    $member_since = date('F Y', strtotime($user_details['added_on']));
+}
+
+// Avatar initials
+$name_parts = explode(' ', trim($user_details['name'] ?? 'U'));
+$initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ? substr($name_parts[1], 0, 1) : ''));
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
-    <title>STM-INDIA</title>
+    <meta name="description" content="My STM Profile — Service to Mankind">
+    <title>My Profile — STM India</title>
 
-    <!--styles-->
-    <!-- <link rel="stylesheet" href="css/main/style.css"> -->
+    <!-- Styles -->
     <link rel="stylesheet" href="css/main/style.css?v=2.8">
-    <!-- <link rel="stylesheet" href="css/main/banner.css"> -->
     <link rel="stylesheet" href="css/main/banner.css">
     <link rel="stylesheet" href="css/main/btn.css">
     <link rel="stylesheet" href="css/defualt/catto.css">
-    <link rel="stylesheet" href="css/defualt/catto.min.css">
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script> -->
+    <link rel="stylesheet" href="css/defualt/bootstrap.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="js/jquery1.js"></script>
-    <script src="js/jquery-3.5.1-slim.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-    <script src="js/typed-1.1.1.js"></script>
-    <script src="main-js/typed.js?v=1"></script>
-    <!-- <script>
-    alert(
-        'Parts of this page are under development, only DONATE section is made active for emergency donations. Thank you for co-operating with us. - STM'
-    );
-    </script> -->
-
-    <!-- BS CSS / js-->
-    <link rel="stylesheet" href="css/defualt/bootstrap.css?v=1" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script> -->
     <script src="js/boostrap.js"></script>
-
-
-    <!-- Favicons -->
-
-    <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180">
-    <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png">
-    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c">
-    <link rel="icon" href="accesories/fevicon 32.ico">
-    <meta name="theme-color" content="#563d7c">
-
-    <link href="css/main/carousel.css" rel="stylesheet">
-
-    <!-- fontaswsome00000 -->
     <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
 
+    <!-- Favicons -->
+    <link rel="icon" href="accesories/fevicon 32.ico">
+    <meta name="theme-color" content="#2c3e50">
+
     <style>
-    @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
+        body { background: #f0f2f8; font-family: 'Inter', sans-serif; }
 
-    html {
-        position: relative;
-        overflow-x: hidden !important;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: "Quicksand", sans-serif;
-        color: #324e63;
-    }
-
-    a,
-    a:hover {
-        text-decoration: none;
-    }
-
-    .icon {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        stroke-width: 0;
-        stroke: currentColor;
-        fill: currentColor;
-    }
-
-    .wrapper {
-        width: 100%;
-        width: 100%;
-        height: auto;
-        min-height: 100vh;
-        padding: 50px 20px;
-        padding-top: 180px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .wrapper {
-            height: auto;
-            min-height: 100vh;
-            padding-top: 180px;
-        }
-    }
-
-    .profile-card {
-        width: 100%;
-        min-height: 460px;
-        margin: auto;
-        box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
-        background: #fff;
-        border-radius: 12px;
-        max-width: 700px;
-        position: relative;
-    }
-
-    .profile-card.active .profile-card__cnt {
-        filter: blur(6px);
-    }
-
-    .profile-card.active .profile-card-message,
-    .profile-card.active .profile-card__overlay {
-        opacity: 1;
-        pointer-events: auto;
-        transition-delay: 0.1s;
-    }
-
-    .profile-card.active .profile-card-form {
-        transform: none;
-        transition-delay: 0.1s;
-    }
-
-    .profile-card__img {
-        width: 150px;
-        height: 150px;
-        margin-left: auto;
-        margin-right: auto;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        z-index: 4;
-        box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
-    }
-
-    @media screen and (max-width: 576px) {
-        .profile-card__img {
-            width: 120px;
-            height: 120px;
-        }
-    }
-
-    .profile-card__img img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-
-    .profile-card__cnt {
-        margin-top: -35px;
-        text-align: center;
-        padding: 0 20px;
-        padding-bottom: 40px;
-        transition: all 0.3s;
-    }
-
-    .profile-card__name {
-        font-weight: 700;
-        font-size: 24px;
-        color: #6944ff;
-        margin-bottom: 15px;
-    }
-
-    .profile-card__txt {
-        font-size: 18px;
-        font-weight: 500;
-        color: #324e63;
-        margin-bottom: 15px;
-    }
-
-    .profile-card__txt strong {
-        font-weight: 700;
-    }
-
-    .profile-card-loc {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    .profile-card-loc__icon {
-        display: inline-flex;
-        font-size: 27px;
-        margin-right: 10px;
-    }
-
-    .profile-card-inf {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        margin-top: 35px;
-    }
-
-    .profile-card-inf__item {
-        padding: 10px 35px;
-        min-width: 150px;
-    }
-
-    @media screen and (max-width: 768px) {
-        .profile-card-inf__item {
-            padding: 10px 20px;
-            min-width: 120px;
-        }
-    }
-
-    .profile-card-inf__title {
-        font-weight: 700;
-        font-size: 27px;
-        color: #324e63;
-    }
-
-    .profile-card-inf__txt {
-        font-weight: 500;
-        margin-top: 7px;
-    }
-
-    .profile-card-social {
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .profile-card-social__item {
-        display: inline-flex;
-        width: 55px;
-        height: 55px;
-        margin: 15px;
-        border-radius: 50%;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        background: #405de6;
-        box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
-        position: relative;
-        font-size: 21px;
-        flex-shrink: 0;
-        transition: all 0.3s;
-    }
-
-    @media screen and (max-width: 768px) {
-        .profile-card-social__item {
-            width: 50px;
-            height: 50px;
-            margin: 10px;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .profile-card-social__item:hover {
-            transform: scale(1.2);
-        }
-    }
-
-    .profile-card-social__item.facebook {
-        background: linear-gradient(45deg, #3b5998, #0078d7);
-        box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
-    }
-
-    .profile-card-social__item.twitter {
-        background: linear-gradient(45deg, #1da1f2, #0e71c8);
-        box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
-    }
-
-    .profile-card-social__item.instagram {
-        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
-    }
-
-    .profile-card-social__item.behance {
-        background: linear-gradient(45deg, #1769ff, #213fca);
-        box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
-    }
-
-    .profile-card-social__item.github {
-        background: linear-gradient(45deg, #333333, #626b73);
-        box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
-    }
-
-    .profile-card-social__item.codepen {
-        background: linear-gradient(45deg, #324e63, #414447);
-        box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
-    }
-
-    .profile-card-social__item.link {
-        background: linear-gradient(45deg, #d5135a, #f05924);
-        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
-    }
-
-    .profile-card-social .icon-font {
-        display: inline-flex;
-    }
-
-    .profile-card-ctr {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-    }
-
-    @media screen and (max-width: 576px) {
-        .profile-card-ctr {
-            flex-wrap: wrap;
-        }
-    }
-
-    .profile-card__button {
-        background: none;
-        border: none;
-        font-family: "Quicksand", sans-serif;
-        font-weight: 700;
-        font-size: 19px;
-        margin: 15px 35px;
-        padding: 15px 40px;
-        min-width: 201px;
-        border-radius: 50px;
-        min-height: 55px;
-        color: #fff;
-        cursor: pointer;
-        backface-visibility: hidden;
-        transition: all 0.3s;
-    }
-
-    @media screen and (max-width: 768px) {
-        .profile-card__button {
-            min-width: 170px;
-            margin: 15px 25px;
-        }
-    }
-
-    @media screen and (max-width: 576px) {
-        .profile-card__button {
-            min-width: inherit;
-            margin: 0;
-            margin-bottom: 16px;
-            width: 100%;
-            max-width: 300px;
+        .prof-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 110px 20px 60px;
         }
 
-        .profile-card__button:last-child {
-            margin-bottom: 0;
+        /* ---- Hero card ---- */
+        .prof-hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #0984e3 100%);
+            border-radius: 20px;
+            padding: 40px 36px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
         }
-    }
-
-    .profile-card__button:focus {
-        outline: none !important;
-    }
-
-    @media screen and (min-width: 768px) {
-        .profile-card__button:hover {
-            transform: translateY(-5px);
+        .prof-hero::before {
+            content: '';
+            position: absolute;
+            width: 240px; height: 240px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            top: -60px; right: -60px;
         }
-    }
-
-    .profile-card__button:first-child {
-        margin-left: 0;
-    }
-
-    .profile-card__button:last-child {
-        margin-right: 0;
-    }
-
-    .profile-card__button.button--blue {
-        background: linear-gradient(45deg, #1da1f2, #0e71c8);
-        box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
-    }
-
-    .profile-card__button.button--blue:hover {
-        box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
-    }
-
-    .profile-card__button.button--orange {
-        background: linear-gradient(45deg, #d5135a, #f05924);
-        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
-    }
-
-    .profile-card__button.button--orange:hover {
-        box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
-    }
-
-    .profile-card__button.button--gray {
-        box-shadow: none;
-        background: #dcdcdc;
-        color: #142029;
-    }
-
-    .profile-card-message {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding-top: 130px;
-        padding-bottom: 100px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.3s;
-    }
-
-    .profile-card-form {
-        box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        height: 100%;
-        background: #fff;
-        border-radius: 10px;
-        padding: 35px;
-        transform: scale(0.8);
-        position: relative;
-        z-index: 3;
-        transition: all 0.3s;
-    }
-
-    @media screen and (max-width: 768px) {
-        .profile-card-form {
-            max-width: 90%;
-            height: auto;
+        .prof-avatar-lg {
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 3px solid rgba(255,255,255,0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; font-weight: 700;
+            flex-shrink: 0;
+            position: relative; z-index: 1;
         }
-    }
-
-    @media screen and (max-width: 576px) {
-        .profile-card-form {
-            padding: 20px;
+        .prof-hero-info { position: relative; z-index: 1; flex: 1; }
+        .prof-hero-info h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 4px; }
+        .prof-hero-info .prof-id { font-size: 0.85rem; opacity: .7; }
+        .prof-role-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 8px;
         }
-    }
-
-    .profile-card-form__bottom {
-        justify-content: space-between;
-        display: flex;
-    }
-
-    @media screen and (max-width: 576px) {
-        .profile-card-form__bottom {
-            flex-wrap: wrap;
+        .prof-hero-actions {
+            display: flex; gap: 10px; flex-wrap: wrap;
+            position: relative; z-index: 1;
         }
-    }
+        .prof-hero-actions a {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
+            border-radius: 10px;
+            padding: 9px 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background .2s;
+        }
+        .prof-hero-actions a:hover { background: rgba(255,255,255,0.28); color: #fff; }
 
-    .profile-card textarea {
-        width: 100%;
-        resize: none;
-        height: 210px;
-        margin-bottom: 20px;
-        border: 2px solid #dcdcdc;
-        border-radius: 10px;
-        padding: 15px 20px;
-        color: #324e63;
-        font-weight: 500;
-        font-family: "Quicksand", sans-serif;
-        outline: none;
-        transition: all 0.3s;
-    }
+        /* ---- Stats row ---- */
+        .prof-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+        .prof-stat-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .prof-stat-card .stat-num {
+            font-size: 1.9rem; font-weight: 700; color: #0984e3; line-height: 1;
+        }
+        .prof-stat-card .stat-lbl {
+            font-size: 0.8rem; color: #b2bec3; margin-top: 6px; font-weight: 500;
+        }
 
-    .profile-card textarea:focus {
-        outline: none;
-        border-color: #8a979e;
-    }
+        /* ---- Info grid ---- */
+        .prof-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+        @media(max-width:600px){
+            .prof-stats { grid-template-columns: 1fr 1fr; }
+            .prof-info-grid { grid-template-columns: 1fr; }
+            .prof-hero { flex-direction: column; text-align: center; }
+            .prof-hero-actions { justify-content: center; }
+        }
 
-    .profile-card__overlay {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        opacity: 0;
-        background: rgba(22, 33, 72, 0.35);
-        border-radius: 12px;
-        transition: all 0.3s;
-    }
+        .prof-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .prof-card h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: #b2bec3;
+            font-weight: 600;
+            margin: 0 0 18px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f6fa;
+            font-size: 0.9rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-row .info-icon {
+            width: 34px; height: 34px;
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .info-row .info-label { color: #b2bec3; font-size: 0.78rem; }
+        .info-row .info-val   { font-weight: 500; color: #2c3e50; }
+
+        /* Social icons */
+        .prof-social {
+            display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px;
+        }
+        .prof-social a {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform .2s, opacity .2s;
+        }
+        .prof-social a:hover { transform: translateY(-2px); opacity: .85; }
+        .soc-fb  { background: #1877f2; color: #fff; }
+        .soc-tw  { background: #1da1f2; color: #fff; }
+        .soc-ig  { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff; }
+        .soc-yt  { background: #ff0000; color: #fff; }
     </style>
-
-
 </head>
-
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white big-nav">
-            <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
-                height="50px" width="50px">
-            <!-- <a class="navbar-brand" href="#">Service To Mankind</a> -->
-            <!-- <button class="navbar-toggler navbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon navicon"></span>
-            </button> -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" style="color:red !important;
-                        " href="https://ask.stmorg.in">#ASKSTM</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logs">Payment Logs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#aboutus">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#themes">Our Themes</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="gallary">Gallery</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact Us</a>
-                    </li>
+<?php include('header.php'); ?>
 
-                </ul>
-                <?php if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
-                <ul class="navbar-nav user-menu">
-                    <li id="userpic-main">
-                        <span><i class="fa-solid fa-circle-user userpic"></i></span>
-                        <ul id="dropped-prof" class="hidden">
-                            <li class="nav-item">
-                                <?php echo $_SESSION['USER_NAME']; ?>
-                            </li>
-                            <li class="nav-item">
-                                <span><i class="fas fa-user"></i></span>
-                                <a class="nav-link" href="profile">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <span><i class="fa-solid fa-right-from-bracket"></i></span>
-                                <a class="nav-link" href="logout">LogOut</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <?php }else{ ?>
-                <ul class="navbar-nav user-menu">
-                    <li id="userpic-main">
-                        <span><a href="login"><i class="fa-solid fa-circle-user"></i></a></span>
-                    </li>
-                </ul>
-                <?php } ?>
+<main role="main">
+<div class="prof-wrap">
 
+    <!-- Hero -->
+    <div class="prof-hero">
+        <div class="prof-avatar-lg"><?php echo htmlspecialchars($initials ?: '?'); ?></div>
+        <div class="prof-hero-info">
+            <h2><?php echo htmlspecialchars($user_details['name'] ?? 'STM Member'); ?></h2>
+            <div class="prof-id"><?php echo htmlspecialchars($uid); ?> &nbsp;&middot;&nbsp; Member since <?php echo $member_since; ?></div>
+            <div class="prof-role-badge">
+                <i class="fa-solid fa-shield-halved" style="font-size:.7rem;margin-right:4px;"></i>
+                <?php echo htmlspecialchars($role_label); ?>
             </div>
-            <!-- <div class="mobile-nav">
-                <ul class="navbar-nav user-menu">
-                    <li id="userpic-main">
-                        <span><i class="fa-solid fa-circle-user userpic"></i></span>
-                        <ul id="dropped-prof">
-                            <li class="nav-item">
-                                <?php echo $_SESSION['USER_NAME']; ?>
-                            </li>
-                            <li class="nav-item">
-                                <span><i class="fas fa-user"></i></span>
-                                <a class="nav-link" href="profile">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <span><i class="fa-solid fa-right-from-bracket"></i></span>
-                                <a class="nav-link" href="logout">LogOut</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div> -->
-        </nav>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white mobile-nav">
-            <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
-                height="50px" width="50px">
-            <!-- <a class="navbar-brand" href="#">Service To Mankind</a> -->
-            <button class="navbar-toggler navbtn" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon navicon"></span>
-            </button>
-            <div class="collapse navbar-collapse nav-box" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <?php if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
-                    <li class="nav-item">
-                        <span><i class="fas fa-user"></i></span>
-                        <a class="nav-link" href="profile"><?php echo $_SESSION['USER_NAME']; ?></a>
-                    </li>
+        </div>
+        <div class="prof-hero-actions">
+            <a href="logs"><i class="fa-solid fa-receipt"></i> Donation Logs</a>
+            <a href="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+            <a href="logout" style="background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.3);"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
+        </div>
+    </div>
 
-                    <?php }else{?>
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-right-from-bracket"></i></span>
-                        <a class="nav-link" href="login">Login</a>
-                    </li>
-                    <?php } ?>
-                    <li class="nav-item active">
-                        <span><i class="fa-solid fa-house"></i></span>
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-list"></i></span>
-                        <a class="nav-link" href="logs">Payment Logs</a>
-                    </li>
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-circle-info"></i></span>
-                        <a class="nav-link" href="#aboutus">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-map"></i></span>
-                        <a class="nav-link" href="#themes">Our Themes</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <span><i class="fa-solid fa-image"></i></span>
-                        <a class="nav-link" href="gallary">Gallery</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-id-card"></i></span>
-                        <a class="nav-link" href="contact">Contact Us</a>
-                    </li>
-                    <?php if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
-                    <li class="nav-item">
-                        <span><i class="fa-solid fa-right-from-bracket"></i></span>
-                        <a class="nav-link" href="logout">Log Out</a>
-                    </li>
-                    <?php }?>
-                </ul>
+    <!-- Stats -->
+    <div class="prof-stats">
+        <div class="prof-stat-card">
+            <div class="stat-num"><?php echo $vol_count ?: '0'; ?></div>
+            <div class="stat-lbl">Volunteering Activities</div>
+        </div>
+        <div class="prof-stat-card">
+            <div class="stat-num"><?php echo $my_don_count; ?></div>
+            <div class="stat-lbl">Donations Made</div>
+        </div>
+        <div class="prof-stat-card">
+            <div class="stat-num">₹<?php echo number_format($my_don_total); ?></div>
+            <div class="stat-lbl">Total Contributed</div>
+        </div>
+    </div>
+
+    <!-- Info grid -->
+    <div class="prof-info-grid">
+
+        <!-- Personal Info -->
+        <div class="prof-card">
+            <h4>Personal Information</h4>
+
+            <div class="info-row">
+                <div class="info-icon" style="background:#ede9fe;color:#7c3aed;"><i class="fa-solid fa-user"></i></div>
+                <div><div class="info-label">Full Name</div><div class="info-val"><?php echo htmlspecialchars($user_details['name'] ?? '—'); ?></div></div>
             </div>
-        </nav>
+            <div class="info-row">
+                <div class="info-icon" style="background:#dbeafe;color:#2563eb;"><i class="fa-solid fa-envelope"></i></div>
+                <div><div class="info-label">Email</div><div class="info-val"><?php echo htmlspecialchars($user_details['mail'] ?? '—'); ?></div></div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#dcfce7;color:#16a34a;"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div><div class="info-label">Mobile</div><div class="info-val"><?php echo htmlspecialchars($user_details['mobile'] ?? '—'); ?></div></div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#fff7ed;color:#ea580c;"><i class="fa-solid fa-venus-mars"></i></div>
+                <div>
+                    <div class="info-label">Gender</div>
+                    <div class="info-val"><?php
+                        $g = $user_details['gender'] ?? '';
+                        echo $g == 1 ? 'Male' : ($g == 2 ? 'Female' : '—');
+                    ?></div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#ccfbf1;color:#0d9488;"><i class="fa-solid fa-calendar-plus"></i></div>
+                <div><div class="info-label">Member Since</div><div class="info-val"><?php echo $member_since ?: '—'; ?></div></div>
+            </div>
+        </div>
 
-    </header>
+        <!-- STM Info + Social -->
+        <div class="prof-card">
+            <h4>STM Details</h4>
 
+            <div class="info-row">
+                <div class="info-icon" style="background:#ede9fe;color:#7c3aed;"><i class="fa-solid fa-id-badge"></i></div>
+                <div><div class="info-label">STM ID</div><div class="info-val"><?php echo htmlspecialchars($uid); ?></div></div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#dbeafe;color:#2563eb;"><i class="fa-solid fa-shield-halved"></i></div>
+                <div><div class="info-label">Role</div><div class="info-val"><?php echo htmlspecialchars($role_label); ?></div></div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#fef9c3;color:#a16207;"><i class="fa-solid fa-circle-dot"></i></div>
+                <div>
+                    <div class="info-label">Account Status</div>
+                    <div class="info-val"><?php
+                        $s = $user_details['status'] ?? 1;
+                        echo $s == 1 ? '<span style="color:#15803d;">Active</span>' : '<span style="color:#b91c1c;">Inactive</span>';
+                    ?></div>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon" style="background:#ccfbf1;color:#0d9488;"><i class="fa-solid fa-map-marker-alt"></i></div>
+                <div><div class="info-label">Location</div><div class="info-val">India</div></div>
+            </div>
 
-    <main role="main">
-
-        <!-- <header id="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="fund-heading text-center">
-                        <h1>STM</h1>
-                        <div class="typed_wrap">
-                            <h2> <span class="typed"></span></h2>
-                        </div>
-                    </div>
+            <!-- Social links -->
+            <div style="margin-top:20px;border-top:1px solid #f5f6fa;padding-top:18px;">
+                <div style="font-size:0.78rem;color:#b2bec3;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;">Follow STM</div>
+                <div class="prof-social">
+                    <a href="https://facebook.com/stmorg.in" class="soc-fb" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/STM_ORG" class="soc-tw" target="_blank" title="Twitter / X"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/servicetomankindorg/" class="soc-ig" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCbdtIhRfuRYZbAQvM76lBOQ" class="soc-yt" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-    </header> -->
+    </div>
 
-        <div class="wrapper">
-            <div class="profile-card js-profile-card">
-                <div class="profile-card__img">
-                    <img src="accesories/service_to_man_kind-20200709-0001.jpg" alt="profile card">
-                </div>
+</div><!-- /prof-wrap -->
 
-                <div class="profile-card__cnt js-profile-cnt">
-                    <div class="profile-card__name"><?php echo $user_details['name']; ?>(<?php echo $uid; ?>)</div>
-                    <div class="profile-card__txt"><?php $role= $user_details['role'];
-                    if($role==1){
-                        echo "Volunteer";
-                    }elseif($role==2){
-                        echo "Coordinator";
-                    }
-                    ?> <strong>From STM</strong>
-                    </div>
-                    <div class="profile-card-loc">
-                        <span class="profile-card-loc__icon">
-                            <svg class="icon">
-                                <use xlink:href="#icon-location"></use>
-                            </svg>
-                        </span>
+<!-- Footer -->
+<?php include('footer.php'); ?>
+</main>
 
-                        <span class="profile-card-loc__txt">
-                            India
-                        </span>
-                    </div>
-
-                    <div class="profile-card-inf">
-                        <div class="profile-card-inf__item">
-                            <div class="profile-card-inf__title">0</div>
-                            <div class="profile-card-inf__txt">Blood Donations</div>
-                        </div>
-
-                        <div class="profile-card-inf__item">
-                            <div class="profile-card-inf__title"><?php if($volunteering_activity_count!=''){
-                                echo $volunteering_activity_count;
-                            }else{
-                                echo "0";
-                            } ?></div>
-                            <div class="profile-card-inf__txt">Volunteering</div>
-                        </div>
-
-                        <div class="profile-card-inf__item">
-                            <div class="profile-card-inf__title">0</div>
-                            <div class="profile-card-inf__txt">Donations</div>
-                        </div>
-                    </div>
-
-                    <div class="profile-card-social">
-                        <a href="https://facebook.com/stmorg.in" class="profile-card-social__item facebook"
-                            target="_blank">
-                            <span class="icon-font">
-                                <svg class="icon">
-                                    <use xlink:href="#icon-facebook"></use>
-                                </svg>
-                            </span>
-                        </a>
-
-                        <a href="https://twitter.com/STM_ORG" class="profile-card-social__item twitter" target="_blank">
-                            <span class="icon-font">
-                                <svg class="icon">
-                                    <use xlink:href="#icon-twitter"></use>
-                                </svg>
-                            </span>
-                        </a>
-
-                        <a href="https://www.instagram.com/servicetomankindorg/"
-                            class="profile-card-social__item instagram" target="_blank">
-                            <span class="icon-font">
-                                <svg class="icon">
-                                    <use xlink:href="#icon-instagram"></use>
-                                </svg>
-                            </span>
-                        </a>
-
-                    </div>
-
-                    <div class="profile-card-ctr">
-                        <button class="profile-card__button button--blue js-message-btn">Message</button>
-                        <button class="profile-card__button button--orange">Follow</button>
-                    </div>
-                    <i>This page is under developement, contents of this page may not work properly as expected.</i>
-                </div>
-
-                <div class="profile-card-message js-message">
-                    <form class="profile-card-form">
-                        <div class="profile-card-form__container">
-                            <textarea placeholder="Say something..."></textarea>
-                        </div>
-
-                        <div class="profile-card-form__bottom">
-                            <button class="profile-card__button button--blue js-message-close">
-                                Send
-                            </button>
-
-                            <button class="profile-card__button button--gray js-message-close">
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-
-                    <div class="profile-card__overlay js-message-close"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <svg hidden="hidden">
-            <defs>
-                <symbol id="icon-codepen" viewBox="0 0 32 32">
-                    <title>codepen</title>
-                    <path
-                        d="M31.872 10.912v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096l-0.192-0.192v-0.064l-0.064-0.064-14.592-9.696c-0.448-0.32-1.056-0.32-1.536 0l-14.528 9.696-0.32 0.32c0 0-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064 0 0.064-0.064 0.096v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.096 0 0.16v9.696c0 0.064 0 0.096 0 0.16v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096l0.256 0.256 0.064 0.032 14.528 9.728c0.224 0.16 0.48 0.224 0.768 0.224s0.544-0.064 0.768-0.224l14.528-9.728 0.32-0.32c0 0 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0-0.064 0.064-0.096v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.096 0-0.16v-9.664c0-0.064 0-0.096 0-0.224zM17.312 4l10.688 7.136-4.768 3.168-5.92-3.936v-6.368zM14.56 4v6.368l-5.92 3.968-4.768-3.168 10.688-7.168zM2.784 13.664l3.392 2.304-3.392 2.304c0 0 0-4.608 0-4.608zM14.56 28l-10.688-7.136 4.768-3.2 5.92 3.936v6.4zM15.936 19.2l-4.832-3.232 4.832-3.232 4.832 3.232-4.832 3.232zM17.312 28v-6.432l5.92-3.936 4.8 3.168-10.72 7.2zM29.12 18.272l-3.392-2.304 3.392-2.304v4.608z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-github" viewBox="0 0 32 32">
-                    <title>github</title>
-                    <path
-                        d="M16.192 0.512c-8.832 0-16 7.168-16 16 0 7.072 4.576 13.056 10.944 15.168 0.8 0.16 1.088-0.352 1.088-0.768 0-0.384 0-1.632-0.032-2.976-4.448 0.96-5.376-1.888-5.376-1.888-0.736-1.856-1.792-2.336-1.792-2.336-1.44-0.992 0.096-0.96 0.096-0.96 1.6 0.128 2.464 1.664 2.464 1.664 1.44 2.432 3.744 1.728 4.672 1.344 0.128-1.024 0.544-1.728 1.024-2.144-3.552-0.448-7.296-1.824-7.296-7.936 0-1.76 0.64-3.168 1.664-4.288-0.16-0.416-0.704-2.016 0.16-4.224 0 0 1.344-0.416 4.416 1.632 1.28-0.352 2.656-0.544 4-0.544s2.72 0.192 4 0.544c3.040-2.080 4.384-1.632 4.384-1.632 0.864 2.208 0.32 3.84 0.16 4.224 1.024 1.12 1.632 2.56 1.632 4.288 0 6.144-3.744 7.488-7.296 7.904 0.576 0.512 1.088 1.472 1.088 2.976 0 2.144-0.032 3.872-0.032 4.384 0 0.416 0.288 0.928 1.088 0.768 6.368-2.112 10.944-8.128 10.944-15.168 0-8.896-7.168-16.032-16-16.032z">
-                    </path>
-                    <path
-                        d="M6.24 23.488c-0.032 0.064-0.16 0.096-0.288 0.064-0.128-0.064-0.192-0.16-0.128-0.256 0.032-0.096 0.16-0.096 0.288-0.064 0.128 0.064 0.192 0.16 0.128 0.256v0z">
-                    </path>
-                    <path
-                        d="M6.912 24.192c-0.064 0.064-0.224 0.032-0.32-0.064s-0.128-0.256-0.032-0.32c0.064-0.064 0.224-0.032 0.32 0.064s0.096 0.256 0.032 0.32v0z">
-                    </path>
-                    <path
-                        d="M7.52 25.12c-0.096 0.064-0.256 0-0.352-0.128s-0.096-0.32 0-0.384c0.096-0.064 0.256 0 0.352 0.128 0.128 0.128 0.128 0.32 0 0.384v0z">
-                    </path>
-                    <path
-                        d="M8.384 26.016c-0.096 0.096-0.288 0.064-0.416-0.064s-0.192-0.32-0.096-0.416c0.096-0.096 0.288-0.064 0.416 0.064 0.16 0.128 0.192 0.32 0.096 0.416v0z">
-                    </path>
-                    <path
-                        d="M9.6 26.528c-0.032 0.128-0.224 0.192-0.384 0.128-0.192-0.064-0.288-0.192-0.256-0.32s0.224-0.192 0.416-0.128c0.128 0.032 0.256 0.192 0.224 0.32v0z">
-                    </path>
-                    <path
-                        d="M10.912 26.624c0 0.128-0.16 0.256-0.352 0.256s-0.352-0.096-0.352-0.224c0-0.128 0.16-0.256 0.352-0.256 0.192-0.032 0.352 0.096 0.352 0.224v0z">
-                    </path>
-                    <path
-                        d="M12.128 26.4c0.032 0.128-0.096 0.256-0.288 0.288s-0.352-0.032-0.384-0.16c-0.032-0.128 0.096-0.256 0.288-0.288s0.352 0.032 0.384 0.16v0z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-location" viewBox="0 0 32 32">
-                    <title>location</title>
-                    <path
-                        d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z">
-                    </path>
-                    <path
-                        d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-facebook" viewBox="0 0 32 32">
-                    <title>facebook</title>
-                    <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-instagram" viewBox="0 0 32 32">
-                    <title>instagram</title>
-                    <path
-                        d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z">
-                    </path>
-                    <path
-                        d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z">
-                    </path>
-                    <path
-                        d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-twitter" viewBox="0 0 32 32">
-                    <title>twitter</title>
-                    <path
-                        d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z">
-                    </path>
-                </symbol>
-
-                <symbol id="icon-behance" viewBox="0 0 32 32">
-                    <title>behance</title>
-                    <path
-                        d="M9.281 6.412c0.944 0 1.794 0.081 2.569 0.25 0.775 0.162 1.431 0.438 1.988 0.813 0.55 0.375 0.975 0.875 1.287 1.5 0.3 0.619 0.45 1.394 0.45 2.313 0 0.994-0.225 1.819-0.675 2.481-0.456 0.662-1.119 1.2-2.006 1.625 1.213 0.35 2.106 0.962 2.706 1.831 0.6 0.875 0.887 1.925 0.887 3.163 0 1-0.194 1.856-0.575 2.581-0.387 0.731-0.912 1.325-1.556 1.781-0.65 0.462-1.4 0.8-2.237 1.019-0.831 0.219-1.688 0.331-2.575 0.331h-9.544v-19.688h9.281zM8.719 14.363c0.769 0 1.406-0.181 1.906-0.55 0.5-0.363 0.738-0.963 0.738-1.787 0-0.456-0.081-0.838-0.244-1.131-0.169-0.294-0.387-0.525-0.669-0.688-0.275-0.169-0.588-0.281-0.956-0.344-0.356-0.069-0.731-0.1-1.113-0.1h-4.050v4.6h4.388zM8.956 22.744c0.425 0 0.831-0.038 1.213-0.125 0.387-0.087 0.731-0.219 1.019-0.419 0.287-0.194 0.531-0.45 0.706-0.788 0.175-0.331 0.256-0.756 0.256-1.275 0-1.012-0.287-1.738-0.856-2.175-0.569-0.431-1.325-0.644-2.262-0.644h-4.7v5.419h4.625z">
-                    </path>
-                    <path
-                        d="M22.663 22.675c0.587 0.575 1.431 0.863 2.531 0.863 0.788 0 1.475-0.2 2.044-0.6s0.913-0.825 1.044-1.262h3.45c-0.556 1.719-1.394 2.938-2.544 3.675-1.131 0.738-2.519 1.113-4.125 1.113-1.125 0-2.131-0.181-3.038-0.538-0.906-0.363-1.663-0.869-2.3-1.531-0.619-0.663-1.106-1.45-1.45-2.375-0.337-0.919-0.512-1.938-0.512-3.038 0-1.069 0.175-2.063 0.525-2.981 0.356-0.925 0.844-1.719 1.494-2.387s1.413-1.2 2.313-1.588c0.894-0.387 1.881-0.581 2.975-0.581 1.206 0 2.262 0.231 3.169 0.706 0.9 0.469 1.644 1.1 2.225 1.887s0.994 1.694 1.25 2.706c0.256 1.012 0.344 2.069 0.275 3.175h-10.294c0 1.119 0.375 2.188 0.969 2.756zM27.156 15.188c-0.462-0.512-1.256-0.794-2.212-0.794-0.625 0-1.144 0.106-1.556 0.319-0.406 0.213-0.738 0.475-0.994 0.787-0.25 0.313-0.425 0.65-0.525 1.006-0.1 0.344-0.163 0.663-0.181 0.938h6.375c-0.094-1-0.438-1.738-0.906-2.256z">
-                    </path>
-                    <path d="M20.887 8h7.981v1.944h-7.981v-1.944z"></path>
-                </symbol>
-
-                <symbol id="icon-link" viewBox="0 0 32 32">
-                    <title>link</title>
-                    <path
-                        d="M17.984 11.456c-0.704 0.704-0.704 1.856 0 2.56 2.112 2.112 2.112 5.568 0 7.68l-5.12 5.12c-2.048 2.048-5.632 2.048-7.68 0-1.024-1.024-1.6-2.4-1.6-3.84s0.576-2.816 1.6-3.84c0.704-0.704 0.704-1.856 0-2.56s-1.856-0.704-2.56 0c-1.696 1.696-2.624 3.968-2.624 6.368 0 2.432 0.928 4.672 2.656 6.4 1.696 1.696 3.968 2.656 6.4 2.656s4.672-0.928 6.4-2.656l5.12-5.12c3.52-3.52 3.52-9.248 0-12.8-0.736-0.672-1.888-0.672-2.592 0.032z">
-                    </path>
-                    <path
-                        d="M29.344 2.656c-1.696-1.728-3.968-2.656-6.4-2.656s-4.672 0.928-6.4 2.656l-5.12 5.12c-3.52 3.52-3.52 9.248 0 12.8 0.352 0.352 0.8 0.544 1.28 0.544s0.928-0.192 1.28-0.544c0.704-0.704 0.704-1.856 0-2.56-2.112-2.112-2.112-5.568 0-7.68l5.12-5.12c2.048-2.048 5.632-2.048 7.68 0 1.024 1.024 1.6 2.4 1.6 3.84s-0.576 2.816-1.6 3.84c-0.704 0.704-0.704 1.856 0 2.56s1.856 0.704 2.56 0c1.696-1.696 2.656-3.968 2.656-6.4s-0.928-4.704-2.656-6.4z">
-                    </path>
-                </symbol>
-            </defs>
-        </svg>
-
-        <!--Contact-->
-        <!-- <div class="contact-index">
-                <h1>Wanna contact us</h1>
-                <h2><a class="con-btn h-surprise" href="contact.html">Click Here.</a></h2>
-                <text class="h-surprise">helo!!</text>
-            </div> -->
-        <!-- <hr class="featurette-divider"> -->
-
-        </div><!-- /.container -->
-
-
-
-        <!-- ******************** Footer Starts Here ******************* -->
-        <?php include('footer.php') ?>
-
-
-    </main>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script> -->
-    <script src='js/boostrap-4.5.js'></script>
-    <script src='js/popper.js'></script>
-    <script src='js/tweenmax.js'></script>
-    <script src="main-js/main.js"></script>
-    <script>
-    var container = document.getElementById('container');
-    var graphMeasurement = document.getElementById('graph-measurement');
-
-    var allCircles = document.getElementsByTagName('circle');
-    var allLines = document.getElementsByTagName('line');
-
-    // console.log(topSVGNode)
-
-
-
-    var destArray = [0, 52, 28, 170, 105, 93, 44, 122, 179, 170, 220];
-
-
-    TweenMax.set(allCircles, {
-        attr: {
-            fill: '#954CE9',
-            r: 5
-        },
-        transformOrigin: '50% 50%',
-        scale: 0
-    })
-    TweenMax.set([allLines], {
-        attr: {
-            stroke: '#18B5DD'
-        },
-        drawSVG: '100% 100%',
-        strokeWidth: 2
-    })
-    TweenMax.set([graphMeasurement], {
-        attr: {
-            stroke: '#18B5DD'
-        },
-        drawSVG: '100% 100%',
-        strokeWidth: 1
-    })
-
-    TweenMax.set([allCircles, allLines], {
-        y: '+=300'
-    })
-
-    TweenMax.set(graphMeasurement, {
-        y: '+=280',
-        alpha: 0.3
-    })
-    TweenMax.to(graphMeasurement, 3, {
-        drawSVG: '0% 100%',
-        delay: 1,
-        ease: Power2.easeInOut
-    })
-    TweenMax.set('svg', {
-        alpha: 1
-    })
-    for (var i = 0; i < allCircles.length; i++) {
-
-        TweenMax.to(allCircles[i], 2, {
-            attr: {
-                cy: '-=' + destArray[i]
-            },
-            onUpdate: moveLines,
-            onUpdateParams: [i],
-            delay: i / 5,
-            ease: Power4.easeInOut
-        })
-        if (allLines[i]) {
-
-            TweenMax.to(allLines[i], 1, {
-                drawSVG: '400',
-                delay: i / 5,
-                ease: Power4.easeInOut
-            })
-        }
-
-        TweenMax.to(allCircles[i], 1, {
-            scale: 1,
-            delay: i / 5,
-            ease: Power4.easeInOut
-        })
-
-    }
-
-    function moveLines(i) {
-
-        if (allLines[i]) {
-
-            TweenMax.set(allLines[i], {
-                attr: {
-                    x2: allCircles[i].getAttribute('cx'),
-                    y2: allCircles[i].getAttribute('cy')
-                }
-            })
-            TweenMax.set(allLines[i], {
-                attr: {
-                    x1: allCircles[i + 1].getAttribute('cx'),
-                    y1: allCircles[i + 1].getAttribute('cy')
-                }
-            })
-
-
-        }
-    }
-    </script>
-
+<script src="main-js/main.js"></script>
 </body>
-
 </html>

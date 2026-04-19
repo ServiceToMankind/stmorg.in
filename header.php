@@ -128,7 +128,7 @@
                         <span><i class="fa-solid fa-circle-user userpic"></i></span>
                         <ul id="dropped-prof">
                             <li class="nav-item">
-                                <?php echo $_SESSION['USER_NAME']; ?>
+                                <?php echo isset($_SESSION['USER_NAME']) ? $_SESSION['USER_NAME'] : ''; ?>
                             </li>
                             <li class="nav-item">
                                 <span><i class="fas fa-user"></i></span>

@@ -1,315 +1,562 @@
 <?php
-if(isset($_GET['by']) && $_GET['by']!=''){
-  $by=$_GET['by'];
-}else{
-  $by='0';
+require('includes/functions.php');
+if (isset($_GET['by']) && $_GET['by'] != '') {
+    $by = $_GET['by'];
+} else {
+    $by = '0';
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
-    <title>STM-INDIA</title>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="js/jquery1.js"></script>
-
-
+    <meta name="description" content="Login to STM — Service to Mankind, the student-led NGO making a difference.">
+    <title>Login — STM India</title>
 
     <!-- Favicons -->
-
     <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180">
     <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png">
-    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c">
     <link rel="icon" href="accesories/fevicon 32.ico">
-    <meta name="theme-color" content="#563d7c">
+    <meta name="theme-color" content="#2c3e50">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
+    <script src="js/jquery1.js"></script>
 
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- fontaswsome00000 -->
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
-    <script src="js\jquery1.js">
-    </script>
-    <link rel="stylesheet" href="css\main\login.css" />
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #16213e 50%, #2c3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        /* ---- Split card ---- */
+        .auth-card {
+            background: #fff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 920px;
+            min-height: 560px;
+            display: flex;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        /* ---- Left brand panel ---- */
+        .brand-panel {
+            flex: 1;
+            background: linear-gradient(160deg, #0984e3 0%, #8e44ad 60%, #2c3e50 100%);
+            padding: 56px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-panel::before {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            top: -80px; right: -80px;
+        }
+        .brand-panel::after {
+            content: '';
+            position: absolute;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            bottom: -40px; left: -40px;
+        }
+        .brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .brand-logo-wrap img {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .brand-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+        .brand-tagline {
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+        .brand-hero {
+            position: relative;
+            z-index: 1;
+        }
+        .brand-hero h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+        .brand-hero p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        .brand-stats {
+            display: flex;
+            gap: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .b-stat { display: flex; flex-direction: column; gap: 2px; }
+        .b-stat strong { font-size: 1.4rem; font-weight: 700; }
+        .b-stat span   { font-size: 0.75rem; opacity: 0.7; }
+
+        /* ---- Right form panel ---- */
+        .form-panel {
+            width: 400px;
+            flex-shrink: 0;
+            padding: 52px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tab-toggle {
+            display: flex;
+            background: #f5f6fa;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 32px;
+        }
+        .tab-toggle button {
+            flex: 1;
+            border: none;
+            background: none;
+            padding: 8px 0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #636e72;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .tab-toggle button.active {
+            background: #fff;
+            color: #2c3e50;
+            font-weight: 600;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+
+        .form-heading {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        .form-sub {
+            font-size: 0.85rem;
+            color: #b2bec3;
+            margin-bottom: 28px;
+        }
+
+        .field-group { margin-bottom: 18px; }
+        .field-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        .field-group input {
+            width: 100%;
+            border: 1.5px solid #dfe6e9;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: #2c3e50;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            background: #fafafa;
+        }
+        .field-group input:focus {
+            border-color: #0984e3;
+            box-shadow: 0 0 0 3px rgba(9,132,227,0.12);
+            background: #fff;
+        }
+
+        .btn-primary-stm {
+            width: 100%;
+            background: linear-gradient(135deg, #0984e3, #8e44ad);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: .02em;
+            transition: opacity .2s, transform .15s;
+            margin-top: 6px;
+        }
+        .btn-primary-stm:hover { opacity: .9; transform: translateY(-1px); }
+        .btn-primary-stm:active { transform: translateY(0); }
+        .btn-primary-stm:disabled { opacity: .6; cursor: not-allowed; }
+
+        .btn-secondary-stm {
+            width: 100%;
+            background: #f5f6fa;
+            color: #2c3e50;
+            border: none;
+            border-radius: 10px;
+            padding: 11px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .2s;
+            margin-top: 8px;
+        }
+        .btn-secondary-stm:hover { background: #dfe6e9; }
+
+        .forgot-link {
+            display: block;
+            text-align: right;
+            font-size: 0.8rem;
+            color: #0984e3;
+            text-decoration: none;
+            margin-top: -10px;
+            margin-bottom: 18px;
+        }
+        .forgot-link:hover { text-decoration: underline; }
+
+        .error-msg {
+            background: #fee2e2;
+            color: #b91c1c;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        .success-msg {
+            background: #dcfce7;
+            color: #15803d;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            display: none;
+        }
+
+        .helper-text {
+            font-size: 0.78rem;
+            color: #b2bec3;
+            margin-top: 4px;
+        }
+
+        /* OTP flow states */
+        .otp-step { display: none; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 700px) {
+            .brand-panel { display: none; }
+            .auth-card { max-width: 440px; }
+            .form-panel { width: 100%; padding: 40px 28px; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container">
-        <input type="radio" name="tab" id="signin" checked="checked" />
-        <input type="radio" name="tab" id="register" />
-        <div class="pages">
-            <div class="page">
-                <form type='get'>
-                    <img class="brand-logo" src="brand-logo.png" alt="" />
-                    <h2>Welcome Back</h2>
-                    <p>Login to unleash your curiosity</p>
-                    <div class="input">
-                        <div class="title">Id/Email</div>
-                        <input class="text" id="case" type="text" placeholder="" />
-                    </div>
-                    <div class="input">
-                        <div class="title">Password</div>
-                        <input class="text" id="lopass" type="password" placeholder="" />
-                    </div>
-                    <div class="input">
-                        <input type="button" value="Continue" onclick="loginset()" />
-                    </div>
-                    <label class="tab" for="register">
-                        <div class="text" style="margin-top: 0.5em;"><a href="forgotpass" style="
-    font-size: 0.8em;
-    padding: 0px 30px;text-decoration:none;color:#000;font-weight:600;">Forgot Password ?</a></div>
-                    </label>
-                </form>
-            </div>
-            <div class="page signup">
-                <form>
-                    <img class="brand-logo" src="brand-logo.png" alt="" />
-                    <h2>Welcome To STM</h2>
-                    <p>Lets verify your email</p>
-                    <!-- <div class="input">
-              <div class="title">Name</div>
-              <input class="text" type="text" placeholder="" />
-            </div> -->
-                    <div class="input">
-                        <div id="email_title" class="title">Email</div>
-                        <input class="text" id="email" name="email" type="email" placeholder="" />
-                        <div>
-                            <span id="email_error" class="email_error"></span>
-                        </div>
-                    </div>
 
-                    <!-- <div class="input">
-              <button
-                class="btn_3 email_sent_otp"
-                name="otp"
-                type="button"
-                onclick="email_sent_otp()"
-              >
-                send otp
-              </button>
-            </div> -->
-                    <div class="input">
-                        <button name="otp" type="button" class="sub-btn email_sent_otp" style="
-                  background: #e60023;
-                  color: #f6f7f9;
-                  height: 40px;
-                  line-height: 40px;
-                  width: 100%;
-                  border: none;
-                  border-radius: 4px;
-                  font-weight: 600;
-                " onclick="email_sent_otp()">
-                            Verify
-                        </button>
-                        <div class="input">
-                            <input class="text" type="text" class="email_verify_ootp otp_box" id="email_otp"
-                                placeholder="Enter otp" hidden />
-                            <span style="color: blue" id="number_otp_result"></span>
-                        </div>
-                        <button class="btn_3 email_verify_ootp" name="otp" type="button" onclick="email_verify_ootp()"
-                            style="
-                  background: #e60023;
-                  color: #f6f7f9;
-                  height: 40px;
-                  line-height: 40px;
-                  width: 100%;
-                  border: none;
-                  border-radius: 4px;
-                  font-weight: 600;
-                  display: none;
-                ">
-                            Verify otp
-                        </button>
-                    </div>
-                    <div class="input">
-                        <div id="name_title" style="display: none" class="title">
-                            Name
-                        </div>
-                        <input class="text" id="name" name="name" type="text" placeholder="Full Name" hidden />
-                    </div>
-                    <div class="input">
-                        <div id="number_title" style="display: none" class="title">
-                            Mobile
-                        </div>
-                        <input class="text" id="number" name="number" placeholder="Mobile number" hidden />
-                    </div>
-                    <div class="input">
-                        <div id="pass_title" style="display: none" class="title">
-                            Password
-                        </div>
-                        <input class="text" id="pass" name="pass" type="password" placeholder="Password" hidden />
-                    </div>
-                    <div class="input">
-                        <div id="cpass_title" style="display: none" class="title">
-                            Re-enter Same Password
-                        </div>
-                        <input class="text" id="cpass" name="cpass" placeholder="Confirm Password" hidden />
-                    </div>
-                    <div>
-                        <span class="pass_error" id="pass_error"></span>
-                    </div>
+<div class="auth-card">
 
-                    <div class="input">
-                        <input id="regiter_btn" type="button" value="Register-Now" onclick="registerset()" hidden />
-                    </div>
-                </form>
+    <!-- Left panel -->
+    <div class="brand-panel">
+        <div class="brand-logo-wrap">
+            <img src="accesories/service_to_man_kind-20200709-0001.jpg" alt="STM Logo">
+            <div>
+                <div class="brand-name">Service To Mankind</div>
+                <div class="brand-tagline">STM India &mdash; Since 2019</div>
             </div>
         </div>
-        <div class="tabs">
-            <label class="tab" for="signin">
-                <div class="text">Already have a Account? Sign In</div>
-            </label>
-            <label class="tab" for="register">
-                <div class="text">Dont have an Account? Register</div>
-            </label>
+
+        <div class="brand-hero">
+            <h2>Love All,<br>Serve All.</h2>
+            <p>Every contribution you make changes lives. Join our community of changemakers and be part of something bigger than yourself.</p>
+        </div>
+
+        <div class="brand-stats">
+            <div class="b-stat">
+                <strong>100+</strong>
+                <span>Volunteers</span>
+            </div>
+            <div class="b-stat">
+                <strong>500+</strong>
+                <span>Lives Touched</span>
+            </div>
+            <div class="b-stat">
+                <strong>5+</strong>
+                <span>Years</span>
+            </div>
         </div>
     </div>
-    <script src="main-js\main.js"></script>
-    <script>
-    function email_sent_otp() {
-        jQuery("#email_error").html("");
-        var email = jQuery("#email").val();
-        if (email == "") {
-            jQuery("#email_error").html("I cannot see any mail here");
-        } else {
-            jQuery(".email_sent_otp").html("Please Wait..");
-            jQuery(".email_sent_otp").attr("disabled", true);
-            jQuery(".email_sent_otp");
-            jQuery.ajax({
-                url: "send_otp",
-                type: "post",
-                data: "email=" + email + "&type=email",
-                success: function(result) {
-                    if (result == "sent") {
-                        jQuery("#email").attr("disabled", false);
-                        jQuery(".email_verify_ootp").show();
-                        jQuery("#email_otp").show();
-                        jQuery(".email_sent_otp").hide();
-                        jQuery("#is_email_verified").html("1");
-                    } else if (result == "email_present") {
-                        jQuery(".email_sent_otp").html("Send Again");
-                        jQuery(".email_sent_otp").attr("disabled", false);
-                        jQuery("#email_error").html("This email already registered");
-                    } else {
-                        jQuery(".email_sent_otp").html("Send Again");
-                        jQuery(".email_sent_otp").attr("disabled", false);
-                        jQuery("#email_error").html("Please try again later");
-                    }
-                },
-            });
-        }
-    }
 
-    function email_verify_ootp() {
-        jQuery("#email_error").html("");
-        var otp = jQuery("#email_otp").val();
-        if (otp == "") {
-            jQuery("#email_otp_result").html("I sent you an otp, use that");
-        } else {
-            jQuery(".email_verify_ootp").html("Please Wait..");
-            jQuery(".email_verify_ootp").attr("disabled", true);
-            jQuery(".email_verify_ootp");
-            jQuery.ajax({
-                url: "check_otp",
-                type: "post",
-                data: "otp=" + otp + "&type=otp",
-                success: function(result) {
-                    if (result == "done") {
-                        jQuery(".email_verify_ootp").hide();
-                        jQuery("#email").hide();
-                        jQuery("#email_title").hide();
-                        jQuery("#email_otp").hide();
-                        jQuery("#name").show();
-                        jQuery("#number").show();
-                        jQuery("#name_title").show();
-                        jQuery("#number_title").show();
-                        jQuery("#pass_title").show();
-                        jQuery("#cpass_title").show();
-                        jQuery("#pass").show();
-                        jQuery("#cpass").show();
-                        jQuery("#regiter_btn").show();
-                        jQuery("#email_otp_result").html("email Verified");
-                        jQuery("#is_email_verified").val("1");
+    <!-- Right form panel -->
+    <div class="form-panel">
 
-                        if (jQuery("#is_email_verified").val() == 1) {
-                            jQuery("#btn-register").attr("disabled", false);
-                        }
-                    } else {
-                        jQuery(".email_verify_ootp").html("Sent Otp");
-                        jQuery(".email_verify_ootp").attr("disabled", false);
-                        jQuery("#email_otp_result").html("Please enter valid otp");
-                    }
-                },
-            });
-        }
-    }
+        <div class="tab-toggle">
+            <button id="tabSignIn" class="active" onclick="switchTab('signin')">Sign In</button>
+            <button id="tabRegister" onclick="switchTab('register')">Register</button>
+        </div>
 
-    function registerset() {
-        var email = jQuery("#email").val();
-        var name = jQuery("#name").val();
-        var number = jQuery("#number").val();
-        var pass = jQuery("#pass").val();
-        var cpass = jQuery("#cpass").val();
-        var by = '<?php echo $by; ?>'
-        if (pass == cpass) {
-            if (email == "" || name == "" || number == "") {
-                alert("Please fill all the fields");
+        <!-- Sign In -->
+        <div id="formSignIn" class="auth-form active">
+            <div class="form-heading">Welcome back</div>
+            <div class="form-sub">Sign in to your STM account</div>
+
+            <div id="loginError" class="error-msg">Invalid credentials. Please try again.</div>
+
+            <div class="field-group">
+                <label for="case">STM ID / Email / Mobile</label>
+                <input type="text" id="case" autocomplete="username" placeholder="Enter your ID or email">
+            </div>
+            <div class="field-group">
+                <label for="lopass">Password</label>
+                <input type="password" id="lopass" autocomplete="current-password" placeholder="Enter your password">
+            </div>
+
+            <a href="forgotpass" class="forgot-link">Forgot password?</a>
+
+            <button class="btn-primary-stm" id="loginBtn" onclick="loginset()">Sign In</button>
+            <button class="btn-secondary-stm" onclick="switchTab('register')">Create an account</button>
+        </div>
+
+        <!-- Register -->
+        <div id="formRegister" class="auth-form">
+            <div class="form-heading">Create account</div>
+            <div class="form-sub">Verify your email to get started</div>
+
+            <div id="regError" class="error-msg"></div>
+            <div id="regSuccess" class="success-msg"></div>
+
+            <!-- Step 1: Email -->
+            <div id="step1">
+                <div class="field-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <button class="btn-primary-stm" id="otpBtn" onclick="sendOtp()">Send Verification Code</button>
+            </div>
+
+            <!-- Step 2: OTP -->
+            <div id="step2" class="otp-step">
+                <div class="field-group">
+                    <label for="email_otp">Verification Code</label>
+                    <input type="text" id="email_otp" placeholder="Enter the 6-digit OTP">
+                    <div class="helper-text">Check your inbox at <span id="emailHint" style="color:#0984e3;font-weight:500;"></span></div>
+                </div>
+                <button class="btn-primary-stm" id="verifyOtpBtn" onclick="verifyOtp()">Verify Email</button>
+            </div>
+
+            <!-- Step 3: Details -->
+            <div id="step3" class="otp-step">
+                <div class="field-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your full name">
+                </div>
+                <div class="field-group">
+                    <label for="number">Mobile Number</label>
+                    <input type="text" id="number" placeholder="10-digit mobile number">
+                </div>
+                <div class="field-group">
+                    <label for="pass">Password</label>
+                    <input type="password" id="pass" placeholder="Choose a password">
+                </div>
+                <div class="field-group">
+                    <label for="cpass">Confirm Password</label>
+                    <input type="password" id="cpass" placeholder="Repeat password">
+                </div>
+                <div id="passErr" class="error-msg"></div>
+                <button class="btn-primary-stm" id="registerBtn" onclick="doRegister()">Create Account</button>
+            </div>
+        </div>
+
+    </div><!-- /form-panel -->
+</div><!-- /auth-card -->
+
+<script>
+var emailVerified = false;
+
+function switchTab(tab) {
+    document.getElementById('formSignIn').classList.toggle('active', tab === 'signin');
+    document.getElementById('formRegister').classList.toggle('active', tab === 'register');
+    document.getElementById('tabSignIn').classList.toggle('active', tab === 'signin');
+    document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+}
+
+// ---- Login ----
+function loginset() {
+    const id  = document.getElementById('case').value.trim();
+    const pwd = document.getElementById('lopass').value;
+    const err = document.getElementById('loginError');
+    const btn = document.getElementById('loginBtn');
+    err.style.display = 'none';
+
+    if (!id || !pwd) { err.textContent = 'Please fill in both fields.'; err.style.display = 'block'; return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+
+    jQuery.ajax({
+        url:  'checklogin',
+        type: 'post',
+        data: { case: id, pass: pwd },
+        success: function(res) {
+            if (res === 'valid') {
+                window.location.href = 'index.php';
             } else {
-                jQuery.ajax({
-                    url: "register",
-                    type: "post",
-                    data: "email=" +
-                        email +
-                        "&name=" +
-                        name +
-                        "&number=" +
-                        number +
-                        "&pass=" +
-                        pass +
-                        "&by=" +
-                        by,
-                    success: function(result) {
-                        if (result == "done") {
-                            alert("Registration successful, please login to continue");
-                            window.location.href = 'login';
-                        } else {
-                            alert("Error Occured ! Please Try Again After Sometime" + result);
-                        }
-                    },
-                });
+                err.textContent = 'Invalid credentials. Please try again.';
+                err.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
             }
-        } else {
-            jQuery("#pass_error").html("Passwords do not matched");
+        },
+        error: function() {
+            err.textContent = 'Network error. Please try again.';
+            err.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Sign In';
         }
-    }
-    </script>
-    <script>
-    function loginset() {
-        var locase = jQuery("#case").val();
-        var lopass = jQuery("#lopass").val();
-        if (locase != "" && lopass != "") {
-            jQuery.ajax({
-                url: "checklogin",
-                type: "post",
-                data: "case=" + locase + "&pass=" + lopass,
-                success: function(result) {
-                    if (result == "valid") {
-                        window.location.href = 'index.php';
-                    } else {
-                        alert("Invalid Credentials");
-                    }
-                },
-            });
-        }
-    }
-    </script>
-</body>
+    });
+}
 
+// ---- Register: Step 1 – Send OTP ----
+function sendOtp() {
+    const email  = document.getElementById('email').value.trim();
+    const errBox = document.getElementById('regError');
+    const btn    = document.getElementById('otpBtn');
+    errBox.style.display = 'none';
+
+    if (!email) { errBox.textContent = 'Please enter a valid email.'; errBox.style.display = 'block'; return; }
+
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    jQuery.ajax({
+        url:  'send_otp',
+        type: 'post',
+        data: { email: email, type: 'email' },
+        success: function(res) {
+            if (res === 'sent') {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('emailHint').textContent = email;
+            } else if (res === 'email_present') {
+                errBox.textContent = 'This email is already registered. Sign in instead.';
+                errBox.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Send Verification Code';
+            } else {
+                errBox.textContent = 'Could not send OTP. Please try again later.';
+                errBox.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Send Verification Code';
+            }
+        }
+    });
+}
+
+// ---- Register: Step 2 – Verify OTP ----
+function verifyOtp() {
+    const otp    = document.getElementById('email_otp').value.trim();
+    const errBox = document.getElementById('regError');
+    const btn    = document.getElementById('verifyOtpBtn');
+    errBox.style.display = 'none';
+
+    if (!otp) { errBox.textContent = 'Enter the OTP sent to your email.'; errBox.style.display = 'block'; return; }
+
+    btn.disabled = true; btn.textContent = 'Verifying…';
+
+    jQuery.ajax({
+        url:  'check_otp',
+        type: 'post',
+        data: { otp: otp, type: 'otp' },
+        success: function(res) {
+            if (res === 'done') {
+                emailVerified = true;
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                document.getElementById('regSuccess').textContent = '✓ Email verified! Fill in your details below.';
+                document.getElementById('regSuccess').style.display = 'block';
+            } else {
+                errBox.textContent = 'Incorrect OTP. Please check and try again.';
+                errBox.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Verify Email';
+            }
+        }
+    });
+}
+
+// ---- Register: Step 3 – Create Account ----
+function doRegister() {
+    const email  = document.getElementById('email').value.trim();
+    const name   = document.getElementById('name').value.trim();
+    const number = document.getElementById('number').value.trim();
+    const pass   = document.getElementById('pass').value;
+    const cpass  = document.getElementById('cpass').value;
+    const by     = '<?php echo $by; ?>';
+    const passErr = document.getElementById('passErr');
+    const btn    = document.getElementById('registerBtn');
+
+    passErr.style.display = 'none';
+
+    if (!name || !number) { passErr.textContent = 'Please fill in all fields.'; passErr.style.display = 'block'; return; }
+    if (pass !== cpass)   { passErr.textContent = 'Passwords do not match.'; passErr.style.display = 'block'; return; }
+    if (pass.length < 4)  { passErr.textContent = 'Password must be at least 4 characters.'; passErr.style.display = 'block'; return; }
+
+    btn.disabled = true; btn.textContent = 'Creating account…';
+
+    jQuery.ajax({
+        url:  'register',
+        type: 'post',
+        data: { email: email, name: name, number: number, pass: pass, by: by },
+        success: function(res) {
+            if (res === 'done') {
+                alert('Account created successfully! Please sign in.');
+                switchTab('signin');
+            } else {
+                passErr.textContent = 'Registration failed. Please try again.';
+                passErr.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Create Account';
+            }
+        }
+    });
+}
+
+// Enter key support
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const signinActive = document.getElementById('formSignIn').classList.contains('active');
+        if (signinActive) loginset();
+    }
+});
+</script>
+</body>
 </html>
