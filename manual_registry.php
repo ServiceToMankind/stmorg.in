@@ -1,86 +1,52 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
 $msg = '';
 if(isset($_POST['mail']) && $_POST['mail']!=''){
+    $mail = sanitize_input($_POST['mail']);
+    $gender = isset($_POST['gender']) ? sanitize_input($_POST['gender']) : '';
+    $name = isset($_POST['name']) ? sanitize_input($_POST['name']) : '';
+    $mobile = isset($_POST['mobile']) ? sanitize_input($_POST['mobile']) : '';
+    $role = isset($_POST['role']) ? sanitize_input($_POST['role']) : '';
+    $dob = isset($_POST['dob']) ? sanitize_input($_POST['dob']) : '';
 
-// get all post values
-$ccode = 'stmo';
-$mail = get_safe_value($con,$_POST['mail']);
-$gender= get_safe_value($con,$_POST['gender']);
-$name= get_safe_value($con,$_POST['name']);
-$mobile= get_safe_value($con,$_POST['mobile']);
-$role= get_safe_value($con,$_POST['role']);
-$dob= get_safe_value($con,$_POST['dob']);
+    $residence = isset($_POST['residence']) ? sanitize_input($_POST['residence']) : '';
+    $blood = isset($_POST['blood']) ? sanitize_input($_POST['blood']) : '';
+    $emname1 = isset($_POST['emname1']) ? sanitize_input($_POST['emname1']) : '';
+    $emname2 = isset($_POST['emname2']) ? sanitize_input($_POST['emname2']) : '';
+    $emmobile1 = isset($_POST['emmobile1']) ? sanitize_input($_POST['emmobile1']) : '';
+    $emmobile2 = isset($_POST['emmobile2']) ? sanitize_input($_POST['emmobile2']) : '';
+    $emrelation1 = isset($_POST['emrelation1']) ? sanitize_input($_POST['emrelation1']) : '';
+    $emrelation2 = isset($_POST['emrelation2']) ? sanitize_input($_POST['emrelation2']) : '';
 
-// intinialize optional fields
-$residence = '';
-$blood = '';
-$emname1 = '';
-$emname2 = '';
-$emmobile1= '';
-$emmobile2= '';
-$emrelation1= '';
-$emrelation2= '';
-// set defualt timezone
-date_default_timezone_set('Asia/Kolkata');
+    $post_data = [
+        'uid' => '', 
+        'name' => $name,
+        'mail' => $mail,
+        'mobile' => $mobile,
+        'role' => $role,
+        'gender' => $gender,
+        'dob' => $dob,
+        'residence' => $residence,
+        'blood' => $blood,
+        'emname1' => $emname1,
+        'emmobile1' => $emmobile1,
+        'emrelation1' => $emrelation1,
+        'emname2' => $emname2,
+        'emmobile2' => $emmobile2,
+        'emrelation2' => $emrelation2
+    ];
 
-// get todays date and time
-$added_on = date("Y-m-d H:i:s");
+    $data = get_api_data_post($api_url . '/global/manage_users', $post_data);
+    $resp = json_decode($data, true);
 
-// create prepared statement for main query
-$stmt = $con->prepare("INSERT INTO `users`(`id`, `ccode`, `name`, `gender`, `mail`, `mobile`, `password`, `role`, `image`, `refer-by`, `added_on`) VALUES (NULL, ?, ?, ?, ?, ?, 'stm@123', ?, NULL, '0', ?)");
-$stmt->bind_param("sssssss", $ccode, $name, $gender, $mail, $mobile, $role, $added_on);
-$stmt->execute();
-
-// get last inserted id
-$last_id = $stmt->insert_id;
-
-if(isset($last_id) && $last_id!=''){
-$concatinated_id= $ccode.$last_id;
-
-if(isset($_POST['residence']) && $_POST['residence']!=''){
-$residence = get_safe_value($con,$_POST['residence']);
-}
-if(isset($_POST['blood']) && $_POST['blood']!=''){
-$blood = get_safe_value($con,$_POST['blood']);
-}
-// insert into additional table
-$additional_query= mysqli_query($con, "INSERT INTO `addl_info`(`id`, `uid`, `residence`, `blood`, `dob`) VALUES (NULL,'$concatinated_id','$residence','$blood', '$dob')");
-
-if(isset($_POST['emname1']) && $_POST['emname1']!=''){
-$emname1 = get_safe_value($con,$_POST['emname1']);
-if(isset($_POST['emrelation1']) && $_POST['emrelation1']!=''){
-    $emrelation1 = get_safe_value($con,$_POST['emrelation1']);
+    if($resp && $resp['status'] == 'success'){
+        $msg = "User has been registered.";
+        $msgcolor="green";
+    }else{
+        $msg = "API failed to register user.";
+        $msgcolor="red";
     }
-
-if(isset($_POST['emmobile1']) && $_POST['emmobile1']!=''){
-    $emmobile1 = get_safe_value($con,$_POST['emmobile1']);
-    }
-    // add emergency contact 1
-    $em_query= mysqli_query($con, "INSERT INTO `emergency_info`(`id`, `uid`, `name`, `mobile`, `relation`) VALUES (NULL,'$concatinated_id','$emname1','$emmobile1','$emrelation1')");
-}
-
-if(isset($_POST['emname2']) && $_POST['emname2']!=''){
-$emname2 = get_safe_value($con,$_POST['emname2']);
-if(isset($_POST['emmobile2']) && $_POST['emmobile2']!=''){
-    $emmobile2 = get_safe_value($con,$_POST['emmobile2']);
-    }
-    
-    if(isset($_POST['emrelation2']) && $_POST['emrelation2']!=''){
-    $emrelation2 = get_safe_value($con,$_POST['emrelation2']);
-    }
-    // add emergency contact 2
-    $em_query= mysqli_query($con, "INSERT INTO `emergency_info`(`id`, `uid`, `name`, `mobile`, `relation`) VALUES (NULL,'$concatinated_id','$emname2','$emmobile2','$emrelation2')");
-}
-
-$msg = "User has been registered.";
-$msgcolor="green";
-}else{
-    $msg = "Error description: " . mysqli_error($con);
-    $msgcolor="red";}
-mysqli_close($con);
 }
 ?>
 <html>

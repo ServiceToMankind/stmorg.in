@@ -1,6 +1,5 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 ?>
 <html>
 
@@ -157,11 +156,13 @@ require('functions.php');
                     <select id="job" name="designation">
                         <optgroup label="heros">
                             <?php
-                $res=mysqli_query($con,"SELECT * FROM `designation`");
-                while($row=mysqli_fetch_assoc($res)){
-                ?>
+                            $data = get_api_data($api_url . '/global/designation');
+                            $resp = json_decode($data, true);
+                            if($resp && $resp['status'] == 'success'){
+                                foreach($resp['data'] as $row){
+                            ?>
                             <option value="<?php echo $row['id'] ?>"><?php echo $row['designation'] ?></option>
-                            <? } ?>
+                            <?php } } ?>
                         </optgroup>
                         <!-- <optgroup label="Mobile">
                             <option value="android_developer">Android Developer</option>

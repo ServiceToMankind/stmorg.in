@@ -1,6 +1,5 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
 
 if(isset($_POST['name']) && $_POST['name']!=''){
@@ -12,17 +11,31 @@ date_default_timezone_set("Asia/Kolkata");
 $desc=$_POST['desc'];
 $amount=$_POST['amt'];
 $txid=$_POST['txid'];
+		
+		$post_data = [
+		    'rid' => '',
+		    'name' => $name,
+		    'mail' => $mail,
+		    'mobile' => $mobile,
+		    'amount' => $amount,
+		    'type' => '0',
+		    'message' => $desc,
+		    'txid' => $txid,
+		    'payment_status' => '1',
+		    'custid' => '0',
+		    'added_on' => $added_on
+		];
+		
+        $data = get_api_data_post($api_url . '/logs/manage_donations', $post_data);
+        $resp = json_decode($data, true);
 
-$sqlstat = mysqli_query($con,"INSERT INTO `donations`(`id`, `name`, `mail`, `mobile`, `amount`, `type`, `message`, `txid`, `payment_status`, `custid`, `added_on`) VALUES (NULL,'$name','$mail','$mobile','$amount','0','$desc','$txid','1','0','$added_on')");
-$msg = '';
-if( $sqlstat !== false ) { 
+if($resp && $resp['status'] == 'success'){
    $msg = "Transaction record has been updated.";
    $msgcolor="#5fcf80";
-}else {
-   $msg = "Error description: " . mysqli_error($con);
+}else{
+   $msg = "Error description: API Call Failed.";
    $msgcolor="red";
 }
-mysqli_close($con);
 }
 ?>
 <html>

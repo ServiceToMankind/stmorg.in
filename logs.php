@@ -1,10 +1,6 @@
 <?php
 require('includes/functions.php');
 
-// display errors 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -73,7 +69,8 @@ $total_amount = isset($data['total_amount']) ? $data['total_amount'] : 0;
                         <h4><span>All Time Payments Logs</span></h4>
                         <p>All Donations | Total: Rs. <?php echo htmlspecialchars($total_amount); ?></p>
                     <?php } else { ?>
-                        <h4><span>Payments logs of <?php echo date("M Y", strtotime("$selected_year-$selected_month-01")); ?></span></h4>
+                        <h4><span>Payments logs of
+                                <?php echo date("M Y", strtotime("$selected_year-$selected_month-01")); ?></span></h4>
                         <p>Month Donations | Total: Rs. <?php echo htmlspecialchars($total_amount); ?></p>
                     <?php } ?>
                 </div>
@@ -83,20 +80,21 @@ $total_amount = isset($data['total_amount']) ? $data['total_amount'] : 0;
                             <input type="text" id="tableSearch" class="form-control" placeholder="Search logs...">
                         </div>
                         <select name="month" class="form-control mr-2 mb-2">
-                            <option value="all" <?php echo ($selected_month == 'all') ? 'selected' : ''; ?>>All Time</option>
-                            <?php 
-                            for($m=1; $m<=12; $m++){
+                            <option value="all" <?php echo ($selected_month == 'all') ? 'selected' : ''; ?>>All Time
+                            </option>
+                            <?php
+                            for ($m = 1; $m <= 12; $m++) {
                                 $m_padded = str_pad($m, 2, '0', STR_PAD_LEFT);
-                                $m_name = date('F', mktime(0,0,0,$m, 1, date('Y')));
+                                $m_name = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
                                 $sel = ($selected_month == $m_padded) ? 'selected' : '';
                                 echo "<option value=\"$m_padded\" $sel>$m_name</option>";
                             }
                             ?>
                         </select>
                         <select name="year" class="form-control mr-2 mb-2">
-                            <?php 
+                            <?php
                             $current_year = date('Y');
-                            for($y = $current_year; $y >= 2021; $y--){
+                            for ($y = $current_year; $y >= 2021; $y--) {
                                 $sel = ($selected_year == $y) ? 'selected' : '';
                                 echo "<option value=\"$y\" $sel>$y</option>";
                             }
@@ -134,7 +132,8 @@ $total_amount = isset($data['total_amount']) ? $data['total_amount'] : 0;
                 <nav aria-label="Page navigation" class="mt-4">
                     <ul class="pagination justify-content-center">
                         <?php if ($page > 1): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo $page - 1 . $url_params; ?>">Prev</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo $page - 1 . $url_params; ?>">Prev</a></li>
                         <?php endif; ?>
 
                         <?php if ($page > 3): ?>
@@ -143,28 +142,35 @@ $total_amount = isset($data['total_amount']) ? $data['total_amount'] : 0;
                         <?php endif; ?>
 
                         <?php if ($page - 2 > 0): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo ($page - 2) . $url_params; ?>"><?php echo $page - 2; ?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo ($page - 2) . $url_params; ?>"><?php echo $page - 2; ?></a></li>
                         <?php endif; ?>
                         <?php if ($page - 1 > 0): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo ($page - 1) . $url_params; ?>"><?php echo $page - 1; ?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo ($page - 1) . $url_params; ?>"><?php echo $page - 1; ?></a></li>
                         <?php endif; ?>
 
-                        <li class="page-item active"><a class="page-link" href="?page=<?php echo $page . $url_params; ?>"><?php echo $page; ?></a></li>
+                        <li class="page-item active"><a class="page-link"
+                                href="?page=<?php echo $page . $url_params; ?>"><?php echo $page; ?></a></li>
 
                         <?php if ($page + 1 <= $total_pages): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo ($page + 1) . $url_params; ?>"><?php echo $page + 1; ?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo ($page + 1) . $url_params; ?>"><?php echo $page + 1; ?></a></li>
                         <?php endif; ?>
                         <?php if ($page + 2 <= $total_pages): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo ($page + 2) . $url_params; ?>"><?php echo $page + 2; ?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo ($page + 2) . $url_params; ?>"><?php echo $page + 2; ?></a></li>
                         <?php endif; ?>
 
                         <?php if ($page < $total_pages - 2): ?>
                             <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages . $url_params; ?>"><?php echo $total_pages; ?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo $total_pages . $url_params; ?>"><?php echo $total_pages; ?></a></li>
                         <?php endif; ?>
 
                         <?php if ($page < $total_pages): ?>
-                            <li class="page-item"><a class="page-link" href="?page=<?php echo ($page + 1) . $url_params; ?>">Next</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="?page=<?php echo ($page + 1) . $url_params; ?>">Next</a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>
@@ -180,26 +186,27 @@ $total_amount = isset($data['total_amount']) ? $data['total_amount'] : 0;
 <script src='js/tweenmax.js'></script>
 <script src="main-js/main.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var searchInput = document.getElementById("tableSearch");
-    if (searchInput) {
-        searchInput.addEventListener("keyup", function() {
-            var filter = this.value.toUpperCase();
-            var rows = document.querySelector(".table tbody").rows;
-            
-            for (var i = 0; i < rows.length; i++) {
-                var textCol0 = rows[i].cells[0].textContent.toUpperCase();
-                var textCol1 = rows[i].cells[1].textContent.toUpperCase();
-                var textCol2 = rows[i].cells[2].textContent.toUpperCase();
-                if (textCol0.indexOf(filter) > -1 || textCol1.indexOf(filter) > -1 || textCol2.indexOf(filter) > -1) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
+    document.addEventListener("DOMContentLoaded", function () {
+        var searchInput = document.getElementById("tableSearch");
+        if (searchInput) {
+            searchInput.addEventListener("keyup", function () {
+                var filter = this.value.toUpperCase();
+                var rows = document.querySelector(".table tbody").rows;
+
+                for (var i = 0; i < rows.length; i++) {
+                    var textCol0 = rows[i].cells[0].textContent.toUpperCase();
+                    var textCol1 = rows[i].cells[1].textContent.toUpperCase();
+                    var textCol2 = rows[i].cells[2].textContent.toUpperCase();
+                    if (textCol0.indexOf(filter) > -1 || textCol1.indexOf(filter) > -1 || textCol2.indexOf(filter) > -1) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
                 }
-            }
-        });
-    }
-});
+            });
+        }
+    });
 </script>
 </body>
+
 </html>

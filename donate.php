@@ -1,13 +1,22 @@
 <?php
-require('connection.php');
+require('includes/functions.php');
 if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID']!=''){
-$id=$_SESSION['USER_ID'];
-$res=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`id`='$id'");
-$row=mysqli_fetch_assoc($res);
-
-$name=$row['name'];
-$mobile=$row['mobile'];
-$email=$row['mail'];
+    $id=$_SESSION['USER_ID'];
+    $cc = isset($_SESSION['CC']) ? $_SESSION['CC'] : 'stmo';
+    
+    $data = get_api_data($api_url . '/global/users?uid=' . $cc . $id);
+    $resp = json_decode($data, true);
+    
+    if($resp && $resp['status'] == 'success' && !empty($resp['data'])){
+        $row = $resp['data'][0];
+        $name=$row['name'];
+        $mobile=$row['mobile'];
+        $email=$row['mail'];
+    } else {
+        $name = '';
+        $mobile = '';
+        $email = '';
+    }
 }else{
     $id='0';
 }

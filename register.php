@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['email']) && $_POST['email']!=''){
-    require('functions.php');
+    require('includes/functions.php');
 
     $rdata = $_POST;
     $data = get_api_data_post("https://apis.stmorg.in/common/register",$rdata);

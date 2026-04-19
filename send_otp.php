@@ -1,18 +1,17 @@
 <?php
 //local configs
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
 
-$type=get_safe_value($con,$_POST['type']);
+$type=sanitize_input($_POST['type']);
 
 
 if($type=='email'){
-$email=get_safe_value($con,$_POST['email']);
+$email=sanitize_input($_POST['email']);
 $otp=rand(111111,999999);
 $_SESSION['EMAIL_OTP']=$otp;
-$check_user=mysqli_num_rows(mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mail`='$email'"));
-if($check_user>0){
+$resp = json_decode(get_api_data($api_url."/auth/verify?mail=$email"), true);
+if($resp && $resp['exists']==true){
 echo "email_present";
 die();
 }
@@ -21,24 +20,24 @@ $data=get_api_data("https://apis.stmorg.in/common/otp?mail=$email&otp=$otp");
 $data = json_decode($data, true);
 // Check for API errors
 if ($data['status'] !== "success") {
-    echo "API error: " . $user_details['message'];
+    echo "API error: " . $data['message'];
     exit;
 }else{
 	echo 'sent';
 }
 }
 if($type=='passreset'){
-$email=get_safe_value($con,$_POST['email']);
+$email=sanitize_input($_POST['email']);
 $otp=rand(111111,999999);
 $_SESSION['EMAIL_OTP']=$otp;
-$check_user=mysqli_num_rows(mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mail`='$email'"));
-if($check_user>0){
+$resp = json_decode(get_api_data($api_url."/auth/verify?mail=$email"), true);
+if($resp && $resp['exists']==true){
 $data=get_api_data("https://apis.stmorg.in/common/otp?mail=$email&otp=$otp");
 
 $data = json_decode($data, true);
 // Check for API errors
 if ($data['status'] !== "success") {
-	echo "API error: " . $user_details['message'];
+	echo "API error: " . $data['message'];
 	exit;
 }else{
 	echo 'sent';
@@ -49,9 +48,9 @@ if ($data['status'] !== "success") {
 }
 }
 if($type=='number'){
-	$number=get_safe_value($con,$_POST['number']);
-	$check_user=mysqli_num_rows(mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`mobile`='$number'"));
-if($check_user>0){
+	$number=sanitize_input($_POST['number']);
+	$resp = json_decode(get_api_data($api_url."/auth/verify?mobile=$number"), true);
+if($resp && $resp['exists']==true){
 echo"mobile_present";
 die();
 }

@@ -1,6 +1,6 @@
 <?php
-require('connection.php');
-$user_id=$_SESSION['USER_ID'];
+require('includes/functions.php');
+$user_id=isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -437,16 +437,21 @@ $user_id=$_SESSION['USER_ID'];
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $row=mysqli_query($con,"SELECT * from `users` where `users`.`refer-by`='$user_id'");
-                                        while($data=mysqli_fetch_assoc($row)){
+                                        $user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : '';
+                                        $data = get_api_data($api_url . '/global/users?refer-by=' . $user_id);
+                                        $resp = json_decode($data, true);
+                                        if($resp && $resp['status'] == 'success' && !empty($resp['data'])){
+                                            foreach($resp['data'] as $info){
                                         ?>
                                             <tr>
-                                                <th scope="row"><?php echo $data['id'] ?></th>
-                                                <td><?php echo $data['name'] ?></td>
-                                                <td><?php echo $data['mobile'] ?></td>
-                                                <td><?php echo $data['email'] ?></td>
+                                                <th scope="row"><?php echo $info['id'] ?></th>
+                                                <td><?php echo $info['name'] ?></td>
+                                                <td><?php echo $info['mobile'] ?></td>
+                                                <td><?php echo $info['mail'] ?></td>
                                             </tr>
-                                            <?php }
+                                            <?php 
+                                            }
+                                        }
                                             ?>
 
                                         </tbody>

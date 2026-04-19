@@ -1,6 +1,6 @@
 <?php
 
-require('functions.php');
+require('includes/functions.php');
 
 // Check if form is submitted successfully
 if (isset($_POST["dt"]) && isset($_POST["dn"]) && isset($_POST["dd"]) && isset($_POST["fp"])) {

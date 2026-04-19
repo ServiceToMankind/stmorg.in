@@ -1,6 +1,5 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
 $type=get_safe_value($con,$_POST['type']);
 $otp=get_safe_value($con,$_POST['otp']);

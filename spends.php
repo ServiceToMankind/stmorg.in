@@ -1,13 +1,37 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 date_default_timezone_set("Asia/Kolkata");
 $date=date('Y-m-d h:i:s');
 $last_month_first_day='';
+$month_param = '';
+$year_param = '';
+
 if(isset($_GET['month']) && $_GET['month']=='last'){
-$last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+    $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
+    $month_param = date("n", strtotime($last_month_first_day));
+    $year_param = date("Y", strtotime($last_month_first_day));
 }elseif(isset($_GET['month']) && $_GET['month']=='all'){
     $last_month_first_day='all';
+} else {
+    $month_param = date("n", strtotime($date));
+    $year_param = date("Y", strtotime($date));
+}
+
+function get_total_spends_by_month_api($m, $y) {
+    global $api_url;
+    if($m == 'all') {
+        $data = get_api_data($api_url . '/logs/spends');
+    } else {
+        $data = get_api_data($api_url . '/logs/spends?month='.$m.'&year='.$y);
+    }
+    $resp = json_decode($data, true);
+    $total = 0;
+    if($resp && $resp['status'] == 'success') {
+        foreach($resp['data'] as $sp) {
+            $total += $sp['amount'];
+        }
+    }
+    return $total;
 }
 ?>
 <!DOCTYPE html>
@@ -869,19 +893,19 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
         <h1>STM Spends</h1>
 
 <?php if($last_month_first_day==''){?>
-            <h2>STM Spends of <?php echo date("M"); ?>'2022</h2>
+            <h2>STM Spends of <?php echo date("M"); ?>'<?php echo date("Y"); ?></h2>
         <div class="lm-row">
         <div class="lm-btn"><a href="spends?month=last">Last Month</a></div>
-        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month($con,$date);?></a></div>
+        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month_api($month_param, $year_param);?></a></div>
         <?php }elseif($last_month_first_day=='all'){ ?>
         <div class="lm-row">
         <div class="lm-btn"><a href="spends">current Month</a></div>
-        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month($con,$date);?></a></div>
+        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month_api('all', '');?></a></div>
       <?php  }else{ ?>
-                    <h2>STM Spends of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
+                    <h2>STM Spends of <?php echo date("M",strtotime($last_month_first_day)); ?>'<?php echo date("Y",strtotime($last_month_first_day)); ?></h2>
         <div class="lm-row">
         <div class="lm-btn"><a href="spends">current Month</a></div>
-        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month($con,$last_month_first_day);?></a></div>
+        <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month_api($month_param, $year_param);?></a></div>
         <?php } ?>
 </div>
 
@@ -901,15 +925,17 @@ $last_month_first_day = date("Y-n-j", strtotime("first day of previous month"));
                 <tbody>
                     <?php
                     if($last_month_first_day==''){
-$res=mysqli_query($con,"SELECT * FROM `spends` WHERE month(`spends`.`date`)=month('$date') ORDER BY `spends`.`date` DESC;");
+                        $data = get_api_data($api_url . '/logs/spends?month='.$month_param.'&year='.$year_param);
                     }elseif($last_month_first_day=='all'){
-$res=mysqli_query($con,"SELECT * FROM `spends` ORDER BY `spends`.`date` DESC;");
+                        $data = get_api_data($api_url . '/logs/spends');
                     }else{
-$res=mysqli_query($con,"SELECT * FROM `spends` WHERE month(`spends`.`date`)=month('$last_month_first_day') ORDER BY `spends`.`date` DESC;");
+                        $data = get_api_data($api_url . '/logs/spends?month='.$month_param.'&year='.$year_param);
                     }
 
-while($row=mysqli_fetch_assoc($res)){
-?>
+                    $resp = json_decode($data, true);
+                    if($resp && $resp['status'] == 'success') {
+                        foreach($resp['data'] as $row) {
+                    ?>
                     <tr>
                         <td data-title="Name"><?php echo $row['title'] ?></td>
                         <?php
@@ -921,9 +947,11 @@ while($row=mysqli_fetch_assoc($res)){
                         <td data-title="Description"><?php echo $row['des'] ?></td>
                         <?php } ?>
                         <td data-title="Amount">Rs. <?php echo $row['amount'] ?></td>
-                        <td data-title="Amount">Rs. <?php echo $row['date'] ?></td>
+                        <td data-title="Date"><?php echo $row['date'] ?></td>
                     </tr>
-                    <?php }
+                    <?php 
+                        }
+                    }
                     ?>
                 </tbody>
             </table>

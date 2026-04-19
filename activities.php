@@ -1,6 +1,5 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 date_default_timezone_set("Asia/Kolkata");
 $date=date('Y-m-d');
 $last_month_first_day='';

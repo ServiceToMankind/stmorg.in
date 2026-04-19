@@ -1,14 +1,15 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
-$name=get_safe_value($con,$_POST['email']);
-$password=get_safe_value($con,$_POST['pass']);
-$res=mysqli_query($con,"SELECT * FROM `users` WHERE `users`.`name`='$name' and `users`.`password`='$password'");
-$check_user=mysqli_num_rows($res);
+$name=sanitize_input($_POST['email']);
+$password=sanitize_input($_POST['pass']);
 
-if($check_user>0){
-    $row=mysqli_fetch_assoc($res);
+$data = get_api_data_post($api_url . '/auth/login', ['account' => $name, 'password' => $password]);
+echo "API response: " . $data . "\n";
+$resp = json_decode($data, true);
+
+if($resp && $resp['status'] == 'success'){
+    $row = $resp['data'];
     $_SESSION['USER_LOGIN']='yes';
     $_SESSION['USER_ID']=$row['id'];
     $_SESSION['USER_NAME']=$row['name'];

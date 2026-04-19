@@ -1,6 +1,5 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 date_default_timezone_set("Asia/Kolkata");
 // $date=date('Y-m-d');
 $date=date('Y-m-d h:i:s');
@@ -44,7 +43,7 @@ include('header.php');
                             <div class="power_progress_inner">
                                 <div class="power_progress_bar_back">
                                     <?php 
-                                        $raised=get_total_price_by_month($con,$date);
+                                        $raised=get_total_price_by_month_api($date);
                                     $rpercent=($raised/10000)*100;
                                     ?>
                                     <div class="power_progress_bar" style="max-width: <?php echo $rpercent ?>%;"
@@ -310,13 +309,13 @@ include('header.php');
                                 <div class="row">
                                     <!-- column -->
                                     <div class="col-lg-4">
-                                        <h1 class="mb-0 mt-4">Rs. <?php echo get_total_price_by_month($con,$date);?>
+                                        <h1 class="mb-0 mt-4">Rs. <?php echo get_total_price_by_month_api($date);?>
                                         </h1>
                                         <h6 class="font-light text-muted">
                                             Current Month Donations
                                         </h6>
                                         <h3 class="mt-4 mb-0">Rs.
-                                            <?php echo get_total_price_by_date($con, $date); ?></h3>
+                                            <?php echo get_total_price_by_date_api($date); ?></h3>
                                         <h6 class="font-light text-muted">This Day</h6>
                                         <a class="btn btn-info mt-3 p-15 pl-4 pr-4 mb-3" href="donate">
                                             Donate</a>
@@ -396,7 +395,7 @@ include('header.php');
                                     ?>
                                                 <span>Last Month</span>
                                                 <h3 class="font-medium mb-0">Rs.
-                                                    <?php echo get_total_price_by_month($con,$last_month_first_day);?>
+                                                    <?php echo get_total_price_by_month_api($last_month_first_day);?>
                                                 </h3>
                                             </div>
                                         </div>
@@ -412,7 +411,7 @@ include('header.php');
                                             <div class='dahionc'>
                                                 <span>This Year</span>
                                                 <h3 class="font-medium mb-0">
-                                                    Rs.<?php echo get_total_price_by_year($con, $date); ?></h3>
+                                                    Rs.<?php echo get_total_price_by_year_api($date); ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -440,7 +439,7 @@ include('header.php');
                                             <div class='dahionc'>
                                                 <span>Total</span>
                                                 <h3 class="font-medium mb-0">
-                                                    Rs.<?php echo get_total_donations($con, $date); ?></h3>
+                                                    Rs.<?php echo get_total_donations_api(); ?></h3>
                                             </div>
                                         </div>
                                     </div>

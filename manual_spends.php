@@ -1,23 +1,30 @@
 <?php
-require('connection.php');
-require('functions.php');
+require('includes/functions.php');
 
 $msg = '';
 if(isset($_POST['title']) && $_POST['title']!=''){
-$title=$_POST['title'];
-$des=$_POST['des'];
-$amt=$_POST['amt'];
-$date=$_POST['date'];
+    $title=sanitize_input($_POST['title']);
+    $des=sanitize_input($_POST['des']);
+    $amt=sanitize_input($_POST['amt']);
+    $date=sanitize_input($_POST['date']);
 
-$sqlstat = mysqli_query($con,"INSERT INTO `spends`(`id`, `title`, `des`, `amount`, `date`) VALUES (NULL,'$title','$des','$amt','$date')");
-if( $sqlstat !== false ) { 
-   $msg = "Transaction record has been updated.";
-   $msgcolor="#5fcf80";
-}else {
-   $msg = "Error description: " . mysqli_error($con);
-   $msgcolor="red";
-}
-mysqli_close($con);
+    $post_data = [
+        'title' => $title,
+        'des' => $des,
+        'amt' => $amt,
+        'date' => $date
+    ];
+
+    $data = get_api_data_post($api_url . '/logs/manage_spends', $post_data);
+    $resp = json_decode($data, true);
+
+    if($resp && $resp['status'] == 'success'){
+       $msg = "Transaction record has been updated.";
+       $msgcolor="#5fcf80";
+    }else {
+       $msg = "Error description: API Call Failed.";
+       $msgcolor="red";
+    }
 }
 ?>
 <html>
