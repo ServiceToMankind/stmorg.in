@@ -1,210 +1,143 @@
-<?php
-require('includes/functions.php');
-
-
-if(isset($_POST['name']) && $_POST['name']!=''){
-$name=$_POST['name'];
-$mail=$_POST['email'];
-$mobile=$_POST['mobile'];
-date_default_timezone_set("Asia/Kolkata");
-    $added_on=date('Y-m-d h:i:s');
-$desc=$_POST['desc'];
-$amount=$_POST['amt'];
-$txid=$_POST['txid'];
-		
-		$post_data = [
-		    'rid' => '',
-		    'name' => $name,
-		    'mail' => $mail,
-		    'mobile' => $mobile,
-		    'amount' => $amount,
-		    'type' => '0',
-		    'message' => $desc,
-		    'txid' => $txid,
-		    'payment_status' => '1',
-		    'custid' => '0',
-		    'added_on' => $added_on
-		];
-		
-        $data = get_api_data_post($api_url . '/logs/manage_donations', $post_data);
-        $resp = json_decode($data, true);
-
-if($resp && $resp['status'] == 'success'){
-   $msg = "Transaction record has been updated.";
-   $msgcolor="#5fcf80";
-}else{
-   $msg = "Error description: API Call Failed.";
-   $msgcolor="red";
-}
-}
-?>
-<html>
-
+<?php require('includes/functions.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up Form</title>
-    <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manual Payments — STM India</title>
+    <link rel="icon" href="accesories/fevicon 32.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
+    <meta http-equiv="refresh" content="8;url=https://management.stmorg.in/manage_donations">
     <style>
-    *,
-    *:before,
-    *:after {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: "Nunito", sans-serif;
-        color: #384047;
-    }
-
-    form {
-        max-width: 300px;
-        margin: 10px auto;
-        padding: 10px 20px;
-        background: #f4f7f8;
-        border-radius: 8px;
-    }
-
-    h1 {
-        margin: 0 0 30px 0;
-        text-align: center;
-    }
-
-    input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="datetime"],
-    input[type="email"],
-    input[type="number"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="time"],
-    input[type="url"],
-    textarea,
-    select {
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        font-size: 16px;
-        height: auto;
-        margin: 0;
-        outline: 0;
-        padding: 15px;
-        width: 100%;
-        background-color: #e8eeef;
-        color: #8a97a0;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-        margin-bottom: 30px;
-    }
-
-    input[type="radio"],
-    input[type="checkbox"] {
-        margin: 0 4px 8px 0;
-    }
-
-    select {
-        padding: 6px;
-        height: 32px;
-        border-radius: 2px;
-    }
-
-    button {
-        padding: 19px 39px 18px 39px;
-        color: #fff;
-        background-color: #4bc970;
-        font-size: 18px;
-        text-align: center;
-        font-style: normal;
-        border-radius: 5px;
-        width: 100%;
-        border: 1px solid #3ac162;
-        border-width: 1px 1px 3px;
-        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
-        margin-bottom: 10px;
-    }
-
-    fieldset {
-        margin-bottom: 30px;
-        border: none;
-    }
-
-    legend {
-        font-size: 1.4em;
-        margin-bottom: 10px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-    }
-
-    label.light {
-        font-weight: 300;
-        display: inline;
-    }
-
-    .number {
-        background-color: #5fcf80;
-        color: #fff;
-        height: 30px;
-        width: 30px;
-        display: inline-block;
-        font-size: 0.8em;
-        margin-right: 4px;
-        line-height: 30px;
-        text-align: center;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-        border-radius: 100%;
-    }
-
-    @media screen and (min-width: 480px) {
-        form {
-            max-width: 480px;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f6fa 0%, #ecf0f1 100%);
+            padding: 24px;
         }
-    }
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+            max-width: 520px;
+            width: 100%;
+            padding: 52px 44px 44px;
+            text-align: center;
+        }
+        .icon-wrap {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: rgba(249,25,66,0.10);
+            color: #f91942;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 24px;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 0.95rem;
+            color: #636e72;
+            line-height: 1.65;
+            margin-bottom: 8px;
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid #ecf0f1;
+            margin: 28px 0;
+        }
+        .new-portal-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: #b2bec3;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .portal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0984e3, #8e44ad);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .02em;
+            box-shadow: 0 4px 18px rgba(9,132,227,0.30);
+            transition: transform .2s, box-shadow .2s;
+        }
+        .portal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(9,132,227,0.40);
+            color: #fff;
+            text-decoration: none;
+        }
+        .countdown {
+            margin-top: 20px;
+            font-size: 0.82rem;
+            color: #b2bec3;
+        }
+        .countdown span {
+            font-weight: 600;
+            color: #0984e3;
+        }
+        .back-link {
+            display: block;
+            margin-top: 18px;
+            font-size: 0.82rem;
+            color: #b2bec3;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #636e72; }
     </style>
 </head>
-
 <body>
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post">
-                <h1>Manual Payments</h1>
-                <p>This is only for us, for manual payments.</p>
-                <p style="color:<?php echo $msgcolor; ?>"><?php echo $msg; ?></p>
-                <fieldset>
-                    <legend><span class="number">1</span> Donor Info</legend>
 
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" />
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="mail" name="email" />
-
-                    <label for="name">mobile:</label>
-                    <input type="text" id="name" name="mobile" />
-
-                </fieldset>
-                <fieldset>
-                    <legend><span class="number">2</span>Payment Info</legend>
-
-
-                    <label for="name">Amount :</label>
-                    <input type="text" id="clgid" name="amt" />
-
-                    <label for="name">Txid :</label>
-                    <input type="text" id="clgid" name="txid" />
-
-                    <label for="name">Description:</label>
-                    <textarea type="text" id="clgid" name="desc"></textarea>
-                </fieldset>
-
-                <button type="submit">Add Record</button>
-            </form>
-        </div>
+<div class="card">
+    <div class="icon-wrap">
+        <i class="fa-solid fa-ban"></i>
     </div>
-</body>
 
+    <h1>Manual Payments Discontinued</h1>
+    <p>Manual payment recording on this portal has been permanently retired.</p>
+    <p>All donation management is now handled exclusively through the <strong>STM Management Portal</strong>.</p>
+
+    <hr class="divider">
+
+    <div class="new-portal-label">Redirecting you to</div>
+    <a href="https://management.stmorg.in/manage_donations" class="portal-btn" id="portalBtn">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        STM Management Portal
+    </a>
+
+    <p class="countdown">Redirecting automatically in <span id="sec">8</span> seconds…</p>
+    <a href="index" class="back-link">← Back to Home</a>
+</div>
+
+<script>
+var s = 8;
+var t = setInterval(function() {
+    s--;
+    document.getElementById('sec').textContent = s;
+    if (s <= 0) {
+        clearInterval(t);
+        window.location.href = 'https://management.stmorg.in/manage_donations';
+    }
+}, 1000);
+</script>
+
+</body>
 </html>
