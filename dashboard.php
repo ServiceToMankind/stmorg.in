@@ -406,7 +406,6 @@ $referrals = ($ref_resp && $ref_resp['status'] == 'success' && is_array($ref_res
                             <div class="ref-avatar"><?php echo strtoupper(substr($ref['name'], 0, 2)); ?></div>
                             <div class="ref-info">
                                 <div class="ref-name"><?php echo htmlspecialchars($ref['name']); ?></div>
-                                <div class="ref-sub"><?php echo htmlspecialchars($ref['mail']); ?></div>
                             </div>
                             <span style="font-size:0.75rem;color:#b2bec3;"><?php echo date('d M', strtotime($ref['added_on'])); ?></span>
                         </li>
@@ -452,7 +451,6 @@ $referrals = ($ref_resp && $ref_resp['status'] == 'success' && is_array($ref_res
                                 <div class="donor-avatar"><?php echo strtoupper(substr($don['name'], 0, 2)); ?></div>
                                 <div>
                                     <div style="font-weight:500;"><?php echo htmlspecialchars($don['name']); ?></div>
-                                    <div style="font-size:0.75rem;color:#b2bec3;"><?php echo htmlspecialchars($don['mail']); ?></div>
                                 </div>
                             </div>
                         </td>

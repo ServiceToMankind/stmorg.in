@@ -23,19 +23,67 @@ $vol_raw   = get_api_data($api_url . '/activities/activities_vol?uid=' . $ouid .
 $vol_resp  = json_decode($vol_raw, true);
 $vol_count = ($vol_resp && isset($vol_resp['data']['data'])) ? $vol_resp['data']['data'] : 0;
 
-// User's personal donation total
-$don_raw   = get_api_data($api_url . '/logs/donations');
-$don_resp  = json_decode($don_raw, true);
+// User's personal donations.
+// The donations API exposes no per-user filter, so we page through every
+// verified donation (month=all) and keep the ones that belong to this user.
+// A donation is the user's when its linked customer id (custid = the bare
+// USER_ID captured at donate time) matches, OR when the donor email matches —
+// the email check also covers donations that were never linked to the account
+// (e.g. a guest checkout made with the same email address). The API only ever
+// returns payment_status = 1 (verified) rows.
+$user_mail = isset($user_details['mail']) ? strtolower(trim($user_details['mail'])) : '';
+
+$my_donations = [];
 $my_don_total = 0;
 $my_don_count = 0;
-if ($don_resp && $don_resp['status'] === 'success') {
+
+$page             = 1;
+$total_pages      = 1;
+$max_pages        = 500;   // safety cap (~5000 donations) to bound the loop
+$fetch_incomplete = false; // true if we couldn't walk every page (API error / cap hit)
+do {
+    $don_raw  = get_api_data($api_url . '/logs/donations?month=all&page=' . $page);
+    $don_resp = json_decode($don_raw, true);
+    if (!$don_resp || $don_resp['status'] !== 'success' || !is_array($don_resp['data'])) {
+        $fetch_incomplete = true; // a page failed to load; the totals below may be partial
+        break;
+    }
     foreach ($don_resp['data'] as $d) {
-        if ($d['custid'] == $ouid || $d['custid'] == $uid) {
-            $my_don_total += $d['amount'];
+        $d_custid = isset($d['custid']) ? trim((string)$d['custid']) : '';
+        $d_mail   = isset($d['mail'])   ? strtolower(trim($d['mail'])) : '';
+
+        $mine = false;
+        // Linked-account match (ignore the guest sentinel '0' / empty custid)
+        if ($d_custid !== '' && $d_custid !== '0' && $d_custid === (string)$ouid) {
+            $mine = true;
+        }
+        // Email match (case / whitespace insensitive)
+        if (!$mine && $user_mail !== '' && $d_mail !== '' && $d_mail === $user_mail) {
+            $mine = true;
+        }
+
+        if ($mine) {
+            $my_donations[] = $d;
+            $my_don_total  += (int)$d['amount'];
             $my_don_count++;
         }
     }
+    $total_pages = isset($don_resp['total_pages']) ? (int)$don_resp['total_pages'] : 1;
+    $page++;
+} while ($page <= $total_pages && $page <= $max_pages);
+
+// If there were more pages than the safety cap allowed, the list is partial.
+if ($total_pages > $max_pages) {
+    $fetch_incomplete = true;
 }
+
+// Show most recent first. Treat any unparseable date as epoch 0 so the
+// comparator always returns a deterministic integer.
+usort($my_donations, function ($a, $b) {
+    $ta = strtotime($a['added_on'] ?? '');
+    $tb = strtotime($b['added_on'] ?? '');
+    return ($tb === false ? 0 : $tb) <=> ($ta === false ? 0 : $ta);
+});
 
 // Role label
 $role_id    = isset($user_details['role_id']) ? $user_details['role_id'] : '';
@@ -347,6 +395,67 @@ $initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ?
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- My Donations -->
+    <div class="prof-card" style="margin-bottom:22px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
+            <h4 style="margin:0;">My Donations</h4>
+            <span style="font-size:0.8rem;color:#b2bec3;">
+                <?php echo $my_don_count; ?> donation<?php echo $my_don_count == 1 ? '' : 's'; ?>
+                &nbsp;&middot;&nbsp; <strong style="color:#15803d;">₹<?php echo number_format($my_don_total); ?></strong> total
+            </span>
+        </div>
+
+        <?php if ($fetch_incomplete): ?>
+            <div style="background:#fef9c3;color:#a16207;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;font-size:0.82rem;margin-bottom:16px;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Some donation records couldn't be loaded, so the figures above may be incomplete. Please refresh to try again.
+            </div>
+        <?php endif; ?>
+
+        <?php if (empty($my_donations)): ?>
+            <div style="text-align:center;color:#b2bec3;padding:34px 0;font-size:0.9rem;">
+                <i class="fa-solid fa-hand-holding-heart" style="font-size:2rem;margin-bottom:10px;display:block;color:#dfe6e9;"></i>
+                You haven't made any donations yet.<br>
+                <a href="donate" style="color:#0984e3;text-decoration:none;font-weight:500;">Make your first contribution →</a>
+            </div>
+        <?php else: ?>
+        <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="padding:11px 14px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;border-bottom:1px solid #f5f6fa;">#</th>
+                        <th style="padding:11px 14px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;border-bottom:1px solid #f5f6fa;">Amount</th>
+                        <th style="padding:11px 14px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;border-bottom:1px solid #f5f6fa;">Message</th>
+                        <th style="padding:11px 14px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;border-bottom:1px solid #f5f6fa;">Status</th>
+                        <th style="padding:11px 14px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;border-bottom:1px solid #f5f6fa;">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($my_donations as $i => $d): ?>
+                    <tr>
+                        <td style="padding:12px 14px;color:#b2bec3;font-size:0.82rem;border-bottom:1px solid #f5f6fa;"><?php echo $i + 1; ?></td>
+                        <td style="padding:12px 14px;font-weight:600;color:#15803d;font-size:0.95rem;border-bottom:1px solid #f5f6fa;">₹<?php echo number_format($d['amount']); ?></td>
+                        <td style="padding:12px 14px;color:#636e72;font-size:0.88rem;border-bottom:1px solid #f5f6fa;"><?php echo htmlspecialchars($d['message'] ?: '—'); ?></td>
+                        <td style="padding:12px 14px;border-bottom:1px solid #f5f6fa;">
+                            <?php if ($d['payment_status'] == 1): ?>
+                                <span style="background:#dcfce7;color:#15803d;border-radius:20px;padding:3px 12px;font-size:0.73rem;font-weight:600;white-space:nowrap;">
+                                    <i class="fa-solid fa-circle-check" style="font-size:0.65rem;"></i> Verified
+                                </span>
+                            <?php else: ?>
+                                <span style="background:#fef9c3;color:#a16207;border-radius:20px;padding:3px 12px;font-size:0.73rem;font-weight:600;white-space:nowrap;">
+                                    <i class="fa-solid fa-clock" style="font-size:0.65rem;"></i> Pending
+                                </span>
+                            <?php endif; ?>
+                        </td>
+                        <td style="padding:12px 14px;color:#b2bec3;font-size:0.82rem;border-bottom:1px solid #f5f6fa;white-space:nowrap;"><?php echo date('d M Y, h:iA', strtotime($d['added_on'])); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php endif; ?>
     </div>
 
 </div><!-- /prof-wrap -->

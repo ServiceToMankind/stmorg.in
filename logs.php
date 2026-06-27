@@ -143,7 +143,6 @@ if ($selected_month === 'all') {
                                         </div>
                                         <div>
                                             <div style="font-weight:500;font-size:0.9rem;"><?php echo htmlspecialchars($row['name']); ?></div>
-                                            <div style="font-size:0.75rem;color:#b2bec3;"><?php echo htmlspecialchars($row['mail']); ?></div>
                                         </div>
                                     </div>
                                 </td>
