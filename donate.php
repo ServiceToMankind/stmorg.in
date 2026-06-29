@@ -49,19 +49,22 @@ include('header.php');
         <div>
             <div id="nd_donations_single_cause_form_section"
                 class="nd_donations_section nd_donations_padding_15 nd_donations_box_sizing_border_box">
-                <h3><strong>DONATE NOW</strong></h3>
-                <p class="text-success">Our payment gateway isn't working right now. Please use the following details to
-                    donate.</p>
+                <h3 class="stm-donate-title"><strong>DONATE NOW</strong></h3>
 
-                <div class="Google pay">
+                <div class="stm-gateway-notice" role="status">
+                    <span class="stm-gateway-badge">Temporarily Unavailable</span>
+                    <p>Our payment gateway isn't working right now. Please scan the Google&nbsp;Pay
+                        code below or pay to <strong>+91&nbsp;7729817298</strong> to donate.</p>
+                </div>
+
+                <div class="stm-gpay-wrap">
                     <!-- Image added using the <img> element -->
-                    <img src="images\pics\google pay stm.jpg" alt="google pay number  is 7729817298"
-                        style="width:20em;">
-
+                    <img src="images/pics/google%20pay%20stm.jpg"
+                        alt="Google Pay number is +91 7729817298" class="stm-gpay-img">
                 </div>
 
                 <!--START FORM-->
-                <form method="post" action="https://apis.stmorg.in/pay/start">
+                <form method="post" action="https://apis.stmorg.in/pay/start" class="stm-donate-form">
                     <!--start title-->
                     <div class="nd_donations_section nd_donations_height_40"></div>
                     <div class="nd_donations_section">
@@ -80,32 +83,33 @@ include('header.php');
                         </div>
                     </div>
                     <!-- danger text  -->
-                    <p class="text-danger">Temporarily Unavailable</p>
+                    <p class="stm-amount-note">Online checkout is temporarily unavailable &mdash; amounts shown for
+                        reference.</p>
                     <!--end title-->
 
                     <div class="nd_donations_section nd_donations_height_20"></div>
 
-                    <div class="nd_donations_section">
+                    <div class="nd_donations_section stm-amount-grid">
                         <div
-                            class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
+                            class="stm-amount-cell nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                             <input
                                 class="nd_donations_cursor_pointer nd_donations_section nd_donations_fixed_value_donation nd_donations_single_cause_form_donation_value"
                                 name="amount" type="text" readonly="" value="50" />
                         </div>
                         <div
-                            class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_left_15 nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
+                            class="stm-amount-cell nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_left_15 nd_donations_padding_right_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                             <input
                                 class="nd_donations_cursor_pointer nd_donations_section nd_donations_fixed_value_donation nd_donations_single_cause_form_donation_value"
                                 type="text" readonly="" value="100" />
                         </div>
                         <div
-                            class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_left_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
+                            class="stm-amount-cell nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_bottom_20_important_responsive nd_donations_padding_right_15 nd_donations_padding_left_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                             <input
                                 class="nd_donations_cursor_pointer nd_donations_section nd_donations_fixed_value_donation nd_donations_single_cause_form_donation_value"
                                 type="text" readonly="" value="150" />
                         </div>
                         <div
-                            class="nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_left_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
+                            class="stm-amount-cell nd_donations_width_25_percentage nd_donations_float_left nd_donations_padding_0_responsive nd_donations_padding_left_15 nd_donations_box_sizing_border_box nd_donations_width_100_percentage_responsive">
                             <input
                                 class="nd_donations_cursor_pointer nd_donations_section nd_donations_fixed_value_donation nd_donations_single_cause_form_donation_value"
                                 type="text" readonly="" value="200" />
@@ -308,7 +312,121 @@ include('header.php');
  include 'footer.php';
  ?>
 </main>
-<!-- 
+
+<style>
+/* ===== STM donate page modernization (scoped, additive) ===== */
+#nd_donations_single_cause_form_section{
+    font-family:'Inter',sans-serif;
+    /* neutralise legacy nd_donations_section float AND contain the inner floated
+       blocks (amount grid / guest section) so the card wraps all content and the
+       footer sits cleanly below it */
+    float:none !important; display:flow-root;
+    max-width:760px; margin:24px auto; padding:34px 32px;
+    background:#fff; border-radius:16px;
+    box-shadow:0 2px 16px rgba(0,0,0,.06);
+    box-sizing:border-box;
+}
+#nd_donations_single_cause_form_section .stm-donate-title{
+    font-size:1.5rem; color:#2c3e50; margin:0 0 18px;
+}
+#nd_donations_single_cause_form_section h4{
+    color:#2c3e50;
+}
+
+/* Gateway / unavailable notice */
+.stm-gateway-notice{
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px;
+    background:#fef9c3; border:1px solid #fde68a; border-radius:12px;
+    padding:14px 16px; margin:0 0 22px;
+}
+.stm-gateway-badge{
+    display:inline-block; background:#fef9c3; color:#a16207;
+    border:1px solid #fcd34d; font-weight:600; font-size:.78rem;
+    letter-spacing:.03em; text-transform:uppercase;
+    padding:5px 12px; border-radius:999px; white-space:nowrap;
+}
+.stm-gateway-notice p{
+    margin:0; color:#854d0e; font-size:.95rem; line-height:1.5; flex:1 1 240px;
+}
+.stm-gateway-notice strong{ color:#713f12; white-space:nowrap; }
+
+/* Google Pay image — responsive, no fixed em width */
+.stm-gpay-wrap{ text-align:center; margin:0 0 6px; }
+.stm-gpay-img{
+    display:block; width:100%; max-width:260px; height:auto; margin:0 auto;
+    border-radius:14px; border:1px solid #eef0f4;
+    box-shadow:0 2px 16px rgba(0,0,0,.06);
+}
+
+/* Amount reference note */
+.stm-amount-note{
+    color:#636e72; font-size:.9rem; margin:6px 0 0;
+}
+
+/* Amount options: CSS grid so they wrap / stack cleanly */
+.stm-amount-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+}
+.stm-amount-grid::after{ content:none; } /* neutralise legacy float clearfix */
+.stm-amount-grid .stm-amount-cell{
+    float:none !important; width:auto !important; padding:0 !important;
+}
+.stm-amount-grid .nd_donations_fixed_value_donation{
+    width:100%; box-sizing:border-box; text-align:center; font-weight:600;
+    color:#2c3e50; background:#f8fafc; border:1px solid #dfe6e9;
+    border-radius:10px; padding:11px 14px; font-family:inherit; font-size:.95rem;
+    transition:border-color .2s, box-shadow .2s, background .2s, transform .2s;
+}
+.stm-amount-grid .nd_donations_fixed_value_donation:hover{
+    border-color:#0984e3; transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(9,132,227,.14);
+}
+
+/* Token styling for the text inputs + textarea inside the form */
+.stm-donate-form input[type="text"]:not(.nd_donations_fixed_value_donation),
+.stm-donate-form textarea{
+    width:100%; box-sizing:border-box;
+    border:1px solid #dfe6e9; border-radius:10px; padding:11px 14px;
+    font-family:inherit; font-size:.95rem; color:#2c3e50; background:#f8fafc;
+    transition:border-color .2s, box-shadow .2s, background .2s; outline:none;
+}
+.stm-donate-form textarea{ resize:vertical; min-height:120px; }
+.stm-donate-form input[type="text"]:not(.nd_donations_fixed_value_donation):focus,
+.stm-donate-form textarea:focus{
+    border-color:#0984e3; background:#fff; box-shadow:0 0 0 3px rgba(9,132,227,.12);
+}
+.stm-donate-form input::placeholder,
+.stm-donate-form textarea::placeholder{ color:#b2bec3; }
+
+/* LOGIN pill */
+.stm-donate-form a.nd_donations_bg_greydark{
+    background:linear-gradient(135deg,#0984e3,#8e44ad) !important;
+    border-radius:8px; text-decoration:none;
+}
+
+/* Donate submit button — token gradient + hover */
+#validate_fields_subset{
+    -webkit-appearance:none; appearance:none;
+    border:none; border-radius:10px; padding:12px 30px; cursor:pointer;
+    background:linear-gradient(135deg,#0984e3,#8e44ad); color:#fff;
+    font-family:inherit; font-size:.95rem; font-weight:600;
+    transition:transform .2s, box-shadow .2s;
+}
+#validate_fields_subset:hover{
+    transform:translateY(-2px); box-shadow:0 8px 20px rgba(9,132,227,.32);
+}
+
+@media (max-width:600px){
+    #nd_donations_single_cause_form_section{ padding:24px 18px; margin:16px 12px; }
+    .stm-amount-grid{ grid-template-columns:repeat(2,1fr); }
+    #validate_fields_subset{ width:100%; }
+}
+@media (max-width:380px){
+    .stm-amount-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+}
+</style>
+
+<!--
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>

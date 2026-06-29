@@ -41,7 +41,7 @@ function get_total_spends_by_month_api($m, $y) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>STM Spends</title>
     <style>
     /* -- import Roboto Font ---------------------------- */
     @font-face {
@@ -149,48 +149,59 @@ function get_total_spends_by_month_api($m, $y) {
     html {
         position: relative;
         overflow-x: hidden;
-        margin: 16px;
+        /* margin removed: the old 16px page margin pushed content past the
+           viewport edge and caused a horizontal shift/scroll on mobile. */
+        margin: 0;
         padding: 0;
         min-height: 100%;
         font-size: 62.5%;
     }
 
     body {
-        font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+        font-family: 'Inter', 'RobotoDraft', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-style: normal;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.4rem;
         line-height: 2rem;
         letter-spacing: 0.01rem;
-        color: #212121;
-        background-color: #f5f5f5;
+        color: #636e72;
+        background-color: #f0f2f8;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
     }
 
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Spacing now lives on the content container instead of <html>,
+       so it never overflows the viewport on small screens. */
     #demo {
-        margin: 20px auto;
+        margin: 0 auto;
+        padding: 24px 16px 48px;
         max-width: 960px;
+        width: 100%;
     }
 
     #demo h1 {
-        font-size: 2.4rem;
-        line-height: 3.2rem;
+        font-size: 2.6rem;
+        line-height: 3.4rem;
         letter-spacing: 0;
-        font-weight: 300;
-        color: #212121;
+        font-weight: 700;
+        color: #2c3e50;
         text-transform: inherit;
         margin-bottom: 1rem;
         text-align: center;
     }
 
     #demo h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         line-height: 2.8rem;
         letter-spacing: 0.01rem;
-        font-weight: 400;
-        color: #212121;
+        font-weight: 500;
+        color: #636e72;
         text-align: center;
     }
 
@@ -876,16 +887,58 @@ function get_total_spends_by_month_api($m, $y) {
     }
     .lm-row{
         display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        justify-content: center;
     }
     .lm-btn{
         border-radius: 50px;
-    background: #ffffff;
-    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-    padding: 0.6em 0.9em;
-    max-width: 17em;
-        margin: 1em 1em 1.3em 0em;
+        background: linear-gradient(135deg, #0984e3, #8e44ad);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+        padding: 0.6em 1.1em;
+        margin: 1em 0 1.3em 0;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lm-btn a{
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    .lm-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(9, 132, 227, 0.25);
+    }
+
+    /* Card wrapper for the table. On phones the .table-responsive-vertical
+       rules (below) stack rows; on wider-but-narrow screens the table can
+       still be wider than the viewport, so allow horizontal scroll instead
+       of letting it break/overflow the layout. */
+    .table-responsive-vertical {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive-vertical > .table {
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 768px) {
+        /* When rows are stacked there is no wide content, so disable the
+           horizontal scroll to avoid an empty scrollbar gutter. */
+        .table-responsive-vertical {
+            overflow-x: visible;
+            background: transparent;
+            box-shadow: none;
+        }
     }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -898,6 +951,7 @@ function get_total_spends_by_month_api($m, $y) {
         <div class="lm-btn"><a href="spends?month=last">Last Month</a></div>
         <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month_api($month_param, $year_param);?></a></div>
         <?php }elseif($last_month_first_day=='all'){ ?>
+            <h2>STM Spends (All Time)</h2>
         <div class="lm-row">
         <div class="lm-btn"><a href="spends">current Month</a></div>
         <div class="lm-btn"><a>Total : <?php echo get_total_spends_by_month_api('all', '');?></a></div>
@@ -917,7 +971,7 @@ function get_total_spends_by_month_api($m, $y) {
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Descriptiopn</th>
+                        <th>Description</th>
                         <th>Amount</th>
                         <th>Date</th>
                     </tr>

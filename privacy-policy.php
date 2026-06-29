@@ -4,8 +4,8 @@
 include 'header.php';
 ?>
 
-<main style="margin-top: 5em;">
-    <div style="margin: 5em 10em 0em 10em; width:50em">
+<main style="padding:120px 0 60px; background:#f8fafc;">
+    <div style="max-width:820px; width:100%; margin:0 auto; padding:0 22px; line-height:1.7; color:#3a4654; font-family:'Inter',sans-serif;">
         <!-- add this content  -->
         <!-- Privacy Policy
 

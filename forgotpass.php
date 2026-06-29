@@ -5,131 +5,207 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="STM ( Service to mankind ). STM  is an NGO , which fulfills the needs of homeless childrens and people.">
-    <title>STM-INDIA</title>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="js/jquery1.js"></script>
-
-
+        content="Reset your STM account password — Service to Mankind, the student-led NGO making a difference.">
+    <title>Forgot Password — STM India</title>
 
     <!-- Favicons -->
-
     <link rel="apple-touch-icon" href="accesories/service_to_man_kind-20200709-0001.jpg" sizes="180x180">
     <link rel="icon" href="accesories/fevicon 32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="accesories/fevicon 16.png" sizes="16x16" type="image/png">
-    <link rel="mask-icon" href="accesories/safari-tab.svg" color="#563d7c">
     <link rel="icon" href="accesories/fevicon 32.ico">
-    <meta name="theme-color" content="#563d7c">
+    <meta name="theme-color" content="#2c3e50">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
+    <script src="js/jquery1.js"></script>
 
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- fontaswsome00000 -->
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
-    <script src="js\jquery1.js">
-    </script>
-    <link rel="stylesheet" href="css\main\login.css" />
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #16213e 50%, #2c3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        /* ---- Centered responsive card ---- */
+        .auth-card {
+            background: #fff;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 32px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06), 0 24px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .brand-logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .brand-logo-wrap img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            max-width: 100%;
+        }
+        .brand-name { font-size: 1rem; font-weight: 700; color: #2c3e50; }
+        .brand-tagline { font-size: 0.75rem; color: #b2bec3; }
+
+        .form-heading {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        .form-sub {
+            font-size: 0.85rem;
+            color: #636e72;
+            margin-bottom: 28px;
+        }
+
+        .field-group { margin-bottom: 18px; }
+        .field-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+        .field-group input {
+            width: 100%;
+            border: 1px solid #dfe6e9;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: #2c3e50;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            background: #fafafa;
+        }
+        .field-group input:focus {
+            border-color: #0984e3;
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.12);
+            background: #fff;
+        }
+
+        .btn-primary-stm {
+            width: 100%;
+            background: linear-gradient(135deg, #0984e3, #8e44ad);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: .02em;
+            transition: box-shadow .2s, transform .15s, opacity .2s;
+            margin-top: 6px;
+        }
+        .btn-primary-stm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(9, 132, 227, 0.25);
+        }
+        .btn-primary-stm:active { transform: translateY(0); }
+        .btn-primary-stm:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        .inline-msg {
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: block;
+            min-height: 1em;
+        }
+        .email_error, .pass_error { color: #b91c1c; }
+        #number_otp_result { color: #15803d; font-weight: 500; }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #0984e3;
+            text-decoration: none;
+            margin-top: 22px;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .helper-text {
+            font-size: 0.78rem;
+            color: #b2bec3;
+            margin-top: 4px;
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 400px) {
+            body { padding: 14px; }
+            .auth-card { padding: 32px 22px; border-radius: 14px; }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" style="width: 370px;">
-        <input type="radio" name="tab" id="signin" checked="checked" />
-        <input type="radio" name="tab" id="register" />
-        <div class="pages">
-            <div class="page signup">
-                <form>
-                    <img class="brand-logo" src="brand-logo.png" alt="" />
-                    <h2>Forgot Password</h2>
-                    <p>No Worries, Lets verify your email !</p>
-                    <!-- <div class="input">
-              <div class="title">Name</div>
-              <input class="text" type="text" placeholder="" />
-            </div> -->
-                    <div class="input">
-                        <div id="email_title" class="title">Email</div>
-                        <input class="text" id="email" name="email" type="email" placeholder="" />
-                        <div>
-                            <span id="email_error" class="email_error"></span>
-                        </div>
-                    </div>
-
-                    <!-- <div class="input">
-              <button
-                class="btn_3 email_sent_otp"
-                name="otp"
-                type="button"
-                onclick="email_sent_otp()"
-              >
-                send otp
-              </button>
-            </div> -->
-                    <div class="input">
-                        <button name="otp" type="button" class="sub-btn email_sent_otp" style="
-                  background: #e60023;
-                  color: #f6f7f9;
-                  height: 40px;
-                  line-height: 40px;
-                  width: 100%;
-                  border: none;
-                  border-radius: 4px;
-                  font-weight: 600;
-                " onclick="email_sent_otp()">
-                            Verify
-                        </button>
-                        <div class="input">
-                            <input class="text" type="text" class="email_verify_ootp otp_box" id="email_otp"
-                                placeholder="Enter otp" hidden />
-                            <span style="color: blue" id="number_otp_result"></span>
-                        </div>
-                        <button class="btn_3 email_verify_ootp" name="otp" type="button" onclick="email_verify_ootp()"
-                            style="
-                  background: #e60023;
-                  color: #f6f7f9;
-                  height: 40px;
-                  line-height: 40px;
-                  width: 100%;
-                  border: none;
-                  border-radius: 4px;
-                  font-weight: 600;
-                  display: none;
-                ">
-                            Verify otp
-                        </button>
-                    </div>
-                    <div class="input">
-                        <div id="pass_title" style="display: none" class="title">
-                            Password
-                        </div>
-                        <input class="text" id="pass" name="pass" type="password" placeholder="Password" hidden />
-                    </div>
-                    <div class="input">
-                        <div id="cpass_title" style="display: none" class="title">
-                            Re-enter Same Password
-                        </div>
-                        <input class="text" id="cpass" name="cpass" placeholder="Confirm Password" hidden />
-                    </div>
-                    <div>
-                        <span class="pass_error" id="pass_error"></span>
-                    </div>
-
-                    <div class="input">
-                        <input id="regiter_btn" type="button" value="Register-Now" onclick="resetpass()" hidden />
-                    </div>
-                </form>
+    <div class="auth-card container">
+        <div class="brand-logo-wrap">
+            <img class="brand-logo" src="accesories/service_to_man_kind-20200709-0001.jpg" alt="STM Logo" />
+            <div>
+                <div class="brand-name">Service To Mankind</div>
+                <div class="brand-tagline">STM India</div>
             </div>
         </div>
-        <div class="tabs">
-            <label class="tab" for="signin">
-                <div class="text"><a href="login">Already have a Account? Log In</a></div>
-            </label>
-            <label class="tab" for="register">
-                <div class="text"><a href="login">Already have a Account? Log In</a></div>
-            </label>
-        </div>
+
+        <form onsubmit="return false;">
+            <div class="form-heading">Forgot Password</div>
+            <p class="form-sub">No worries — let's verify your email to reset it.</p>
+
+            <!-- Step 1: Email + send OTP -->
+            <div class="field-group">
+                <label id="email_title" for="email">Email</label>
+                <input class="text" id="email" name="email" type="email" placeholder="Enter your registered email" />
+                <span id="email_error" class="email_error inline-msg"></span>
+            </div>
+
+            <button name="otp" type="button" class="btn-primary-stm email_sent_otp" onclick="email_sent_otp()">
+                Verify
+            </button>
+
+            <!-- Step 2: OTP entry + verify -->
+            <div class="field-group" style="margin-top:18px;">
+                <input class="text email_verify_ootp otp_box" type="text" id="email_otp" placeholder="Enter OTP" hidden />
+                <span class="inline-msg" id="number_otp_result"></span>
+            </div>
+            <button class="btn-primary-stm email_verify_ootp" name="otp" type="button" onclick="email_verify_ootp()"
+                style="display: none;">
+                Verify OTP
+            </button>
+
+            <!-- Step 3: New password -->
+            <div class="field-group" style="margin-top:18px;">
+                <label id="pass_title" for="pass" style="display: none;">Password</label>
+                <input class="text" id="pass" name="pass" type="password" placeholder="Password" hidden />
+            </div>
+            <div class="field-group">
+                <label id="cpass_title" for="cpass" style="display: none;">Re-enter Same Password</label>
+                <input class="text" id="cpass" name="cpass" type="password" placeholder="Confirm Password" hidden />
+            </div>
+            <span class="pass_error inline-msg" id="pass_error"></span>
+
+            <input id="regiter_btn" class="btn-primary-stm" type="button" value="Reset Password" onclick="resetpass()"
+                hidden />
+        </form>
+
+        <a href="login" class="back-link">&larr; Back to Log In</a>
     </div>
-    <script src="main-js\main.js"></script>
+
     <script>
     function email_sent_otp() {
         jQuery("#email_error").html("");

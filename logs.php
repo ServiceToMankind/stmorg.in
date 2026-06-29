@@ -48,6 +48,43 @@ if ($selected_month === 'all') {
 }
 ?>
 <?php include('header.php'); ?>
+
+<!-- Scoped responsive styles for logs page (desktop look unchanged) -->
+<style>
+    /* keep media/images from overflowing on this page */
+    .logs-scroll img { max-width: 100%; height: auto; }
+
+    /* Tablet/phone: let the filter controls breathe */
+    @media (max-width: 768px) {
+        .logs-filter { width: 100%; }
+    }
+
+    /* Phone: stack filter controls full-width so nothing is cramped/overflows */
+    @media (max-width: 560px) {
+        .logs-filter {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+        /* search input drops its fixed 180px width and fills the row */
+        .logs-filter #tableSearch,
+        .logs-filter select,
+        .logs-filter button[type="submit"] {
+            width: 100% !important;
+            box-sizing: border-box;
+        }
+        .logs-filter a {
+            text-align: center;
+            padding: 4px 0 0 !important;
+        }
+        /* table stays inside .logs-scroll wrapper and scrolls horizontally */
+        .logs-table { min-width: 640px; }
+        /* slightly tighter cells on small screens */
+        .logs-table th { padding: 11px 12px !important; }
+        .logs-table td { padding: 10px 12px !important; }
+    }
+</style>
+
 <main role="main">
 
     <!-- Hero banner -->
@@ -83,7 +120,7 @@ if ($selected_month === 'all') {
                 </div>
 
                 <!-- Filter form -->
-                <form method="GET" action="logs" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                <form method="GET" action="logs" class="logs-filter" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
                     <input type="text" id="tableSearch" placeholder="&#128269; Search donors…"
                            style="border:1px solid #dfe6e9;border-radius:8px;padding:8px 14px;font-size:0.88rem;outline:none;width:180px;font-family:'Inter',sans-serif;">
 
@@ -120,8 +157,8 @@ if ($selected_month === 'all') {
                         No donations found for this period.
                     </div>
                 <?php else: ?>
-                <div style="overflow-x:auto;">
-                    <table id="logsTable" style="width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;">
+                <div class="logs-scroll" style="overflow-x:auto;">
+                    <table id="logsTable" class="logs-table" style="width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;">
                         <thead>
                             <tr style="background:#f5f6fa;border-bottom:2px solid #f5f6fa;">
                                 <th style="padding:14px 18px;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;">#</th>

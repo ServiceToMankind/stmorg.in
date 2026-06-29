@@ -11,6 +11,40 @@ include('header.php');
 
 <main role="main">
 
+    <style>
+    /* --- Home page polish (scoped overrides) --- */
+    /* Donation progress widget: solid card + readable contrast */
+    .overlapping_urgent_cause .urgent_cause_block.alt{
+        background:#fff; border-radius:16px; box-shadow:0 10px 34px rgba(22,50,79,.14);
+        padding:26px 16px 26px 34px; overflow:hidden;
+    }
+    .urgent_cause_block.alt .power_highlight_tag{ color:#0984e3 !important; font-size:13px; }
+    .urgent_cause_block.alt .urgent_cause_heading h3{ color:#2c3e50 !important; font-weight:700; }
+    .power_progress_content .power_progress_amount span,
+    .power_progress_content .power_progress_amount span b{ color:#2c3e50 !important; }
+    .power_progress_content .power_progress_bar{
+        background:linear-gradient(90deg,#0984e3,#8e44ad) !important; min-height:10px;
+    }
+    .urgent_cause_block.alt .power_progress_content .power_button_group .power_button{
+        padding:16px 30px !important; border-radius:10px !important; min-width:auto;
+        background:linear-gradient(135deg,#0984e3,#8e44ad) !important;
+        box-shadow:0 6px 18px rgba(9,132,227,.3);
+    }
+    .urgent_cause_block.alt .power_button_group .power_button .button_value{ color:#fff !important; }
+    /* Mission / Vision / Donor / Volunteer cards: equal height + aligned accent */
+    .section .row{ display:flex; flex-wrap:wrap; }
+    .section .row > [class*="col-"]{ display:flex; margin-bottom:24px; }
+    .section .power_iconbox.type_2{ height:100%; width:100%; }
+    /* Readable body copy in About / Themes sections */
+    .marketing .section-head p{ color:#55606e; }
+    .themescls .feat p, #themes .feat p{ color:#55606e; }
+    @media (max-width:991px){
+        .overlapping_urgent_cause .urgent_cause_block.alt{ padding:22px 18px; }
+        .urgent_cause_block.alt .power_progress_content{ justify-content:flex-start; flex-wrap:wrap; gap:14px; }
+        .urgent_cause_block.alt .power_progress_content .power_progress_inner{ margin-right:0; }
+    }
+    </style>
+
     <header id="header-area">
         <div class="container">
             <div class="row">
@@ -46,11 +80,10 @@ include('header.php');
                                         $raised=get_total_price_by_month_api($date);
                                     $rpercent=($raised/10000)*100;
                                     ?>
-                                    <div class="power_progress_bar" style="max-width: <?php echo $rpercent ?>%;"
-                                        back-ground colour:"blue"><span
-                                            class="power_progress_value"><?php echo $rpercent ?>%</span></div>
+                                    <div class="power_progress_bar" style="max-width: <?php echo max(2, $rpercent) ?>%;"><span
+                                            class="power_progress_value"><?php echo round($rpercent, 1) ?>%</span></div>
                                 </div>
-                                <div class="power_progress_amount"><span><b>Exepected:</b> Rs.10000</span>
+                                <div class="power_progress_amount"><span><b>Expected:</b> Rs.10000</span>
                                     <span><b>Raised:</b> Rs.<?php echo $raised; ?></span>
                                 </div>
                             </div>
@@ -181,7 +214,7 @@ include('header.php');
                     <div class="row">
                         <div class="section-head col-sm-12">
                             <h4><span>Our</span> Themes</h4>
-                            <p>Join us in making a difference through our diverse themes"</p>
+                            <p>Join us in making a difference through our diverse themes.</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="item"> <span class="icon feature_box_col_one"><img class="themeicon"
@@ -245,7 +278,7 @@ include('header.php');
                 <div class="container">
                     <div class="row" style="justify-content: center;">
                         <div class="section-head col-sm-12">
-                            <h4><span>Our</span> Sponsers & Patners</h4>
+                            <h4><span>Our</span> Sponsors & Partners</h4>
                             <p>Empowering Change Through Generosity and Support</p>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -405,7 +438,7 @@ include('header.php');
             <div class="social-btns">
                 <a class="sofab btn facebook" href="https://facebook.com/stmorg.in"><i
                         class="sofa fab fa-facebook-f"></i></a>
-                <a class="sofab btn twitter" href="https:/twitter.com/STM_ORG"><i class="sofa fab fa-twitter"></i></a>
+                <a class="sofab btn twitter" href="https://twitter.com/STM_ORG" target="_blank" rel="noopener"><i class="sofa fab fa-twitter"></i></a>
                 <a class="sofab btn google" href="https://www.instagram.com/servicetomankindorg/"><i
                         class="sofa fab fa-instagram"></i></a>
                 <a class="sofab btn dribbble"

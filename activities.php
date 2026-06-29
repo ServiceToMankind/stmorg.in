@@ -17,6 +17,9 @@ $last_month=date('m',strtotime($last_month_first_day));
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     /* -- import Roboto Font ---------------------------- */
     @font-face {
@@ -124,48 +127,55 @@ $last_month=date('m',strtotime($last_month_first_day));
     html {
         position: relative;
         overflow-x: hidden;
-        margin: 16px;
+        /* margin removed: a global 16px margin on <html> caused horizontal
+           scrolling/misalignment on mobile. Page gutters handled by #demo. */
+        margin: 0;
         padding: 0;
         min-height: 100%;
         font-size: 62.5%;
     }
 
     body {
-        font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+        font-family: 'Inter', 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
         font-style: normal;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 1.4rem;
         line-height: 2rem;
         letter-spacing: 0.01rem;
-        color: #212121;
-        background-color: #f5f5f5;
+        color: #636e72;
+        background-color: #f0f2f8;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        overflow-x: hidden;
     }
 
     #demo {
         margin: 20px auto;
         max-width: 960px;
+        /* horizontal gutters replace the removed html margin so the page
+           never overflows the viewport on small screens */
+        padding: 20px 16px 40px;
+        width: 100%;
     }
 
     #demo h1 {
-        font-size: 2.4rem;
+        font-size: 2.6rem;
         line-height: 3.2rem;
         letter-spacing: 0;
-        font-weight: 300;
-        color: #212121;
+        font-weight: 700;
+        color: #2c3e50;
         text-transform: inherit;
         margin-bottom: 1rem;
         text-align: center;
     }
 
     #demo h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         line-height: 2.8rem;
         letter-spacing: 0.01rem;
-        font-weight: 400;
-        color: #212121;
+        font-weight: 500;
+        color: #636e72;
         text-align: center;
     }
 
@@ -852,15 +862,106 @@ $last_month=date('m',strtotime($last_month_first_day));
 
     .lm-row {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .lm-btn {
-        border-radius: 50px;
-        background: #ffffff;
-        box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-        padding: 0.6em 0.9em;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #0984e3, #8e44ad);
+        box-shadow: 0 2px 10px rgba(9, 132, 227, 0.18);
+        padding: 0.7em 1.4em;
         max-width: 17em;
-        margin: 1em 1em 1.3em 0em;
+        margin: 1em 0.5em 1.3em;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .lm-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(9, 132, 227, 0.28);
+    }
+
+    .lm-btn a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
+
+    /* --- Modernised card + responsive table -------------------- */
+    .table-responsive-vertical.shadow-z-1 {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+        padding: 8px;
+        /* let wide tables scroll horizontally instead of breaking layout */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive-vertical.shadow-z-1 > .table {
+        border-radius: 12px;
+        overflow: hidden;
+        min-width: 600px;
+    }
+
+    .table > thead > tr > th {
+        color: #b2bec3;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+    }
+
+    .table > tbody > tr > td {
+        color: #636e72;
+    }
+
+    .table > tbody > tr > td a {
+        color: #0984e3;
+        word-break: break-word;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* On small screens the data-title stacked layout takes over, so the
+       table no longer needs a min-width and should not force scrolling. */
+    @media screen and (max-width: 768px) {
+        .table-responsive-vertical.shadow-z-1 {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+            overflow-x: visible;
+        }
+
+        .table-responsive-vertical.shadow-z-1 > .table {
+            min-width: 0;
+            border-radius: 0;
+            overflow: visible;
+        }
+
+        .table-responsive-vertical > .table > tbody > tr {
+            border-radius: 14px;
+        }
+
+        .table-responsive-vertical > .table > tbody > tr > td {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            text-align: right;
+        }
+
+        .table-responsive-vertical > .table > tbody > tr > td[data-title]:before {
+            float: none;
+            flex: 0 0 auto;
+            text-align: left;
+            font-weight: 600;
+            color: #b2bec3;
+        }
     }
     </style>
 </head>
@@ -870,11 +971,11 @@ $last_month=date('m',strtotime($last_month_first_day));
         <h1>Activity Logs</h1>
 
         <?php if($last_month_first_day==''){?>
-        <h2>Activity logs of <?php echo date("M"); ?>'2023</h2>
+        <h2>Activity logs of <?php echo date("M"); ?>'<?php echo date("Y"); ?></h2>
         <div class="lm-row">
             <div class="lm-btn"><a href="activities?month=last">Last Month</a></div>
             <?php }else{ ?>
-            <h2>Payments logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'2022</h2>
+            <h2>Activity logs of <?php echo date("M",strtotime($last_month_first_day)); ?>'<?php echo date("Y",strtotime($last_month_first_day)); ?></h2>
             <div class="lm-row">
                 <div class="lm-btn"><a href="activities">current Month</a></div>
                 <?php } ?>
@@ -888,7 +989,7 @@ $last_month=date('m',strtotime($last_month_first_day));
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Descriptiopn</th>
+                            <th>Description</th>
                             <th>Report</th>
                             <th>Date</th>
                         </tr>
