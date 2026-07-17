@@ -59,6 +59,24 @@
 
 <body>
 
+    <?php if (!empty($_SESSION['SHOW_WELCOME_BACK'])) { unset($_SESSION['SHOW_WELCOME_BACK']); ?>
+    <div id="stm-welcome-toast" style="position:fixed;right:20px;bottom:20px;z-index:20000;max-width:340px;background:#fff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.22);padding:18px 20px 18px;font-family:'Inter',sans-serif;border:1px solid #eef1f6;">
+        <button type="button" onclick="var t=document.getElementById('stm-welcome-toast');t&&t.remove();" style="position:absolute;top:8px;right:12px;border:none;background:none;color:#b2bec3;font-size:1.1rem;line-height:1;cursor:pointer;">&times;</button>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <span style="font-size:1.4rem;">👋</span>
+            <strong style="color:#2c3e50;font-size:1rem;">Welcome back<?php echo isset($_SESSION['USER_NAME']) ? ', ' . htmlspecialchars(explode(' ', $_SESSION['USER_NAME'])[0]) : ''; ?>!</strong>
+        </div>
+        <p style="margin:0 0 12px;font-size:0.86rem;color:#636e72;line-height:1.5;">Head to your dashboard to see your contributions and impact &mdash; let's keep the good going. 📊</p>
+        <a href="dashboard" style="display:inline-block;background:linear-gradient(135deg,#0984e3,#8e44ad);color:#fff;text-decoration:none;font-weight:600;font-size:0.85rem;padding:8px 18px;border-radius:9px;">View Your Dashboard →</a>
+    </div>
+    <script>
+        setTimeout(function () {
+            var t = document.getElementById('stm-welcome-toast');
+            if (t) { t.style.transition = 'opacity .5s'; t.style.opacity = '0'; setTimeout(function () { t && t.remove(); }, 550); }
+        }, 9000);
+    </script>
+    <?php } ?>
+
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-white big-nav">
             <img style="border-radius: 50%; margin-right: 10px;" src="accesories/service_to_man_kind-20200709-0001.jpg"
@@ -100,7 +118,7 @@
                         <span><i class="fa-solid fa-circle-user userpic"></i></span>
                         <ul id="dropped-prof" class="hidden">
                             <li class="nav-item">
-                                <?php echo $_SESSION['USER_NAME']; ?>
+                                <?php echo htmlspecialchars($_SESSION['USER_NAME'], ENT_QUOTES, 'UTF-8'); ?>
                             </li>
                             <li class="nav-item">
                                 <span><i class="fas fa-user"></i></span>
@@ -156,7 +174,7 @@
                     <?php if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']!=''){ ?>
                     <li class="nav-item">
                         <span><i class="fas fa-user"></i></span>
-                        <a class="nav-link" href="profile"><?php echo $_SESSION['USER_NAME']; ?></a>
+                        <a class="nav-link" href="profile"><?php echo htmlspecialchars($_SESSION['USER_NAME'], ENT_QUOTES, 'UTF-8'); ?></a>
                     </li>
 
                     <?php }else{?>

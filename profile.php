@@ -85,6 +85,33 @@ usort($my_donations, function ($a, $b) {
     return ($tb === false ? 0 : $tb) <=> ($ta === false ? 0 : $ta);
 });
 
+// ---- Personal giving trend: last 12 months (verified donations only) ----
+// Built entirely from $my_donations already fetched above — no extra API calls.
+$trend_labels = [];
+$trend_keys   = [];
+for ($i = 11; $i >= 0; $i--) {
+    $ts = strtotime("first day of -$i month");
+    $trend_labels[] = date("M 'y", $ts);
+    $trend_keys[]   = date('Y-m', $ts);
+}
+$trend_totals = array_fill(0, 12, 0);
+$last_don_ts  = 0;
+$donated_this_year = 0;
+$this_year    = date('Y');
+foreach ($my_donations as $d) {
+    $ts = strtotime($d['added_on'] ?? '');
+    if (isset($d['payment_status']) && (int)$d['payment_status'] !== 1) { continue; }
+    if ($ts && $ts > $last_don_ts) { $last_don_ts = $ts; } // verified-only: drives $on_track
+    if ($ts && date('Y', $ts) === $this_year) { $donated_this_year += (int)$d['amount']; }
+    $k   = $ts ? date('Y-m', $ts) : '';
+    $idx = array_search($k, $trend_keys, true);
+    if ($idx !== false) { $trend_totals[$idx] += (int)$d['amount']; }
+}
+$trend_max     = max($trend_totals);
+// "On track" when there's a verified gift within the last ~45 days.
+$on_track      = $last_don_ts && ($last_don_ts >= strtotime('-45 days'));
+$last_don_when = $last_don_ts ? date('d M Y', $last_don_ts) : '';
+
 // Role label
 $role_id    = isset($user_details['role_id']) ? $user_details['role_id'] : '';
 $role_label = isset($user_details['role'])    ? $user_details['role']    : 'Member';
@@ -118,6 +145,7 @@ $initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ?
     <script src="js/jquery1.js"></script>
     <script src="js/boostrap.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.0.0/js/all.js?v=1" data-auto-replace-svg="nest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <!-- Favicons -->
     <link rel="icon" href="accesories/fevicon 32.ico">
@@ -300,6 +328,7 @@ $initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ?
             </div>
         </div>
         <div class="prof-hero-actions">
+            <a href="donate" style="background:rgba(255,255,255,0.95);color:#8e44ad;border-color:#fff;font-weight:600;"><i class="fa-solid fa-heart"></i> Donate</a>
             <a href="logs"><i class="fa-solid fa-receipt"></i> Donation Logs</a>
             <a href="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
             <a href="logout" style="background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.3);"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a>
@@ -320,6 +349,44 @@ $initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ?
             <div class="stat-num">₹<?php echo number_format($my_don_total); ?></div>
             <div class="stat-lbl">Total Contributed</div>
         </div>
+    </div>
+
+    <!-- Personal impact + giving trend -->
+    <div class="prof-card" style="margin-bottom:22px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:4px;">
+            <div style="flex:1;min-width:240px;">
+                <h4 style="margin:0 0 10px;">Your Impact</h4>
+                <?php if ($my_don_count > 0): ?>
+                    <div style="font-size:1.3rem;font-weight:700;color:#2c3e50;line-height:1.3;">
+                        You've given ₹<?php echo number_format($my_don_total); ?> across <?php echo $my_don_count; ?> contribution<?php echo $my_don_count == 1 ? '' : 's'; ?> 💙
+                    </div>
+                    <?php if ($on_track): ?>
+                        <div style="display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:#dcfce7;color:#15803d;border-radius:20px;padding:6px 14px;font-size:0.83rem;font-weight:600;">
+                            <i class="fa-solid fa-circle-check"></i> You're on track — last gift on <?php echo $last_don_when; ?>
+                        </div>
+                        <p style="font-size:0.9rem;color:#636e72;margin:12px 0 0;line-height:1.6;">Thank you for keeping the momentum going. Your steady support lets us plan meals, medical camps and education drives with confidence.</p>
+                    <?php else: ?>
+                        <div style="display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:#fff7ed;color:#c2410c;border-radius:20px;padding:6px 14px;font-size:0.83rem;font-weight:600;">
+                            <i class="fa-solid fa-hand-holding-heart"></i> It's been a while — last gift on <?php echo $last_don_when; ?>
+                        </div>
+                        <p style="font-size:0.9rem;color:#636e72;margin:12px 0 0;line-height:1.6;">A small gift today keeps our causes moving. Even a little, given regularly, changes lives.</p>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div style="font-size:1.3rem;font-weight:700;color:#2c3e50;line-height:1.3;">Your journey of impact starts here 🌱</div>
+                    <p style="font-size:0.9rem;color:#636e72;margin:12px 0 0;line-height:1.6;">You haven't made a donation yet. Make your first contribution and watch your impact grow, month over month, right here.</p>
+                <?php endif; ?>
+            </div>
+            <a href="donate" style="background:linear-gradient(135deg,#0984e3,#8e44ad);color:#fff;border-radius:12px;padding:12px 24px;font-size:0.92rem;font-weight:600;text-decoration:none;white-space:nowrap;align-self:center;">
+                <i class="fa-solid fa-heart"></i> <?php echo $my_don_count > 0 ? 'Give Again' : 'Donate Now'; ?>
+            </a>
+        </div>
+
+        <?php if ($my_don_count > 0 && $trend_max > 0): ?>
+            <div style="border-top:1px solid #f5f6fa;padding-top:18px;margin-top:16px;">
+                <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:.06em;color:#b2bec3;font-weight:600;margin-bottom:14px;">Your Giving — Last 12 Months</div>
+                <canvas id="givingChart" height="90"></canvas>
+            </div>
+        <?php endif; ?>
     </div>
 
     <!-- Info grid -->
@@ -465,5 +532,37 @@ $initials   = strtoupper(substr($name_parts[0], 0, 1) . (isset($name_parts[1]) ?
 </main>
 
 <script src="main-js/main.js"></script>
+<script>
+(function () {
+    var el = document.getElementById('givingChart');
+    if (!el || typeof Chart === 'undefined') return;
+    new Chart(el, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($trend_labels); ?>,
+            datasets: [{
+                label: 'Your donations (₹)',
+                data: <?php echo json_encode($trend_totals); ?>,
+                backgroundColor: 'rgba(142,68,173,0.18)',
+                borderColor: '#8e44ad',
+                borderWidth: 2,
+                borderRadius: 8,
+                hoverBackgroundColor: 'rgba(142,68,173,0.35)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: function (c) { return ' ₹' + c.parsed.y.toLocaleString(); } } }
+            },
+            scales: {
+                y: { beginAtZero: true, ticks: { callback: function (v) { return '₹' + v.toLocaleString(); }, color: '#b2bec3' }, grid: { color: '#f5f6fa' } },
+                x: { ticks: { color: '#b2bec3' }, grid: { display: false } }
+            }
+        }
+    });
+})();
+</script>
 </body>
 </html>

@@ -13,6 +13,7 @@ if($resp && $resp['status'] == 'success'){
     $_SESSION['USER_ID']=$row['id'];
     $_SESSION['CC']=$row['ccode'];
     $_SESSION['USER_NAME']=$row['name'];
+    $_SESSION['SHOW_WELCOME_BACK']=1; // one-time nudge to visit the dashboard after login
     echo "valid";
 } else {
     echo "error";
