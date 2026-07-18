@@ -23,57 +23,24 @@ $vol_raw   = get_api_data($api_url . '/activities/activities_vol?uid=' . $ouid .
 $vol_resp  = json_decode($vol_raw, true);
 $vol_count = ($vol_resp && isset($vol_resp['data']['data'])) ? $vol_resp['data']['data'] : 0;
 
-// User's personal donations.
-// The donations API exposes no per-user filter, so we page through every
-// verified donation (month=all) and keep the ones that belong to this user.
-// A donation is the user's when its linked customer id (custid = the bare
-// USER_ID captured at donate time) matches, OR when the donor email matches —
-// the email check also covers donations that were never linked to the account
-// (e.g. a guest checkout made with the same email address). The API only ever
-// returns payment_status = 1 (verified) rows.
+// User's personal donations — fetched in a single query via the per-user endpoint
+// (/logs/user_donations), which returns only this member's own VERIFIED donations
+// matched by linked custid OR donor email. This replaced an earlier approach that
+// paged through every donation client-side (slow on large datasets).
 $user_mail = isset($user_details['mail']) ? strtolower(trim($user_details['mail'])) : '';
 
-$my_donations = [];
-$my_don_total = 0;
-$my_don_count = 0;
+$my_donations     = [];
+$my_don_total     = 0;
+$my_don_count     = 0;
+$fetch_incomplete = false; // true if the donations couldn't be loaded (API error)
 
-$page             = 1;
-$total_pages      = 1;
-$max_pages        = 500;   // safety cap (~5000 donations) to bound the loop
-$fetch_incomplete = false; // true if we couldn't walk every page (API error / cap hit)
-do {
-    $don_raw  = get_api_data($api_url . '/logs/donations?month=all&page=' . $page);
-    $don_resp = json_decode($don_raw, true);
-    if (!$don_resp || $don_resp['status'] !== 'success' || !is_array($don_resp['data'])) {
-        $fetch_incomplete = true; // a page failed to load; the totals below may be partial
-        break;
-    }
-    foreach ($don_resp['data'] as $d) {
-        $d_custid = isset($d['custid']) ? trim((string)$d['custid']) : '';
-        $d_mail   = isset($d['mail'])   ? strtolower(trim($d['mail'])) : '';
-
-        $mine = false;
-        // Linked-account match (ignore the guest sentinel '0' / empty custid)
-        if ($d_custid !== '' && $d_custid !== '0' && $d_custid === (string)$ouid) {
-            $mine = true;
-        }
-        // Email match (case / whitespace insensitive)
-        if (!$mine && $user_mail !== '' && $d_mail !== '' && $d_mail === $user_mail) {
-            $mine = true;
-        }
-
-        if ($mine) {
-            $my_donations[] = $d;
-            $my_don_total  += (int)$d['amount'];
-            $my_don_count++;
-        }
-    }
-    $total_pages = isset($don_resp['total_pages']) ? (int)$don_resp['total_pages'] : 1;
-    $page++;
-} while ($page <= $total_pages && $page <= $max_pages);
-
-// If there were more pages than the safety cap allowed, the list is partial.
-if ($total_pages > $max_pages) {
+$don_raw  = get_api_data($api_url . '/logs/user_donations?uid=' . urlencode($ouid) . '&mail=' . urlencode($user_mail));
+$don_resp = json_decode($don_raw, true);
+if ($don_resp && ($don_resp['status'] ?? '') === 'success' && isset($don_resp['data']) && is_array($don_resp['data'])) {
+    $my_donations = $don_resp['data'];
+    $my_don_total = (int) ($don_resp['total_amount'] ?? 0);
+    $my_don_count = count($my_donations);
+} else {
     $fetch_incomplete = true;
 }
 
