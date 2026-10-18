@@ -2,3 +2,7 @@ connection.php
 paymentsmanager/*
 .vscode/
 !paymentsmanager/checkout/cancel.php
+
+# Source archive of legal documents (extracted into legal/, not tracked)
+Legal documents-20261018T082524Z-1-001.zip
+*.zip

@@ -44,6 +44,7 @@
                         <li><a href="terms-of-service"><i class="fas fa-caret-right"></i> Terms Of Service</a></li>
                         <li><a href="privacy-policy"><i class="fas fa-caret-right"></i> Privacy Policy</a></li>
                         <li><a href="cancellation"><i class="fas fa-caret-right"></i> Cancellation and Refund</a></li>
+                        <li><a href="legal"><i class="fas fa-caret-right"></i> Legal &amp; Compliance</a></li>
                     </ul>
                 </div>
             </div>

@@ -281,21 +281,57 @@ include('header.php');
                             <h4><span>Our</span> Sponsors & Partners</h4>
                             <p>Empowering Change Through Generosity and Support</p>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="https://weber.cottonseeds.org">
-                                <img class="themeicon" src="images/sponsers/weber_technologies.png" width="350"
-                                    alt="Weber Technologies"></img>
+                        <div class="col-lg-4 col-sm-6 sponsor-col">
+                            <a class="sponsor-lockup" href="https://weberq.in" target="_blank" rel="noopener"
+                                aria-label="WeberQ Global Private Limited — opens in a new tab">
+                                <img class="themeicon sponsor-mark" src="images/sponsers/weberq_global.png"
+                                    alt="WeberQ Global Private Limited logo">
+                                <span class="sponsor-name">
+                                    <span class="sponsor-brand">Weber<span class="q">Q</span></span>
+                                    <small>Global</small>
+                                </span>
                             </a>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <a href="https://aims.ac.in/">
-                                <img class="themeicon"
-                                    src="https://aims.ac.in/wp-content/uploads/2023/04/logo-1024x319.png" width="260"
-                                    alt="Weber Technologies"></img>
+                        <div class="col-lg-4 col-sm-6 sponsor-col">
+                            <a href="https://aims.ac.in/" target="_blank" rel="noopener"
+                                aria-label="Arundathi Institute of Medical Sciences &amp; Hospital — opens in a new tab">
+                                <img class="themeicon sponsor-logo" src="images/sponsers/aims.png"
+                                    alt="Arundathi Institute of Medical Sciences &amp; Hospital (AIMS) logo">
                             </a>
                         </div>
 
                     </div>
+                    <style>
+                    /* Sponsors & Partners — consistent lockups on the light panel */
+                    #themes .sponsor-col{
+                        display:flex; align-items:center; justify-content:center; padding:22px 12px;
+                    }
+                    #themes .sponsor-logo{
+                        width:100%; max-width:280px; height:auto; margin:0; object-fit:contain;
+                    }
+                    #themes .sponsor-lockup{
+                        display:inline-flex; align-items:center; gap:14px; text-decoration:none;
+                    }
+                    #themes .sponsor-lockup .sponsor-mark{
+                        width:62px; height:62px; object-fit:contain; margin:0; flex:0 0 auto;
+                    }
+                    #themes .sponsor-name{
+                        display:flex; flex-direction:column; line-height:1.02;
+                        font-family:'Inter',sans-serif;
+                    }
+                    #themes .sponsor-brand{
+                        font-weight:800; font-size:1.7rem; color:#1f2d3d; letter-spacing:-.01em;
+                    }
+                    #themes .sponsor-brand .q{ color:#2a93e0; }
+                    #themes .sponsor-name small{
+                        font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
+                        color:#8a94a0; margin-top:3px;
+                    }
+                    @media (max-width:575px){
+                        #themes .sponsor-brand{ font-size:1.5rem; }
+                        #themes .sponsor-logo{ max-width:230px; }
+                    }
+                    </style>
                 </div>
             </div>
 

@@ -53,15 +53,23 @@ include('header.php');
 
                 <div class="stm-gateway-notice" role="status">
                     <span class="stm-gateway-badge">Temporarily Unavailable</span>
-                    <p>Our payment gateway isn't working right now. Please scan the Google&nbsp;Pay
-                        code below or pay to <strong>+91&nbsp;7729817298</strong> to donate.</p>
+                    <p>Our payment gateway isn't working right now. Please scan the UPI&nbsp;/&nbsp;PhonePe
+                        QR code below, or pay to UPI number <strong>8985137002</strong> to donate.</p>
                 </div>
 
                 <div class="stm-gpay-wrap">
-                    <!-- Image added using the <img> element -->
-                    <img src="images/pics/google%20pay%20stm.jpg"
-                        alt="Google Pay number is +91 7729817298" class="stm-gpay-img">
+                    <!-- UPI / PhonePe donation QR for Service to Mankind Welfare Association -->
+                    <img src="images/pics/upi-qr.jpeg"
+                        alt="Scan to pay Service to Mankind via UPI — UPI number 8985137002" class="stm-gpay-img">
+                    <p class="stm-upi-id">UPI&nbsp;Number:&nbsp;<strong>8985137002</strong></p>
                 </div>
+
+                <p class="stm-80g-note">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Donations to Service to Mankind are eligible for tax exemption under
+                        <strong>Section&nbsp;80G</strong>. View our
+                        <a href="legal">legal &amp; compliance documents</a>.</span>
+                </p>
 
                 <!--START FORM-->
                 <form method="post" action="https://apis.stmorg.in/pay/start" class="stm-donate-form">
@@ -350,13 +358,24 @@ include('header.php');
 }
 .stm-gateway-notice strong{ color:#713f12; white-space:nowrap; }
 
-/* Google Pay image — responsive, no fixed em width */
+/* UPI / PhonePe QR image — responsive, no fixed em width */
 .stm-gpay-wrap{ text-align:center; margin:0 0 6px; }
 .stm-gpay-img{
-    display:block; width:100%; max-width:260px; height:auto; margin:0 auto;
+    display:block; width:100%; max-width:300px; height:auto; margin:0 auto;
     border-radius:14px; border:1px solid #eef0f4;
     box-shadow:0 2px 16px rgba(0,0,0,.06);
 }
+.stm-upi-id{
+    margin:12px 0 0; color:#2c3e50; font-size:.95rem;
+}
+.stm-upi-id strong{ color:#0984e3; letter-spacing:.02em; }
+.stm-80g-note{
+    display:flex; align-items:flex-start; gap:10px;
+    background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px;
+    padding:12px 16px; margin:18px 0 0; color:#065f46; font-size:.9rem; line-height:1.55;
+}
+.stm-80g-note i{ color:#059669; margin-top:2px; }
+.stm-80g-note a{ color:#047857; font-weight:600; text-decoration:underline; }
 
 /* Amount reference note */
 .stm-amount-note{
