@@ -1,4 +1,8 @@
-FROM php:8.2-apache
+# Pinned to the PHP2Shell fix (CVE-2026-109618 / CVE-2026-109619); bump for future 8.2.x security releases
+FROM php:8.2.35-apache
+
+# Don't advertise the PHP version in the X-Powered-By header
+RUN echo "expose_php = Off" > /usr/local/etc/php/conf.d/zz-hardening.ini
 
 # Install dependencies FIRST (rarely changes)
 RUN apt-get update && apt-get install -y \
